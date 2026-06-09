@@ -1,0 +1,1750 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Branch TIKTOK, The IDOL</title>
+    <!-- Google Fonts: Kanit -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons CDN -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        body { 
+            font-family: 'Kanit', sans-serif; 
+            background: url('https://firebasestorage.googleapis.com/v0/b/faifah-ttb.appspot.com/o/Tiktok%2Fbg_ttb.jpg?alt=media&token=2cec3f41-9861-42de-88e8-619761859d39') no-repeat center center fixed;
+            background-size: cover;
+        }
+        
+        .hidden { display: none !important; }
+        
+        button { cursor: pointer; transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1); }
+        button:disabled { cursor: not-allowed; opacity: 0.5; } 
+
+        .name-input {
+            background-color: #ffffff !important;
+            border: 1px solid #cbd5e1 !important;
+            color: #0f172a !important;
+            font-weight: 400;
+            outline: none;
+            transition: all 0.25s ease;
+        }
+        .name-input::placeholder {
+            color: #94a3b8;
+        }
+        .name-input:focus {
+            border-color: #2563eb !important;
+            box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.15);
+        }
+
+        /* Message Box positioned at the bottom center as requested */
+        #messageBox {
+            position: fixed;
+            bottom: 24px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 9999;
+            padding: 12px 24px;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+        }
+        
+        #globalLoader {
+            position: fixed;
+            inset: 0;
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(8px);
+            z-index: 9000;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .btn-standard {
+            height: 52px;
+            padding-left: 24px;
+            padding-right: 24px;
+            font-size: 13px;
+            font-weight: 600;
+            border-radius: 16px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: all 0.25s ease;
+        }
+
+        /* Glassmorphism Panel - Transparent Background with Slightly Darker Tone (0.65 opacity) */
+        .glass-panel {
+            background: rgba(15, 23, 42, 0.65);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .objective-card {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.2s ease;
+        }
+        .objective-card:hover {
+            background: rgba(255, 255, 255, 0.12);
+            transform: translateY(-2px);
+        }
+
+        /* Custom style for Dropdown lists */
+        .search-results-list {
+            background: #ffffff;
+            border: 1px solid #cbd5e1;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+        .search-item {
+            color: #1e293b;
+            transition: background 0.15s ease;
+        }
+        .search-item:hover {
+            background-color: #f1f5f9;
+        }
+
+        /* Nav Bottom styles in Dashboard view */
+        .app-bottom-nav {
+            position: fixed;
+            bottom: 16px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: calc(100% - 32px);
+            max-width: 440px;
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 24px;
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+            z-index: 50;
+            display: flex;
+            justify-content: space-around;
+            padding: 6px;
+        }
+
+        .app-nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 11px;
+            font-weight: 500;
+            transition: all 0.25s ease;
+            flex: 1;
+            padding: 8px 2px;
+            cursor: pointer;
+            border-radius: 16px;
+        }
+        .app-nav-item.active {
+            color: #f97316 !important; /* Orange Active Icon */
+            background: rgba(249, 115, 22, 0.12);
+        }
+    </style>
+</head>
+<!-- Items-start handles Top-alignment on desktop and viewport heights -->
+<body class="min-h-screen flex items-start justify-center m-0 p-0 text-white text-center relative overflow-x-hidden pb-8 pt-8">
+
+    <div id="globalLoader" class="transition-all duration-300">
+        <div class="relative flex items-center justify-center mb-6">
+            <div class="w-16 h-16 border-4 border-white/20 border-t-white rounded-full animate-spin"></div>
+            <i data-lucide="sparkles" class="w-6 h-6 text-white absolute animate-pulse"></i>
+        </div>
+        <p class="text-sm font-semibold tracking-wide text-white/80">กำลังเชื่อมต่อระบบ Branch TIKTOK...</p>
+    </div>
+
+    <div id="messageBox" class="hidden font-medium text-center"></div>
+
+    <!-- Main Container - justify-start represents Top Alignment layout -->
+    <div class="w-full max-w-[500px] flex flex-col min-h-screen relative hidden z-10 p-4 justify-start" id="mainWrapper">
+        <div class="w-full flex flex-col items-center justify-start py-4 space-y-6">
+
+            <!-- VIEW 1: WELCOME SCREEN (Invitation & 4 Objectives) -->
+            <div id="welcomeView" class="w-full space-y-6">
+                <!-- TikTok Logo Branding (Shown on welcome view, hidden on registration form view) -->
+                <div class="w-full flex flex-col items-center justify-center mb-2">
+                    <img src="https://firebasestorage.googleapis.com/v0/b/faifah-ttb.appspot.com/o/Tiktok%2Ficon_tiktok.png?alt=media&token=d1a95941-81bc-4f63-a719-387598987dbb" 
+                         alt="TikTok Logo" class="w-[80%] max-w-[380px] h-auto object-contain filter drop-shadow-[0_10px_25px_rgba(0,0,0,0.3)]">
+                </div>
+
+                <!-- Invitation Text Box (Darkened glass background - font-size 13px) -->
+                <div id="invitationBox" class="w-full glass-panel rounded-3xl p-6 text-white text-[13px] leading-relaxed text-justify shadow-2xl mx-auto space-y-5">
+                    <div class="text-center flex items-center justify-center gap-2">
+                        <i data-lucide="megaphone" class="w-5 h-5 text-orange-400"></i>
+                        <h2 class="text-[15px] font-normal text-white text-center leading-tight">ขอเชิญชวนพนักงานสาขาทุกท่าน</h2>
+                    </div>
+                    
+                    <p class="text-[13px] text-slate-200 text-left leading-relaxed">
+                        ร่วมสร้างสรรค์คลิปวิดีโอผ่านช่องทาง <span class="font-bold text-white underline decoration-orange-400 decoration-2">TikTok</span> เพื่อแนะนำตัวตน แนะนำสาขา ให้ความรู้ทางการเงิน เตือนภัยมิจฉาชีพ หรือแนะนำผลิตภัณฑ์ ttb ช่วยสร้างความเชื่อมั่นให้ลูกค้ารู้ว่า <span class="font-bold text-orange-300">“เรามีตัวตนจริง อยู่ใกล้คุณ และพร้อมให้บริการจริง”</span> โดยมุ่งเน้นที่การสร้างตัวตน
+                    </p>
+
+                    <!-- OBJECTIVE GRID - 4 ITEMS -->
+                    <div class="space-y-4 pt-2">
+                        <div class="border-t border-white/10 pt-4 pb-1">
+                            <h4 class="text-center font-normal text-[13px] tracking-widest text-slate-300 uppercase">OBJECTIVES / วัตถุประสงค์กิจกรรม</h4>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 gap-3.5 text-[13px]">
+                            
+                            <!-- Objective 01 -->
+                            <div class="objective-card rounded-2xl p-4 flex gap-4 items-start text-left">
+                                <div class="w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center text-[11px] font-black text-white shrink-0 shadow-lg">01</div>
+                                <div class="space-y-1">
+                                    <div class="flex items-center gap-1.5 font-normal text-[13px] text-white">
+                                        <i data-lucide="heart" class="w-4 h-4 text-orange-400 fill-orange-400/20"></i>
+                                        <span>สร้างความเชื่อมั่นให้ลูกค้า (Trusted)</span>
+                                    </div>
+                                    <p class="text-[13px] text-slate-300 leading-snug">ให้ลูกค้ารู้จักพนักงานและสาขา ttb มากขึ้น เห็นหน้า รู้จักตัวตน ติดต่อได้จริง</p>
+                                </div>
+                            </div>
+
+                            <!-- Objective 02 -->
+                            <div class="objective-card rounded-2xl p-4 flex gap-4 items-start text-left">
+                                <div class="w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center text-[11px] font-black text-white shrink-0 shadow-lg">02</div>
+                                <div class="space-y-1">
+                                    <div class="flex items-center gap-1.5 font-normal text-[13px] text-white">
+                                        <i data-lucide="shield-alert" class="w-4 h-4 text-orange-400"></i>
+                                        <span>ป้องกันการแอบอ้างจากมิจฉาชีพ (Scam Prevention)</span>
+                                    </div>
+                                    <p class="text-[13px] text-slate-300 leading-snug">ให้ลูกค้ารับรู้ช่องทางที่ถูกต้องของ ttb และรู้เท่าทันกลโกงมิจฉาชีพ</p>
+                                </div>
+                            </div>
+
+                            <!-- Objective 03 -->
+                            <div class="objective-card rounded-2xl p-4 flex gap-4 items-start text-left">
+                                <div class="w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center text-[11px] font-black text-white shrink-0 shadow-lg">03</div>
+                                <div class="space-y-1">
+                                    <div class="flex items-center gap-1.5 font-normal text-[13px] text-white">
+                                        <i data-lucide="store" class="w-4 h-4 text-orange-400"></i>
+                                        <span>เพิ่มการรับรู้สาขา (Branch Awareness)</span>
+                                    </div>
+                                    <p class="text-[13px] text-slate-300 leading-snug">ให้ลูกค้าในพื้นที่รู้จักสาขาใกล้บ้านมากขึ้น และเข้ามาใช้บริการที่สาขา</p>
+                                </div>
+                            </div>
+
+                            <!-- Objective 04 -->
+                            <div class="objective-card rounded-2xl p-4 flex gap-4 items-start text-left">
+                                <div class="w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center text-[11px] font-black text-white shrink-0 shadow-lg">04</div>
+                                <div class="space-y-1">
+                                    <div class="flex items-center gap-1.5 font-normal text-[13px] text-white">
+                                        <i data-lucide="megaphone" class="w-4 h-4 text-orange-400"></i>
+                                        <span>พัฒนาพนักงานสาขาสู่ Employee Influencer</span>
+                                    </div>
+                                    <p class="text-[13px] text-slate-300 leading-snug">พัฒนาพนักงานให้เป็นผู้สื่อสารแทนองค์กร สร้างตัวตนบนโลกออนไลน์ เปรียบเสมือนใช้สื่อภายในองค์กรให้เกิดประโยชน์สูงสุด</p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Call to action button to view register form (Font-normal and orange background) -->
+                <button onclick="window.transitionToForm()" class="btn-standard w-full max-w-[420px] bg-orange-500 hover:bg-orange-600 text-white font-normal rounded-2xl shadow-2xl active:scale-[0.98] transition-all py-6 h-auto mx-auto flex items-center justify-center gap-3 text-[13px]">
+                    <span>เข้าสู่ Branch TIKTOK, The IDOL</span>
+                    <i data-lucide="chevron-right" class="w-5 h-5 animate-pulse"></i>
+                </button>
+            </div>
+
+            <!-- VIEW 2: LOGIN / REGISTER FORM SCREEN -->
+            <div id="formView" class="w-full space-y-4 hidden">
+                <div class="w-full flex justify-start max-w-[420px] mx-auto">
+                    <button onclick="window.transitionToWelcome()" class="flex items-center gap-1 text-[13px] text-slate-300 hover:text-white bg-slate-900/40 px-3 py-1.5 rounded-full border border-white/10 font-normal">
+                        <i data-lucide="chevron-left" class="w-4 h-4"></i> กลับไปดูรายละเอียดกิจกรรม
+                    </button>
+                </div>
+                
+                <div id="registrationFormPanel" class="w-full max-w-[420px] glass-panel rounded-3xl p-6 flex flex-col items-center mx-auto text-[13px]">
+                    <h3 class="text-[15px] font-normal text-white tracking-wide mb-5">ลงทะเบียนเข้าใช้งาน</h3>
+                    
+                    <!-- Tab Selector Container -->
+                    <div class="w-full bg-black/20 p-1 rounded-2xl flex items-center justify-between mb-6 border border-white/10">
+                        <button onclick="window.switchFormTab('login')" id="tabLoginBtn" class="flex-1 py-2.5 rounded-xl text-[13px] font-normal transition-all duration-300 bg-white text-slate-900 shadow-md">
+                            เข้าสู่ระบบ
+                        </button>
+                        <button onclick="window.switchFormTab('register')" id="tabRegisterBtn" class="flex-1 py-2.5 rounded-xl text-[13px] font-normal transition-all duration-300 text-white/80 hover:text-white">
+                            ลงทะเบียนครั้งแรก
+                        </button>
+                    </div>
+
+                    <!-- Form 1: LOGIN -->
+                    <div id="loginFormArea" class="w-full space-y-4">
+                        <!-- Avatar circle for Employee with Image Support -->
+                        <div class="flex flex-col items-center justify-center mb-6">
+                            <div class="w-24 h-24 rounded-full bg-slate-200 border-4 border-white flex items-center justify-center text-slate-500 font-normal text-[13px] shadow-lg overflow-hidden relative">
+                                <span id="loginAvatarPlaceholder">Employee</span>
+                                <img id="loginAvatarImg" class="w-full h-full object-cover hidden" alt="Employee Photo" />
+                            </div>
+                            <span class="text-[13px] text-white/80 mt-2 font-normal">รูปถ่ายพนักงาน</span>
+                        </div>
+
+                        <!-- Input fields -->
+                        <div class="w-full text-left space-y-3">
+                            <div>
+                                <label class="block text-left text-[13px] font-normal text-white/90 mb-1.5">รหัสพนักงาน (Employee ID)</label>
+                                <input type="text" id="loginEmployeeId" placeholder="ระบุรหัสพนักงาน" class="name-input w-full px-4 py-3.5 rounded-2xl text-[13px] shadow-sm" oninput="window.checkLoginEmployeeId()">
+                            </div>
+                            <div>
+                                <label class="block text-left text-[13px] font-normal text-white/90 mb-1.5">รหัสผ่าน (Password)</label>
+                                <input type="password" id="loginPassword" placeholder="........" disabled class="name-input w-full px-4 py-3.5 rounded-2xl text-[13px] shadow-sm disabled:opacity-50 disabled:cursor-not-allowed" oninput="window.checkLoginPassword()">
+                            </div>
+                        </div>
+
+                        <!-- Orange login button -->
+                        <button id="loginSubmitBtn" disabled onclick="window.handleLogin()" class="btn-standard w-full bg-orange-500 hover:bg-orange-600 text-white font-normal rounded-2xl shadow-xl active:scale-[0.98] transition-all mt-4 text-[13px] disabled:opacity-50 disabled:cursor-not-allowed">
+                            เข้าสู่ Branch TIKTOK, The IDOL
+                        </button>
+                    </div>
+
+                    <!-- Form 2: REGISTER -->
+                    <div id="registerFormArea" class="w-full space-y-4 hidden">
+                        <!-- Interactive Avatar circle with image file upload and Hover Camera overlay (Initially disabled and styled translucent) -->
+                        <div class="flex flex-col items-center justify-center mb-4">
+                            <label id="regAvatarLabel" for="regImageInput" class="cursor-pointer group flex flex-col items-center" style="pointer-events: none; opacity: 0.5;">
+                                <div id="regAvatarPreview" class="w-24 h-24 rounded-full bg-slate-200 border-4 border-white flex items-center justify-center text-slate-500 font-normal text-[13px] shadow-lg overflow-hidden relative">
+                                    <span id="regAvatarText">Employee</span>
+                                    <img id="regAvatarImg" class="w-full h-full object-cover hidden" alt="Uploaded Avatar" />
+                                    <!-- Hover Camera Overlay with Lucide Camera Icon -->
+                                    <div class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                                        <i data-lucide="camera" class="w-6 h-6 text-white"></i>
+                                    </div>
+                                </div>
+                                <span class="text-[13px] text-white/95 mt-2 font-normal group-hover:text-white transition-all underline decoration-dotted">คลิกเพื่ออัปโหลดรูป</span>
+                            </label>
+                            <input type="file" id="regImageInput" accept="image/*" class="hidden" disabled onchange="window.previewImage(event)">
+                        </div>
+
+                        <!-- Input fields (All fields except regEmployeeId disabled by default) -->
+                        <div class="w-full text-left space-y-3">
+                            <div>
+                                <label class="block text-left text-[13px] font-normal text-white/90 mb-1.5">รหัสพนักงาน (Employee ID)</label>
+                                <input type="text" id="regEmployeeId" placeholder="พิมพ์รหัสพนักงาน" class="name-input w-full px-4 py-3.5 rounded-2xl text-[13px] shadow-sm" oninput="window.checkRegisterEmployeeId()">
+                            </div>
+                            <div>
+                                <label class="block text-left text-[13px] font-normal text-white/90 mb-1.5">ชื่อ-นามสกุล</label>
+                                <input type="text" id="regFullName" placeholder="เช่น สมชาย ใจดี" disabled class="name-input w-full px-4 py-3.5 rounded-2xl text-[13px] shadow-sm opacity-50 cursor-not-allowed" oninput="window.checkRegFormValidity()">
+                            </div>
+                            
+                            <!-- Searchable Branch Input (สาขาที่สังกัด ดึงข้อมูลจาก Tiktok_Branch) -->
+                            <div class="relative">
+                                <label class="block text-left text-[13px] font-normal text-white/90 mb-1.5">สาขาที่สังกัด (พิมพ์เพื่อค้นหาหรือระบุเอง)</label>
+                                <div class="relative">
+                                    <input type="text" id="regBranchInput" placeholder="ค้นหาหรือระบุสาขา" disabled class="name-input w-full px-4 py-3.5 pr-10 rounded-2xl text-[13px] shadow-sm opacity-50 cursor-not-allowed" onfocus="window.showSearchDropdown('branch')" oninput="window.filterSearchDropdown('branch'); window.checkRegFormValidity();">
+                                    <i data-lucide="search" class="absolute right-3.5 top-3.5 w-4 h-4 text-slate-400"></i>
+                                </div>
+                                <div id="regBranchResults" class="absolute left-0 right-0 mt-1 max-h-48 overflow-y-auto hidden z-[100] search-results-list">
+                                    <!-- Dynamic elements from loadDropdownData -->
+                                </div>
+                            </div>
+
+                            <!-- Searchable Position Input (ตำแหน่งงาน ดึงข้อมูลจาก Tiktok_Position) -->
+                            <div class="relative">
+                                <label class="block text-left text-[13px] font-normal text-white/90 mb-1.5">ตำแหน่งงาน (พิมพ์เพื่อค้นหาหรือระบุเอง)</label>
+                                <div class="relative">
+                                    <input type="text" id="regPositionInput" placeholder="ค้นหาหรือระบุตำแหน่ง" disabled class="name-input w-full px-4 py-3.5 pr-10 rounded-2xl text-[13px] shadow-sm opacity-50 cursor-not-allowed" onfocus="window.showSearchDropdown('position')" oninput="window.filterSearchDropdown('position'); window.checkRegFormValidity();">
+                                    <i data-lucide="search" class="absolute right-3.5 top-3.5 w-4 h-4 text-slate-400"></i>
+                                </div>
+                                <div id="regPositionResults" class="absolute left-0 right-0 mt-1 max-h-48 overflow-y-auto hidden z-[100] search-results-list">
+                                    <!-- Dynamic elements from loadDropdownData -->
+                                </div>
+                            </div>
+
+                            <!-- Tiktok Username -->
+                            <div>
+                                <label class="block text-left text-[13px] font-normal text-white/90 mb-1.5">TikTok Username</label>
+                                <input type="text" id="regTiktokUser" placeholder="เช่น @สมชาย_ttb" disabled class="name-input w-full px-4 py-3.5 rounded-2xl text-[13px] shadow-sm opacity-50 cursor-not-allowed" oninput="window.checkRegFormValidity()">
+                            </div>
+
+                            <!-- TikTok URL (ลิงก์ของช่อง) -->
+                            <div>
+                                <label class="block text-left text-[13px] font-normal text-white/90 mb-1.5">TikTok URL (ลิงก์ของช่อง)</label>
+                                <input type="text" id="regTiktokUrl" placeholder="เช่น https://www.tiktok.com/@user" disabled class="name-input w-full px-4 py-3.5 rounded-2xl text-[13px] shadow-sm opacity-50 cursor-not-allowed" oninput="window.checkRegFormValidity()">
+                            </div>
+
+                            <div>
+                                <label class="block text-left text-[13px] font-normal text-white/90 mb-1.5">ตั้งรหัสผ่าน (Password)</label>
+                                <input type="password" id="regPassword" placeholder="........" disabled class="name-input w-full px-4 py-3.5 rounded-2xl text-[13px] shadow-sm opacity-50 cursor-not-allowed" oninput="window.checkRegFormValidity()">
+                            </div>
+                            <div>
+                                <label class="block text-left text-[13px] font-normal text-white/90 mb-1.5">ยืนยันรหัสผ่าน (Confirm Password)</label>
+                                <input type="password" id="regConfirmPassword" placeholder="........" disabled class="name-input w-full px-4 py-3.5 rounded-2xl text-[13px] shadow-sm opacity-50 cursor-not-allowed" oninput="window.checkRegFormValidity()">
+                            </div>
+                        </div>
+
+                        <!-- Orange register button with icon (Requires valid inputs and uploaded profile photo) -->
+                        <button id="regSubmitBtn" disabled onclick="window.handleRegister()" class="btn-standard w-full bg-orange-500 hover:bg-orange-600 text-white font-normal rounded-2xl shadow-xl active:scale-[0.98] transition-all mt-4 flex items-center justify-center gap-2 text-[13px] disabled:opacity-50 disabled:cursor-not-allowed">
+                            <i data-lucide="user-plus" class="w-5 h-5"></i><span>ลงทะเบียนสมาชิกใหม่</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- VIEW 3: SUCCESS VIEW -->
+            <div id="successPanel" class="w-full max-w-[420px] glass-panel rounded-3xl p-8 flex flex-col items-center space-y-6 mx-auto hidden">
+                <div class="w-16 h-16 bg-green-500/20 border border-green-500/30 rounded-full flex items-center justify-center text-green-400">
+                    <i data-lucide="check-circle-2" class="w-10 h-10 animate-bounce"></i>
+                </div>
+                <div class="text-center space-y-2">
+                    <h3 class="text-2xl font-bold text-green-400 text-[20px]">ลงทะเบียนสำเร็จ!</h3>
+                    <p class="text-[13px] text-slate-100 leading-relaxed px-2 font-normal">
+                        ยินดีต้อนรับคุณ <span id="registeredName" class="font-normal text-orange-400 text-lg">-</span> เข้าสู่ครอบครัว Branch TIKTOK, The IDOL เรียบร้อยแล้ว
+                    </p>
+                </div>
+                <div class="w-full bg-white/5 border border-white/10 rounded-2xl p-4 text-[13px] text-white/80 text-center font-normal">
+                    ระบบได้รับข้อมูลเรียบร้อย ขอขอบคุณที่ร่วมสร้างสรรค์ผลงานเพื่อลูกค้ากับ ttb
+                </div>
+                <button onclick="window.resetToForm()" class="btn-standard w-full bg-white text-blue-900 hover:bg-slate-100 font-normal rounded-2xl transition-all text-[13px]">
+                    กลับสู่หน้าหลัก
+                </button>
+            </div>
+
+            <!-- VIEW 5: QUIZ INTRO VIEW (Triggered when StartWelcome == 0 - 95% of Viewport Height) -->
+            <div id="quizIntroView" class="w-full max-w-[420px] glass-panel rounded-3xl p-8 flex flex-col items-center justify-center mx-auto hidden" style="height: 95vh;">
+                <div class="w-20 h-24 bg-orange-500/10 border border-orange-500/30 rounded-3xl flex items-center justify-center text-orange-400 mb-8 animate-pulse">
+                    <i data-lucide="clipboard-signature" class="w-10 h-10"></i>
+                </div>
+                <h3 class="text-[15px] font-normal text-white leading-relaxed text-center px-4 mb-12">
+                    แบบทดสอบความเข้าใจเกี่ยวกับการใช้ Social Media และการทำคลิป TikTok
+                </h3>
+                <button onclick="window.startQuizFlow()" class="btn-standard w-full max-w-[320px] bg-orange-500 hover:bg-orange-600 text-white font-normal rounded-2xl shadow-xl active:scale-95 transition-all text-[14px]">
+                    เข้าสู่แบบทดสอบ
+                </button>
+            </div>
+
+            <!-- VIEW 6: QUIZ QUESTION VIEW (Adjusted margin-top: -40px) -->
+            <div id="quizQuestionView" class="w-full max-w-[420px] glass-panel rounded-3xl p-6 flex flex-col justify-between mx-auto hidden" style="min-h-[500px]; margin-top: -40px;">
+                <div class="w-full space-y-4">
+                    <!-- Top row image centered - adjusted width to 60% as requested -->
+                    <div class="w-full flex justify-center mb-2">
+                        <img src="https://firebasestorage.googleapis.com/v0/b/faifah-ttb.appspot.com/o/Tiktok%2Fquiz.png?alt=media&token=8ed29efe-27ae-474c-98ad-59a99f9c9dd5" alt="Quiz Banner" class="w-[60%] max-w-[280px] h-auto object-contain rounded-xl">
+                    </div>
+                    
+                    <div class="flex justify-between items-center border-b border-white/10 pb-3">
+                        <span class="text-xs text-orange-400 font-normal tracking-wide">แบบทดสอบความเข้าใจ</span>
+                        <span class="text-xs text-slate-300" id="quizProgressDisplay">ข้อที่ 1 / 5</span>
+                    </div>
+
+                    <!-- Question Text -->
+                    <p id="quizQuestionText" class="text-[14px] text-left leading-relaxed text-white font-normal pt-2 min-h-[60px]"></p>
+                    
+                    <!-- Choices container -->
+                    <div id="quizChoicesContainer" class="space-y-3 pt-4">
+                        <!-- Rendered dynamically -->
+                    </div>
+                </div>
+
+                <!-- Bottom Bar: Navigation and validation messages -->
+                <div class="flex items-center justify-between border-t border-white/10 pt-4 mt-6">
+                    <div class="flex items-center gap-2">
+                        <!-- Left Side: Submit button (Initially hidden, turns green when selection is made) -->
+                        <button id="quizSubmitAnswerBtn" class="hidden btn-standard bg-green-600 hover:bg-green-700 text-white font-normal rounded-xl h-[44px] px-6 text-[13.5px]" onclick="window.submitQuizAnswer()">
+                            <span>ส่งคำตอบ</span>
+                        </button>
+                        <span id="quizSelectionFeedback" class="text-xs font-normal"></span>
+                    </div>
+                    <!-- Right Side: Next button -->
+                    <button id="quizNextBtn" disabled onclick="window.nextQuizQuestion()" class="btn-standard bg-blue-600 hover:bg-blue-700 text-white font-normal rounded-xl h-[44px] px-6 text-[13.5px] disabled:opacity-50 disabled:cursor-not-allowed">
+                        <span>ถัดไป</span> <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- VIEW 7: APP MAIN DASHBOARD (Triggered when StartWelcome == 1) -->
+            <div id="appDashboardView" class="w-full max-w-[460px] flex flex-col hidden text-left space-y-4 pb-24">
+                
+                <!-- Dashboard Top blue header bar -->
+                <div class="w-full bg-[#0056ff] rounded-2xl p-5 shadow-lg border border-blue-400/20 flex justify-between items-center">
+                    <div>
+                        <h1 id="appHeaderUserName" class="text-[16px] font-normal tracking-tight text-white leading-tight mb-1">ผู้ใช้งาน</h1>
+                        <p class="text-xs text-white/70 font-light flex items-center gap-1">
+                            <i data-lucide="award" class="w-3.5 h-3.5 text-orange-400"></i> สมาชิก Branch TIKTOK, The IDOL
+                        </p>
+                    </div>
+                    <button onclick="window.handleCheckOut()" class="p-2.5 text-white bg-white/10 hover:bg-white/20 rounded-xl transition-all">
+                        <i data-lucide="log-out" class="w-4 h-4"></i>
+                    </button>
+                </div>
+
+                <!-- DASHBOARD TAB CONTENT 1: HOME -->
+                <div id="dash-tab-home" class="dash-tab-content space-y-4">
+                    <div class="glass-panel rounded-2xl p-5 space-y-3">
+                        <h4 class="text-orange-400 font-normal text-sm flex items-center gap-1.5 border-b border-white/10 pb-2">
+                            <i data-lucide="film" class="w-4 h-4 text-orange-400"></i>
+                            <span>ส่งผลงาน TikTok ของคุณ</span>
+                        </h4>
+                        <p class="text-xs text-slate-300 leading-relaxed font-light">
+                            ร่วมแชร์คลิปสร้างสรรค์ของคุณเพื่อแนะนำตัวตน, แนะนำสาขา ttb, ให้ความรู้ทางการเงิน, หรือเตือนภัยมิจฉาชีพ เพื่อลุ้นรับรางวัล!
+                        </p>
+                        
+                        <div class="space-y-3 pt-2 text-[13px]">
+                            <div>
+                                <label class="block text-slate-300 text-xs mb-1">ชื่อคลิปผลงาน</label>
+                                <input type="text" id="workTitleInput" placeholder="ระบุชื่อผลงานของคลิป" class="name-input w-full px-4 py-3 rounded-xl text-[13px]">
+                            </div>
+                            <div>
+                                <label class="block text-slate-300 text-xs mb-1">ลิ้งก์วิดีโอ TikTok (TikTok URL)</label>
+                                <input type="text" id="workUrlInput" placeholder="https://www.tiktok.com/@..." class="name-input w-full px-4 py-3 rounded-xl text-[13px]">
+                            </div>
+                            <button onclick="window.submitWork()" class="btn-standard w-full bg-orange-500 hover:bg-orange-600 text-white font-normal rounded-xl h-[46px] mt-2">
+                                <i data-lucide="send" class="w-4 h-4"></i> ส่งผลงานเข้าประกวด
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="glass-panel rounded-2xl p-5 space-y-2">
+                        <h4 class="text-white font-normal text-sm">ยินดีต้อนรับสู่แคมเปญหลัก!</h4>
+                        <p class="text-xs text-slate-300 leading-relaxed font-light">
+                            ขอขอบคุณพนักงานสาขาทุกท่านที่ร่วมสร้างความเชื่อมั่นให้ลูกค้ารับรู้ว่า ttb ของเรามีตัวตนจริง อยู่ใกล้คุณ และพร้อมดูแลให้บริการลูกค้าด้วยหัวใจค่ะ
+                        </p>
+                    </div>
+                </div>
+
+                <!-- DASHBOARD TAB CONTENT 2: DETAILS -->
+                <div id="dash-tab-details" class="dash-tab-content space-y-4 hidden">
+                    <div class="glass-panel rounded-2xl p-5 space-y-4">
+                        <h4 class="text-orange-400 font-normal text-sm border-b border-white/10 pb-2">รายละเอียดกิจกรรมและวัตถุประสงค์</h4>
+                        
+                        <div class="space-y-3 text-[13px] leading-relaxed">
+                            <div class="p-3 bg-white/5 rounded-xl">
+                                <span class="text-orange-400 font-semibold block mb-0.5">01. สร้างความเชื่อมั่นให้ลูกค้า (Trusted)</span>
+                                <span class="text-xs text-slate-300 font-light">ให้ลูกค้ารู้จักพนักงานและสาขา ttb มากขึ้น เห็นหน้า รู้จักตัวตน ติดต่อได้จริง</span>
+                            </div>
+                            <div class="p-3 bg-white/5 rounded-xl">
+                                <span class="text-orange-400 font-semibold block mb-0.5">02. ป้องกันการแอบอ้างจากมิจฉาชีพ (Scam Prevention)</span>
+                                <span class="text-xs text-slate-300 font-light">ให้ลูกค้ารับรู้ช่องทางที่ถูกต้องของ ttb และรู้เท่าทันกลโกงมิจฉาชีพ</span>
+                            </div>
+                            <div class="p-3 bg-white/5 rounded-xl">
+                                <span class="text-orange-400 font-semibold block mb-0.5">03. เพิ่มการรับรู้สาขา (Branch Awareness)</span>
+                                <span class="text-xs text-slate-300 font-light">ให้ลูกค้าในพื้นที่รู้จักสาขาใกล้บ้านมากขึ้น และเข้ามาใช้บริการที่สาขา</span>
+                            </div>
+                            <div class="p-3 bg-white/5 rounded-xl">
+                                <span class="text-orange-400 font-semibold block mb-0.5">04. พัฒนาพนักงานสู่ Employee Influencer</span>
+                                <span class="text-xs text-slate-300 font-light">พัฒนาพนักงานให้เป็นผู้สื่อสารแทนองค์กร สร้างตัวตนออนไลน์ให้เป็นประโยชน์สูงสุด</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- DASHBOARD TAB CONTENT 3: LEADERBOARD -->
+                <div id="dash-tab-leaderboard" class="dash-tab-content space-y-4 hidden text-[13px]">
+                    <div class="glass-panel rounded-2xl p-5 space-y-3">
+                        <h4 class="text-orange-400 font-normal text-sm border-b border-white/10 pb-2 flex items-center gap-1.5">
+                            <i data-lucide="trophy" class="w-4 h-4 text-orange-400 animate-bounce"></i>
+                            <span>ทำเนียบผู้นำ (Leaderboard - คะแนนสอบ)</span>
+                        </h4>
+                        
+                        <div class="overflow-hidden rounded-xl border border-white/10">
+                            <table class="w-full text-left">
+                                <thead class="bg-white/10 text-xs">
+                                    <tr>
+                                        <th class="p-3 font-normal text-slate-300">อันดับ</th>
+                                        <th class="p-3 font-normal text-slate-300">ชื่อ-นามสกุล</th>
+                                        <th class="p-3 font-normal text-slate-300 text-center">สาขา</th>
+                                        <th class="p-3 font-normal text-slate-300 text-right">คะแนน</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="leaderboardTableBody" class="divide-y divide-white/5">
+                                    <!-- Loaded dynamically -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- DASHBOARD TAB CONTENT 4: USER INFO -->
+                <div id="dash-tab-userinfo" class="dash-tab-content space-y-4 hidden">
+                    <div class="glass-panel rounded-2xl p-6 flex flex-col items-center space-y-5">
+                        <div class="w-24 h-24 rounded-full bg-slate-200 border-4 border-white flex items-center justify-center text-slate-500 font-normal text-[13px] shadow-lg overflow-hidden relative">
+                            <span id="dbAvatarPlaceholder">Employee</span>
+                            <img id="dashAvatar" class="w-full h-full object-cover hidden" alt="Employee Photo" />
+                        </div>
+                        <div class="text-center w-full">
+                            <h3 id="dashFullName" class="text-xl font-bold text-white">-</h3>
+                            <p class="text-[13px] text-white/60 font-normal mt-0.5">รหัสพนักงาน: <span id="dashEmployeeId">-</span></p>
+                            
+                            <div class="mt-4 p-3.5 bg-black/30 rounded-2xl border border-white/10 text-[13px] text-left space-y-1.5 font-normal text-slate-200 w-full max-w-[320px] mx-auto">
+                                <p class="flex justify-between"><span>สาขา:</span> <span id="dashBranch" class="text-orange-400 font-medium">-</span></p>
+                                <p class="flex justify-between"><span>ตำแหน่ง:</span> <span id="dashPosition" class="text-orange-400 font-medium">-</span></p>
+                                <p class="flex justify-between"><span>TikTok:</span> <span id="dashTiktokUser" class="text-blue-400 font-medium">-</span></p>
+                                <p class="flex justify-between"><span>คะแนนทดสอบ:</span> <span id="dashScoreQuiz" class="text-green-400 font-semibold">- / 5</span></p>
+                                <p class="flex flex-col gap-1 mt-1 border-t border-white/10 pt-1.5">
+                                    <span>URL ลิงก์ของช่อง:</span> 
+                                    <a id="dashTiktokUrl" href="#" target="_blank" class="text-xs text-orange-300 font-light truncate hover:underline">-</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Navigation bottom tabs menu -->
+                <div class="app-bottom-nav">
+                    <div onclick="window.switchDashboardTab('home')" id="btn-dash-home" class="app-nav-item active">
+                        <i data-lucide="home" class="w-5 h-5"></i>
+                        <span>Home</span>
+                    </div>
+                    <div onclick="window.switchDashboardTab('details')" id="btn-dash-details" class="app-nav-item">
+                        <i data-lucide="info" class="w-5 h-5"></i>
+                        <span>รายละเอียด</span>
+                    </div>
+                    <div onclick="window.switchDashboardTab('leaderboard')" id="btn-dash-leaderboard" class="app-nav-item">
+                        <i data-lucide="trophy" class="w-5 h-5"></i>
+                        <span>ผู้นำการแข่ง</span>
+                    </div>
+                    <div onclick="window.switchDashboardTab('userinfo')" id="btn-dash-userinfo" class="app-nav-item">
+                        <i data-lucide="user" class="w-5 h-5"></i>
+                        <span>ข้อมูลคุณ</span>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getAuth, signInWithCustomToken, signInAnonymously, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getFirestore, collection, doc, addDoc, getDocs, updateDoc, setDoc, increment, serverTimestamp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+        // Firebase Configuration
+        const firebaseConfig = typeof __firebase_config !== 'undefined' 
+            ? JSON.parse(__firebase_config) 
+            : { apiKey: "AIzaSyAciknEYhZU7AwOdfYytC1t_AnW2Ee11us", authDomain: "faifah-ttb.firebaseapp.com", projectId: "faifah-ttb", storageBucket: "faifah-ttb.appspot.com", messagingSenderId: "842980876200", appId: "1:842980876200:web:f33bfad2ccbf263075079d" };
+            
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const db = getFirestore(app);
+        const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
+        
+        // กำหนดชื่อตารางคอลเลกชันระดับ Root ตามกติกาความปลอดภัย
+        const MEMBER_COLLECTION = 'Tiktok_Member';
+        const BRANCH_COLLECTION = 'Tiktok_Branch';
+        const POSITION_COLLECTION = 'Tiktok_Position';
+        const QUIZ_COLLECTION = 'Tiktok_Quiz';
+        
+        window.currentUser = null;
+        window.uploadedProfileBase64 = null;
+        window.activeFormTab = 'login'; // 'login' or 'register'
+        window.isMuted = false;
+
+        // รายการตัวเลือกสาขาและตำแหน่งงานดึงจริงจาก Database
+        window.branchesList = [];
+        window.positionsList = [];
+
+        // รายการแบบทดสอบและสเตตัสจำลอง
+        window.quizQuestions = [];
+        window.currentQuizIndex = 0;
+        window.quizSelectedChoice = null;
+        window.quizSubmitted = false;
+        window.quizScore = 0;
+        window.quizTrueCount = 0;
+        window.quizFalseCount = 0;
+
+        // --- ระบบเสียงพูด ---
+        window.speakText = (text, delay = 600) => {
+            if (window.isMuted) return;
+            window.speechSynthesis.cancel();
+            
+            setTimeout(() => {
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.lang = 'th-TH';
+                utterance.rate = 1.1;
+                utterance.pitch = 1.0;
+                window.speechSynthesis.speak(utterance);
+            }, delay);
+        };
+
+        // ฟังก์ชันแสดงการแจ้งเตือนกลางหน้าจอ (ปรับแต่งให้แสดงผลด้านล่างตรงกลางของหน้าจอ)
+        window.showMessage = (msg, isError = false) => {
+            const box = document.getElementById('messageBox');
+            if (!box) return;
+            box.textContent = msg;
+            box.className = isError ? "bg-red-600 text-white shadow-lg" : "bg-green-600 text-white shadow-lg";
+            box.classList.remove('hidden');
+            setTimeout(() => { box.classList.add('hidden'); }, 3000);
+        };
+
+        // ฟังก์ชันสร้าง Path การเข้าถึงคอลเลกชันแบบผสมผสาน (สลับโหมดอัตโนมัติระหว่าง Canvas Preview และ Local Hosting)
+        const getCollectionRef = (colName) => {
+            if (typeof __firebase_config !== 'undefined' && typeof __app_id !== 'undefined' && __app_id !== 'default-app-id') {
+                return collection(db, `artifacts/${appId}/public/data/${colName}`);
+            } else {
+                return collection(db, colName);
+            }
+        };
+
+        // ฟังก์ชันสร้าง Path การเข้าถึงเอกสารแบบผสมผสาน (รองรับสิทธิ์พรีวิวจำลอง)
+        const getDocRef = (colName, docId) => {
+            if (typeof __firebase_config !== 'undefined' && typeof __app_id !== 'undefined' && __app_id !== 'default-app-id') {
+                return doc(db, `artifacts/${appId}/public/data/${colName}`, docId);
+            } else {
+                return doc(db, colName, docId);
+            }
+        };
+
+        // ฟังก์ชันโหลดข้อมูลจาก Firestore ตามเงื่อนไขความปลอดภัยและเส้นทางแบบคิวรีสคริปต์ฟิลด์จริง
+        window.loadDropdownData = async () => {
+            if (!auth.currentUser) return;
+
+            try {
+                // 1. ดึงข้อมูลจากตารางคอลเลกชัน Tiktok_Branch ฟิลด์ empBranch
+                const branchRef = getCollectionRef(BRANCH_COLLECTION);
+                const branchSnap = await getDocs(branchRef);
+                window.branchesList = [];
+                branchSnap.forEach(d => {
+                    const data = d.data();
+                    if (data.empBranch) window.branchesList.push(data.empBranch);
+                });
+                
+                window.branchesList = [...new Set(window.branchesList)].sort();
+
+                // 2. ดึงข้อมูลจากตารางคอลเลกชัน Tiktok_Position ฟิลด์ empPosition
+                const positionRef = getCollectionRef(POSITION_COLLECTION);
+                const positionSnap = await getDocs(positionRef);
+                window.positionsList = [];
+                positionSnap.forEach(d => {
+                    const data = d.data();
+                    if (data.empPosition) window.positionsList.push(data.empPosition);
+                });
+                window.positionsList = [...new Set(window.positionsList)].sort();
+
+                // สั่งแรนเดอร์รายการ dropdowns ตัวเลือกใน UI
+                window.renderSearchItems('branch', window.branchesList);
+                window.renderSearchItems('position', window.positionsList);
+
+            } catch (e) {
+                console.error("Error loading dropdown data from Firestore path:", e);
+                window.branchesList = [];
+                window.positionsList = [];
+                window.renderSearchItems('branch', []);
+                window.renderSearchItems('position', []);
+            }
+        };
+
+        // แสดงรายการผลการค้นหาลง dropdown
+        window.renderSearchItems = (type, items) => {
+            const resultBox = document.getElementById(type === 'branch' ? 'regBranchResults' : 'regPositionResults');
+            if (!resultBox) return;
+
+            if (items.length === 0) {
+                resultBox.innerHTML = `<div class="p-3 text-slate-400 text-xs text-center">พิมพ์เพื่อระบุข้อมูลสังกัดของท่าน</div>`;
+                return;
+            }
+
+            resultBox.innerHTML = items.map(item => `
+                <div class="px-4 py-2.5 search-item cursor-pointer text-[13px]" onclick="window.selectSearchValue('${type}', '${item.replace(/'/g, "\\'")}')">
+                    ${item}
+                </div>
+            `).join('');
+        };
+
+        // ควบคุมการแสดงลิสต์ dropdown ค้นหา
+        window.showSearchDropdown = (type) => {
+            const list = document.getElementById(type === 'branch' ? 'regBranchResults' : 'regPositionResults');
+            if (list) list.classList.remove('hidden');
+            
+            const otherType = type === 'branch' ? 'position' : 'branch';
+            const otherList = document.getElementById(otherType === 'branch' ? 'regBranchResults' : 'regPositionResults');
+            if (otherList) otherList.classList.add('hidden');
+        };
+
+        // กรองตัวเลือกขณะกำลังพิมพ์
+        window.filterSearchDropdown = (type) => {
+            const inputVal = document.getElementById(type === 'branch' ? 'regBranchInput' : 'regPositionInput').value.trim().toLowerCase();
+            const fullList = type === 'branch' ? window.branchesList : window.positionsList;
+            
+            const filtered = fullList.filter(item => item.toLowerCase().includes(inputVal));
+            window.renderSearchItems(type, filtered);
+        };
+
+        // ดำเนินการเมื่อคลิกเลือกผลลัพธ์
+        window.selectSearchValue = (type, val) => {
+            const input = document.getElementById(type === 'branch' ? 'regBranchInput' : 'regPositionInput');
+            const list = document.getElementById(type === 'branch' ? 'regBranchResults' : 'regPositionResults');
+            
+            if (input) input.value = val;
+            if (list) list.classList.add('hidden');
+
+            // ตรวจสอบความถูกต้องของแบบฟอร์มลงทะเบียนหลังจากเลือกจากรายการค้นหา
+            window.checkRegFormValidity();
+        };
+
+        // ปิดผลลัพธ์การค้นหาเมื่อผู้ใช้นอกรอบกล่องค้นหา
+        document.addEventListener('click', (e) => {
+            const branchContainer = document.getElementById('regBranchInput')?.closest('.relative');
+            const positionContainer = document.getElementById('regPositionInput')?.closest('.relative');
+            
+            if (branchContainer && !branchContainer.contains(e.target)) {
+                document.getElementById('regBranchResults')?.classList.add('hidden');
+            }
+            if (positionContainer && !positionContainer.contains(e.target)) {
+                document.getElementById('regPositionResults')?.classList.add('hidden');
+            }
+        });
+
+        // RULE 3 - Setup Auth Listener and Priority Authentication (ยืนยันสิทธิ์ก่อนเริ่มประมวลผล)
+        const initAuth = async () => {
+            try {
+                if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
+                    await signInWithCustomToken(auth, __initial_auth_token);
+                } else {
+                    await signInAnonymously(auth);
+                }
+            } catch (err) {
+                console.error("Firebase Auth Error:", err);
+            }
+        };
+
+        initAuth();
+
+        onAuthStateChanged(auth, (u) => {
+            if (u) {
+                window.currentUser = u;
+                const gl = document.getElementById('globalLoader'); if(gl) gl.classList.add('hidden');
+                const mw = document.getElementById('mainWrapper'); if(mw) mw.classList.remove('hidden');
+                
+                // ดึงข้อมูลตัวเลือกสาขาและตำแหน่งงานเมื่อผ่านการตรวจสอบสิทธิ์สำเร็จ
+                window.loadDropdownData();
+            }
+        });
+
+        // ตรวจสอบความถูกต้องของฟิลด์ลงทะเบียนเพื่อเปิด/ปิดการใช้งานปุ่ม "ลงทะเบียนสมาชิกใหม่" (บังคับแนบรูปถ่ายพนักงาน)
+        window.checkRegFormValidity = () => {
+            const empId = document.getElementById('regEmployeeId').value.trim();
+            const fullName = document.getElementById('regFullName').value.trim();
+            const empBranch = document.getElementById('regBranchInput').value.trim();
+            const empPosition = document.getElementById('regPositionInput').value.trim();
+            const tiktokUser = document.getElementById('regTiktokUser').value.trim();
+            const tiktokUrl = document.getElementById('regTiktokUrl').value.trim();
+            const pass = document.getElementById('regPassword').value.trim();
+            const confirmPass = document.getElementById('regConfirmPassword').value.trim();
+            const hasImage = !!window.uploadedProfileBase64;
+
+            const submitBtn = document.getElementById('regSubmitBtn');
+            if (!submitBtn) return;
+
+            // บังคับให้กรอกข้อมูลครบทุกกล่อง รหัสผ่านตรงกัน และต้องอัปโหลดรูปพนักงาน และรหัสพนักงานต้องยาว 5 ตัวอักษร
+            if (empId && empId.length === 5 && fullName && empBranch && empPosition && tiktokUser && tiktokUrl && pass && confirmPass && (pass === confirmPass) && hasImage) {
+                submitBtn.disabled = false;
+            } else {
+                submitBtn.disabled = true;
+            }
+        };
+
+        // ตรวจสอบรหัสพนักงานซ้ำซ้อนในขั้นตอนสมัครสมาชิก และล็อก/ปลดล็อกฟิลด์อื่น ๆ แบบไดนามิก (ต้องมีความยาว 5 ตัวอักษรเท่านั้น)
+        window.checkRegisterEmployeeId = async () => {
+            const empId = document.getElementById('regEmployeeId').value.trim();
+            const fields = ['regFullName', 'regBranchInput', 'regPositionInput', 'regTiktokUser', 'regTiktokUrl', 'regPassword', 'regConfirmPassword'];
+            const avatarLabel = document.getElementById('regAvatarLabel');
+            const imageInput = document.getElementById('regImageInput');
+
+            // ฟังก์ชันช่วยในการล็อกฟิลด์ทั้งหมด
+            const lockFields = () => {
+                fields.forEach(id => {
+                    const el = document.getElementById(id);
+                    if (el) {
+                        el.disabled = true;
+                        el.classList.add('opacity-50', 'cursor-not-allowed');
+                    }
+                });
+                if (imageInput) imageInput.disabled = true;
+                if (avatarLabel) {
+                    avatarLabel.style.pointerEvents = 'none';
+                    avatarLabel.style.opacity = '0.5';
+                }
+            };
+
+            // ฟังก์ชันช่วยในการปลดล็อกฟิลด์ทั้งหมด
+            const unlockFields = () => {
+                fields.forEach(id => {
+                    const el = document.getElementById(id);
+                    if (el) {
+                        el.disabled = false;
+                        el.classList.remove('opacity-50', 'cursor-not-allowed');
+                    }
+                });
+                if (imageInput) imageInput.disabled = false;
+                if (avatarLabel) {
+                    avatarLabel.style.pointerEvents = 'auto';
+                    avatarLabel.style.opacity = '1';
+                }
+            };
+
+            // หากยังไม่ได้กรอกรหัสพนักงานเลย
+            if (empId.length === 0) {
+                lockFields();
+                window.checkRegFormValidity();
+                return;
+            }
+
+            // บังคับการกรอกรหัสพนักงานให้ครบ 5 ตัวอักษรเท่านั้น หากน้อยกว่าหรือมากกว่า 5 ตัวอักษร ให้แจ้งการกรอกไม่ถูกต้อง
+            if (empId.length !== 5) {
+                window.showMessage("การกรอกรหัสพนักงานไม่ถูกต้อง (รหัสพนักงานต้องมีความยาว 5 ตัวอักษรเท่านั้น)", true);
+                lockFields();
+                window.checkRegFormValidity();
+                return;
+            }
+
+            try {
+                const memberRef = getCollectionRef(MEMBER_COLLECTION);
+                const snap = await getDocs(memberRef);
+                let exists = false;
+                snap.forEach(d => {
+                    if (d.data().employeeId === empId) exists = true;
+                });
+
+                if (exists) {
+                    window.showMessage("รหัสพนักงานนี้ได้ลงทะเบียนแล้ว", true);
+                    lockFields();
+                } else {
+                    // รหัสพนักงานถูกต้องและไม่ซ้ำซ้อน -> ปลดล็อกฟิลด์ทั้งหมดให้กรอกข้อความต่อไปได้
+                    window.showMessage("รหัสพนักงานสามารถใช้งานได้", false);
+                    unlockFields();
+                }
+            } catch (e) {
+                console.error("Error checking register employee ID:", e);
+            }
+            window.checkRegFormValidity();
+        };
+
+        // ตรวจสอบรหัสพนักงานขณะพิมพ์ (Real-time Login Validation - ต้องมีความยาว 5 ตัวอักษรเท่านั้น)
+        window.checkLoginEmployeeId = async () => {
+            const empId = document.getElementById('loginEmployeeId').value.trim();
+            const loginAvatarImg = document.getElementById('loginAvatarImg');
+            const loginAvatarPlaceholder = document.getElementById('loginAvatarPlaceholder');
+            const loginPasswordInput = document.getElementById('loginPassword');
+            const loginButton = document.getElementById('loginSubmitBtn');
+
+            // รีเซ็ตค่าการแสดงผลเบื้องต้นก่อนตรวจสอบ
+            if (loginAvatarImg) loginAvatarImg.classList.add('hidden');
+            if (loginAvatarPlaceholder) loginAvatarPlaceholder.classList.remove('hidden');
+            if (loginPasswordInput) {
+                loginPasswordInput.disabled = true;
+                loginPasswordInput.value = "";
+            }
+            if (loginButton) loginButton.disabled = true;
+
+            if (empId.length === 0) return;
+
+            // บังคับการกรอกรหัสพนักงานให้ครบ 5 ตัวอักษรเท่านั้น หากน้อยกว่าหรือมากกว่า 5 ตัวอักษร ให้แจ้งการกรอกไม่ถูกต้อง
+            if (empId.length !== 5) {
+                window.showMessage("การกรอกรหัสพนักงานไม่ถูกต้อง (รหัสพนักงานต้องมีความยาว 5 ตัวอักษรเท่านั้น)", true);
+                return;
+            }
+
+            try {
+                const memberRef = getCollectionRef(MEMBER_COLLECTION);
+                const snap = await getDocs(memberRef);
+                let matched = null;
+                snap.forEach(d => {
+                    const data = d.data();
+                    if (data.employeeId === empId) {
+                        matched = data;
+                    }
+                });
+
+                if (matched) {
+                    const status = matched.MemberStatus || "";
+                    
+                    // หากพบว่าฟิลด์ MemberStatus = "Registration" หรือ "New Registration" ให้แสดงรูปที่ลงทะเบียนไว้ตรง รูปถ่ายพนักงาน
+                    if ((status === "Registration" || status === "New Registration") && matched.profileImage) {
+                        if (loginAvatarImg) {
+                            loginAvatarImg.src = matched.profileImage;
+                            loginAvatarImg.classList.remove('hidden');
+                        }
+                        if (loginAvatarPlaceholder) {
+                            loginAvatarPlaceholder.classList.add('hidden');
+                        }
+                    }
+
+                    // กล่องรหัสผ่านจะให้กรอกได้เมื่อฟิลด์ MemberStatus = "Registration" เท่านั้น
+                    if (status === "Registration") {
+                        if (loginPasswordInput) {
+                            loginPasswordInput.disabled = false;
+                        }
+                    } else if (status === "New Registration") {
+                        window.showMessage("บัญชีของท่านอยู่ระหว่างรอการอนุมัติ (New Registration) จึงยังไม่สามารถระบุรหัสผ่านได้ค่ะ", false);
+                    } else {
+                        window.showMessage("สถานะบัญชีของท่านไม่ถูกต้องสำหรับการเข้าสู่ระบบ", true);
+                    }
+                } else {
+                    window.showMessage("ไม่พบรหัสพนักงานนี้ในระบบ", true);
+                }
+            } catch (e) {
+                console.error("Error checking employee ID status:", e);
+            }
+        };
+
+        // ตรวจสอบความยาวรหัสผ่านเพื่อเปิดใช้งานปุ่มเข้าสู่ระบบ
+        window.checkLoginPassword = () => {
+            const passwordInput = document.getElementById('loginPassword');
+            const loginButton = document.getElementById('loginSubmitBtn');
+            if (passwordInput && loginButton) {
+                if (passwordInput.value.length > 0 && !passwordInput.disabled) {
+                    loginButton.disabled = false;
+                } else {
+                    loginButton.disabled = true;
+                }
+            }
+        };
+
+        // จัดการอัปโหลดรูปพรีวิวแบบเรียลไทม์ (Resize and Proportional Crop center to exactly 200x200px - No Stretch)
+        window.previewImage = (event) => {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const imgObj = new Image();
+                imgObj.onload = function() {
+                    const canvas = document.createElement('canvas');
+                    canvas.width = 200;
+                    canvas.height = 200;
+                    const ctx = canvas.getContext('2d');
+                    
+                    const srcWidth = imgObj.width;
+                    const srcHeight = imgObj.height;
+                    const size = 200;
+                    
+                    let srcX = 0;
+                    let srcY = 0;
+                    let srcW = srcWidth;
+                    let srcH = srcHeight;
+                    
+                    // ป้องกันรูปยืดบิดเบี้ยวด้วยการสเกลหาจุดศูนย์กลางที่แท้จริง
+                    if (srcWidth > srcHeight) {
+                        srcW = srcHeight;
+                        srcX = (srcWidth - srcHeight) / 2;
+                    } else {
+                        srcH = srcWidth;
+                        srcY = (srcHeight - srcWidth) / 2;
+                    }
+                    
+                    ctx.drawImage(imgObj, srcX, srcY, srcW, srcH, 0, 0, size, size);
+                    window.uploadedProfileBase64 = canvas.toDataURL('image/jpeg', 0.85);
+                    
+                    const previewImg = document.getElementById('regAvatarImg');
+                    const text = document.getElementById('regAvatarText');
+                    if (previewImg && text) {
+                        previewImg.src = window.uploadedProfileBase64;
+                        previewImg.classList.remove('hidden');
+                        text.classList.add('hidden');
+                    }
+
+                    // ตรวจสอบความถูกต้องของแบบฟอร์มลงทะเบียนหลังสลับข้อมูลรูปภาพเรียบร้อย
+                    window.checkRegFormValidity();
+                };
+                imgObj.src = e.target.result;
+            };
+            reader.readAsDataURL(file);
+        };
+
+        // การเปลี่ยนหน้า View
+        window.transitionToForm = () => {
+            document.getElementById('welcomeView').classList.add('hidden');
+            document.getElementById('formView').classList.remove('hidden');
+            window.speakText("เข้าสู่หน้าต่างลงทะเบียนเข้าใช้งาน เลือกเข้าสู่ระบบหรือลงทะเบียนสมาชิกใหม่ค่ะ");
+        };
+
+        window.transitionToWelcome = () => {
+            document.getElementById('formView').classList.add('hidden');
+            document.getElementById('welcomeView').classList.remove('hidden');
+            window.speakText("กลับมายังวัตถุประสงค์ของกิจกรรม");
+        };
+
+        // สลับแท็บ เข้าสู่ระบบ / ลงทะเบียนครั้งแรก
+        window.switchFormTab = (tab) => {
+            window.activeFormTab = tab;
+            const loginBtn = document.getElementById('tabLoginBtn');
+            const registerBtn = document.getElementById('tabRegisterBtn');
+            const loginArea = document.getElementById('loginFormArea');
+            const registerArea = document.getElementById('registerFormArea');
+
+            if (tab === 'login') {
+                loginBtn.className = "flex-1 py-2.5 rounded-xl text-[13px] font-normal transition-all duration-300 bg-white text-slate-900 shadow-md";
+                registerBtn.className = "flex-1 py-2.5 rounded-xl text-[13px] font-normal transition-all duration-300 text-white/80 hover:text-white";
+                loginArea.classList.remove('hidden');
+                registerArea.classList.add('hidden');
+            } else {
+                registerBtn.className = "flex-1 py-2.5 rounded-xl text-[13px] font-normal transition-all duration-300 bg-white text-slate-900 shadow-md";
+                loginBtn.className = "flex-1 py-2.5 rounded-xl text-[13px] font-normal transition-all duration-300 text-white/80 hover:text-white";
+                registerArea.classList.remove('hidden');
+                loginArea.classList.add('hidden');
+            }
+        };
+
+        // บันทึกการลงทะเบียน (ตรงเข้าหาตาราง Tiktok_Member ฟิลด์ empBranch และ empPosition ร่วมกับ MemberStatus = New Registration และ StartWelcome = 0)
+        window.handleRegister = async () => {
+            if (!auth.currentUser) {
+                window.showMessage("กรุณารอระบบยืนยันสิทธิ์สักครู่...", true);
+                return;
+            }
+
+            const empId = document.getElementById('regEmployeeId').value.trim();
+            const fullName = document.getElementById('regFullName').value.trim();
+            const empBranch = document.getElementById('regBranchInput').value.trim();
+            const empPosition = document.getElementById('regPositionInput').value.trim();
+            const tiktokUser = document.getElementById('regTiktokUser').value.trim();
+            const tiktokUrl = document.getElementById('regTiktokUrl').value.trim();
+            const pass = document.getElementById('regPassword').value.trim();
+            const confirmPass = document.getElementById('regConfirmPassword').value.trim();
+
+            if (!empId || !fullName || !empBranch || !empPosition || !tiktokUser || !tiktokUrl || !pass || !confirmPass) {
+                window.showMessage("กรุณากรอกข้อมูลและระบุรายละเอียดให้ครบถ้วนทุกช่อง", true);
+                return;
+            }
+
+            if (pass !== confirmPass) {
+                window.showMessage("รหัสผ่านและการยืนยันรหัสผ่านไม่ตรงกัน", true);
+                return;
+            }
+
+            const gl = document.getElementById('globalLoader'); 
+            if(gl) gl.classList.remove('hidden');
+
+            try {
+                // คิวรีตามโครงสร้างแบบ Dynamic Path (สลับโหมดอัตโนมัติระหว่างคลัง Preview และรูทจริง)
+                const memberRef = getCollectionRef(MEMBER_COLLECTION);
+                const snap = await getDocs(memberRef);
+                let exists = false;
+                snap.forEach(d => {
+                    if (d.data().employeeId === empId) exists = true;
+                });
+
+                if (exists) {
+                    window.showMessage("รหัสพนักงานนี้เคยถูกลงทะเบียนในระบบแล้ว", true);
+                    if(gl) gl.classList.add('hidden');
+                    return;
+                }
+
+                // บันทึกค่าผู้ใช้ใหม่ พร้อมกำหนด MemberStatus = "New Registration" และเพิ่มฟิลด์ StartWelcome = 0
+                const newUser = {
+                    employeeId: empId,
+                    name: fullName,
+                    empBranch: empBranch,
+                    empPosition: empPosition,
+                    tiktokUser: tiktokUser.startsWith('@') ? tiktokUser : '@' + tiktokUser,
+                    tiktokUrl: tiktokUrl,
+                    password: pass,
+                    profileImage: window.uploadedProfileBase64 || null,
+                    MemberStatus: "New Registration",
+                    StartWelcome: 0, // บันทึกฟิลด์ StartWelcome เท่ากับ 0 ตามเงื่อนไขเพิ่มเติม
+                    createdAt: serverTimestamp()
+                };
+
+                await addDoc(memberRef, newUser);
+
+                // Succeeded -> Switch to Success View
+                document.getElementById('formView').classList.add('hidden');
+                document.getElementById('successPanel').classList.remove('hidden');
+                document.getElementById('registeredName').textContent = fullName;
+
+                window.showMessage("ลงทะเบียนสมาชิกสำเร็จ!");
+                window.speakText("ลงทะเบียนสำเร็จ ยินดีต้อนรับเข้าสู่ครอบครัว แบรนช์ ติ๊กต๊อก เดอะ ไอดอล คุณ " + fullName);
+            } catch (e) {
+                console.error("Database Registration Error:", e);
+                window.showMessage("เกิดข้อผิดพลาดในการบันทึกข้อมูล กรุณาลองใหม่อีกครั้ง", true);
+            } finally {
+                if(gl) gl.classList.add('hidden');
+            }
+        };
+
+        // ตรวจสอบล็อกอิน
+        window.handleLogin = async () => {
+            if (!auth.currentUser) {
+                window.showMessage("กรุณารอระบบยืนยันสิทธิ์สักครู่...", true);
+                return;
+            }
+
+            const empId = document.getElementById('loginEmployeeId').value.trim();
+            const pass = document.getElementById('loginPassword').value.trim();
+
+            if (!empId || !pass) {
+                window.showMessage("กรุณากรอกรหัสพนักงานและรหัสผ่านให้ครบถ้วน", true);
+                return;
+            }
+
+            const gl = document.getElementById('globalLoader'); 
+            if(gl) gl.classList.remove('hidden');
+
+            try {
+                const memberRef = getCollectionRef(MEMBER_COLLECTION);
+                const snap = await getDocs(memberRef);
+                let matchedUser = null;
+                snap.forEach(d => {
+                    const data = d.data();
+                    if (data.employeeId === empId && data.password === pass) {
+                        matchedUser = { docId: d.id, ...data };
+                    }
+                });
+
+                if (matchedUser) {
+                    window.currentMember = matchedUser; // บันทึกข้อมูลพนักงานไว้ในตัวแปร Global
+                    document.getElementById('formView').classList.add('hidden');
+                    
+                    // ตรวจสอบฟิลด์ StartWelcome หลังผ่านการเข้าสู่ระบบสำเร็จ
+                    const startWelcomeValue = (typeof matchedUser.StartWelcome !== 'undefined') ? Number(matchedUser.StartWelcome) : 0;
+                    
+                    if (startWelcomeValue === 0) {
+                        // ซ่อนทุกฟิลด์รวมถึงปุ่มย้อนกลับดูรายละเอียดกิจกรรม และเข้าสู่ Quiz Intro
+                        document.getElementById('registrationFormPanel').classList.add('hidden');
+                        document.getElementById('invitationBox').classList.add('hidden');
+                        document.getElementById('quizIntroView').classList.remove('hidden');
+                        
+                        window.showMessage("กรุณาทำแบบทดสอบเพื่อเริ่มต้นกิจกรรมค่ะ", false);
+                        window.speakText("ยินดีต้อนรับเข้าใช้งาน กรุณาทำแบบทดสอบความเข้าใจเกี่ยวกับการใช้โซเชียลมีเดียก่อนเริ่มต้นกิจกรรมค่ะ");
+                    } else {
+                        // หากมีค่าเท่ากับ 1 สลับหน้าต่างเข้าสู่หน้าจอแผงควบคุมหลัก Dashboard
+                        window.enterAppDashboard();
+                    }
+                } else {
+                    window.showMessage("รหัสพนักงานหรือรหัสผ่านไม่ถูกต้อง", true);
+                }
+            } catch (e) {
+                console.error("Database Login Error:", e);
+                window.showMessage("เกิดข้อผิดพลาดทางเทคนิค กรุณาลองใหม่อีกครั้ง", true);
+            } finally {
+                if(gl) gl.classList.add('hidden');
+            }
+        };
+
+        // เริ่มต้นแบบทดสอบและดึงข้อมูลคำถาม (เรียงตาม Q_number) จากตาราง Tiktok_Quiz จริง โดยไม่มีตัวเลือกสำรอง
+        window.startQuizFlow = async () => {
+            const gl = document.getElementById('globalLoader'); 
+            if(gl) gl.classList.remove('hidden');
+            
+            try {
+                const quizRef = getCollectionRef(QUIZ_COLLECTION);
+                const quizSnap = await getDocs(quizRef);
+                window.quizQuestions = [];
+                
+                quizSnap.forEach(d => {
+                    const data = d.data();
+                    // ตรวจหาฟิลด์ระบุหมายเลขข้อในทุกๆ รูปแบบที่อาจเป็นไปได้ เพื่อความยืดหยุ่นในการเชื่อมโยง Firestore
+                    const qNum = data.Q_number !== undefined ? Number(data.Q_number) : (data.q_number !== undefined ? Number(data.q_number) : (data.qNumber !== undefined ? Number(data.qNumber) : parseInt(d.id.replace(/\D/g, ''))));
+                    
+                    if (!isNaN(qNum)) {
+                        window.quizQuestions.push({ 
+                            id: d.id, 
+                            Q_number: qNum,
+                            ...data 
+                        });
+                    } else {
+                        // ถ้าหาไม่ได้เลย ให้ใช้ความยาวอาร์เรย์เป็นข้อถัดไป
+                        window.quizQuestions.push({ 
+                            id: d.id, 
+                            Q_number: window.quizQuestions.length + 1,
+                            ...data 
+                        });
+                    }
+                });
+
+                // เรียงลำดับคำถามตามฟิลด์ Q_number (น้อยไปมาก) ในหน่วยความจำ JS (RULE 2)
+                window.quizQuestions.sort((a, b) => Number(a.Q_number) - Number(b.Q_number));
+
+                // ตรวจสอบว่ามีคำถามใน Tiktok_Quiz จริงหรือไม่ (ลบ defaultQuiz ออกทั้งหมดแล้วตามคำสั่ง)
+                if (window.quizQuestions.length === 0) {
+                    window.showMessage("ไม่พบข้อมูลคำถามในตาราง Tiktok_Quiz กรุณาเพิ่มข้อมูลคำถามในระบบ", true);
+                    if(gl) gl.classList.add('hidden');
+                    return;
+                }
+
+                // รีเซ็ตค่าสถิติคะแนนเริ่มทำข้อแรก
+                window.currentQuizIndex = 0;
+                window.quizScore = 0;
+                window.quizTrueCount = 0;
+                window.quizFalseCount = 0;
+
+                document.getElementById('quizIntroView').classList.add('hidden');
+                document.getElementById('quizQuestionView').classList.remove('hidden');
+
+                window.renderQuizQuestion();
+            } catch (e) {
+                console.error("Error loading quiz questions:", e);
+                window.showMessage("เกิดข้อผิดพลาดขณะโหลดแบบทดสอบ กรุณาตรวจสอบการเชื่อมต่อฐานข้อมูล", true);
+            } finally {
+                if(gl) gl.classList.add('hidden');
+            }
+        };
+
+        // แรนเดอร์เนื้อหาคำถามในแบบทดสอบ
+        window.renderQuizQuestion = () => {
+            const questionData = window.quizQuestions[window.currentQuizIndex];
+            if (!questionData) return;
+
+            window.quizSelectedChoice = null;
+            window.quizSubmitted = false; // รีเซ็ตสถานะการส่งคำตอบของแต่ละข้อ
+            
+            document.getElementById('quizNextBtn').disabled = true;
+            
+            // ซ่อนปุ่มส่งคำตอบ และรีเซ็ตการแสดงผล
+            const submitBtn = document.getElementById('quizSubmitAnswerBtn');
+            if (submitBtn) submitBtn.classList.add('hidden');
+            
+            document.getElementById('quizSelectionFeedback').textContent = "";
+
+            // อัปเดตสถิติ progress หัวข้อข้อ
+            document.getElementById('quizProgressDisplay').textContent = `ข้อที่ ${window.currentQuizIndex + 1} / ${window.quizQuestions.length}`;
+            
+            // ดึงข้อความโจทย์คำถามโดยยึดฟิลด์ Question (พิมพ์ใหญ่) เป็นหลักตามโครงสร้าง Firestore จริง
+            document.getElementById('quizQuestionText').textContent = questionData.Question || questionData.question || questionData.questionText || "คำถามข้อที่ " + questionData.Q_number;
+
+            // ดึง choices ที่แรนเดอร์ไปมาแบบปลอดภัยตามรูปภาพ image_34fee8.png (Ans_1, Ans_2, Ans_3, Ans_4)
+            let choices = [];
+            const f1 = questionData.Ans_1 || "";
+            const f2 = questionData.Ans_2 || "";
+            const f3 = questionData.Ans_3 || "";
+            const f4 = questionData.Ans_4 || "";
+            
+            if (f1 || f2 || f3 || f4) {
+                choices = [f1, f2, f3, f4];
+            } else if (questionData.choices && Array.isArray(questionData.choices)) {
+                choices = questionData.choices;
+            } else {
+                // ตัวเลือกสำรองทั่วไป
+                choices = [
+                    questionData.choice1 || questionData.option1 || "ตัวเลือกที่ 1",
+                    questionData.choice2 || questionData.option2 || "ตัวเลือกที่ 2",
+                    questionData.choice3 || questionData.option3 || "ตัวเลือกที่ 3",
+                    questionData.choice4 || questionData.option4 || "ตัวเลือกที่ 4"
+                ];
+            }
+
+            // แรนเดอร์ตัวเลือก 4 ช้อยส์
+            const choicesContainer = document.getElementById('quizChoicesContainer');
+            choicesContainer.innerHTML = "";
+
+            choices.forEach((choice, index) => {
+                const choiceBtn = document.createElement('button');
+                choiceBtn.className = "w-full p-4 rounded-2xl border border-white/10 text-left text-[13px] bg-white/5 hover:bg-white/10 transition-all duration-200 block text-white font-normal";
+                choiceBtn.innerHTML = choice;
+                choiceBtn.onclick = () => window.selectQuizChoice(index, choiceBtn);
+                choicesContainer.appendChild(choiceBtn);
+            });
+        };
+
+        // ดำเนินการเมื่อคลิกเลือกช้อยส์ข้อทดสอบ (แสดงผลลัพธ์ไฮไลต์ตัวเลือกและปุ่มส่งคำตอบ)
+        window.selectQuizChoice = (index, clickedBtn) => {
+            if (window.quizSubmitted) return; // หากกดส่งคำตอบแล้ว ล็อกไม่ให้คลิกเลือกเปลี่ยนคำตอบ
+
+            window.quizSelectedChoice = index;
+            const choicesContainer = document.getElementById('quizChoicesContainer');
+            const buttons = choicesContainer.getElementsByTagName('button');
+
+            // ล้างการจัดแต่งสไตล์ของช้อยส์อื่น ๆ กลับสู่สภาพเริ่มต้น
+            for (let i = 0; i < buttons.length; i++) {
+                buttons[i].className = "w-full p-4 rounded-2xl border border-white/10 text-left text-[13px] bg-white/5 hover:bg-white/10 transition-all duration-200 block text-white font-normal";
+            }
+
+            // ไฮไลต์ปุ่มช้อยส์ปัจจุบันที่ถูกคลิกเลือกด้วยกรอบสีส้มสะดุดตา
+            clickedBtn.className = "w-full p-4 rounded-2xl border-2 border-orange-500 text-left text-[13px] bg-white/10 transition-all duration-200 block text-white font-semibold";
+
+            // ด้านซ้ายขึ้นปุ่มส่งคำตอบ (ปุ่มพื้นสีเขียว ตัวอักษรขาว)
+            const submitBtn = document.getElementById('quizSubmitAnswerBtn');
+            if (submitBtn) {
+                submitBtn.classList.remove('hidden');
+            }
+        };
+
+        // ดำเนินการเมื่อคลิกปุ่ม "ส่งคำตอบ" (Submit Answer)
+        window.submitQuizAnswer = async () => {
+            if (window.quizSelectedChoice === null || window.quizSubmitted) return;
+
+            window.quizSubmitted = true;
+            const questionData = window.quizQuestions[window.currentQuizIndex];
+            const choicesContainer = document.getElementById('quizChoicesContainer');
+            const buttons = choicesContainer.getElementsByTagName('button');
+            
+            // ดึง choices ที่แรนเดอร์ไปมาแบบปลอดภัยเหมือนตอนแสดงผล
+            let choices = [];
+            const f1 = questionData.Ans_1 || "";
+            const f2 = questionData.Ans_2 || "";
+            const f3 = questionData.Ans_3 || "";
+            const f4 = questionData.Ans_4 || "";
+            
+            if (f1 || f2 || f3 || f4) {
+                choices = [f1, f2, f3, f4];
+            } else if (questionData.choices && Array.isArray(questionData.choices)) {
+                choices = questionData.choices;
+            } else {
+                choices = ["ตัวเลือกที่ 1", "ตัวเลือกที่ 2", "ตัวเลือกที่ 3", "ตัวเลือกที่ 4"];
+            }
+
+            // ค้นหาดัชนีเฉลยอย่างยืดหยุ่น โดยยึดตามฟิลด์ Answer (พิมพ์ใหญ่) ซึ่งในตารางจริงเป็น 1-based (เช่น 3 คือ Ans_3 ซึ่งเท่ากับดัชนี 2)
+            let correctAnswerIndex = -1;
+            if (questionData.Answer !== undefined) {
+                correctAnswerIndex = Number(questionData.Answer) - 1; // แปลงเป็น 0-based
+            } else if (questionData.answer_index !== undefined) {
+                correctAnswerIndex = Number(questionData.answer_index);
+            } else if (questionData.answer !== undefined) {
+                const numAns = Number(questionData.answer);
+                if (!isNaN(numAns)) {
+                    correctAnswerIndex = numAns - 1;
+                } else {
+                    correctAnswerIndex = choices.findIndex(c => c === questionData.answer);
+                }
+            }
+            
+            const isCorrect = (window.quizSelectedChoice === correctAnswerIndex);
+
+            // ซ่อนปุ่ม "ส่งคำตอบ" ทันทีหลังกด
+            const submitBtn = document.getElementById('quizSubmitAnswerBtn');
+            if (submitBtn) {
+                submitBtn.classList.add('hidden');
+            }
+
+            // จัดแต่งสีแสดงผลลัพธ์การตอบแบบความสว่างปกติ
+            for (let i = 0; i < buttons.length; i++) {
+                buttons[i].disabled = true; // ล็อกฟิลด์ปุ่มทั้งหมด
+                if (i === correctAnswerIndex) {
+                    buttons[i].className = "w-full p-4 rounded-2xl border border-transparent text-left text-[13px] bg-green-500 block text-white font-semibold";
+                } else if (i === window.quizSelectedChoice) {
+                    buttons[i].className = "w-full p-4 rounded-2xl border border-transparent text-left text-[13px] bg-red-500 block text-white font-semibold";
+                } else {
+                    buttons[i].className = "w-full p-4 rounded-2xl border border-white/10 text-left text-[13px] bg-white/10 block text-white font-normal";
+                }
+            }
+
+            // แรนเดอร์ข้อความตอบถูกหรือผิด
+            const feedback = document.getElementById('quizSelectionFeedback');
+            if (isCorrect) {
+                feedback.innerHTML = `<span class="text-green-400 font-semibold flex items-center gap-1"><i data-lucide="check" class="w-4 h-4"></i> ตอบถูกต้อง!</span>`;
+                window.quizScore++;
+                window.quizTrueCount++;
+            } else {
+                feedback.innerHTML = `<span class="text-red-400 font-semibold flex items-center gap-1"><i data-lucide="x" class="w-4 h-4"></i> ตอบไม่ถูกต้องค่ะ</span>`;
+                window.quizFalseCount++;
+            }
+
+            if (window.lucide) window.lucide.createIcons();
+
+            // บันทึกสะสมการตอบลงในตาราง Tiktok_Quiz และบันทึกคะแนนรวมการตอบลงในตาราง Tiktok_Member
+            try {
+                // 1. บันทึกคำตอบและสะสมค่าตัวเลือก A1, A2, A3, A4 ในคอลเลกชัน Tiktok_Quiz ตามคำขอ
+                const quizDocRef = getDocRef(QUIZ_COLLECTION, questionData.id);
+                const quizUpdates = {};
+                
+                // เก็บสะสมจำนวนการตอบแต่ละตัวเลือก (A1, A2, A3, A4) ด้วยวิธี Firestore increment (RULE 2 และ RULE 1 Path)
+                quizUpdates['A' + (window.quizSelectedChoice + 1)] = increment(1);
+                
+                if (isCorrect) {
+                    quizUpdates['Quiz_true'] = increment(1);
+                } else {
+                    quizUpdates['Quiz_false'] = increment(1);
+                }
+                
+                await setDoc(quizDocRef, quizUpdates, { merge: true });
+
+                // 2. บันทึกข้อมูลข้อที่ตอบ และผลคะแนน ในตาราง Tiktok_Member (ฟิวด์ ScoreQuiz, Quiz_true, Quiz_false และแผนที่ QuizAnswers)
+                const memberDocRef = doc(db, MEMBER_COLLECTION, window.currentMember.docId);
+                const memberUpdates = {
+                    ScoreQuiz: window.quizScore,
+                    Quiz_true: window.quizTrueCount,
+                    Quiz_false: window.quizFalseCount
+                };
+
+                // จัดเก็บรายละเอียดข้อที่เลือกตอบ (ข้อที่ตอบและผลคะแนน) สะสมเข้าไปในประวัติสมาชิกเพื่อการดึงข้อมูลที่ครอบคลุม
+                if (!window.currentMember.QuizAnswers) {
+                    window.currentMember.QuizAnswers = {};
+                }
+                window.currentMember.QuizAnswers['Q_' + questionData.Q_number] = {
+                    selectedChoice: window.quizSelectedChoice,
+                    selectedText: choices[window.quizSelectedChoice] || "ตัวเลือกที่เลือก",
+                    isCorrect: isCorrect,
+                    answerTime: new Date().toISOString()
+                };
+                memberUpdates.QuizAnswers = window.currentMember.QuizAnswers;
+
+                await updateDoc(memberDocRef, memberUpdates);
+
+                // อัปเดตข้อมูลพนักงานในสเตตัสจำลอง
+                window.currentMember.ScoreQuiz = window.quizScore;
+                window.currentMember.Quiz_true = window.quizTrueCount;
+                window.currentMember.Quiz_false = window.quizFalseCount;
+
+            } catch (err) {
+                console.error("Error saving quiz response to Firestore:", err);
+            }
+
+            // เปิดให้คลิกปุ่มถัดไป
+            document.getElementById('quizNextBtn').disabled = false;
+        };
+
+        // ย้ายไปข้อถัดไป
+        window.nextQuizQuestion = async () => {
+            if (window.currentQuizIndex < window.quizQuestions.length - 1) {
+                window.currentQuizIndex++;
+                window.renderQuizQuestion();
+            } else {
+                // หากคำถามหมดแล้ว อัปเดตฟิลด์ StartWelcome = 1 ลงตาราง Tiktok_Member
+                const gl = document.getElementById('globalLoader'); 
+                if(gl) gl.classList.remove('hidden');
+
+                try {
+                    const memberDocRef = doc(db, MEMBER_COLLECTION, window.currentMember.docId);
+                    await updateDoc(memberDocRef, {
+                        StartWelcome: 1,
+                        ScoreQuiz: window.quizScore,
+                        Quiz_true: window.quizTrueCount,
+                        Quiz_false: window.quizFalseCount
+                    });
+
+                    // อัปเดตสเตตัสพนักงานใน Global State
+                    window.currentMember.StartWelcome = 1;
+
+                    // สลับไปยังหน้า Dashboard
+                    document.getElementById('quizQuestionView').classList.add('hidden');
+                    window.showMessage("บันทึกแบบทดสอบเรียบร้อย ยินดีต้อนรับเข้าใช้งานหน้าหลักค่ะ");
+                    window.enterAppDashboard();
+                } catch (e) {
+                    console.error("Error updating StartWelcome status:", e);
+                    // กรณีผิดพลาดให้เข้าสู่ Dashboard หลัก
+                    document.getElementById('quizQuestionView').classList.add('hidden');
+                    window.enterAppDashboard();
+                } finally {
+                    if(gl) gl.classList.add('hidden');
+                }
+            }
+        };
+
+        // สลับแสดงผลเข้าสู่หน้าหลักส่วนตัว (App Dashboard View)
+        window.enterAppDashboard = () => {
+            document.getElementById('formView').classList.add('hidden');
+            document.getElementById('quizIntroView').classList.add('hidden');
+            document.getElementById('quizQuestionView').classList.add('hidden');
+            document.getElementById('welcomeView').classList.add('hidden');
+            
+            const dashboard = document.getElementById('appDashboardView');
+            dashboard.classList.remove('hidden');
+
+            // แสดงหัวข้อบาร์ด้านบน
+            document.getElementById('appHeaderUserName').textContent = window.currentMember.name;
+
+            // ตั้งค่าหน้า Tab แรกเริ่มต้นคือ Home
+            window.switchDashboardTab('home');
+        };
+
+        // สลับแท็บบอร์ดบริหารจัดการกิจกรรมด้านล่าง
+        window.switchDashboardTab = (tab) => {
+            // ซ่อนทุกแท็บย่อย
+            document.querySelectorAll('.dash-tab-content').forEach(el => el.classList.add('hidden'));
+            document.querySelectorAll('.app-nav-item').forEach(el => el.classList.remove('active'));
+
+            // แสดงหน้าเป้าหมาย
+            document.getElementById(`dash-tab-${tab}`).classList.remove('hidden');
+            document.getElementById(`btn-dash-${tab}`).classList.add('active');
+
+            if (tab === 'leaderboard') {
+                window.loadLeaderboardData();
+            } else if (tab === 'userinfo') {
+                window.renderUserInfoTab();
+            }
+
+            if (window.lucide) window.lucide.createIcons();
+        };
+
+        // ประมวลผลดึงทำเนียบผู้นำ (Leaderboard) ตามคะแนนสอบ (เรียงมากไปน้อย)
+        window.loadLeaderboardData = async () => {
+            const tableBody = document.getElementById('leaderboardTableBody');
+            if (!tableBody) return;
+
+            tableBody.innerHTML = `<tr><td colspan="4" class="p-4 text-center text-slate-400">กำลังโหลดทำเนียบผู้นำ...</td></tr>`;
+
+            try {
+                const memberRef = getCollectionRef(MEMBER_COLLECTION);
+                const snap = await getDocs(memberRef);
+                const allMembers = [];
+                
+                snap.forEach(d => {
+                    const data = d.data();
+                    allMembers.push(data);
+                });
+
+                // เรียงตาม ScoreQuiz (มากไปน้อย) (RULE 2)
+                allMembers.sort((a, b) => {
+                    const scoreA = typeof a.ScoreQuiz !== 'undefined' ? Number(a.ScoreQuiz) : 0;
+                    const scoreB = typeof b.ScoreQuiz !== 'undefined' ? Number(b.ScoreQuiz) : 0;
+                    return scoreB - scoreA;
+                });
+
+                if (allMembers.length === 0) {
+                    tableBody.innerHTML = `<tr><td colspan="4" class="p-4 text-center text-slate-400">ยังไม่มีผู้สอบแบบทดสอบกิจกรรม</td></tr>`;
+                    return;
+                }
+
+                tableBody.innerHTML = allMembers.map((m, index) => {
+                    const scoreVal = typeof m.ScoreQuiz !== 'undefined' ? m.ScoreQuiz : 0;
+                    const branchName = m.empBranch || 'ทั่วไป';
+                    let rankIcon = index + 1;
+                    if (index === 0) rankIcon = `🥇`;
+                    else if (index === 1) rankIcon = `🥈`;
+                    else if (index === 2) rankIcon = `🥉`;
+
+                    return `
+                        <tr class="hover:bg-white/5 transition-colors">
+                            <td class="p-3 text-center font-bold text-slate-200">${rankIcon}</td>
+                            <td class="p-3 font-medium text-white">${m.name}</td>
+                            <td class="p-3 text-center text-slate-300 text-xs">${branchName}</td>
+                            <td class="p-3 text-right font-semibold text-orange-400">${scoreVal} คะแนน</td>
+                        </tr>
+                    `;
+                }).join('');
+
+            } catch (err) {
+                console.error("Error loading leaderboard data:", err);
+                tableBody.innerHTML = `<tr><td colspan="4" class="p-4 text-center text-slate-400">ไม่สามารถเชื่อมต่อทำเนียบผู้นำได้ค่ะ</td></tr>`;
+            }
+        };
+
+        // แรนเดอร์และเตรียมพาร์ทข้อมูลส่วนตัวผู้ใช้งานในเมนู Tab ย่อย 4
+        window.renderUserInfoTab = () => {
+            const m = window.currentMember;
+            if (!m) return;
+
+            document.getElementById('dashEmployeeId').textContent = m.employeeId;
+            document.getElementById('dashFullName').textContent = m.name;
+            document.getElementById('dashBranch').textContent = m.empBranch || 'ไม่ได้ระบุ';
+            document.getElementById('dashPosition').textContent = m.empPosition || 'ไม่ได้ระบุ';
+            document.getElementById('dashTiktokUser').textContent = m.tiktokUser || 'ไม่ได้ระบุ';
+            document.getElementById('dashScoreQuiz').textContent = `${typeof m.ScoreQuiz !== 'undefined' ? m.ScoreQuiz : 0} / 5 คะแนน`;
+            
+            const tiktokLink = document.getElementById('dashTiktokUrl');
+            if (tiktokLink) {
+                tiktokLink.textContent = m.tiktokUrl || 'ไม่ได้ระบุ';
+                tiktokLink.href = m.tiktokUrl || '#';
+            }
+            
+            const dashAvatar = document.getElementById('dashAvatar');
+            const dashPlaceholder = document.getElementById('dbAvatarPlaceholder');
+            if (m.profileImage) {
+                dashAvatar.src = m.profileImage;
+                dashAvatar.classList.remove('hidden');
+                if (dashPlaceholder) dashPlaceholder.classList.add('hidden');
+            } else {
+                dashAvatar.classList.add('hidden');
+                if (dashPlaceholder) dashPlaceholder.classList.remove('hidden');
+            }
+        };
+
+        // ฟังก์ชันในการส่งคลิปผลงานวิดีโอ TikTok (Mockup)
+        window.submitWork = async () => {
+            const title = document.getElementById('workTitleInput').value.trim();
+            const url = document.getElementById('workUrlInput').value.trim();
+
+            if (!title || !url) {
+                window.showMessage("กรุณาระบุข้อมูลหัวข้อและลิ้งก์ TikTok วิดีโอให้ครบถ้วนนะคะ", true);
+                return;
+            }
+
+            const gl = document.getElementById('globalLoader'); 
+            if(gl) gl.classList.remove('hidden');
+
+            try {
+                // บันทึกคำประกวดเข้าสู่ตารางคอลเลกชัน Tiktok_Works ในระบบ
+                const worksRef = getCollectionRef('Tiktok_Works');
+                await addDoc(worksRef, {
+                    employeeId: window.currentMember.employeeId,
+                    name: window.currentMember.name,
+                    title: title,
+                    url: url,
+                    createdAt: serverTimestamp()
+                });
+
+                document.getElementById('workTitleInput').value = "";
+                document.getElementById('workUrlInput').value = "";
+                window.showMessage("ส่งคลิปผลงานประกวดเข้าระบบสำเร็จ ขอขอบคุณที่ร่วมสนุกค่ะ!");
+            } catch (e) {
+                console.error("Submit work error:", e);
+                window.showMessage("เกิดข้อผิดพลาดในการบันทึกข้อมูลผลงานของท่านค่ะ", true);
+            } finally {
+                if(gl) gl.classList.add('hidden');
+            }
+        };
+
+        // รีเซ็ตค่าและย้อนกลับหน้าแรก
+        window.resetToForm = () => {
+            document.getElementById('successPanel').classList.add('hidden');
+            document.getElementById('dashboardPanel').classList.add('hidden');
+            document.getElementById('appDashboardView').classList.add('hidden');
+            document.getElementById('quizIntroView').classList.add('hidden');
+            document.getElementById('quizQuestionView').classList.add('hidden');
+            document.getElementById('welcomeView').classList.remove('hidden');
+            
+            document.getElementById('loginEmployeeId').value = "";
+            document.getElementById('loginPassword').value = "";
+            document.getElementById('loginPassword').disabled = true;
+            document.getElementById('loginSubmitBtn').disabled = true;
+
+            const loginImg = document.getElementById('loginAvatarImg');
+            const loginPlaceholder = document.getElementById('loginAvatarPlaceholder');
+            if (loginImg) {
+                loginImg.classList.add('hidden');
+                loginImg.src = "";
+            }
+            if (loginPlaceholder) {
+                loginPlaceholder.classList.remove('hidden');
+            }
+
+            document.getElementById('regEmployeeId').value = "";
+            document.getElementById('regFullName').value = "";
+            document.getElementById('regBranchInput').value = "";
+            document.getElementById('regPositionInput').value = "";
+            document.getElementById('regTiktokUser').value = "";
+            document.getElementById('regTiktokUrl').value = "";
+            document.getElementById('regPassword').value = "";
+            document.getElementById('regConfirmPassword').value = "";
+            
+            // ล็อกฟิลด์ทั้งหมดและรีเซ็ตค่ารูปแบบสมัครสมาชิกใหม่เมื่อย้อนกลับมา
+            const fields = ['regFullName', 'regBranchInput', 'regPositionInput', 'regTiktokUser', 'regTiktokUrl', 'regPassword', 'regConfirmPassword'];
+            fields.forEach(id => {
+                const el = document.getElementById(id);
+                if (el) {
+                    el.disabled = true;
+                    el.classList.add('opacity-50', 'cursor-not-allowed');
+                }
+            });
+            const imageInput = document.getElementById('regImageInput');
+            if (imageInput) imageInput.disabled = true;
+            const avatarLabel = document.getElementById('regAvatarLabel');
+            if (avatarLabel) {
+                avatarLabel.style.pointerEvents = 'none';
+                avatarLabel.style.opacity = '0.5';
+            }
+            const regSubmitBtn = document.getElementById('regSubmitBtn');
+            if (regSubmitBtn) regSubmitBtn.disabled = true;
+            
+            window.uploadedProfileBase64 = null;
+            const img = document.getElementById('regAvatarImg');
+            const text = document.getElementById('regAvatarText');
+            if (img && text) {
+                img.classList.add('hidden');
+                img.src = "";
+                text.classList.remove('hidden');
+            }
+            window.switchFormTab('login');
+        };
+
+        window.handleCheckOut = () => {
+            window.speechSynthesis.cancel();
+            window.resetToForm();
+            window.showMessage("ออกจากระบบเรียบร้อย");
+        };
+
+        if (window.lucide) window.lucide.createIcons();
+    </script>
+</body>
+</html>
