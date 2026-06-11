@@ -1,0 +1,191 @@
+body {
+    font-family: 'Kanit', sans-serif;
+    background: url('https://firebasestorage.googleapis.com/v0/b/faifah-ttb.appspot.com/o/Tiktok%2Fbg_ttb.jpg?alt=media&token=2cec3f41-9861-42de-88e8-619761859d39') no-repeat center center fixed;
+    background-size: cover;
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
+}
+
+body::-webkit-scrollbar {
+    display: none;
+    /* Chrome, Safari and Opera */
+}
+
+/* Hide scrollbars for internal scroll containers */
+#dashboardScrollArea::-webkit-scrollbar,
+#mainWrapper::-webkit-scrollbar {
+    display: none;
+}
+
+#dashboardScrollArea,
+#mainWrapper {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.hidden {
+    display: none !important;
+}
+
+button {
+    cursor: pointer;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+button:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+/* Override opacity reduction for quiz choices so they stay fully visible after submission */
+#quizChoicesContainer button:disabled {
+    opacity: 1 !important;
+    cursor: not-allowed;
+}
+
+.name-input {
+    background-color: #ffffff !important;
+    border: 1px solid #cbd5e1 !important;
+    color: #0f172a !important;
+    font-weight: 400;
+    outline: none;
+    transition: all 0.25s ease;
+}
+
+.name-input::placeholder {
+    color: #94a3b8;
+}
+
+.name-input:focus {
+    border-color: #2563eb !important;
+    box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.15);
+}
+
+#messageBox {
+    position: fixed;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 9999;
+    padding: 12px 24px;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+    transition: all 0.3s ease;
+    font-size: 12px !important;
+    font-weight: 400;
+    width: 75%;
+}
+
+#globalLoader {
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.85);
+    backdrop-filter: blur(8px);
+    z-index: 9000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-standard {
+    height: 52px;
+    padding-left: 24px;
+    padding-right: 24px;
+    font-size: 13px;
+    font-weight: 600;
+    border-radius: 16px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: all 0.25s ease;
+}
+
+/* Glassmorphism Panel - Transparent Background with Slightly Darker Tone (0.65 opacity) */
+.glass-panel {
+    background: rgba(15, 23, 42, 0.65);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.objective-card {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    transition: all 0.2s ease;
+}
+
+.objective-card:hover {
+    background: rgba(255, 255, 255, 0.12);
+    transform: translateY(-2px);
+}
+
+/* Custom style for Dropdown lists */
+.search-results-list {
+    background: #ffffff;
+    border: 1px solid #cbd5e1;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.search-item {
+    color: #1e293b;
+    transition: background 0.15s ease;
+}
+
+.search-item:hover {
+    background-color: #f1f5f9;
+}
+
+/* Nav Bottom styles in Dashboard view - Fixed to Bottom 100% of Mobile Screen Container */
+.app-bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 500px;
+    background: rgba(15, 23, 42, 0.95);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.3);
+    z-index: 50;
+    display: flex;
+    justify-content: space-around;
+    padding: 8px 12px;
+}
+
+.app-nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 11px;
+    font-weight: 500;
+    transition: all 0.25s ease;
+    flex: 1;
+    padding: 8px 2px;
+    cursor: pointer;
+    border-radius: 16px;
+}
+
+.app-nav-item.active {
+    color: #f97316 !important;
+    /* Orange Active Icon */
+    background: transparent !important;
+}
+
+.text-orange-500 {
+    color: #ff8b3d !important;
+}
+
+.text-orange1 {
+    color: #f7db33;
+}
