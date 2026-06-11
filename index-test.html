@@ -1,0 +1,1487 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Branch TIKTOK, The IDOL</title>
+    <!-- Google Fonts: Kanit -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap"
+        rel="stylesheet">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Lucide Icons CDN -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body
+    class="min-h-screen flex items-start justify-center m-0 p-0 text-white text-center relative overflow-x-auto pb-8 pt-8">
+
+    <div id="globalLoader" class="transition-all duration-300">
+        <div class="relative flex items-center justify-center mb-6">
+            <div class="w-16 h-16 border-4 border-white/20 border-t-white rounded-full animate-spin"></div>
+            <i data-lucide="sparkles" class="w-6 h-6 text-white absolute animate-pulse"></i>
+        </div>
+        <p class="text-sm font-semibold tracking-wide text-white/80">กำลังเชื่อมต่อระบบ Branch TIKTOK...</p>
+    </div>
+
+    <div id="messageBox" class="hidden font-medium text-center"></div>
+
+    <!-- Main Container - Normal scroll container without inner-scroll locks -->
+    <div class="w-full max-w-[500px] min-h-screen relative hidden z-10 flex flex-col justify-start bg-transparent"
+        id="mainWrapper">
+        <div class="w-full flex flex-col items-center justify-start flex-1 relative">
+
+            <!-- VIEW 1: WELCOME SCREEN (Invitation & 4 Objectives) -->
+            <div id="welcomeView" class="w-full p-4 pb-6 space-y-6 flex flex-col items-center justify-start">
+                <!-- TikTok Logo Branding (Shown on welcome view, hidden on registration form view) -->
+                <div class="w-full flex flex-col items-center justify-center mb-2 shrink-0">
+                    <img src="images/icon_tiktok.png" alt="TikTok Logo"
+                        class="w-[80%] max-w-[380px] h-auto object-contain filter drop-shadow-[0_10px_25px_rgba(0,0,0,0.3)]">
+                </div>
+
+                <!-- Invitation Text Box (Darkened glass background - font-size 13px) -->
+                <div id="invitationBox"
+                    class="w-full glass-panel rounded-3xl p-6 text-white text-[13px] leading-relaxed text-justify shadow-2xl space-y-5 shrink-0">
+                    <div class="text-center flex items-center justify-center gap-2">
+                        <i data-lucide="megaphone" class="w-5 h-5 text-orange-400"></i>
+                        <h2 class="text-[15px] font-normal text-white text-center leading-tight">
+                            ขอเชิญชวนพนักงานสาขาทุกท่าน</h2>
+                    </div>
+
+                    <p class="text-[13px] text-slate-200 text-left leading-relaxed">
+                        ร่วมสร้างสรรค์คลิปวิดีโอผ่านช่องทาง <span
+                            class="text-orange-500 underline decoration-orange-400 decoration-2">TikTok</span>
+                        เพื่อแนะนำตัวตน แนะนำสาขา ให้ความรู้ทางการเงิน เตือนภัยมิจฉาชีพ หรือแนะนำผลิตภัณฑ์ ttb
+                        ช่วยสร้างความเชื่อมั่นให้ลูกค้ารู้ว่า <span class="text-orange-500">“เรามีตัวตนจริง
+                            อยู่ใกล้คุณ และพร้อมให้บริการจริง”</span> โดยมุ่งเน้นที่การสร้างตัวตน
+                    </p>
+
+                    <!-- OBJECTIVE GRID - 4 ITEMS -->
+                    <div class="space-y-4 pt-2">
+                        <div class="border-t border-white/10 pt-4 pb-1">
+                            <h4 class="text-center font-normal text-[13px] tracking-widest text-slate-300 uppercase">
+                                OBJECTIVES / วัตถุประสงค์กิจกรรม</h4>
+                        </div>
+
+                        <div class="grid grid-cols-1 gap-3.5 text-[13px]">
+
+                            <!-- Objective 01 -->
+                            <div class="objective-card rounded-2xl p-4 flex gap-4 items-start text-left">
+                                <div
+                                    class="w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center text-[12px] text-white shrink-0 shadow-lg">
+                                    1</div>
+                                <div class="space-y-1">
+                                    <div class="flex items-center gap-1.5 font-normal text-[13px] text-orange-500">
+                                        <i data-lucide="heart" class="w-4 h-4 text-orange-400 fill-orange-400/20"></i>
+                                        <span>สร้างความเชื่อมั่นให้ลูกค้า (Trusted)</span>
+                                    </div>
+                                    <p class="text-[13px] text-slate-300 leading-snug">ให้ลูกค้ารู้จักพนักงานและสาขา ttb
+                                        มากขึ้น เห็นหน้า รู้จักตัวตน ติดต่อได้จริง</p>
+                                </div>
+                            </div>
+
+                            <!-- Objective 02 -->
+                            <div class="objective-card rounded-2xl p-4 flex gap-4 items-start text-left">
+                                <div
+                                    class="w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center text-[12px] text-white shrink-0 shadow-lg">
+                                    2</div>
+                                <div class="space-y-1">
+                                    <div class="flex items-center gap-1.5 font-normal text-[13px] text-orange-500">
+                                        <i data-lucide="shield-alert" class="w-4 h-4 text-orange-400"></i>
+                                        <span>ป้องกันการแอบอ้างจากมิจฉาชีพ (Scam Prevention)</span>
+                                    </div>
+                                    <p class="text-[13px] text-slate-300 leading-snug">
+                                        ให้ลูกค้ารับรู้ช่องทางที่ถูกต้องของ ttb และรู้เท่าทันกลโกงมิจฉาชีพ</p>
+                                </div>
+                            </div>
+
+                            <!-- Objective 03 -->
+                            <div class="objective-card rounded-2xl p-4 flex gap-4 items-start text-left">
+                                <div
+                                    class="w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center text-[12px] text-white shrink-0 shadow-lg">
+                                    3</div>
+                                <div class="space-y-1">
+                                    <div class="flex items-center gap-1.5 font-normal text-[13px] text-orange-500">
+                                        <i data-lucide="store" class="w-4 h-4 text-orange-400"></i>
+                                        <span>เพิ่มการรับรู้สาขา (Branch Awareness)</span>
+                                    </div>
+                                    <p class="text-[13px] text-slate-300 leading-snug">
+                                        ให้ลูกค้าในพื้นที่รู้จักสาขาใกล้บ้านมากขึ้น และเข้ามาใช้บริการที่สาขา</p>
+                                </div>
+                            </div>
+
+                            <!-- Objective 04 -->
+                            <div class="objective-card rounded-2xl p-4 flex gap-4 items-start text-left">
+                                <div
+                                    class="w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center text-[12px] text-white shrink-0 shadow-lg">
+                                    4</div>
+                                <div class="space-y-1">
+                                    <div class="flex items-center gap-1.5 font-normal text-[13px] text-orange-500">
+                                        <i data-lucide="megaphone" class="w-4 h-4 text-orange-400"></i>
+                                        <span>พัฒนาพนักงานสาขาสู่ Employee Influencer</span>
+                                    </div>
+                                    <p class="text-[13px] text-slate-300 leading-snug">
+                                        พัฒนาพนักงานให้เป็นผู้สื่อสารแทนองค์กร สร้างตัวตนบนโลกออนไลน์
+                                        เปรียบเสมือนใช้สื่อภายในองค์กรให้เกิดประโยชน์สูงสุด</p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Call to action button to view register form (Font-normal and orange background) -->
+                <button onclick="window.transitionToForm()"
+                    class="btn-standard w-full bg-orange-500 hover:bg-orange-600 text-white font-normal rounded-2xl shadow-xl active:scale-[0.98] transition-all mt-4 text-[13px] disabled:opacity-50 disabled:cursor-not-allowed">
+                    <span>เข้าสู่ Branch TIKTOK, The IDOL</span>
+                    <i data-lucide="chevron-right" class="w-5 h-5 animate-pulse"></i>
+                </button>
+            </div>
+
+            <!-- VIEW 2: LOGIN / REGISTER FORM SCREEN -->
+            <div id="formView" class="w-full p-4 pb-6 space-y-4 flex flex-col justify-start hidden">
+                <div class="w-full flex justify-start max-w-[420px] mx-auto shrink-0">
+                    <button onclick="window.transitionToWelcome()"
+                        class="flex items-center gap-1 text-[13px] text-slate-300 hover:text-white bg-slate-900/40 px-3 py-1.5 rounded-full border border-white/10 font-normal">
+                        <i data-lucide="chevron-left" class="w-4 h-4"></i> กลับไปดูรายละเอียดกิจกรรม
+                    </button>
+                </div>
+
+                <div id="registrationFormPanel"
+                    class="w-full max-w-[420px] glass-panel rounded-3xl p-6 flex flex-col items-center mx-auto text-[13px] shrink-0">
+                    <h3 class="text-[15px] font-normal text-white tracking-wide mb-5">ลงทะเบียนเข้าใช้งาน</h3>
+
+                    <!-- Tab Selector Container -->
+                    <div
+                        class="w-full bg-black/20 p-1 rounded-2xl flex items-center justify-between mb-6 border border-white/10">
+                        <button onclick="window.switchFormTab('login')" id="tabLoginBtn"
+                            class="flex-1 py-2.5 rounded-xl text-[13px] font-normal transition-all duration-300 bg-white text-slate-900 shadow-md">
+                            เข้าสู่ระบบ
+                        </button>
+                        <button onclick="window.switchFormTab('register')" id="tabRegisterBtn"
+                            class="flex-1 py-2.5 rounded-xl text-[13px] font-normal transition-all duration-300 text-white/80 hover:text-white">
+                            ลงทะเบียนครั้งแรก
+                        </button>
+                    </div>
+
+                    <!-- Form 1: LOGIN -->
+                    <div id="loginFormArea" class="w-full space-y-4">
+                        <!-- Avatar circle for Employee with Image Support -->
+                        <div class="flex flex-col items-center justify-center mb-6">
+                            <div
+                                class="w-24 h-24 rounded-full bg-slate-200 border-4 border-white flex items-center justify-center text-slate-500 font-normal text-[13px] shadow-lg overflow-hidden relative">
+                                <span id="loginAvatarPlaceholder">Employee</span>
+                                <img id="loginAvatarImg" class="w-full h-full object-cover hidden"
+                                    alt="Employee Photo" />
+                            </div>
+                            <span class="text-[13px] text-white/80 mt-2 font-normal">รูปถ่ายพนักงาน</span>
+                        </div>
+
+                        <!-- Input fields -->
+                        <div class="w-full text-left space-y-3">
+                            <div>
+                                <label class="block text-left text-[13px] font-normal text-white/90 mb-1.5">รหัสพนักงาน
+                                    (Employee ID)</label>
+                                <input type="text" id="loginEmployeeId" placeholder="ระบุรหัสพนักงาน"
+                                    class="name-input w-full px-4 py-3.5 rounded-2xl text-[13px] shadow-sm"
+                                    oninput="window.checkLoginEmployeeId()">
+                            </div>
+                            <div>
+                                <label class="block text-left text-[13px] font-normal text-white/90 mb-1.5">รหัสผ่าน
+                                    (Password)</label>
+                                <input type="password" id="loginPassword" placeholder="........" disabled
+                                    class="name-input w-full px-4 py-3.5 rounded-2xl text-[13px] shadow-sm disabled:opacity-50 disabled:cursor-not-allowed"
+                                    oninput="window.checkLoginPassword()">
+                            </div>
+                        </div>
+
+                        <!-- Orange login button -->
+                        <button id="loginSubmitBtn" disabled onclick="window.handleLogin()"
+                            class="btn-standard w-full bg-orange-500 hover:bg-orange-600 text-white font-normal rounded-2xl shadow-xl active:scale-[0.98] transition-all mt-4 text-[13px] disabled:opacity-50 disabled:cursor-not-allowed">
+                            <i data-lucide="user-plus" class="w-5 h-5"></i>ลงทะเบียน Branch TIKTOK, The IDOL
+                        </button>
+                    </div>
+
+                    <!-- Form 2: REGISTER -->
+                    <div id="registerFormArea" class="w-full space-y-4 hidden">
+                        <!-- Interactive Avatar circle with image file upload and Hover Camera overlay (Initially disabled and styled translucent) -->
+                        <div class="flex flex-col items-center justify-center mb-4">
+                            <label id="regAvatarLabel" for="regImageInput"
+                                class="cursor-pointer group flex flex-col items-center"
+                                style="pointer-events: none; opacity: 0.5;">
+                                <div id="regAvatarPreview"
+                                    class="w-24 h-24 rounded-full bg-slate-200 border-4 border-white flex items-center justify-center text-slate-500 font-normal text-[13px] shadow-lg overflow-hidden relative">
+                                    <span id="regAvatarText">Employee</span>
+                                    <img id="regAvatarImg" class="w-full h-full object-cover hidden"
+                                        alt="Uploaded Avatar" />
+                                    <!-- Hover Camera Overlay with Lucide Camera Icon -->
+                                    <div
+                                        class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                                        <i data-lucide="camera" class="w-6 h-6 text-white"></i>
+                                    </div>
+                                </div>
+                                <span
+                                    class="text-[13px] text-white/95 mt-2 font-normal group-hover:text-white transition-all underline decoration-dotted">คลิกเพื่ออัปโหลดรูป</span>
+                            </label>
+                            <input type="file" id="regImageInput" accept="image/*" class="hidden" disabled
+                                onchange="window.previewImage(event)">
+                        </div>
+
+                        <!-- Input fields (All fields except regEmployeeId disabled by default) -->
+                        <div class="w-full text-left space-y-3">
+                            <div>
+                                <label class="block text-left text-[13px] font-normal text-white/90 mb-1.5">รหัสพนักงาน
+                                    (Employee ID)</label>
+                                <input type="text" id="regEmployeeId" placeholder="พิมพ์รหัสพนักงาน"
+                                    class="name-input w-full px-4 py-3.5 rounded-2xl text-[13px] shadow-sm"
+                                    oninput="window.checkRegisterEmployeeId()">
+                            </div>
+                            <div>
+                                <label
+                                    class="block text-left text-[13px] font-normal text-white/90 mb-1.5">ชื่อ-นามสกุล</label>
+                                <input type="text" id="regFullName" placeholder="เช่น สมชาย ใจดี" disabled
+                                    class="name-input w-full px-4 py-3.5 rounded-2xl text-[13px] shadow-sm opacity-50 cursor-not-allowed"
+                                    oninput="window.checkRegFormValidity()">
+                            </div>
+
+                            <!-- Searchable Branch Input (สาขาที่สังกัด ดึงข้อมูลจาก Tiktok_Branch) -->
+                            <div class="relative">
+                                <label
+                                    class="block text-left text-[13px] font-normal text-white/90 mb-1.5">สาขาที่สังกัด
+                                    (พิมพ์เพื่อค้นหาหรือระบุเอง)</label>
+                                <div class="relative">
+                                    <input type="text" id="regBranchInput" placeholder="ค้นหาหรือระบุสาขา" disabled
+                                        class="name-input w-full px-4 py-3.5 pr-10 rounded-2xl text-[13px] shadow-sm opacity-50 cursor-not-allowed"
+                                        onfocus="window.showSearchDropdown('branch')"
+                                        oninput="window.filterSearchDropdown('branch'); window.checkRegFormValidity();">
+                                    <i data-lucide="search"
+                                        class="absolute right-3.5 top-3.5 w-4 h-4 text-slate-400"></i>
+                                </div>
+                                <div id="regBranchResults"
+                                    class="absolute left-0 right-0 mt-1 max-h-48 overflow-y-auto hidden z-[100] search-results-list">
+                                    <!-- Dynamic elements from loadDropdownData -->
+                                </div>
+                            </div>
+
+                            <!-- Searchable Position Input (ตำแหน่งงาน ดึงข้อมูลจาก Tiktok_Position) -->
+                            <div class="relative">
+                                <label class="block text-left text-[13px] font-normal text-white/90 mb-1.5">ตำแหน่งงาน
+                                    (พิมพ์เพื่อค้นหาหรือระบุเอง)</label>
+                                <div class="relative">
+                                    <input type="text" id="regPositionInput" placeholder="ค้นหาหรือระบุตำแหน่ง" disabled
+                                        class="name-input w-full px-4 py-3.5 pr-10 rounded-2xl text-[13px] shadow-sm opacity-50 cursor-not-allowed"
+                                        onfocus="window.showSearchDropdown('position')"
+                                        oninput="window.filterSearchDropdown('position'); window.checkRegFormValidity();">
+                                    <i data-lucide="search"
+                                        class="absolute right-3.5 top-3.5 w-4 h-4 text-slate-400"></i>
+                                </div>
+                                <div id="regPositionResults"
+                                    class="absolute left-0 right-0 mt-1 max-h-48 overflow-y-auto hidden z-[100] search-results-list">
+                                    <!-- Dynamic elements from loadDropdownData -->
+                                </div>
+                            </div>
+
+                            <!-- Tiktok Username -->
+                            <div>
+                                <label class="block text-left text-[13px] font-normal text-white/90 mb-1.5">TikTok
+                                    Username</label>
+                                <input type="text" id="regTiktokUser" placeholder="เช่น @สมชาย_ttb" disabled
+                                    class="name-input w-full px-4 py-3.5 rounded-2xl text-[13px] shadow-sm opacity-50 cursor-not-allowed"
+                                    oninput="window.checkRegFormValidity()">
+                            </div>
+
+                            <!-- TikTok URL (ลิงก์ของช่อง) -->
+                            <div>
+                                <label class="block text-left text-[13px] font-normal text-white/90 mb-1.5">TikTok URL
+                                    (ลิงก์ของช่อง)</label>
+                                <input type="text" id="regTiktokUrl" placeholder="เช่น https://www.tiktok.com/@user"
+                                    disabled
+                                    class="name-input w-full px-4 py-3.5 rounded-2xl text-[13px] shadow-sm opacity-50 cursor-not-allowed"
+                                    oninput="window.checkRegFormValidity()">
+                            </div>
+
+                            <div>
+                                <label class="block text-left text-[13px] font-normal text-white/90 mb-1.5">ตั้งรหัสผ่าน
+                                    (Password)</label>
+                                <input type="password" id="regPassword" placeholder="........" disabled
+                                    class="name-input w-full px-4 py-3.5 rounded-2xl text-[13px] shadow-sm opacity-50 cursor-not-allowed"
+                                    oninput="window.checkRegFormValidity()">
+                            </div>
+                            <div>
+                                <label
+                                    class="block text-left text-[13px] font-normal text-white/90 mb-1.5">ยืนยันรหัสผ่าน
+                                    (Confirm Password)</label>
+                                <input type="password" id="regConfirmPassword" placeholder="........" disabled
+                                    class="name-input w-full px-4 py-3.5 rounded-2xl text-[13px] shadow-sm opacity-50 cursor-not-allowed"
+                                    oninput="window.checkRegFormValidity()">
+                            </div>
+                        </div>
+
+                        <!-- Orange register button with icon (Requires valid inputs and uploaded profile photo) -->
+                        <button id="regSubmitBtn" disabled onclick="window.handleRegister()"
+                            class="btn-standard w-full bg-orange-500 hover:bg-orange-600 text-white font-normal rounded-2xl shadow-xl active:scale-[0.98] transition-all mt-4 flex items-center justify-center gap-2 text-[13px] disabled:opacity-50 disabled:cursor-not-allowed">
+                            <i data-lucide="user-plus" class="w-5 h-5"></i><span>ลงทะเบียนสมาชิกใหม่</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- VIEW 3: SUCCESS VIEW -->
+            <div id="successPanel" class="w-full flex-1 p-8 flex flex-col items-center justify-center hidden">
+                <div
+                    class="w-16 h-16 bg-green-500/20 border border-green-500/30 rounded-full flex items-center justify-center text-green-400 mb-6 shrink-0">
+                    <i data-lucide="check-circle-2" class="w-10 h-10 animate-bounce"></i>
+                </div>
+                <div class="text-center space-y-2 shrink-0">
+                    <h3 class="text-2xl font-bold text-green-400 text-[20px]">ลงทะเบียนสำเร็จ!</h3>
+                    <p class="text-[13px] text-slate-100 leading-relaxed px-2 font-normal">
+                        ยินดีต้อนรับคุณ <span id="registeredName" class="font-normal text-orange-400 text-lg">-</span>
+                        เข้าสู่ครอบครัว Branch TIKTOK, The IDOL เรียบร้อยแล้ว
+                    </p>
+                </div>
+                <div
+                    class="w-full bg-white/5 border border-white/10 rounded-2xl p-4 text-[13px] text-white/80 text-center font-normal my-4 shrink-0">
+                    ระบบได้รับข้อมูลเรียบร้อย ขอขอบคุณที่ร่วมสร้างสรรค์ผลงานเพื่อลูกค้ากับ ttb
+                </div>
+                <button onclick="window.resetToForm()"
+                    class="btn-standard w-full max-w-[320px] bg-white text-blue-900 hover:bg-slate-100 font-normal rounded-2xl transition-all text-[13px] shrink-0">
+                    กลับสู่หน้าหลัก
+                </button>
+            </div>
+
+            <!-- VIEW 5: QUIZ INTRO VIEW (Triggered when StartWelcome == 0 - 95% of Viewport Height) -->
+            <div id="quizIntroView"
+                class="w-full max-w-[420px] glass-panel rounded-3xl p-8 flex flex-col items-center justify-center mx-auto hidden"
+                style="height: 95vh;">
+                <div
+                    class="w-20 h-24 bg-orange-500/10 border border-orange-500/30 rounded-3xl flex items-center justify-center text-orange-400 mb-8 animate-pulse shrink-0">
+                    <i data-lucide="clipboard-signature" class="w-10 h-10"></i>
+                </div>
+                <h3 class="text-[15px] font-normal text-white leading-relaxed text-center px-4 mb-12 shrink-0">
+                    แบบทดสอบความเข้าใจเกี่ยวกับการใช้ Social Media และการทำคลิป TikTok
+                </h3>
+                <button onclick="window.startQuizFlow()"
+                    class="btn-standard w-full max-w-[320px] bg-orange-500 hover:bg-orange-600 text-white font-normal rounded-2xl shadow-xl active:scale-95 transition-all text-[14px] shrink-0">
+                    เข้าสู่แบบทดสอบ
+                </button>
+            </div>
+
+            <!-- VIEW 6: QUIZ QUESTION VIEW (Adjusted margin-top: -40px) -->
+            <div id="quizQuestionView"
+                class="w-full max-w-[420px] glass-panel rounded-3xl p-6 flex flex-col justify-between mx-auto hidden animate-fadeIn"
+                style="min-h-[500px];">
+                <div class="w-full space-y-4">
+                    <!-- Top row image centered - adjusted width to 60% as requested -->
+                    <div class="w-full flex justify-center mb-2 shrink-0">
+                        <img src="https://firebasestorage.googleapis.com/v0/b/faifah-ttb.appspot.com/o/Tiktok%2Fquiz.png?alt=media&token=8ed29efe-27ae-474c-98ad-59a99f9c9dd5"
+                            alt="Quiz Banner" class="w-[60%] max-w-[280px] h-auto object-contain rounded-xl">
+                    </div>
+
+                    <div class="flex justify-between items-center border-b border-white/10 pb-3 shrink-0">
+                        <span class="text-xs text-orange-400 font-normal tracking-wide">แบบทดสอบความเข้าใจ</span>
+                        <span class="text-xs text-slate-300" id="quizProgressDisplay">ข้อที่ 1 / 5</span>
+                    </div>
+
+                    <!-- Question Text -->
+                    <p id="quizQuestionText"
+                        class="text-[14px] text-left leading-relaxed text-orange1 font-normal pt-2 min-h-[60px] shrink-0">
+                    </p>
+
+                    <!-- Choices container -->
+                    <div id="quizChoicesContainer" class="space-y-3 pt-4 shrink-0">
+                        <!-- Rendered dynamically -->
+                    </div>
+                </div>
+
+                <!-- Bottom Bar: Navigation and validation messages -->
+                <div class="flex items-center justify-between border-t border-white/10 pt-4 mt-6 shrink-0">
+                    <div class="flex items-center gap-2">
+                        <!-- Left Side: Submit button (Initially hidden, turns green when selection is made) -->
+                        <button id="quizSubmitAnswerBtn"
+                            class="hidden btn-standard bg-green-600 hover:bg-green-700 text-white font-normal rounded-xl h-[44px] px-6 text-[13.5px]"
+                            onclick="window.submitQuizAnswer()">
+                            <span>ส่งคำตอบ</span>
+                        </button>
+                        <span id="quizSelectionFeedback" class="text-xs font-normal"></span>
+                    </div>
+                    <!-- Right Side: Next button -->
+                    <button id="quizNextBtn" disabled onclick="window.nextQuizQuestion()"
+                        class="btn-standard bg-blue-600 hover:bg-blue-700 text-white font-normal rounded-xl h-[44px] px-6 text-[13.5px] disabled:opacity-50 disabled:cursor-not-allowed">
+                        <span>ถัดไป</span> <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- VIEW 7: APP MAIN DASHBOARD (100% full width and fixed layout to mimic native screen as per Photo 2) -->
+            <div id="appDashboardView"
+                class="w-full flex-1 flex flex-col hidden text-left absolute inset-0 overflow-hidden bg-transparent">
+
+                <!-- Dashboard Top blue header bar (Fixed at very top, width 100% of container) -->
+                <div
+                    class="fixed top-0 left-1/2 -translate-x-1/2 w-full max-w-[500px] bg-[#0056ff] px-6 py-4 shadow-lg border-b border-blue-400/20 flex justify-between items-center shrink-0 z-40 h-[68px]">
+                    <div class="flex items-center gap-3">
+                        <!-- Employee Profile Photo (Added as requested) -->
+                        <div
+                            class="w-10 h-10 rounded-full bg-slate-200 border border-white/50 flex items-center justify-center text-slate-500 font-semibold text-[12px] shadow-md overflow-hidden shrink-0">
+                            <span id="appHeaderAvatarPlaceholder">Emp</span>
+                            <img id="appHeaderAvatarImg" class="w-full h-full object-cover hidden"
+                                alt="Employee Photo" />
+                        </div>
+                        <div>
+                            <h1 id="appHeaderUserName"
+                                class="text-[15px] font-normal tracking-tight text-white leading-tight mb-1">ผู้ใช้งาน
+                            </h1>
+                            <p class="text-xs text-white/70 font-light flex items-center gap-1">
+                                <i data-lucide="award" class="w-3.5 h-3.5 text-orange-400"></i> สมาชิก Branch TIKTOK,
+                                The IDOL
+                            </p>
+                        </div>
+                    </div>
+                    <button id="headerLogoutBtn" onclick="window.handleCheckOut()"
+                        class="p-2.5 text-white bg-white/10 hover:bg-white/20 rounded-xl transition-all">
+                        <i data-lucide="log-out" class="w-4 h-4"></i>
+                    </button>
+                </div>
+
+                <!-- Scrollable Dashboard Content Area (With appropriate padding to prevent top/bottom overlap) -->
+                <div id="dashboardScrollArea" class="flex-1 overflow-y-auto p-4 space-y-4 w-full pt-[60px] pb-[88px]">
+
+                    <!-- DASHBOARD TAB CONTENT 1: HOME -->
+                    <div id="dash-tab-home" class="dash-tab-content space-y-4">
+
+
+                        <div class="glass-panel rounded-2xl p-5 space-y-2">
+                            <h4 class="text-white font-normal text-sm">ยินดีต้อนรับสู่แคมเปญหลัก!</h4>
+                            <p class="text-xs text-slate-300 leading-relaxed font-light">
+                                ขอขอบคุณพนักงานสาขาทุกท่านที่ร่วมสร้างความเชื่อมั่นให้ลูกค้ารับรู้ว่า ttb
+                                ของเรามีตัวตนจริง อยู่ใกล้คุณ และพร้อมดูแลให้บริการลูกค้าด้วยหัวใจค่ะ
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- DASHBOARD TAB CONTENT 2: DETAILS -->
+                    <div id="dash-tab-details" class="dash-tab-content space-y-4 hidden">
+                        <!-- Details Sub-tabs Row -->
+                        <div
+                            class="w-full max-w-[420px] mx-auto bg-black/60 p-1 rounded-2xl flex items-center justify-between border border-white/10 shrink-0 mb-2">
+                            <button onclick="window.switchDetailsSubTab('info')" id="detailsSubTabInfoBtn"
+                                class="flex-1 py-2 rounded-xl text-[12px] font-normal transition-all duration-300 bg-[#e26e2c] text-white shadow-md">
+                                รายละเอียด
+                            </button>
+                            <button onclick="window.switchDetailsSubTab('rules')" id="detailsSubTabRulesBtn"
+                                class="flex-1 py-2 rounded-xl text-[12px] font-normal transition-all duration-300 text-white/80 hover:text-white">
+                                ข้อกำหนด
+                            </button>
+                            <button onclick="window.switchDetailsSubTab('rewards')" id="detailsSubTabRewardsBtn"
+                                class="flex-1 py-2 rounded-xl text-[12px] font-normal transition-all duration-300 text-white/80 hover:text-white">
+                                รางวัลแข่งขัน
+                            </button>
+                        </div>
+
+                        <!-- Sub-tab 1: รายละเอียด -->
+                        <div id="details-sub-content-info" class="details-sub-tab-content space-y-4">
+                            <!-- 1. รูป Branch Tiktok จากหน้าแรก -->
+                            <div class="w-full flex flex-col items-center justify-center mb-2 shrink-0">
+                                <img src="images/icon_tiktok.png" alt="TikTok Logo"
+                                    class="w-[85%] max-w-[380px] h-auto object-contain filter drop-shadow-[0_10px_25px_rgba(0,0,0,0.3)]">
+                            </div>
+
+                            <!-- 2. วัตถุประสงค์ (แสดงแถวละ 2 กล่อง) -->
+                            <div class="glass-panel rounded-3xl p-5 space-y-4">
+                                <h4
+                                    class="text-center font-semibold text-sm tracking-wider text-orange-400 border-b border-white/10 pb-2">
+                                    OBJECTIVE / วัตถุประสงค์
+                                </h4>
+                                <div class="grid grid-cols-2 gap-3 text-[12px]">
+                                    <!-- Box 1 -->
+                                    <div
+                                        class="objective-card rounded-2xl p-3 flex flex-col items-center text-center space-y-1.5">
+                                        <div
+                                            class="w-7 h-7 rounded-full bg-blue-600 flex items-center justify-center text-[12px] text-white font-bold shrink-0 shadow-lg">
+                                            01</div>
+                                        <i data-lucide="heart" class="w-5 h-5 text-orange-400 fill-orange-400/20"></i>
+                                        <span
+                                            class="text-orange-400 leading-tight">สร้างความเชื่อมั่นให้ลูกค้า<br>(Trusted)</span>
+                                        <p class="text-[12px] text-slate-300 leading-snug font-light">
+                                            ให้ลูกค้ารู้จักพนักงานและสาขา ttb มากขึ้น เห็นหน้า รู้จักตัวตน ติดต่อได้จริง
+                                        </p>
+                                    </div>
+                                    <!-- Box 2 -->
+                                    <div
+                                        class="objective-card rounded-2xl p-3 flex flex-col items-center text-center space-y-1.5">
+                                        <div
+                                            class="w-7 h-7 rounded-full bg-blue-600 flex items-center justify-center text-[12px] text-white font-bold shrink-0 shadow-lg">
+                                            02</div>
+                                        <i data-lucide="shield-alert" class="w-5 h-5 text-orange-400"></i>
+                                        <span class="text-orange-400 leading-tight">ป้องกันการแอบอ้าง<br>(Scam
+                                            Prevention)</span>
+                                        <p class="text-[12px] text-slate-300 leading-snug font-light">
+                                            ให้ลูกค้ารับรู้ช่องทางที่ถูกต้องของ ttb และรู้เท่าทันกลโกงมิจฉาชีพ</p>
+                                    </div>
+                                    <!-- Box 3 -->
+                                    <div
+                                        class="objective-card rounded-2xl p-3 flex flex-col items-center text-center space-y-1.5">
+                                        <div
+                                            class="w-7 h-7 rounded-full bg-blue-600 flex items-center justify-center text-[12px] text-white font-bold shrink-0 shadow-lg">
+                                            03</div>
+                                        <i data-lucide="store" class="w-5 h-5 text-orange-400"></i>
+                                        <span class="text-orange-400 leading-tight">เพิ่มการรับรู้สาขา<br>(Branch
+                                            Awareness)</span>
+                                        <p class="text-[12px] text-slate-300 leading-snug font-light">
+                                            ให้ลูกค้าในพื้นที่รู้จักสาขาใกล้บ้านมากขึ้น และเข้ามาใช้บริการที่สาขา</p>
+                                    </div>
+                                    <!-- Box 4 -->
+                                    <div
+                                        class="objective-card rounded-2xl p-3 flex flex-col items-center text-center space-y-1.5">
+                                        <div
+                                            class="w-7 h-7 rounded-full bg-blue-600 flex items-center justify-center text-[12px] text-white font-bold shrink-0 shadow-lg">
+                                            04</div>
+                                        <i data-lucide="megaphone" class="w-5 h-5 text-orange-400"></i>
+                                        <span class="text-orange-400 leading-tight">พัฒนาพนักงานสาขาสู่<br>Employee
+                                            Influencer</span>
+                                        <p class="text-[12px] text-slate-300 leading-snug font-light">
+                                            พัฒนาพนักงานให้เป็นผู้สื่อสารแทนองค์กร สร้างตัวตนบนโลกออนไลน์</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 3. ประโยชน์ที่คาดว่าจะได้รับ -->
+                            <div class="glass-panel rounded-3xl p-5 space-y-4 text-left">
+                                <h4
+                                    class="text-center font-semibold text-sm tracking-wider text-orange-400 border-b border-white/10 pb-2">
+                                    ประโยชน์ที่คาดว่าจะได้รับ
+                                </h4>
+                                <div class="space-y-4 text-xs">
+                                    <!-- Group 1 -->
+                                    <div class="p-3 bg-white/5 rounded-xl space-y-2">
+                                        <div class="flex items-center gap-2 font-medium text-orange-400">
+                                            <i data-lucide="users" class="w-5 h-5 text-orange-400"></i>
+                                            <span>สำหรับลูกค้าและบริการสาขา</span>
+                                        </div>
+                                        <ul class="space-y-1.5 pl-1 font-light text-slate-200">
+                                            <li class="flex items-start gap-1.5">
+                                                <i data-lucide="check-circle"
+                                                    class="w-4 h-4 text-orange-500 shrink-0 mt-0.5 animate-pulse"></i>
+                                                <span>ลูกค้ามั่นใจมากขึ้นและใช้บริการที่สาขาเพิ่มขึ้น</span>
+                                            </li>
+                                            <li class="flex items-start gap-1.5">
+                                                <i data-lucide="check-circle"
+                                                    class="w-4 h-4 text-orange-500 shrink-0 mt-0.5 animate-pulse"></i>
+                                                <span>ลดความเสี่ยงจากมิจฉาชีพ</span>
+                                            </li>
+                                            <li class="flex items-start gap-1.5">
+                                                <i data-lucide="check-circle"
+                                                    class="w-4 h-4 text-orange-500 shrink-0 mt-0.5 animate-pulse"></i>
+                                                <span>ลูกค้ารู้จักผลิตภัณฑ์ของ ttb</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+
+                                    <!-- Group 2 -->
+                                    <div class="p-3 bg-white/5 rounded-xl space-y-2">
+                                        <div class="flex items-center gap-2 font-medium text-orange-400">
+                                            <i data-lucide="building" class="w-5 h-5 text-orange-400"></i>
+                                            <span>สำหรับองค์กรและภาพลักษณ์สาขา</span>
+                                        </div>
+                                        <ul class="space-y-1.5 pl-1 font-light text-slate-200">
+                                            <li class="flex items-start gap-1.5">
+                                                <i data-lucide="check-circle"
+                                                    class="w-4 h-4 text-orange-500 shrink-0 mt-0.5 animate-pulse"></i>
+                                                <span>สาขามีภาพลักษณ์ที่ดี น่าเชื่อถือ</span>
+                                            </li>
+                                            <li class="flex items-start gap-1.5">
+                                                <i data-lucide="check-circle"
+                                                    class="w-4 h-4 text-orange-500 shrink-0 mt-0.5 animate-pulse"></i>
+                                                <span>เกิดพนักงาน Influencer Network ทั่วประเทศ</span>
+                                            </li>
+                                            <li class="flex items-start gap-1.5">
+                                                <i data-lucide="check-circle"
+                                                    class="w-4 h-4 text-orange-500 shrink-0 mt-0.5 animate-pulse"></i>
+                                                <span>ใช้สื่อภายในองค์กรอย่างคุ้มค่า ลดค่าใช้จ่ายการจ้าง Influencer
+                                                    ภายนอกองค์กร</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 4. ระยะเวลาการแข่งขัน -->
+                            <div class="glass-panel rounded-3xl p-5 space-y-4 text-left">
+                                <h4
+                                    class="text-center font-semibold text-sm tracking-wider text-orange-400 border-b border-white/10 pb-2">
+                                    ระยะเวลาการแข่งขัน
+                                </h4>
+
+                                <div
+                                    class="w-full bg-orange-500 text-white rounded-xl py-2 px-3 text-center text-xs font-semibold shadow-md">
+                                    ระยะเวลาการแข่งขัน : เดือนกรกฎาคม – เดือนตุลาคม 2569
+                                </div>
+
+                                <!-- ผู้เข้าร่วม -->
+                                <div class="p-3 bg-blue-600/20 border border-blue-500/10 rounded-xl space-y-2">
+                                    <span class="text-orange-400 font-medium text-xs block">👥 ผู้เข้าร่วม</span>
+                                    <div
+                                        class="w-full bg-white text-blue-900 text-center py-2 rounded-xl text-xs font-semibold">
+                                        พนักงานสาขา ทุกตำแหน่งทั่วประเทศ
+                                    </div>
+                                </div>
+
+                                <!-- การเข้าร่วม -->
+                                <div class="p-3 bg-white/5 rounded-xl space-y-2.5">
+                                    <span class="text-orange-400 font-medium text-xs block">📝 การเข้าร่วม</span>
+                                    <p class="text-xs text-slate-200 font-light">ต้องลงทะเบียนก่อนเข้าร่วมกิจกรรม
+                                        กรอกข้อมูลผ่าน MS Form หรือระบบนี้</p>
+                                    <ul class="space-y-1.5 pl-1 text-xs text-slate-300 font-light">
+                                        <li class="flex items-center gap-1.5">
+                                            <i data-lucide="check-circle" class="w-3.5 h-3.5 text-blue-400"></i>
+                                            <span>ชื่อ - นามสกุล</span>
+                                        </li>
+                                        <li class="flex items-center gap-1.5">
+                                            <i data-lucide="check-circle" class="w-3.5 h-3.5 text-blue-400"></i>
+                                            <span>รหัสพนักงาน</span>
+                                        </li>
+                                        <li class="flex items-center gap-1.5">
+                                            <i data-lucide="check-circle" class="w-3.5 h-3.5 text-blue-400"></i>
+                                            <span>ตำแหน่ง</span>
+                                        </li>
+                                        <li class="flex items-center gap-1.5">
+                                            <i data-lucide="check-circle" class="w-3.5 h-3.5 text-blue-400"></i>
+                                            <span>รหัสสาขา</span>
+                                        </li>
+                                        <li class="flex items-center gap-1.5">
+                                            <i data-lucide="check-circle" class="w-3.5 h-3.5 text-blue-400"></i>
+                                            <span>TikTok Username (ใช้สำหรับตรวจสอบและนับคะแนน)</span>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <!-- ตัดสิทธิ์ทันที หาก -->
+                                <div class="p-3 bg-red-950/45 border border-red-500/25 rounded-xl space-y-2.5">
+                                    <span class="text-red-400 font-medium text-xs flex items-center gap-1">
+                                        <i data-lucide="alert-circle" class="w-4 h-4 text-red-400"></i>
+                                        <span>ตัดสิทธิ์ทันที หาก</span>
+                                    </span>
+                                    <ul class="space-y-1.5 pl-1 text-xs text-slate-300 font-light">
+                                        <li class="flex items-start gap-1.5">
+                                            <i data-lucide="x-circle" class="w-4 h-4 text-red-500 shrink-0 mt-0.5"></i>
+                                            <span>ไม่ลงทะเบียน</span>
+                                        </li>
+                                        <li class="flex items-start gap-1.5">
+                                            <i data-lucide="x-circle" class="w-4 h-4 text-red-500 shrink-0 mt-0.5"></i>
+                                            <span>ไม่แจ้ง TikTok Username</span>
+                                        </li>
+                                        <li class="flex items-start gap-1.5">
+                                            <i data-lucide="x-circle" class="w-4 h-4 text-red-500 shrink-0 mt-0.5"></i>
+                                            <span>เปลี่ยน Username โดยไม่แจ้งทีมงาน</span>
+                                        </li>
+                                        <li class="flex items-start gap-1.5">
+                                            <i data-lucide="x-circle" class="w-4 h-4 text-red-500 shrink-0 mt-0.5"></i>
+                                            <span>ไม่ปฏิบัติตาม Compliance</span>
+                                        </li>
+                                        <li class="flex items-start gap-1.5">
+                                            <i data-lucide="x-circle" class="w-4 h-4 text-red-500 shrink-0 mt-0.5"></i>
+                                            <span>ข้อมูลไม่ถูกต้อง / มีข้อร้องเรียน</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Sub-tab 2: ข้อกำหนด -->
+                        <div id="details-sub-content-rules" class="details-sub-tab-content space-y-4 hidden">
+                            <!-- 1. ข้อบังคับต้องมี (Compliance Requirement) -->
+                            <div class="glass-panel rounded-3xl overflow-hidden border border-white/10 text-left">
+                                <div class="bg-[#0f2d59] p-3.5 text-center border-b border-white/10">
+                                    <h5 class="text-white font-bold text-xs uppercase tracking-wider">COMPLIANCE
+                                        REQUIREMENT</h5>
+                                    <p class="text-[12px] text-slate-300 font-light mt-0.5">
+                                        (ต้องปฏิบัติในทุกคลิปที่มีเนื้อหาผลิตภัณฑ์ ดังนี้)</p>
+                                </div>
+                                <div class="p-4 space-y-3 text-[12px]">
+                                    <!-- สินเชื่อ -->
+                                    <div
+                                        class="p-2.5 bg-white/5 rounded-xl border border-white/5 flex items-center gap-3">
+                                        <div
+                                            class="w-10 h-10 rounded-lg bg-blue-600/30 flex items-center justify-center shrink-0 gap-0.5">
+                                            <i data-lucide="home" class="w-4 h-4 text-blue-400"></i>
+                                            <i data-lucide="car" class="w-4 h-4 text-orange-400"></i>
+                                        </div>
+                                        <div class="flex-1 min-w-0">
+                                            <p class="font-medium text-white text-[12px] leading-tight">
+                                                ผลิตภัณฑ์สินเชื่อทุกประเภท</p>
+                                            <p class="text-[12px] text-orange-400 mt-0.5">
+                                                "กู้เท่าที่จำเป็นและชำระคืนไหว"</p>
+                                        </div>
+                                    </div>
+                                    <!-- บัตรเครดิต -->
+                                    <div
+                                        class="p-2.5 bg-white/5 rounded-xl border border-white/5 flex items-center gap-3">
+                                        <div
+                                            class="w-10 h-10 rounded-lg bg-blue-600/30 flex items-center justify-center shrink-0">
+                                            <i data-lucide="credit-card" class="w-5 h-5 text-blue-400"></i>
+                                        </div>
+                                        <div class="flex-1 min-w-0">
+                                            <p class="font-medium text-white text-[12px] leading-tight">
+                                                ผลิตภัณฑ์บัตรเครดิตทุกประเภท</p>
+                                            <p class="text-[12px] text-orange-400 mt-0.5">
+                                                "ใช้เท่าที่จำเป็นและชำระคืนได้เต็มจำนวน"</p>
+                                        </div>
+                                    </div>
+                                    <!-- ประกันชีวิต -->
+                                    <div
+                                        class="p-2.5 bg-white/5 rounded-xl border border-white/5 flex items-center gap-3">
+                                        <div
+                                            class="w-10 h-10 rounded-lg bg-blue-600/30 flex items-center justify-center shrink-0">
+                                            <i data-lucide="shield-check" class="w-5 h-5 text-green-400"></i>
+                                        </div>
+                                        <div class="flex-1 min-w-0">
+                                            <p class="font-medium text-white text-[12px] leading-tight">
+                                                ผลิตภัณฑ์ประกันชีวิต</p>
+                                            <p class="text-[12px] text-slate-300 font-normal mt-0.5 leading-snug">
+                                                "ผู้ซื้อควรทำความเข้าใจในรายละเอียดความคุ้มครอง เงื่อนไข
+                                                และข้อยกเว้นก่อนตัดสินใจทำประกันทุกครั้ง"</p>
+                                        </div>
+                                    </div>
+                                    <!-- ประกันภัยบ้าน -->
+                                    <div
+                                        class="p-2.5 bg-white/5 rounded-xl border border-white/5 flex items-center gap-3">
+                                        <div
+                                            class="w-10 h-10 rounded-lg bg-blue-600/30 flex items-center justify-center shrink-0">
+                                            <i data-lucide="shield" class="w-5 h-5 text-yellow-400"></i>
+                                        </div>
+                                        <div class="flex-1 min-w-0">
+                                            <p class="font-medium text-white text-[12px] leading-tight">
+                                                ผลิตภัณฑ์ประกันภัยบ้าน</p>
+                                            <p class="text-[12px] text-slate-300 font-normal mt-0.5 leading-snug">
+                                                "การทำประกันภัยไม่มีผลต่อการพิจารณาอนุมัติสินเชื่อ
+                                                ผู้กู้มีสิทธิ์เลือกทำหรือปฏิเสธการทำประกันภัยได้โดยสมัครใจ"</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div
+                                    class="bg-[#0f2d59]/70 p-3 text-center border-t border-white/10 text-[11px] text-slate-200 space-y-1 font-light">
+                                    <p class="text-red-400">⚠️ ห้ามให้ข้อมูลที่ไม่ถูกต้อง / โอ้อวดเกินจริง /
+                                        เปรียบเทียบกับสถาบันการเงินอื่น</p>
+                                    <p>ห้ามใช้ข้อความที่ทำให้เกิดความเข้าใจผิด ที่ก่อให้เกิดความเสียหายแก่ธนาคาร</p>
+                                </div>
+                            </div>
+
+                            <!-- 2. เกณฑ์การตัดสิน (Judging Criteria) -->
+                            <div class="glass-panel rounded-3xl overflow-hidden border border-white/10 text-left">
+                                <div class="bg-[#0056ff] p-3 text-center border-b border-white/10">
+                                    <h5 class="text-white font-bold text-xs">เกณฑ์การตัดสิน</h5>
+                                </div>
+                                <div class="p-5 text-center space-y-3">
+                                    <span
+                                        class="text-2xl font-extrabold text-orange-400 tracking-wide block">จำนวนคลิป</span>
+                                    <p class="text-xs text-white font-semibold leading-relaxed">
+                                        ที่โพสต์ต่อเดือนบนช่องทาง TikTok<br>
+                                        <span class="text-orange-400">ตั้งแต่เดือน มิ.ย. เป็นต้นไป</span>
+                                    </p>
+                                    <p class="text-[12px] text-slate-300 font-light leading-relaxed">
+                                        นับเฉพาะคลิปที่ผ่านการตรวจสอบ<br>
+                                        จากทีมงานเรียบร้อยแล้ว
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!-- 3. แนวทางการปฏิบัติการใช้ Social Media (Do & Don't) -->
+                            <div class="glass-panel rounded-3xl p-5 space-y-4 text-left">
+                                <h4
+                                    class="text-center font-semibold text-sm tracking-wider text-orange-400 border-b border-white/10 pb-2.5">
+                                    แนวทางการปฏิบัติการใช้ Social Media อย่างไรให้ดีต่อตัวและองค์กร<br>
+                                    <span class="text-[10px] text-slate-300 font-light block mt-1">(HR Communication on
+                                        11-July-2022)</span>
+                                </h4>
+
+                                <!-- DO & DON'T CONTAINER -->
+                                <div class="space-y-4">
+                                    <div class="bg-blue-600/10 border border-blue-500/20 rounded-2xl p-4 space-y-4">
+                                        <div class="flex items-center gap-2 border-b border-white/10 pb-2">
+                                            <i data-lucide="info" class="w-5 h-5 text-orange-400"></i>
+                                            <span class="text-orange-400 font-bold text-sm">Do & Don't เบื้องต้น</span>
+                                        </div>
+
+                                        <div class="space-y-3.5 text-xs leading-relaxed font-light text-slate-200">
+                                            <!-- ข้อมูล -->
+                                            <div class="space-y-1">
+                                                <span class="font-semibold text-white flex items-center gap-1.5">
+                                                    <i data-lucide="search" class="w-3.5 h-3.5 text-blue-400"></i>ข้อมูล
+                                                </span>
+                                                <ul class="list-disc pl-5 space-y-1 text-slate-300">
+                                                    <li>ตรวจสอบข้อมูลและข่าวสารให้ชัวร์ ก่อนเผยแพร่ข้อมูล</li>
+                                                    <li>ห้ามโพสต์ข้อมูลลูกค้า
+                                                        หรือข้อมูลบุคคลในองค์กรที่ไม่ได้รับอนุญาตให้เผยแพร่
+                                                        ระวังข้อมูลรั่วไหลและ PDPA</li>
+                                                </ul>
+                                            </div>
+
+                                            <!-- คำพูด ภาษาและเนื้อหา -->
+                                            <div class="space-y-1">
+                                                <span class="font-semibold text-white flex items-center gap-1.5">
+                                                    <i data-lucide="message-square"
+                                                        class="w-3.5 h-3.5 text-blue-400"></i>คำพูด ภาษาและเนื้อหา
+                                                    รวมถึงการแสดงความคิดเห็น
+                                                </span>
+                                                <ul class="list-disc pl-5 space-y-1 text-slate-300">
+                                                    <li>ใช้ถ้อยคำในเชิงบวก หลีกเลี่ยงความหยาบคาย
+                                                        ดูหมิ่นหรือล้อเลียนผู้อื่น</li>
+                                                    <li>ระมัดระวังในการแสดงความคิดเห็นในเนื้อหาที่ละเอียดอ่อน เช่น
+                                                        สถาบัน การเมือง ศาสนา หรือสร้างความขัดแย้งในสื่อสาธารณะ</li>
+                                                    <li>ไม่โพสต์เนื้อหาหรือกิจกรรมที่ผิดกฎหมาย ขัดต่อศีลธรรม
+                                                        จริยธรรมอันดี</li>
+                                                    <li>ไม่พาดพิงถึงสถาบันหรือบุคคลใดในเชิงลบ</li>
+                                                </ul>
+                                            </div>
+
+                                            <!-- การแต่งกายและกิริยา -->
+                                            <div class="space-y-1">
+                                                <span class="font-semibold text-white flex items-center gap-1.5">
+                                                    <i data-lucide="user"
+                                                        class="w-3.5 h-3.5 text-blue-400"></i>การแต่งกายและกิริยา
+                                                </span>
+                                                <ul class="list-disc pl-5 space-y-1 text-slate-300">
+                                                    <li>หลีกเลี่ยงการแต่งกายและแสดงกิริยาที่ไม่เหมาะสมที่จะกระทบกับภาพลักษณ์ขององค์กร
+                                                    </li>
+                                                </ul>
+                                            </div>
+
+                                            <!-- Branding -->
+                                            <div class="space-y-1 border-t border-white/5 pt-2">
+                                                <span class="font-semibold text-white flex items-center gap-1.5">
+                                                    <i data-lucide="award"
+                                                        class="w-3.5 h-3.5 text-orange-400"></i>Branding
+                                                    (ภาพลักษณ์แบรนด์)
+                                                </span>
+                                                <ul class="list-disc pl-5 space-y-1 text-slate-300">
+                                                    <li>ห้ามนำ Logo ของธนาคารไปดัดแปลงรูปทรงหรือสีให้ต่างจากที่ CI กำหนด
+                                                    </li>
+                                                    <li>ห้ามใช้ Hashtag
+                                                        หรือข้อความที่สื่อให้เข้าใจผิดว่าเป็นประกาศจากธนาคารโดยตรง</li>
+                                                    <li>ห้ามอ้างหรือสร้าง Account ในนามขององค์กร</li>
+                                                </ul>
+                                            </div>
+
+                                            <!-- สร้าง Engagement กับผู้ชม -->
+                                            <div class="space-y-1">
+                                                <span class="font-semibold text-white flex items-center gap-1.5">
+                                                    <i data-lucide="thumbs-up"
+                                                        class="w-3.5 h-3.5 text-green-400"></i>สร้าง Engagement กับผู้ชม
+                                                    (Like/Comment/Share/Send/Repost)
+                                                </span>
+                                                <ul class="list-disc pl-5 space-y-1 text-slate-300">
+                                                    <li>เล่าเรื่องได้เข้าใจง่าย น่าสนใจ ภาพและเสียงมีคุณภาพ</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+
+                                        <div
+                                            class="bg-red-955/45 border border-red-500/20 rounded-xl p-3 text-[11px] text-center text-red-300 leading-normal font-light">
+                                            หากพบว่าเป็น Content ที่ไม่เหมาะสม
+                                            ขอสงวนสิทธิ์ให้เจ้าของโพสต์ลบโพสต์ออกทันที ตามคำแนะนำของทีมงาน
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- 4 CARDS SECTION -->
+                                <div class="space-y-4 pt-2">
+                                    <!-- Card 1 -->
+                                    <div class="bg-white/5 border border-white/10 rounded-2xl p-4 space-y-3">
+                                        <div class="flex justify-between items-center border-b border-white/10 pb-2">
+                                            <span class="text-white font-bold text-xs flex items-center gap-1.5">
+                                                <span
+                                                    class="w-5 h-5 bg-blue-600 rounded-full flex items-center justify-center text-[10px] text-white">1</span>
+                                                <span>การใช้ Social Media</span>
+                                            </span>
+                                            <i data-lucide="smartphone" class="w-4 h-4 text-blue-400"></i>
+                                        </div>
+                                        <ul class="space-y-2 text-xs font-light">
+                                            <li class="flex items-start gap-2 text-slate-200">
+                                                <i data-lucide="check"
+                                                    class="w-4 h-4 text-green-500 shrink-0 mt-0.5"></i>
+                                                <span>ใช้ในการที่เป็นประโยชน์ สร้างสรรค์</span>
+                                            </li>
+                                            <li class="flex items-start gap-2 text-slate-300">
+                                                <i data-lucide="x" class="w-4 h-4 text-red-500 shrink-0 mt-0.5"></i>
+                                                <span>ไม่ติดต่อโฆษณา ระเบียบ วิธีปฏิบัติ ประกาศ
+                                                    และคู่มือการปฏิบัติงานของธนาคาร</span>
+                                            </li>
+                                            <li class="flex items-start gap-2 text-slate-300">
+                                                <i data-lucide="x" class="w-4 h-4 text-red-500 shrink-0 mt-0.5"></i>
+                                                <span>ไม่โพสต์เนื้อหาหรือกิจกรรมที่ผิดกฎหมาย ขัดต่อศีลธรรม
+                                                    จริยธรรมอันดี</span>
+                                            </li>
+                                            <li class="flex items-start gap-2 text-slate-300">
+                                                <i data-lucide="x" class="w-4 h-4 text-red-500 shrink-0 mt-0.5"></i>
+                                                <span>ไม่จัดทำหรือสร้างเพจหรือแพลตฟอร์มใด ๆ
+                                                    ในนามขององค์กรโดยไม่ได้รับอนุญาต
+                                                    เพราะอาจทำให้ลูกค้าเกิดความเข้าใจผิด</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+
+                                    <!-- Card 2 -->
+                                    <div class="bg-white/5 border border-white/10 rounded-2xl p-4 space-y-3">
+                                        <div class="flex justify-between items-center border-b border-white/10 pb-2">
+                                            <span class="text-white font-bold text-xs flex items-center gap-1.5">
+                                                <span
+                                                    class="w-5 h-5 bg-blue-600 rounded-full flex items-center justify-center text-[10px] text-white">2</span>
+                                                <span>การแสดงออก กิริยา ท่าทาง การแต่งกาย...</span>
+                                            </span>
+                                            <i data-lucide="user-check" class="w-4 h-4 text-blue-400"></i>
+                                        </div>
+                                        <ul class="space-y-2 text-xs font-light">
+                                            <li class="flex items-start gap-2 text-slate-200">
+                                                <i data-lucide="check"
+                                                    class="w-4 h-4 text-green-500 shrink-0 mt-0.5"></i>
+                                                <span>สุภาพ เหมาะสมกับกาลเทศะ</span>
+                                            </li>
+                                            <li class="flex items-start gap-2 text-slate-200">
+                                                <i data-lucide="check"
+                                                    class="w-4 h-4 text-green-500 shrink-0 mt-0.5"></i>
+                                                <span>กรณีแต่งเครื่องแบบพนักงาน
+                                                    ต้องแต่งกายให้ถูกต้องตามระเบียบของธนาคาร</span>
+                                            </li>
+                                            <li class="flex items-start gap-2 text-slate-300">
+                                                <i data-lucide="x" class="w-4 h-4 text-red-500 shrink-0 mt-0.5"></i>
+                                                <span>ไม่โพสต์ภาพแต่งกายหรือท่าทางที่ล่อแหลม ยั่วยวน
+                                                    หรือสื่อไปทางลามกอนาจาร</span>
+                                            </li>
+                                            <li class="flex items-start gap-2 text-slate-300">
+                                                <i data-lucide="x" class="w-4 h-4 text-red-500 shrink-0 mt-0.5"></i>
+                                                <span>ไม่ล้อเลียน กลั่นแกล้ง ทำให้ผู้อื่นอับอาย</span>
+                                            </li>
+                                            <li class="flex items-start gap-2 text-slate-300">
+                                                <i data-lucide="x" class="w-4 h-4 text-red-500 shrink-0 mt-0.5"></i>
+                                                <span>ไม่แสดงออก หรือใช้ภาษาที่หยาบคาย ส่อเสียด ดูหมิ่น หมิ่นประมาท
+                                                    หรือให้ร้ายองค์กรหรือผู้อื่น</span>
+                                            </li>
+                                            <li class="flex items-start gap-2 text-slate-300">
+                                                <i data-lucide="x" class="w-4 h-4 text-red-500 shrink-0 mt-0.5"></i>
+                                                <span>ไม่ใช้ข้อความที่ก่อกวน หาเรื่องต่อบุคคลอื่น รวมถึงล่วงเกิน คุกคาม
+                                                    ก่อความเดือดร้อนรำคาญทางเพศ ในเชิงชู้สาว ลามกอนาจาร</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+
+                                    <!-- Card 3 -->
+                                    <div class="bg-white/5 border border-white/10 rounded-2xl p-4 space-y-3">
+                                        <div class="flex justify-between items-center border-b border-white/10 pb-2">
+                                            <span class="text-white font-bold text-xs flex items-center gap-1.5">
+                                                <span
+                                                    class="w-5 h-5 bg-blue-600 rounded-full flex items-center justify-center text-[10px] text-white">3</span>
+                                                <span>การแสดงความคิดเห็น</span>
+                                            </span>
+                                            <i data-lucide="message-square" class="w-4 h-4 text-blue-400"></i>
+                                        </div>
+                                        <ul class="space-y-2 text-xs font-light">
+                                            <li class="flex items-start gap-2 text-slate-200">
+                                                <i data-lucide="check"
+                                                    class="w-4 h-4 text-green-500 shrink-0 mt-0.5"></i>
+                                                <span>แสดงความคิดเห็นเชิงสร้างสรรค์</span>
+                                            </li>
+                                            <li class="flex items-start gap-2 text-slate-200">
+                                                <i data-lucide="check"
+                                                    class="w-4 h-4 text-green-500 shrink-0 mt-0.5"></i>
+                                                <span>ระมัดระวังในการแสดงความคิดเห็นในเรื่องที่ละเอียดอ่อน เช่น สถาบัน
+                                                    การเมือง หรือศาสนา</span>
+                                            </li>
+                                            <li class="flex items-start gap-2 text-slate-200">
+                                                <i data-lucide="check"
+                                                    class="w-4 h-4 text-green-500 shrink-0 mt-0.5"></i>
+                                                <span>เช็คให้ชัวร์ก่อนแชร์ข่าวสารที่อาจเกิดความเสียหายต่อองค์กรและธุรกิจ</span>
+                                            </li>
+                                            <li class="flex items-start gap-2 text-slate-300">
+                                                <i data-lucide="x" class="w-4 h-4 text-red-500 shrink-0 mt-0.5"></i>
+                                                <span>ไม่พาดพิงถึงบุคคล/องค์กร
+                                                    ในเชิงลบที่อาจนำไปสู่การเสื่อมเสียชื่อเสียง ภาพลักษณ์
+                                                    และความเข้าใจผิดต่อธนาคาร</span>
+                                            </li>
+                                            <li class="flex items-start gap-2 text-slate-300">
+                                                <i data-lucide="x" class="w-4 h-4 text-red-500 shrink-0 mt-0.5"></i>
+                                                <span>ไม่โพสต์ระบายความในใจด้วยอารมณ์ที่พาดพิง เชื่อมโยง
+                                                    หรือส่งผลกระทบในเชิงลบกับองค์กร</span>
+                                            </li>
+                                            <li class="flex items-start gap-2 text-slate-300">
+                                                <i data-lucide="x" class="w-4 h-4 text-red-500 shrink-0 mt-0.5"></i>
+                                                <span>ไม่แสดงความคิดเห็นที่อาจทำให้เข้าใจผิดว่าเป็นความเห็นจากธนาคาร
+                                                    หรือหน่วยงานที่สังกัด</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+
+                                    <!-- Card 4 -->
+                                    <div class="bg-white/5 border border-white/10 rounded-2xl p-4 space-y-3">
+                                        <div class="flex justify-between items-center border-b border-white/10 pb-2">
+                                            <span class="text-white font-bold text-xs flex items-center gap-1.5">
+                                                <span
+                                                    class="w-5 h-5 bg-blue-600 rounded-full flex items-center justify-center text-[10px] text-white">4</span>
+                                                <span>การใช้ภาพ วิดีโอ สัญลักษณ์ และอุปกรณ์...</span>
+                                            </span>
+                                            <i data-lucide="image" class="w-4 h-4 text-blue-400"></i>
+                                        </div>
+                                        <ul class="space-y-2 text-xs font-light">
+                                            <li class="flex items-start gap-2 text-slate-200">
+                                                <i data-lucide="check"
+                                                    class="w-4 h-4 text-green-500 shrink-0 mt-0.5"></i>
+                                                <span>การใช้โลโก้ สโลแกน สัญลักษณ์ หรือข้อความต่าง ๆ ร่วมถึงสื่อโฆษณา
+                                                    ประชาสัมพันธ์ของธนาคาร ใช้ได้เฉพาะส่วนงานที่ได้รับอนุญาตเท่านั้น
+                                                    โดยต้องได้รับการอนุมัติจากหน่วยงานสื่อสารภาพลักษณ์องค์กร</span>
+                                            </li>
+                                            <li class="flex items-start gap-2 text-slate-300">
+                                                <i data-lucide="x" class="w-4 h-4 text-red-500 shrink-0 mt-0.5"></i>
+                                                <span>ไม่ละเมิดทรัพย์สินทางปัญญาของธนาคาร และผู้อื่น</span>
+                                            </li>
+                                            <li class="flex items-start gap-2 text-slate-300">
+                                                <i data-lucide="x" class="w-4 h-4 text-red-500 shrink-0 mt-0.5"></i>
+                                                <span>ไม่กล่าวอ้างเข้าข่ายพรรณนาความเท็จ หรือทำให้เปรียบเทียบสินค้า
+                                                    บริการ หรือผลิตภัณฑ์ของธนาคารกับคู่แข่งขันทางไม่ดี ผิดกฎหมาย
+                                                    และไม่นำไปใช้เพื่อประโยชน์ส่วนตัว</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <!-- Sub-tab 3: รางวัลแข่งขัน -->
+                        <div id="details-sub-content-rewards" class="details-sub-tab-content space-y-5 hidden text-left">
+                            <!-- 1. รางวัล Best Branch the Idol (รายสาขา) -->
+                            <div class="glass-panel rounded-3xl overflow-hidden border border-white/10">
+                                <div class="bg-[#0056ff] p-4 text-center border-b border-white/10 relative">
+                                    <span class="absolute top-3 left-4 bg-white/20 text-white text-[10px] px-2 py-0.5 rounded-full font-medium">รายสาขา</span>
+                                    <h5 class="text-white font-bold text-sm">รางวัล Best Branch the Idol</h5>
+                                    <p class="text-[11px] text-blue-100 font-light mt-0.5">นับผลงานรายเดือน ตั้งแต่เดือนมิถุนายน - เดือนตุลาคม</p>
+                                </div>
+                                <div class="p-4 space-y-4">
+                                    <div class="bg-blue-950/30 border border-blue-500/20 rounded-2xl p-3 text-center">
+                                        <p class="text-xs text-slate-300 font-light">
+                                            โดยรางวัลจะถูกแบ่งตาม <strong class="text-orange-400 font-semibold">RH 1 / RH 2 / RH 3 / RH 4 / RH 5</strong>
+                                        </p>
+                                    </div>
+
+                                    <!-- Group 1: 8 คนขึ้นไป -->
+                                    <div class="space-y-2.5">
+                                        <div class="flex items-center gap-1.5 text-xs font-semibold text-slate-200 border-b border-white/5 pb-1">
+                                            <i data-lucide="users" class="w-4 h-4 text-orange-400"></i>
+                                            <span>ทีมสาขาที่มีจำนวนพนักงาน 8 คนขึ้นไป</span>
+                                        </div>
+                                        <div class="grid grid-cols-1 gap-2">
+                                            <!-- อันดับ 1 -->
+                                            <div class="flex items-center justify-between p-3 bg-white/5 border border-amber-500/30 rounded-2xl">
+                                                <div class="flex items-center gap-2.5">
+                                                    <span class="w-7 h-7 rounded-full bg-amber-500/20 border border-amber-500 flex items-center justify-center font-bold text-amber-400 text-xs">1</span>
+                                                    <div>
+                                                        <p class="text-xs font-semibold text-white">อันดับที่ 1</p>
+                                                        <p class="text-[11px] text-slate-300 font-light">งบจัดเลี้ยง</p>
+                                                    </div>
+                                                </div>
+                                                <span class="text-xs font-bold text-amber-400 bg-amber-500/10 px-3 py-1 rounded-xl">4,000 บาท</span>
+                                            </div>
+                                            <!-- อันดับ 2 -->
+                                            <div class="flex items-center justify-between p-3 bg-white/5 border border-slate-400/30 rounded-2xl">
+                                                <div class="flex items-center gap-2.5">
+                                                    <span class="w-7 h-7 rounded-full bg-slate-400/20 border border-slate-400 flex items-center justify-center font-bold text-slate-300 text-xs">2</span>
+                                                    <div>
+                                                        <p class="text-xs font-semibold text-white">อันดับที่ 2</p>
+                                                        <p class="text-[11px] text-slate-300 font-light">งบจัดเลี้ยง</p>
+                                                    </div>
+                                                </div>
+                                                <span class="text-xs font-bold text-slate-300 bg-slate-400/10 px-3 py-1 rounded-xl">3,000 บาท</span>
+                                            </div>
+                                            <!-- อันดับ 3-5 -->
+                                            <div class="flex items-center justify-between p-3 bg-white/5 border border-amber-700/30 rounded-2xl">
+                                                <div class="flex items-center gap-2.5">
+                                                    <span class="w-7 h-7 rounded-full bg-amber-700/20 border border-amber-700 flex items-center justify-center font-bold text-amber-600 text-xs">3</span>
+                                                    <div>
+                                                        <p class="text-xs font-semibold text-white">อันดับที่ 3 - 5</p>
+                                                        <p class="text-[11px] text-slate-300 font-light">งบจัดเลี้ยง</p>
+                                                    </div>
+                                                </div>
+                                                <span class="text-xs font-bold text-amber-600 bg-amber-700/10 px-3 py-1 rounded-xl">2,000 บาท</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Group 2: น้อยกว่าหรือเทียบเท่า 8 คน -->
+                                    <div class="space-y-2.5 pt-2">
+                                        <div class="flex items-center gap-1.5 text-xs font-semibold text-slate-200 border-b border-white/5 pb-1">
+                                            <i data-lucide="user" class="w-4 h-4 text-blue-400"></i>
+                                            <span>ทีมสาขาที่มีจำนวนพนักงาน น้อยกว่าหรือเทียบเท่า 8 คน</span>
+                                        </div>
+                                        <div class="grid grid-cols-1 gap-2">
+                                            <!-- อันดับ 1 -->
+                                            <div class="flex items-center justify-between p-3 bg-white/5 border border-amber-500/30 rounded-2xl">
+                                                <div class="flex items-center gap-2.5">
+                                                    <span class="w-7 h-7 rounded-full bg-amber-500/20 border border-amber-500 flex items-center justify-center font-bold text-amber-400 text-xs">1</span>
+                                                    <div>
+                                                        <p class="text-xs font-semibold text-white">อันดับที่ 1</p>
+                                                        <p class="text-[11px] text-slate-300 font-light">งบจัดเลี้ยง</p>
+                                                    </div>
+                                                </div>
+                                                <span class="text-xs font-bold text-amber-400 bg-amber-500/10 px-3 py-1 rounded-xl">3,000 บาท</span>
+                                            </div>
+                                            <!-- อันดับ 2 -->
+                                            <div class="flex items-center justify-between p-3 bg-white/5 border border-slate-400/30 rounded-2xl">
+                                                <div class="flex items-center gap-2.5">
+                                                    <span class="w-7 h-7 rounded-full bg-slate-400/20 border border-slate-400 flex items-center justify-center font-bold text-slate-300 text-xs">2</span>
+                                                    <div>
+                                                        <p class="text-xs font-semibold text-white">อันดับที่ 2</p>
+                                                        <p class="text-[11px] text-slate-300 font-light">งบจัดเลี้ยง</p>
+                                                    </div>
+                                                </div>
+                                                <span class="text-xs font-bold text-slate-300 bg-slate-400/10 px-3 py-1 rounded-xl">2,000 บาท</span>
+                                            </div>
+                                            <!-- อันดับ 3-5 -->
+                                            <div class="flex items-center justify-between p-3 bg-white/5 border border-amber-700/30 rounded-2xl">
+                                                <div class="flex items-center gap-2.5">
+                                                    <span class="w-7 h-7 rounded-full bg-amber-700/20 border border-amber-700 flex items-center justify-center font-bold text-amber-600 text-xs">3</span>
+                                                    <div>
+                                                        <p class="text-xs font-semibold text-white">อันดับที่ 3 - 5</p>
+                                                        <p class="text-[11px] text-slate-300 font-light">งบจัดเลี้ยง</p>
+                                                    </div>
+                                                </div>
+                                                <span class="text-xs font-bold text-amber-600 bg-amber-700/10 px-3 py-1 rounded-xl">1,000 บาท</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="bg-blue-950/45 p-3.5 text-center border-t border-white/10 text-[11px] text-blue-300 font-light leading-normal">
+                                    หมายเหตุ : แต่ละ RH จะได้รับรางวัลเดือนละ 10 รางวัล / รวมทุก RH ทั้งหมด 50 รางวัล
+                                </div>
+                            </div>
+
+                            <!-- 2. รางวัล Rising Star Creator (รายบุคคล) -->
+                            <div class="glass-panel rounded-3xl overflow-hidden border border-white/10">
+                                <div class="bg-[#ff5c00] p-4 text-center border-b border-white/10 relative">
+                                    <span class="absolute top-3 left-4 bg-white/20 text-white text-[10px] px-2 py-0.5 rounded-full font-medium">รายบุคคล</span>
+                                    <h5 class="text-white font-bold text-sm">รางวัล Rising Star Creator</h5>
+                                    <p class="text-[11px] text-orange-100 font-light mt-0.5">นับผลงานสะสมตั้งแต่เดือนมิถุนายน - เดือนตุลาคม</p>
+                                </div>
+                                <div class="p-4 space-y-4 text-xs">
+                                    <!-- Column 1: ยอดวิวคลิป -->
+                                    <div class="bg-white/5 border border-white/10 rounded-2xl p-4 space-y-3">
+                                        <div class="space-y-1">
+                                            <p class="font-semibold text-orange-400 text-xs flex items-center gap-1.5">
+                                                <i data-lucide="trending-up" class="w-4 h-4 text-orange-400"></i>
+                                                <span>พนักงานที่มียอดวิวคลิปบน TikTok รวมสูงสุด</span>
+                                            </p>
+                                            <p class="text-[11px] text-slate-400 font-light">ยอดวิวคลิปบน TikTok (ไม่ต่ำกว่า 100,000 views) รวมสูงที่สุดอันดับ 1 จะได้รับ "เงินรางวัลเข้าบัญชีเงินเดือน"</p>
+                                        </div>
+                                        <div class="space-y-2 pt-1">
+                                            <div class="flex items-center justify-between p-2.5 bg-white/5 border border-amber-500/20 rounded-xl">
+                                                <span class="font-medium text-white flex items-center gap-2">
+                                                    <span class="w-6 h-6 rounded-full bg-amber-500/20 border border-amber-500 flex items-center justify-center font-bold text-amber-400 text-[10px]">1</span>
+                                                    <span>อันดับที่ 1</span>
+                                                </span>
+                                                <span class="font-bold text-amber-400">เงินรางวัล 5,000 บาท</span>
+                                            </div>
+                                            <div class="flex items-center justify-between p-2.5 bg-white/5 border border-blue-500/20 rounded-xl">
+                                                <span class="font-medium text-white flex items-center gap-2">
+                                                    <i data-lucide="gift" class="w-4 h-4 text-blue-400"></i>
+                                                    <span>อันดับที่ 2 - 3</span>
+                                                </span>
+                                                <span class="text-slate-300 font-light">รับ GIFT SET ของขวัญพรีเมียมจาก ttb</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Column 2: ยอดโพสต์สม่ำเสมอ -->
+                                    <div class="bg-white/5 border border-white/10 rounded-2xl p-4 space-y-3">
+                                        <div class="space-y-1">
+                                            <p class="font-semibold text-orange-400 text-xs flex items-center gap-1.5">
+                                                <i data-lucide="video" class="w-4 h-4 text-orange-400"></i>
+                                                <span>พนักงานที่มียอดโพสต์คลิปสม่ำเสมอ สูงสุด</span>
+                                            </p>
+                                            <p class="text-[11px] text-slate-400 font-light">ยอดโพสต์คลิปสม่ำเสมอ บน TikTok (ไม่ต่ำกว่า 50 คลิป) สูงที่สุดอันดับ 1 จะได้รับ "เงินรางวัลเข้าบัญชีเงินเดือน"</p>
+                                        </div>
+                                        <div class="space-y-2 pt-1">
+                                            <div class="flex items-center justify-between p-2.5 bg-white/5 border border-amber-500/20 rounded-xl">
+                                                <span class="font-medium text-white flex items-center gap-2">
+                                                    <span class="w-6 h-6 rounded-full bg-amber-500/20 border border-amber-500 flex items-center justify-center font-bold text-amber-400 text-[10px]">1</span>
+                                                    <span>อันดับที่ 1</span>
+                                                </span>
+                                                <span class="font-bold text-amber-400">เงินรางวัล 5,000 บาท</span>
+                                            </div>
+                                            <div class="flex items-center justify-between p-2.5 bg-white/5 border border-blue-500/20 rounded-xl">
+                                                <span class="font-medium text-white flex items-center gap-2">
+                                                    <i data-lucide="gift" class="w-4 h-4 text-blue-400"></i>
+                                                    <span>อันดับที่ 2 - 3</span>
+                                                </span>
+                                                <span class="text-slate-300 font-light">รับ GIFT SET ของขวัญพรีเมียมจาก ttb</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="bg-orange-950/45 p-3.5 text-center border-t border-white/10 text-[11px] text-orange-300 font-light leading-normal">
+                                    หมายเหตุ : เงินรางวัลจะถูกนำไปคำนวณภาษีเงินได้ ตามฐานรายได้ของพนักงานแต่ละท่าน
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- DASHBOARD TAB CONTENT: SUBMIT POST -->
+                    <div id="dash-tab-submit-post" class="dash-tab-content space-y-4 hidden text-left">
+                        <div class="glass-panel rounded-2xl p-5 space-y-4">
+                            <h4
+                                class="text-orange-400 font-normal text-sm flex items-center gap-1.5 border-b border-white/10 pb-2">
+                                <i data-lucide="send" class="w-4 h-4 text-orange-400"></i>
+                                <span>ส่งผลงาน TikTok ของคุณ</span>
+                            </h4>
+                            <p class="text-xs text-slate-300 leading-relaxed font-light">
+                                ร่วมแชร์คลิปสร้างสรรค์ของคุณเพื่อแนะนำตัวตน, แนะนำสาขา ttb, ให้ความรู้ทางการเงิน,
+                                หรือเตือนภัยมิจฉาชีพ เพื่อลุ้นรับรางวัล!
+                            </p>
+                            <div class="space-y-3 pt-1 text-[13px]">
+                                <div>
+                                    <label class="block text-slate-300 text-xs mb-1">วันที่ Post TikTok</label>
+                                    <input type="date" id="workPostDateInput"
+                                        class="name-input w-full px-4 py-3 rounded-xl text-[13px]">
+                                </div>
+                                <div>
+                                    <label class="block text-slate-300 text-xs mb-1">ชื่อคลิปผลงาน</label>
+                                    <input type="text" id="workTitleInput" placeholder="ระบุชื่อผลงานของคลิป"
+                                        class="name-input w-full px-4 py-3 rounded-xl text-[13px]">
+                                </div>
+                                <div>
+                                    <label class="block text-slate-300 text-xs mb-1">ลิงก์วิดีโอ TikTok (TikTok
+                                        URL)</label>
+                                    <input type="text" id="workUrlInput" placeholder="https://www.tiktok.com/@..."
+                                        class="name-input w-full px-4 py-3 rounded-xl text-[13px]">
+                                </div>
+                                <button onclick="window.submitWork()"
+                                    class="btn-standard w-full bg-orange-500 hover:bg-orange-600 text-white font-normal rounded-xl h-[46px] mt-2">
+                                    <i data-lucide="send" class="w-4 h-4"></i> ส่งผลงานเข้าประกวด
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Month Filter Container -->
+                        <div class="glass-panel rounded-2xl p-5 space-y-3">
+                            <!--
+                            <h4 class="text-orange-400 font-normal text-sm border-b border-white/10 pb-2">
+                                ตัวกรองเดือนโพสต์</h4>
+                            -->
+                            <div id="monthFilterContainer" class="flex flex-wrap gap-2 text-xs">
+                                <span class="text-slate-400">กำลังโหลดตัวกรองเดือน...</span>
+                            </div>
+                        </div>
+
+                        <!-- User Submissions Table -->
+                        <div class="glass-panel rounded-2xl p-5 space-y-3">
+                            <h4 class="text-orange-400 font-normal text-sm border-b border-white/10 pb-2">
+                                ข้อมูลการส่งผลงาน</h4>
+                            <div class="overflow-x-auto w-full">
+                                <table class="w-full text-left text-xs text-white">
+                                    <thead class="bg-white/10 text-slate-300">
+                                        <tr>
+                                            <th class="p-2.5 font-normal">วันที่โพสต์</th>
+                                            <th class="p-2.5 font-normal">ชื่อที่โพสต์</th>
+                                            <th class="p-2.5 font-normal">ลิงก์ที่โพสต์</th>
+                                            <th class="p-2.5 font-normal text-center">จัดการ</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="myPostsTableBody" class="divide-y divide-white/5">
+                                        <tr>
+                                            <td colspan="4" class="p-4 text-center text-slate-400">
+                                                ยังไม่มีข้อมูลการส่งผลงาน</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- DASHBOARD TAB CONTENT 3: LEADERBOARD -->
+                    <div id="dash-tab-leaderboard" class="dash-tab-content space-y-4 hidden text-[13px]">
+                        <div class="glass-panel rounded-2xl p-5 space-y-3">
+                            <h4
+                                class="text-orange-400 font-normal text-sm border-b border-white/10 pb-2 flex items-center gap-1.5">
+                                <i data-lucide="trophy" class="w-4 h-4 text-orange-400 animate-bounce"></i>
+                                <span>ทำเนียบผู้นำ (Leaderboard - คะแนนสอบ)</span>
+                            </h4>
+
+                            <div class="overflow-hidden rounded-xl border border-white/10">
+                                <table class="w-full text-left">
+                                    <thead class="bg-white/10 text-xs">
+                                        <tr>
+                                            <th class="p-3 font-normal text-slate-300">อันดับ</th>
+                                            <th class="p-3 font-normal text-slate-300">ชื่อ-นามสกุล</th>
+                                            <th class="p-3 font-normal text-slate-300 text-center">สาขา</th>
+                                            <th class="p-3 font-normal text-slate-300 text-right">คะแนน</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="leaderboardTableBody" class="divide-y divide-white/5">
+                                        <!-- Loaded dynamically -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- DASHBOARD TAB CONTENT 4: USER INFO -->
+                    <div id="dash-tab-userinfo" class="dash-tab-content space-y-4 hidden">
+                        <div class="glass-panel rounded-2xl p-6 flex flex-col items-center space-y-5">
+                            <label for="editImageInput" class="cursor-pointer group flex flex-col items-center">
+                                <div
+                                    class="w-24 h-24 rounded-full bg-slate-200 border-4 border-white flex items-center justify-center text-slate-500 font-normal text-[13px] shadow-lg overflow-hidden relative">
+                                    <span id="dbAvatarPlaceholder">Employee</span>
+                                    <img id="dashAvatar" class="w-full h-full object-cover hidden"
+                                        alt="Employee Photo" />
+                                    <div
+                                        class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                                        <i data-lucide="camera" class="w-6 h-6 text-white"></i>
+                                    </div>
+                                </div>
+                                <span
+                                    class="text-xs text-white/85 mt-2 underline decoration-dotted group-hover:text-white">แก้ไขรูปถ่าย</span>
+                            </label>
+                            <input type="file" id="editImageInput" accept="image/*" class="hidden"
+                                onchange="window.handleEditImage(event)">
+                            <div class="text-center w-full">
+                                <h3 id="dashFullName" class="text-[15px] text-white">-</h3>
+                                <p class="text-[13px] text-white/60 font-normal mt-0.5">รหัสพนักงาน: <span
+                                        id="dashEmployeeId">-</span></p>
+                                <div
+                                    class="mt-4 p-3.5 bg-black/30 rounded-2xl border border-white/10 text-[13px] text-left space-y-1.5 font-normal text-slate-200 w-full max-w-[340px] mx-auto">
+                                    <p class="flex justify-between"><span>สาขา:</span> <span id="dashBranch"
+                                            class="text-orange-400 font-medium">-</span></p>
+                                    <p class="flex justify-between"><span>ตำแหน่ง:</span> <span id="dashPosition"
+                                            class="text-orange-400 font-medium">-</span></p>
+                                    <p class="flex justify-between"><span>TikTok:</span> <span id="dashTiktokUser"
+                                            class="text-blue-400 font-medium">-</span></p>
+                                    <p class="flex justify-between"><span>คะแนนทดสอบ:</span> <span id="dashScoreQuiz"
+                                            class="text-green-400 font-semibold">- / 5</span></p>
+                                    <p class="flex flex-col gap-1 mt-1 border-t border-white/10 pt-1.5">
+                                        <span>URL ลิงก์ของช่อง:</span>
+                                        <a id="dashTiktokUrl" href="#" target="_blank"
+                                            class="text-xs text-orange-300 font-light truncate hover:underline">-</a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Sub-tabs Row below Info Box -->
+                        <div
+                            class="w-full max-w-[340px] mx-auto bg-black/60 p-1 rounded-2xl flex items-center justify-between border border-white/10 shrink-0">
+                            <button onclick="window.switchSubTab('my-work')" id="subTabMyWorkBtn"
+                                class="flex-1 py-1.5 rounded-xl text-[12px] font-normal transition-all duration-300 bg-[#e26e2c] text-white shadow-md">
+                                ผลงานคุณ
+                            </button>
+                            <button onclick="window.switchSubTab('branch-work')" id="subTabBranchWorkBtn"
+                                class="flex-1 py-1.5 rounded-xl text-[12px] font-normal transition-all duration-300 text-white/80 hover:text-white">
+                                ผลงานสาขา
+                            </button>
+                            <button onclick="window.switchSubTab('follow-up')" id="subTabFollowUpBtn"
+                                class="flex-1 py-1.5 rounded-xl text-[12px] font-normal transition-all duration-300 text-white/80 hover:text-white">
+                                ติดตามผล
+                            </button>
+                        </div>
+
+                        <!-- Details Area below Sub-tabs -->
+                        <div class="w-full mx-auto glass-panel rounded-2xl p-4 text-[13px] text-slate-200 shrink-0">
+                            <!-- Content 1: ผลงานคุณ -->
+                            <div id="sub-content-my-work" class="sub-tab-content space-y-2">
+                                <h5 class="text-orange-400 font-semibold mb-1">ผลงาน TikTok ของคุณ</h5>
+                                <div id="myWorkDetailsContainer" class="space-y-2 max-h-48 overflow-y-auto">
+                                    <p class="text-xs text-slate-400">อยู่ระหว่างโหลดข้อมูล...</p>
+                                </div>
+                            </div>
+                            <!-- Content 2: ผลงานสาขา -->
+                            <div id="sub-content-branch-work" class="sub-tab-content space-y-2 hidden">
+                                <h5 class="text-orange-400 font-semibold mb-1">ผลงานของสาขาคุณ</h5>
+                                <div id="branchWorkDetailsContainer" class="space-y-2 max-h-48 overflow-y-auto">
+                                    <p class="text-xs text-slate-400">อยู่ระหว่างโหลดข้อมูล...</p>
+                                </div>
+                            </div>
+                            <!-- Content 3: ติดตามผล -->
+                            <div id="sub-content-follow-up" class="sub-tab-content space-y-2 hidden">
+                                <h5 class="text-orange-400 font-semibold mb-1">สถานะและความคืบหน้า</h5>
+                                <p class="text-xs text-slate-300">ติดตามผลตอบรับ ยอดวิวยอดแชร์
+                                    และการอนุมัติเข้าร่วมกิจกรรมของช่องทาง ttb</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Navigation Bottom Tabs Menu (Fixed at Bottom 100% of phone screen) -->
+                <div
+                    class="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-[500px] bg-slate-900/95 backdrop-blur-md border-t border-white/10 py-3 flex justify-around items-center shrink-0 z-50 h-[72px]">
+                    <div onclick="window.switchDashboardTab('home')" id="btn-dash-home" class="app-nav-item active">
+                        <i data-lucide="home" class="w-5 h-5"></i>
+                        <span>Home</span>
+                    </div>
+                    <div onclick="window.switchDashboardTab('details')" id="btn-dash-details" class="app-nav-item">
+                        <i data-lucide="info" class="w-5 h-5"></i>
+                        <span>รายละเอียด</span>
+                    </div>
+                    <div onclick="window.switchDashboardTab('submit-post')" id="btn-dash-submit-post"
+                        class="app-nav-item">
+                        <i data-lucide="send" class="w-5 h-5"></i>
+                        <span>ส่งโพสต์</span>
+                    </div>
+                    <div onclick="window.switchDashboardTab('leaderboard')" id="btn-dash-leaderboard"
+                        class="app-nav-item">
+                        <i data-lucide="trophy" class="w-5 h-5"></i>
+                        <span>ผู้นำการแข่ง</span>
+                    </div>
+                    <div onclick="window.switchDashboardTab('userinfo')" id="btn-dash-userinfo" class="app-nav-item">
+                        <i data-lucide="user" class="w-5 h-5"></i>
+                        <span>ข้อมูลคุณ</span>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Lightbox Modal for Editing Post -->
+    <div id="editPostModal"
+        class="fixed inset-0 bg-black/70 backdrop-blur-sm z-[9999] flex items-center justify-center hidden p-4">
+        <div class="glass-panel w-full max-w-[400px] rounded-3xl p-6 space-y-4 text-left">
+            <h3 class="text-[15px] font-normal text-white border-b border-white/10 pb-2">แก้ไขข้อมูลการส่งผลงาน</h3>
+            <input type="hidden" id="editPostDocId" />
+            <div class="space-y-3 text-[13px]">
+                <div>
+                    <label class="block text-slate-300 text-xs mb-1">วันที่ Post TikTok</label>
+                    <input type="date" id="editPostDateInput"
+                        class="name-input w-full px-4 py-3 rounded-xl text-[13px]">
+                </div>
+                <div>
+                    <label class="block text-slate-300 text-xs mb-1">ชื่อคลิปผลงาน</label>
+                    <input type="text" id="editPostTitleInput"
+                        class="name-input w-full px-4 py-3 rounded-xl text-[13px]">
+                </div>
+                <div>
+                    <label class="block text-slate-300 text-xs mb-1">ลิงก์วิดีโอ TikTok (TikTok URL)</label>
+                    <input type="text" id="editPostUrlInput" class="name-input w-full px-4 py-3 rounded-xl text-[13px]">
+                </div>
+            </div>
+            <div class="flex gap-3 pt-2">
+                <button onclick="window.closeEditModal()"
+                    class="flex-1 btn-standard bg-slate-700 hover:bg-slate-600 text-white font-normal rounded-xl h-[44px]">
+                    ยกเลิก
+                </button>
+                <button onclick="window.saveEditedPost()"
+                    class="flex-1 btn-standard bg-orange-500 hover:bg-orange-600 text-white font-normal rounded-xl h-[44px]">
+                    บันทึก
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="js/app.js"></script>
+</body>
+
+</html>
