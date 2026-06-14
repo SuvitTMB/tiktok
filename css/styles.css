@@ -1,6 +1,6 @@
 body {
     font-family: 'Kanit', sans-serif;
-    background: url('images/bg_ttb.jpg') no-repeat center center fixed;
+    background: url('../images/bg_ttb.jpg') no-repeat center center fixed;
     background-size: cover;
     -ms-overflow-style: none;
     /* IE and Edge */
