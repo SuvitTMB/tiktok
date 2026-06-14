@@ -40,7 +40,7 @@
         <div class="w-full flex flex-col items-center justify-start flex-1 relative">
 
             <!-- VIEW 1: WELCOME SCREEN (Invitation & 4 Objectives) -->
-            <div id="welcomeView" class="w-full p-4 pb-6 space-y-6 flex flex-col items-center justify-start">
+            <div id="welcomeView" class="w-full p-3 pb-6 space-y-6 flex flex-col items-center justify-start">
                 <!-- TikTok Logo Branding (Shown on welcome view, hidden on registration form view) -->
                 <div class="w-full flex flex-col items-center justify-center mb-2 shrink-0">
                     <img src="images/icon_tiktok.png" alt="TikTok Logo"
@@ -49,10 +49,10 @@
 
                 <!-- Invitation Text Box (Darkened glass background - font-size 13px) -->
                 <div id="invitationBox"
-                    class="w-full glass-panel rounded-3xl p-6 text-white text-[13px] leading-relaxed text-justify shadow-2xl space-y-5 shrink-0">
+                    class="w-full glass-panel rounded-3xl p-3 text-white text-[13px] leading-relaxed text-justify shadow-2xl space-y-4 shrink-0">
                     <div class="text-center flex items-center justify-center gap-2">
                         <i data-lucide="megaphone" class="w-5 h-5 text-orange-400"></i>
-                        <h2 class="text-[15px] font-normal text-white text-center leading-tight">
+                        <h2 class="text-[14px] font-normal text-white text-center leading-tight p-3">
                             ขอเชิญชวนพนักงานสาขาทุกท่าน</h2>
                     </div>
 
@@ -67,14 +67,14 @@
                     <!-- OBJECTIVE GRID - 4 ITEMS -->
                     <div class="space-y-4 pt-2">
                         <div class="border-t border-white/10 pt-4 pb-1">
-                            <h4 class="text-center font-normal text-[13px] tracking-widest text-slate-300 uppercase">
+                            <h4 class="text-center font-normal text-[13px] tracking-widest text-slate-300">
                                 OBJECTIVES / วัตถุประสงค์กิจกรรม</h4>
                         </div>
 
                         <div class="grid grid-cols-1 gap-3.5 text-[13px]">
 
                             <!-- Objective 01 -->
-                            <div class="objective-card rounded-2xl p-4 flex gap-4 items-start text-left">
+                            <div class="objective-card rounded-2xl p-3 flex gap-3 items-start text-left">
                                 <div
                                     class="w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center text-[12px] text-white shrink-0 shadow-lg">
                                     1</div>
@@ -89,7 +89,7 @@
                             </div>
 
                             <!-- Objective 02 -->
-                            <div class="objective-card rounded-2xl p-4 flex gap-4 items-start text-left">
+                            <div class="objective-card rounded-2xl p-3 flex gap-3 items-start text-left">
                                 <div
                                     class="w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center text-[12px] text-white shrink-0 shadow-lg">
                                     2</div>
@@ -104,7 +104,7 @@
                             </div>
 
                             <!-- Objective 03 -->
-                            <div class="objective-card rounded-2xl p-4 flex gap-4 items-start text-left">
+                            <div class="objective-card rounded-2xl p-3 flex gap-3 items-start text-left">
                                 <div
                                     class="w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center text-[12px] text-white shrink-0 shadow-lg">
                                     3</div>
@@ -119,7 +119,7 @@
                             </div>
 
                             <!-- Objective 04 -->
-                            <div class="objective-card rounded-2xl p-4 flex gap-4 items-start text-left">
+                            <div class="objective-card rounded-2xl p-3 flex gap-3 items-start text-left">
                                 <div
                                     class="w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center text-[12px] text-white shrink-0 shadow-lg">
                                     4</div>
@@ -147,7 +147,7 @@
             </div>
 
             <!-- VIEW 2: LOGIN / REGISTER FORM SCREEN -->
-            <div id="formView" class="w-full p-4 pb-6 space-y-4 flex flex-col justify-start hidden">
+            <div id="formView" class="w-full p-3 pb-6 space-y-4 flex flex-col justify-start hidden">
                 <div class="w-full flex justify-start max-w-[420px] mx-auto shrink-0">
                     <button onclick="window.transitionToWelcome()"
                         class="flex items-center gap-1 text-[13px] text-slate-300 hover:text-white bg-slate-900/40 px-3 py-1.5 rounded-full border border-white/10 font-normal">
@@ -161,7 +161,7 @@
 
                     <!-- Tab Selector Container -->
                     <div
-                        class="w-full bg-black/20 p-1 rounded-2xl flex items-center justify-between mb-6 border border-white/10">
+                        class="w-full bg-black/70 p-1 rounded-2xl flex items-center justify-between mb-6 border border-white/10">
                         <button onclick="window.switchFormTab('login')" id="tabLoginBtn"
                             class="flex-1 py-2.5 rounded-xl text-[13px] font-normal transition-all duration-300 bg-white text-slate-900 shadow-md">
                             เข้าสู่ระบบ
@@ -335,7 +335,9 @@
             </div>
 
             <!-- VIEW 3: SUCCESS VIEW -->
-            <div id="successPanel" class="w-full flex-1 p-8 flex flex-col items-center justify-center hidden">
+            <div id="successPanel"
+                class="w-full max-w-[420px] glass-panel rounded-3xl p-6 flex flex-col items-center mx-auto text-[13px] shrink-0 hidden"
+                style="width:92%; margin: 90px auto 0 auto;">
                 <div
                     class="w-16 h-16 bg-green-500/20 border border-green-500/30 rounded-full flex items-center justify-center text-green-400 mb-6 shrink-0">
                     <i data-lucide="check-circle-2" class="w-10 h-10 animate-bounce"></i>
@@ -344,11 +346,11 @@
                     <h3 class="text-2xl font-bold text-green-400 text-[20px]">ลงทะเบียนสำเร็จ!</h3>
                     <p class="text-[13px] text-slate-100 leading-relaxed px-2 font-normal">
                         ยินดีต้อนรับคุณ <span id="registeredName" class="font-normal text-orange-400 text-lg">-</span>
-                        เข้าสู่ครอบครัว Branch TIKTOK, The IDOL เรียบร้อยแล้ว
+                        <br>เข้าสู่ครอบครัว Branch TIKTOK, The IDOL เรียบร้อยแล้ว
                     </p>
                 </div>
                 <div
-                    class="w-full bg-white/5 border border-white/10 rounded-2xl p-4 text-[13px] text-white/80 text-center font-normal my-4 shrink-0">
+                    class="w-full bg-white/5 border border-white/10 rounded-2xl p-3 text-[13px] text-white/80 text-center font-normal my-4 shrink-0">
                     ระบบได้รับข้อมูลเรียบร้อย ขอขอบคุณที่ร่วมสร้างสรรค์ผลงานเพื่อลูกค้ากับ ttb
                 </div>
                 <button onclick="window.resetToForm()"
@@ -360,7 +362,7 @@
             <!-- VIEW 5: QUIZ INTRO VIEW (Triggered when StartWelcome == 0 - 95% of Viewport Height) -->
             <div id="quizIntroView"
                 class="w-full max-w-[420px] glass-panel rounded-3xl p-8 flex flex-col items-center justify-center mx-auto hidden"
-                style="height: 95vh;">
+                style="height: 90vh; width:92%;">
                 <div
                     class="w-20 h-24 bg-orange-500/10 border border-orange-500/30 rounded-3xl flex items-center justify-center text-orange-400 mb-8 animate-pulse shrink-0">
                     <i data-lucide="clipboard-signature" class="w-10 h-10"></i>
@@ -377,12 +379,12 @@
             <!-- VIEW 6: QUIZ QUESTION VIEW (Adjusted margin-top: -40px) -->
             <div id="quizQuestionView"
                 class="w-full max-w-[420px] glass-panel rounded-3xl p-6 flex flex-col justify-between mx-auto hidden animate-fadeIn"
-                style="min-h-[500px];">
+                style="min-h-[500px]; width:90%;">
                 <div class="w-full space-y-4">
                     <!-- Top row image centered - adjusted width to 60% as requested -->
                     <div class="w-full flex justify-center mb-2 shrink-0">
-                        <img src="https://firebasestorage.googleapis.com/v0/b/faifah-ttb.appspot.com/o/Tiktok%2Fquiz.png?alt=media&token=8ed29efe-27ae-474c-98ad-59a99f9c9dd5"
-                            alt="Quiz Banner" class="w-[60%] max-w-[280px] h-auto object-contain rounded-xl">
+                        <img src="images/icon_tiktok.png" alt="TikTok Logo"
+                            class="w-[80%] max-w-[380px] h-auto object-contain filter drop-shadow-[0_10px_25px_rgba(0,0,0,0.3)]">
                     </div>
 
                     <div class="flex justify-between items-center border-b border-white/10 pb-3 shrink-0">
@@ -426,7 +428,7 @@
 
                 <!-- Dashboard Top blue header bar (Fixed at very top, width 100% of container) -->
                 <div
-                    class="fixed top-0 left-1/2 -translate-x-1/2 w-full max-w-[500px] bg-[#0056ff] px-6 py-4 shadow-lg border-b border-blue-400/20 flex justify-between items-center shrink-0 z-40 h-[68px]">
+                    class="fixed top-0 left-1/2 -translate-x-1/2 w-full max-w-[500px] bg-header px-6 py-4 shadow-lg border-b border-blue-400/20 flex justify-between items-center shrink-0 z-40 h-[68px]">
                     <div class="flex items-center gap-3">
                         <!-- Employee Profile Photo (Added as requested) -->
                         <div
@@ -452,13 +454,13 @@
                 </div>
 
                 <!-- Scrollable Dashboard Content Area (With appropriate padding to prevent top/bottom overlap) -->
-                <div id="dashboardScrollArea" class="flex-1 overflow-y-auto p-4 space-y-4 w-full pt-[60px] pb-[88px]">
+                <div id="dashboardScrollArea" class="flex-1 overflow-y-auto p-3 space-y-4 w-full pt-[60px] pb-[88px]">
 
                     <!-- DASHBOARD TAB CONTENT 1: HOME -->
                     <div id="dash-tab-home" class="dash-tab-content space-y-4">
 
 
-                        <div class="glass-panel rounded-2xl p-5 space-y-2">
+                        <div class="glass-panel rounded-2xl p-4 space-y-2">
                             <h4 class="text-white font-normal text-sm">ยินดีต้อนรับสู่แคมเปญหลัก!</h4>
                             <p class="text-xs text-slate-300 leading-relaxed font-light">
                                 ขอขอบคุณพนักงานสาขาทุกท่านที่ร่วมสร้างความเชื่อมั่นให้ลูกค้ารับรู้ว่า ttb
@@ -495,21 +497,18 @@
                             </div>
 
                             <!-- 2. วัตถุประสงค์ (แสดงแถวละ 2 กล่อง) -->
-                            <div class="glass-panel rounded-3xl p-5 space-y-4">
+                            <div class="glass-panel rounded-3xl p-4 space-y-4">
                                 <h4
-                                    class="text-center font-semibold text-sm tracking-wider text-orange-400 border-b border-white/10 pb-2">
+                                    class="text-center text-sm tracking-wider font-color-yellow border-b border-white/10 pb-2">
                                     OBJECTIVE / วัตถุประสงค์
                                 </h4>
                                 <div class="grid grid-cols-2 gap-3 text-[12px]">
                                     <!-- Box 1 -->
                                     <div
                                         class="objective-card rounded-2xl p-3 flex flex-col items-center text-center space-y-1.5">
-                                        <div
-                                            class="w-7 h-7 rounded-full bg-blue-600 flex items-center justify-center text-[12px] text-white font-bold shrink-0 shadow-lg">
-                                            01</div>
                                         <i data-lucide="heart" class="w-5 h-5 text-orange-400 fill-orange-400/20"></i>
-                                        <span
-                                            class="text-orange-400 leading-tight">สร้างความเชื่อมั่นให้ลูกค้า<br>(Trusted)</span>
+                                        <span class="text-orange-400 leading-tight">สร้างความเชื่อมั่นให้ลูกค้า
+                                            (Trusted)</span>
                                         <p class="text-[12px] text-slate-300 leading-snug font-light">
                                             ให้ลูกค้ารู้จักพนักงานและสาขา ttb มากขึ้น เห็นหน้า รู้จักตัวตน ติดต่อได้จริง
                                         </p>
@@ -517,9 +516,6 @@
                                     <!-- Box 2 -->
                                     <div
                                         class="objective-card rounded-2xl p-3 flex flex-col items-center text-center space-y-1.5">
-                                        <div
-                                            class="w-7 h-7 rounded-full bg-blue-600 flex items-center justify-center text-[12px] text-white font-bold shrink-0 shadow-lg">
-                                            02</div>
                                         <i data-lucide="shield-alert" class="w-5 h-5 text-orange-400"></i>
                                         <span class="text-orange-400 leading-tight">ป้องกันการแอบอ้าง<br>(Scam
                                             Prevention)</span>
@@ -529,9 +525,6 @@
                                     <!-- Box 3 -->
                                     <div
                                         class="objective-card rounded-2xl p-3 flex flex-col items-center text-center space-y-1.5">
-                                        <div
-                                            class="w-7 h-7 rounded-full bg-blue-600 flex items-center justify-center text-[12px] text-white font-bold shrink-0 shadow-lg">
-                                            03</div>
                                         <i data-lucide="store" class="w-5 h-5 text-orange-400"></i>
                                         <span class="text-orange-400 leading-tight">เพิ่มการรับรู้สาขา<br>(Branch
                                             Awareness)</span>
@@ -541,9 +534,6 @@
                                     <!-- Box 4 -->
                                     <div
                                         class="objective-card rounded-2xl p-3 flex flex-col items-center text-center space-y-1.5">
-                                        <div
-                                            class="w-7 h-7 rounded-full bg-blue-600 flex items-center justify-center text-[12px] text-white font-bold shrink-0 shadow-lg">
-                                            04</div>
                                         <i data-lucide="megaphone" class="w-5 h-5 text-orange-400"></i>
                                         <span class="text-orange-400 leading-tight">พัฒนาพนักงานสาขาสู่<br>Employee
                                             Influencer</span>
@@ -554,9 +544,9 @@
                             </div>
 
                             <!-- 3. ประโยชน์ที่คาดว่าจะได้รับ -->
-                            <div class="glass-panel rounded-3xl p-5 space-y-4 text-left">
+                            <div class="glass-panel rounded-3xl p-4 space-y-4 text-left">
                                 <h4
-                                    class="text-center font-semibold text-sm tracking-wider text-orange-400 border-b border-white/10 pb-2">
+                                    class="text-center text-sm tracking-wider font-color-yellow border-b border-white/10 pb-2">
                                     ประโยชน์ที่คาดว่าจะได้รับ
                                 </h4>
                                 <div class="space-y-4 text-xs">
@@ -614,22 +604,21 @@
                             </div>
 
                             <!-- 4. ระยะเวลาการแข่งขัน -->
-                            <div class="glass-panel rounded-3xl p-5 space-y-4 text-left">
+                            <div class="glass-panel rounded-3xl p-4 space-y-4 text-left">
                                 <h4
-                                    class="text-center font-semibold text-sm tracking-wider text-orange-400 border-b border-white/10 pb-2">
+                                    class="text-center text-sm tracking-wider font-color-yellow border-b border-white/10 pb-2">
                                     ระยะเวลาการแข่งขัน
                                 </h4>
 
                                 <div
-                                    class="w-full bg-orange-500 text-white rounded-xl py-2 px-3 text-center text-xs font-semibold shadow-md">
-                                    ระยะเวลาการแข่งขัน : เดือนกรกฎาคม – เดือนตุลาคม 2569
+                                    class="w-full bg-orange-500 text-white rounded-xl py-2 px-3 text-center text-xs shadow-md">
+                                    ระยะเวลาการแข่งขัน<br>เดือนกรกฎาคม – เดือนตุลาคม 2569
                                 </div>
 
                                 <!-- ผู้เข้าร่วม -->
                                 <div class="p-3 bg-blue-600/20 border border-blue-500/10 rounded-xl space-y-2">
                                     <span class="text-orange-400 font-medium text-xs block">👥 ผู้เข้าร่วม</span>
-                                    <div
-                                        class="w-full bg-white text-blue-900 text-center py-2 rounded-xl text-xs font-semibold">
+                                    <div class="w-full bg-orange-500 text-center py-2 rounded-xl text-xs">
                                         พนักงานสาขา ทุกตำแหน่งทั่วประเทศ
                                     </div>
                                 </div>
@@ -642,23 +631,15 @@
                                     <ul class="space-y-1.5 pl-1 text-xs text-slate-300 font-light">
                                         <li class="flex items-center gap-1.5">
                                             <i data-lucide="check-circle" class="w-3.5 h-3.5 text-blue-400"></i>
-                                            <span>ชื่อ - นามสกุล</span>
+                                            <span>รหัสพนักงาน</span> | <span>ชื่อ - นามสกุล</span>
                                         </li>
                                         <li class="flex items-center gap-1.5">
                                             <i data-lucide="check-circle" class="w-3.5 h-3.5 text-blue-400"></i>
-                                            <span>รหัสพนักงาน</span>
+                                            <span>ตำแหน่ง</span> | <span>รหัสสาขา</span>
                                         </li>
                                         <li class="flex items-center gap-1.5">
                                             <i data-lucide="check-circle" class="w-3.5 h-3.5 text-blue-400"></i>
-                                            <span>ตำแหน่ง</span>
-                                        </li>
-                                        <li class="flex items-center gap-1.5">
-                                            <i data-lucide="check-circle" class="w-3.5 h-3.5 text-blue-400"></i>
-                                            <span>รหัสสาขา</span>
-                                        </li>
-                                        <li class="flex items-center gap-1.5">
-                                            <i data-lucide="check-circle" class="w-3.5 h-3.5 text-blue-400"></i>
-                                            <span>TikTok Username (ใช้สำหรับตรวจสอบและนับคะแนน)</span>
+                                            <span>TikTok Username</span> | <span>TikTok URL </span>
                                         </li>
                                     </ul>
                                 </div>
@@ -697,20 +678,40 @@
 
                         <!-- Sub-tab 2: ข้อกำหนด -->
                         <div id="details-sub-content-rules" class="details-sub-tab-content space-y-4 hidden">
-                            <!-- 1. ข้อบังคับต้องมี (Compliance Requirement) -->
+                            <!-- 1. เกณฑ์การตัดสิน (Judging Criteria) -->
+                            <div class="glass-panel rounded-3xl overflow-hidden border border-white/10 text-left">
+                                <div class="bg-[#0056ff] p-3 text-center border-b border-white/10">
+                                    <h5 class="text-center text-sm font-color-yellow tracking-widest">
+                                        เกณฑ์การตัดสิน</h5>
+                                </div>
+                                <div class="p-4 text-center space-y-3">
+                                    <span class="text-xl text-orange-400 tracking-wide block">จำนวนคลิป</span>
+                                    <p class="text-xs text-white leading-relaxed">
+                                        ที่โพสต์ต่อเดือนบนช่องทาง TikTok<br>
+                                        <span class="text-orange-400">ตั้งแต่เดือน มิ.ย. เป็นต้นไป</span>
+                                    </p>
+                                    <p class="text-[12px] text-slate-300 font-light leading-relaxed">
+                                        นับเฉพาะคลิปที่ผ่านการตรวจสอบ<br>
+                                        จากทีมงานเรียบร้อยแล้ว
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!-- 2. ข้อบังคับต้องมี (Compliance Requirement) -->
                             <div class="glass-panel rounded-3xl overflow-hidden border border-white/10 text-left">
                                 <div class="bg-[#0f2d59] p-3.5 text-center border-b border-white/10">
-                                    <h5 class="text-white font-bold text-xs uppercase tracking-wider">COMPLIANCE
+                                    <h5 class="text-center text-sm font-color-yellow tracking-widest">
+                                        COMPLIANCE
                                         REQUIREMENT</h5>
                                     <p class="text-[12px] text-slate-300 font-light mt-0.5">
                                         (ต้องปฏิบัติในทุกคลิปที่มีเนื้อหาผลิตภัณฑ์ ดังนี้)</p>
                                 </div>
-                                <div class="p-4 space-y-3 text-[12px]">
+                                <div class="p-3 space-y-3 text-[12px]">
                                     <!-- สินเชื่อ -->
                                     <div
                                         class="p-2.5 bg-white/5 rounded-xl border border-white/5 flex items-center gap-3">
                                         <div
-                                            class="w-10 h-10 rounded-lg bg-blue-600/30 flex items-center justify-center shrink-0 gap-0.5">
+                                            class="w-10 h-10 rounded-lg flex items-center justify-center shrink-0 gap-0.5 bg-color-blue">
                                             <i data-lucide="home" class="w-4 h-4 text-blue-400"></i>
                                             <i data-lucide="car" class="w-4 h-4 text-orange-400"></i>
                                         </div>
@@ -725,7 +726,7 @@
                                     <div
                                         class="p-2.5 bg-white/5 rounded-xl border border-white/5 flex items-center gap-3">
                                         <div
-                                            class="w-10 h-10 rounded-lg bg-blue-600/30 flex items-center justify-center shrink-0">
+                                            class="w-10 h-10 rounded-lg flex items-center justify-center shrink-0 bg-color-blue">
                                             <i data-lucide="credit-card" class="w-5 h-5 text-blue-400"></i>
                                         </div>
                                         <div class="flex-1 min-w-0">
@@ -739,13 +740,13 @@
                                     <div
                                         class="p-2.5 bg-white/5 rounded-xl border border-white/5 flex items-center gap-3">
                                         <div
-                                            class="w-10 h-10 rounded-lg bg-blue-600/30 flex items-center justify-center shrink-0">
+                                            class="w-10 h-10 rounded-lg flex items-center justify-center shrink-0 bg-color-blue">
                                             <i data-lucide="shield-check" class="w-5 h-5 text-green-400"></i>
                                         </div>
                                         <div class="flex-1 min-w-0">
                                             <p class="font-medium text-white text-[12px] leading-tight">
                                                 ผลิตภัณฑ์ประกันชีวิต</p>
-                                            <p class="text-[12px] text-slate-300 font-normal mt-0.5 leading-snug">
+                                            <p class="text-[12px] text-orange-400 mt-0.5 leading-snug">
                                                 "ผู้ซื้อควรทำความเข้าใจในรายละเอียดความคุ้มครอง เงื่อนไข
                                                 และข้อยกเว้นก่อนตัดสินใจทำประกันทุกครั้ง"</p>
                                         </div>
@@ -754,13 +755,13 @@
                                     <div
                                         class="p-2.5 bg-white/5 rounded-xl border border-white/5 flex items-center gap-3">
                                         <div
-                                            class="w-10 h-10 rounded-lg bg-blue-600/30 flex items-center justify-center shrink-0">
+                                            class="w-10 h-10 rounded-lg flex items-center justify-center shrink-0 bg-color-blue">
                                             <i data-lucide="shield" class="w-5 h-5 text-yellow-400"></i>
                                         </div>
                                         <div class="flex-1 min-w-0">
                                             <p class="font-medium text-white text-[12px] leading-tight">
                                                 ผลิตภัณฑ์ประกันภัยบ้าน</p>
-                                            <p class="text-[12px] text-slate-300 font-normal mt-0.5 leading-snug">
+                                            <p class="text-[12px] text-orange-400 mt-0.5 leading-snug">
                                                 "การทำประกันภัยไม่มีผลต่อการพิจารณาอนุมัติสินเชื่อ
                                                 ผู้กู้มีสิทธิ์เลือกทำหรือปฏิเสธการทำประกันภัยได้โดยสมัครใจ"</p>
                                         </div>
@@ -774,46 +775,28 @@
                                 </div>
                             </div>
 
-                            <!-- 2. เกณฑ์การตัดสิน (Judging Criteria) -->
-                            <div class="glass-panel rounded-3xl overflow-hidden border border-white/10 text-left">
-                                <div class="bg-[#0056ff] p-3 text-center border-b border-white/10">
-                                    <h5 class="text-white font-bold text-xs">เกณฑ์การตัดสิน</h5>
-                                </div>
-                                <div class="p-5 text-center space-y-3">
-                                    <span
-                                        class="text-2xl font-extrabold text-orange-400 tracking-wide block">จำนวนคลิป</span>
-                                    <p class="text-xs text-white font-semibold leading-relaxed">
-                                        ที่โพสต์ต่อเดือนบนช่องทาง TikTok<br>
-                                        <span class="text-orange-400">ตั้งแต่เดือน มิ.ย. เป็นต้นไป</span>
-                                    </p>
-                                    <p class="text-[12px] text-slate-300 font-light leading-relaxed">
-                                        นับเฉพาะคลิปที่ผ่านการตรวจสอบ<br>
-                                        จากทีมงานเรียบร้อยแล้ว
-                                    </p>
-                                </div>
-                            </div>
-
                             <!-- 3. แนวทางการปฏิบัติการใช้ Social Media (Do & Don't) -->
-                            <div class="glass-panel rounded-3xl p-5 space-y-4 text-left">
-                                <h4
-                                    class="text-center font-semibold text-sm tracking-wider text-orange-400 border-b border-white/10 pb-2.5">
-                                    แนวทางการปฏิบัติการใช้ Social Media อย่างไรให้ดีต่อตัวและองค์กร<br>
+                            <div class="glass-panel rounded-3xl p-4 space-y-4 text-left">
+                                <h4 class="text-center text-sm font-color-yellow tracking-widest">
+                                    แนวทางการปฏิบัติการใช้ Social Media<br>อย่างไรให้ดีต่อตัวและองค์กร<br>
                                     <span class="text-[10px] text-slate-300 font-light block mt-1">(HR Communication on
                                         11-July-2022)</span>
                                 </h4>
 
                                 <!-- DO & DON'T CONTAINER -->
                                 <div class="space-y-4">
-                                    <div class="bg-blue-600/10 border border-blue-500/20 rounded-2xl p-4 space-y-4">
+                                    <div class="bg-blue-600/10 border border-blue-500/20 rounded-2xl p-3 space-y-4">
                                         <div class="flex items-center gap-2 border-b border-white/10 pb-2">
                                             <i data-lucide="info" class="w-5 h-5 text-orange-400"></i>
-                                            <span class="text-orange-400 font-bold text-sm">Do & Don't เบื้องต้น</span>
+                                            <span class="font-normal text-[13px] tracking-widest text-slate-300">Do &
+                                                Don't
+                                                เบื้องต้น</span>
                                         </div>
 
                                         <div class="space-y-3.5 text-xs leading-relaxed font-light text-slate-200">
                                             <!-- ข้อมูล -->
                                             <div class="space-y-1">
-                                                <span class="font-semibold text-white flex items-center gap-1.5">
+                                                <span class="text-white flex items-center gap-1.5">
                                                     <i data-lucide="search" class="w-3.5 h-3.5 text-blue-400"></i>ข้อมูล
                                                 </span>
                                                 <ul class="list-disc pl-5 space-y-1 text-slate-300">
@@ -826,7 +809,7 @@
 
                                             <!-- คำพูด ภาษาและเนื้อหา -->
                                             <div class="space-y-1">
-                                                <span class="font-semibold text-white flex items-center gap-1.5">
+                                                <span class="text-white flex items-center gap-1.5">
                                                     <i data-lucide="message-square"
                                                         class="w-3.5 h-3.5 text-blue-400"></i>คำพูด ภาษาและเนื้อหา
                                                     รวมถึงการแสดงความคิดเห็น
@@ -844,7 +827,7 @@
 
                                             <!-- การแต่งกายและกิริยา -->
                                             <div class="space-y-1">
-                                                <span class="font-semibold text-white flex items-center gap-1.5">
+                                                <span class="text-white flex items-center gap-1.5">
                                                     <i data-lucide="user"
                                                         class="w-3.5 h-3.5 text-blue-400"></i>การแต่งกายและกิริยา
                                                 </span>
@@ -856,7 +839,7 @@
 
                                             <!-- Branding -->
                                             <div class="space-y-1 border-t border-white/5 pt-2">
-                                                <span class="font-semibold text-white flex items-center gap-1.5">
+                                                <span class="text-white flex items-center gap-1.5">
                                                     <i data-lucide="award"
                                                         class="w-3.5 h-3.5 text-orange-400"></i>Branding
                                                     (ภาพลักษณ์แบรนด์)
@@ -872,7 +855,7 @@
 
                                             <!-- สร้าง Engagement กับผู้ชม -->
                                             <div class="space-y-1">
-                                                <span class="font-semibold text-white flex items-center gap-1.5">
+                                                <span class="text-white flex items-center gap-1.5">
                                                     <i data-lucide="thumbs-up"
                                                         class="w-3.5 h-3.5 text-green-400"></i>สร้าง Engagement กับผู้ชม
                                                     (Like/Comment/Share/Send/Repost)
@@ -894,11 +877,11 @@
                                 <!-- 4 CARDS SECTION -->
                                 <div class="space-y-4 pt-2">
                                     <!-- Card 1 -->
-                                    <div class="bg-white/5 border border-white/10 rounded-2xl p-4 space-y-3">
+                                    <div class="bg-white/5 border border-white/10 rounded-2xl p-3 space-y-3">
                                         <div class="flex justify-between items-center border-b border-white/10 pb-2">
-                                            <span class="text-white font-bold text-xs flex items-center gap-1.5">
+                                            <span class="text-white text-[13px] flex items-center gap-1.5">
                                                 <span
-                                                    class="w-5 h-5 bg-blue-600 rounded-full flex items-center justify-center text-[10px] text-white">1</span>
+                                                    class="w-5 h-5 bg-blue-400 rounded-full flex items-center justify-center text-[13px] text-white">1</span>
                                                 <span>การใช้ Social Media</span>
                                             </span>
                                             <i data-lucide="smartphone" class="w-4 h-4 text-blue-400"></i>
@@ -929,9 +912,9 @@
                                     </div>
 
                                     <!-- Card 2 -->
-                                    <div class="bg-white/5 border border-white/10 rounded-2xl p-4 space-y-3">
+                                    <div class="bg-white/5 border border-white/10 rounded-2xl p-3 space-y-3">
                                         <div class="flex justify-between items-center border-b border-white/10 pb-2">
-                                            <span class="text-white font-bold text-xs flex items-center gap-1.5">
+                                            <span class="text-white text-[13px] flex items-center gap-1.5">
                                                 <span
                                                     class="w-5 h-5 bg-blue-600 rounded-full flex items-center justify-center text-[10px] text-white">2</span>
                                                 <span>การแสดงออก กิริยา ท่าทาง การแต่งกาย...</span>
@@ -973,9 +956,9 @@
                                     </div>
 
                                     <!-- Card 3 -->
-                                    <div class="bg-white/5 border border-white/10 rounded-2xl p-4 space-y-3">
+                                    <div class="bg-white/5 border border-white/10 rounded-2xl p-3 space-y-3">
                                         <div class="flex justify-between items-center border-b border-white/10 pb-2">
-                                            <span class="text-white font-bold text-xs flex items-center gap-1.5">
+                                            <span class="text-white text-[13px] flex items-center gap-1.5">
                                                 <span
                                                     class="w-5 h-5 bg-blue-600 rounded-full flex items-center justify-center text-[10px] text-white">3</span>
                                                 <span>การแสดงความคิดเห็น</span>
@@ -1019,9 +1002,9 @@
                                     </div>
 
                                     <!-- Card 4 -->
-                                    <div class="bg-white/5 border border-white/10 rounded-2xl p-4 space-y-3">
+                                    <div class="bg-white/5 border border-white/10 rounded-2xl p-3 space-y-3">
                                         <div class="flex justify-between items-center border-b border-white/10 pb-2">
-                                            <span class="text-white font-bold text-xs flex items-center gap-1.5">
+                                            <span class="text-white text-[13px] flex items-center gap-1.5">
                                                 <span
                                                     class="w-5 h-5 bg-blue-600 rounded-full flex items-center justify-center text-[10px] text-white">4</span>
                                                 <span>การใช้ภาพ วิดีโอ สัญลักษณ์ และอุปกรณ์...</span>
@@ -1054,175 +1037,221 @@
 
 
                         <!-- Sub-tab 3: รางวัลแข่งขัน -->
-                        <div id="details-sub-content-rewards" class="details-sub-tab-content space-y-5 hidden text-left">
+                        <div id="details-sub-content-rewards"
+                            class="details-sub-tab-content space-y-5 hidden text-left">
                             <!-- 1. รางวัล Best Branch the Idol (รายสาขา) -->
                             <div class="glass-panel rounded-3xl overflow-hidden border border-white/10">
-                                <div class="bg-[#0056ff] p-4 text-center border-b border-white/10 relative">
-                                    <span class="absolute top-3 left-4 bg-white/20 text-white text-[10px] px-2 py-0.5 rounded-full font-medium">รายสาขา</span>
-                                    <h5 class="text-white font-bold text-sm">รางวัล Best Branch the Idol</h5>
-                                    <p class="text-[11px] text-blue-100 font-light mt-0.5">นับผลงานรายเดือน ตั้งแต่เดือนมิถุนายน - เดือนตุลาคม</p>
+                                <div class="bg-[#0056ff] p-3 text-center border-b border-white/10 relative">
+                                    <span
+                                        class="absolute top-3 left-4 bg-white/20 text-white text-[10px] px-2 py-0.5 rounded-full font-medium">รายสาขา</span>
+                                    <h5 class="text-sm font-color-yellow">รางวัล Best Branch the Idol</h5>
+                                    <p class="text-[11px] text-blue-100 font-light mt-0.5">นับผลงานรายเดือน
+                                        ตั้งแต่เดือนมิถุนายน - เดือนตุลาคม</p>
                                 </div>
-                                <div class="p-4 space-y-4">
+                                <div class="p-3 space-y-4">
                                     <div class="bg-blue-950/30 border border-blue-500/20 rounded-2xl p-3 text-center">
                                         <p class="text-xs text-slate-300 font-light">
-                                            โดยรางวัลจะถูกแบ่งตาม <strong class="text-orange-400 font-semibold">RH 1 / RH 2 / RH 3 / RH 4 / RH 5</strong>
+                                            โดยรางวัลจะถูกแบ่งตาม <strong class="text-orange-400 font-semibold">RH 1 /
+                                                RH 2 / RH 3 / RH 4 / RH 5</strong>
                                         </p>
                                     </div>
 
                                     <!-- Group 1: 8 คนขึ้นไป -->
                                     <div class="space-y-2.5">
-                                        <div class="flex items-center gap-1.5 text-xs font-semibold text-slate-200 border-b border-white/5 pb-1">
+                                        <div
+                                            class="flex items-center gap-1.5 text-xs font-semibold text-slate-200 border-b border-white/5 pb-1">
                                             <i data-lucide="users" class="w-4 h-4 text-orange-400"></i>
                                             <span>ทีมสาขาที่มีจำนวนพนักงาน 8 คนขึ้นไป</span>
                                         </div>
                                         <div class="grid grid-cols-1 gap-2">
                                             <!-- อันดับ 1 -->
-                                            <div class="flex items-center justify-between p-3 bg-white/5 border border-amber-500/30 rounded-2xl">
+                                            <div
+                                                class="flex items-center justify-between p-3 bg-white/5 border border-amber-500/30 rounded-2xl">
                                                 <div class="flex items-center gap-2.5">
-                                                    <span class="w-7 h-7 rounded-full bg-amber-500/20 border border-amber-500 flex items-center justify-center font-bold text-amber-400 text-xs">1</span>
+                                                    <span
+                                                        class="w-7 h-7 rounded-full bg-amber-500/20 border border-amber-500 flex items-center justify-center font-bold text-amber-400 text-xs">1</span>
                                                     <div>
                                                         <p class="text-xs font-semibold text-white">อันดับที่ 1</p>
                                                         <p class="text-[11px] text-slate-300 font-light">งบจัดเลี้ยง</p>
                                                     </div>
                                                 </div>
-                                                <span class="text-xs font-bold text-amber-400 bg-amber-500/10 px-3 py-1 rounded-xl">4,000 บาท</span>
+                                                <span
+                                                    class="text-xs font-bold text-amber-400 bg-amber-500/10 px-3 py-1 rounded-xl">4,000
+                                                    บาท</span>
                                             </div>
                                             <!-- อันดับ 2 -->
-                                            <div class="flex items-center justify-between p-3 bg-white/5 border border-slate-400/30 rounded-2xl">
+                                            <div
+                                                class="flex items-center justify-between p-3 bg-white/5 border border-slate-400/30 rounded-2xl">
                                                 <div class="flex items-center gap-2.5">
-                                                    <span class="w-7 h-7 rounded-full bg-slate-400/20 border border-slate-400 flex items-center justify-center font-bold text-slate-300 text-xs">2</span>
+                                                    <span
+                                                        class="w-7 h-7 rounded-full bg-slate-400/20 border border-slate-400 flex items-center justify-center font-bold text-slate-300 text-xs">2</span>
                                                     <div>
                                                         <p class="text-xs font-semibold text-white">อันดับที่ 2</p>
                                                         <p class="text-[11px] text-slate-300 font-light">งบจัดเลี้ยง</p>
                                                     </div>
                                                 </div>
-                                                <span class="text-xs font-bold text-slate-300 bg-slate-400/10 px-3 py-1 rounded-xl">3,000 บาท</span>
+                                                <span
+                                                    class="text-xs font-bold text-slate-300 bg-slate-400/10 px-3 py-1 rounded-xl">3,000
+                                                    บาท</span>
                                             </div>
                                             <!-- อันดับ 3-5 -->
-                                            <div class="flex items-center justify-between p-3 bg-white/5 border border-amber-700/30 rounded-2xl">
+                                            <div
+                                                class="flex items-center justify-between p-3 bg-white/5 border border-amber-700/30 rounded-2xl">
                                                 <div class="flex items-center gap-2.5">
-                                                    <span class="w-7 h-7 rounded-full bg-amber-700/20 border border-amber-700 flex items-center justify-center font-bold text-amber-600 text-xs">3</span>
+                                                    <span
+                                                        class="w-7 h-7 rounded-full bg-amber-700/20 border border-amber-700 flex items-center justify-center font-bold text-amber-600 text-xs">3</span>
                                                     <div>
                                                         <p class="text-xs font-semibold text-white">อันดับที่ 3 - 5</p>
                                                         <p class="text-[11px] text-slate-300 font-light">งบจัดเลี้ยง</p>
                                                     </div>
                                                 </div>
-                                                <span class="text-xs font-bold text-amber-600 bg-amber-700/10 px-3 py-1 rounded-xl">2,000 บาท</span>
+                                                <span
+                                                    class="text-xs font-bold text-amber-600 bg-amber-700/10 px-3 py-1 rounded-xl">2,000
+                                                    บาท</span>
                                             </div>
                                         </div>
                                     </div>
 
                                     <!-- Group 2: น้อยกว่าหรือเทียบเท่า 8 คน -->
                                     <div class="space-y-2.5 pt-2">
-                                        <div class="flex items-center gap-1.5 text-xs font-semibold text-slate-200 border-b border-white/5 pb-1">
+                                        <div
+                                            class="flex items-center gap-1.5 text-xs font-semibold text-slate-200 border-b border-white/5 pb-1">
                                             <i data-lucide="user" class="w-4 h-4 text-blue-400"></i>
                                             <span>ทีมสาขาที่มีจำนวนพนักงาน น้อยกว่าหรือเทียบเท่า 8 คน</span>
                                         </div>
                                         <div class="grid grid-cols-1 gap-2">
                                             <!-- อันดับ 1 -->
-                                            <div class="flex items-center justify-between p-3 bg-white/5 border border-amber-500/30 rounded-2xl">
+                                            <div
+                                                class="flex items-center justify-between p-3 bg-white/5 border border-amber-500/30 rounded-2xl">
                                                 <div class="flex items-center gap-2.5">
-                                                    <span class="w-7 h-7 rounded-full bg-amber-500/20 border border-amber-500 flex items-center justify-center font-bold text-amber-400 text-xs">1</span>
+                                                    <span
+                                                        class="w-7 h-7 rounded-full bg-amber-500/20 border border-amber-500 flex items-center justify-center font-bold text-amber-400 text-xs">1</span>
                                                     <div>
                                                         <p class="text-xs font-semibold text-white">อันดับที่ 1</p>
                                                         <p class="text-[11px] text-slate-300 font-light">งบจัดเลี้ยง</p>
                                                     </div>
                                                 </div>
-                                                <span class="text-xs font-bold text-amber-400 bg-amber-500/10 px-3 py-1 rounded-xl">3,000 บาท</span>
+                                                <span
+                                                    class="text-xs font-bold text-amber-400 bg-amber-500/10 px-3 py-1 rounded-xl">3,000
+                                                    บาท</span>
                                             </div>
                                             <!-- อันดับ 2 -->
-                                            <div class="flex items-center justify-between p-3 bg-white/5 border border-slate-400/30 rounded-2xl">
+                                            <div
+                                                class="flex items-center justify-between p-3 bg-white/5 border border-slate-400/30 rounded-2xl">
                                                 <div class="flex items-center gap-2.5">
-                                                    <span class="w-7 h-7 rounded-full bg-slate-400/20 border border-slate-400 flex items-center justify-center font-bold text-slate-300 text-xs">2</span>
+                                                    <span
+                                                        class="w-7 h-7 rounded-full bg-slate-400/20 border border-slate-400 flex items-center justify-center font-bold text-slate-300 text-xs">2</span>
                                                     <div>
                                                         <p class="text-xs font-semibold text-white">อันดับที่ 2</p>
                                                         <p class="text-[11px] text-slate-300 font-light">งบจัดเลี้ยง</p>
                                                     </div>
                                                 </div>
-                                                <span class="text-xs font-bold text-slate-300 bg-slate-400/10 px-3 py-1 rounded-xl">2,000 บาท</span>
+                                                <span
+                                                    class="text-xs font-bold text-slate-300 bg-slate-400/10 px-3 py-1 rounded-xl">2,000
+                                                    บาท</span>
                                             </div>
                                             <!-- อันดับ 3-5 -->
-                                            <div class="flex items-center justify-between p-3 bg-white/5 border border-amber-700/30 rounded-2xl">
+                                            <div
+                                                class="flex items-center justify-between p-3 bg-white/5 border border-amber-700/30 rounded-2xl">
                                                 <div class="flex items-center gap-2.5">
-                                                    <span class="w-7 h-7 rounded-full bg-amber-700/20 border border-amber-700 flex items-center justify-center font-bold text-amber-600 text-xs">3</span>
+                                                    <span
+                                                        class="w-7 h-7 rounded-full bg-amber-700/20 border border-amber-700 flex items-center justify-center font-bold text-amber-600 text-xs">3</span>
                                                     <div>
                                                         <p class="text-xs font-semibold text-white">อันดับที่ 3 - 5</p>
                                                         <p class="text-[11px] text-slate-300 font-light">งบจัดเลี้ยง</p>
                                                     </div>
                                                 </div>
-                                                <span class="text-xs font-bold text-amber-600 bg-amber-700/10 px-3 py-1 rounded-xl">1,000 บาท</span>
+                                                <span
+                                                    class="text-xs font-bold text-amber-600 bg-amber-700/10 px-3 py-1 rounded-xl">1,000
+                                                    บาท</span>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="bg-blue-950/45 p-3.5 text-center border-t border-white/10 text-[11px] text-blue-300 font-light leading-normal">
+                                <div
+                                    class="bg-blue-950/45 p-3.5 text-center border-t border-white/10 text-[11px] text-blue-300 font-light leading-normal">
                                     หมายเหตุ : แต่ละ RH จะได้รับรางวัลเดือนละ 10 รางวัล / รวมทุก RH ทั้งหมด 50 รางวัล
                                 </div>
                             </div>
 
                             <!-- 2. รางวัล Rising Star Creator (รายบุคคล) -->
                             <div class="glass-panel rounded-3xl overflow-hidden border border-white/10">
-                                <div class="bg-[#ff5c00] p-4 text-center border-b border-white/10 relative">
-                                    <span class="absolute top-3 left-4 bg-white/20 text-white text-[10px] px-2 py-0.5 rounded-full font-medium">รายบุคคล</span>
-                                    <h5 class="text-white font-bold text-sm">รางวัล Rising Star Creator</h5>
-                                    <p class="text-[11px] text-orange-100 font-light mt-0.5">นับผลงานสะสมตั้งแต่เดือนมิถุนายน - เดือนตุลาคม</p>
+                                <div class="bg-[#0056ff] p-3 text-center border-b border-white/10 relative">
+                                    <span
+                                        class="absolute top-3 left-4 bg-white/20 text-white text-[10px] px-2 py-0.5 rounded-full font-medium">รายบุคคล</span>
+                                    <h5 class="text-sm font-color-yellow">รางวัล Rising Star Creator</h5>
+                                    <p class="text-[11px] text-orange-100 font-light mt-0.5">
+                                        นับผลงานสะสมตั้งแต่เดือนมิถุนายน - เดือนตุลาคม</p>
                                 </div>
-                                <div class="p-4 space-y-4 text-xs">
+                                <div class="p-3 space-y-4 text-xs">
                                     <!-- Column 1: ยอดวิวคลิป -->
-                                    <div class="bg-white/5 border border-white/10 rounded-2xl p-4 space-y-3">
+                                    <div class="bg-white/5 border border-white/10 rounded-2xl p-3 space-y-3">
                                         <div class="space-y-1">
                                             <p class="font-semibold text-orange-400 text-xs flex items-center gap-1.5">
                                                 <i data-lucide="trending-up" class="w-4 h-4 text-orange-400"></i>
                                                 <span>พนักงานที่มียอดวิวคลิปบน TikTok รวมสูงสุด</span>
                                             </p>
-                                            <p class="text-[11px] text-slate-400 font-light">ยอดวิวคลิปบน TikTok (ไม่ต่ำกว่า 100,000 views) รวมสูงที่สุดอันดับ 1 จะได้รับ "เงินรางวัลเข้าบัญชีเงินเดือน"</p>
+                                            <p class="text-[11px] text-slate-400 font-light">ยอดวิวคลิปบน TikTok
+                                                (ไม่ต่ำกว่า 100,000 views) รวมสูงที่สุดอันดับ 1 จะได้รับ
+                                                "เงินรางวัลเข้าบัญชีเงินเดือน"</p>
                                         </div>
                                         <div class="space-y-2 pt-1">
-                                            <div class="flex items-center justify-between p-2.5 bg-white/5 border border-amber-500/20 rounded-xl">
+                                            <div
+                                                class="flex items-center justify-between p-2.5 bg-white/5 border border-amber-500/20 rounded-xl">
                                                 <span class="font-medium text-white flex items-center gap-2">
-                                                    <span class="w-6 h-6 rounded-full bg-amber-500/20 border border-amber-500 flex items-center justify-center font-bold text-amber-400 text-[10px]">1</span>
+                                                    <span
+                                                        class="w-6 h-6 rounded-full bg-amber-500/20 border border-amber-500 flex items-center justify-center font-bold text-amber-400 text-[10px]">1</span>
                                                     <span>อันดับที่ 1</span>
                                                 </span>
                                                 <span class="font-bold text-amber-400">เงินรางวัล 5,000 บาท</span>
                                             </div>
-                                            <div class="flex items-center justify-between p-2.5 bg-white/5 border border-blue-500/20 rounded-xl">
+                                            <div
+                                                class="flex items-center justify-between p-2.5 bg-white/5 border border-blue-500/20 rounded-xl">
                                                 <span class="font-medium text-white flex items-center gap-2">
                                                     <i data-lucide="gift" class="w-4 h-4 text-blue-400"></i>
                                                     <span>อันดับที่ 2 - 3</span>
                                                 </span>
-                                                <span class="text-slate-300 font-light">รับ GIFT SET ของขวัญพรีเมียมจาก ttb</span>
+                                                <span class="text-slate-300 font-light">รับ GIFT SET ของขวัญพรีเมียมจาก
+                                                    ttb</span>
                                             </div>
                                         </div>
                                     </div>
 
                                     <!-- Column 2: ยอดโพสต์สม่ำเสมอ -->
-                                    <div class="bg-white/5 border border-white/10 rounded-2xl p-4 space-y-3">
+                                    <div class="bg-white/5 border border-white/10 rounded-2xl p-3 space-y-3">
                                         <div class="space-y-1">
                                             <p class="font-semibold text-orange-400 text-xs flex items-center gap-1.5">
                                                 <i data-lucide="video" class="w-4 h-4 text-orange-400"></i>
                                                 <span>พนักงานที่มียอดโพสต์คลิปสม่ำเสมอ สูงสุด</span>
                                             </p>
-                                            <p class="text-[11px] text-slate-400 font-light">ยอดโพสต์คลิปสม่ำเสมอ บน TikTok (ไม่ต่ำกว่า 50 คลิป) สูงที่สุดอันดับ 1 จะได้รับ "เงินรางวัลเข้าบัญชีเงินเดือน"</p>
+                                            <p class="text-[11px] text-slate-400 font-light">ยอดโพสต์คลิปสม่ำเสมอ บน
+                                                TikTok (ไม่ต่ำกว่า 50 คลิป) สูงที่สุดอันดับ 1 จะได้รับ
+                                                "เงินรางวัลเข้าบัญชีเงินเดือน"</p>
                                         </div>
                                         <div class="space-y-2 pt-1">
-                                            <div class="flex items-center justify-between p-2.5 bg-white/5 border border-amber-500/20 rounded-xl">
+                                            <div
+                                                class="flex items-center justify-between p-2.5 bg-white/5 border border-amber-500/20 rounded-xl">
                                                 <span class="font-medium text-white flex items-center gap-2">
-                                                    <span class="w-6 h-6 rounded-full bg-amber-500/20 border border-amber-500 flex items-center justify-center font-bold text-amber-400 text-[10px]">1</span>
+                                                    <span
+                                                        class="w-6 h-6 rounded-full bg-amber-500/20 border border-amber-500 flex items-center justify-center font-bold text-amber-400 text-[10px]">1</span>
                                                     <span>อันดับที่ 1</span>
                                                 </span>
                                                 <span class="font-bold text-amber-400">เงินรางวัล 5,000 บาท</span>
                                             </div>
-                                            <div class="flex items-center justify-between p-2.5 bg-white/5 border border-blue-500/20 rounded-xl">
+                                            <div
+                                                class="flex items-center justify-between p-2.5 bg-white/5 border border-blue-500/20 rounded-xl">
                                                 <span class="font-medium text-white flex items-center gap-2">
                                                     <i data-lucide="gift" class="w-4 h-4 text-blue-400"></i>
                                                     <span>อันดับที่ 2 - 3</span>
                                                 </span>
-                                                <span class="text-slate-300 font-light">รับ GIFT SET ของขวัญพรีเมียมจาก ttb</span>
+                                                <span class="text-slate-300 font-light">รับ GIFT SET ของขวัญพรีเมียมจาก
+                                                    ttb</span>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="bg-orange-950/45 p-3.5 text-center border-t border-white/10 text-[11px] text-orange-300 font-light leading-normal">
+                                <div
+                                    class="bg-orange-950/45 p-3.5 text-center border-t border-white/10 text-[11px] text-orange-300 font-light leading-normal">
                                     หมายเหตุ : เงินรางวัลจะถูกนำไปคำนวณภาษีเงินได้ ตามฐานรายได้ของพนักงานแต่ละท่าน
                                 </div>
                             </div>
@@ -1231,42 +1260,65 @@
 
                     <!-- DASHBOARD TAB CONTENT: SUBMIT POST -->
                     <div id="dash-tab-submit-post" class="dash-tab-content space-y-4 hidden text-left">
-                        <div class="glass-panel rounded-2xl p-5 space-y-4">
-                            <h4
-                                class="text-orange-400 font-normal text-sm flex items-center gap-1.5 border-b border-white/10 pb-2">
-                                <i data-lucide="send" class="w-4 h-4 text-orange-400"></i>
-                                <span>ส่งผลงาน TikTok ของคุณ</span>
-                            </h4>
-                            <p class="text-xs text-slate-300 leading-relaxed font-light">
-                                ร่วมแชร์คลิปสร้างสรรค์ของคุณเพื่อแนะนำตัวตน, แนะนำสาขา ttb, ให้ความรู้ทางการเงิน,
-                                หรือเตือนภัยมิจฉาชีพ เพื่อลุ้นรับรางวัล!
-                            </p>
-                            <div class="space-y-3 pt-1 text-[13px]">
-                                <div>
-                                    <label class="block text-slate-300 text-xs mb-1">วันที่ Post TikTok</label>
-                                    <input type="date" id="workPostDateInput"
-                                        class="name-input w-full px-4 py-3 rounded-xl text-[13px]">
-                                </div>
-                                <div>
-                                    <label class="block text-slate-300 text-xs mb-1">ชื่อคลิปผลงาน</label>
-                                    <input type="text" id="workTitleInput" placeholder="ระบุชื่อผลงานของคลิป"
-                                        class="name-input w-full px-4 py-3 rounded-xl text-[13px]">
-                                </div>
-                                <div>
-                                    <label class="block text-slate-300 text-xs mb-1">ลิงก์วิดีโอ TikTok (TikTok
-                                        URL)</label>
-                                    <input type="text" id="workUrlInput" placeholder="https://www.tiktok.com/@..."
-                                        class="name-input w-full px-4 py-3 rounded-xl text-[13px]">
-                                </div>
-                                <button onclick="window.submitWork()"
-                                    class="btn-standard w-full bg-orange-500 hover:bg-orange-600 text-white font-normal rounded-xl h-[46px] mt-2">
-                                    <i data-lucide="send" class="w-4 h-4"></i> ส่งผลงานเข้าประกวด
+                        <div class="glass-panel rounded-2xl p-4 space-y-4">
+                            <div class="flex justify-between items-center border-b border-white/10 pb-2 cursor-pointer"
+                                onclick="window.toggleSubmitFormCollapse()">
+                                <h4 class="text-orange-400 font-normal text-sm flex items-center gap-1.5">
+                                    <i data-lucide="send" class="w-4 h-4 text-orange-400"></i>
+                                    <span>ส่งผลงาน TikTok ของคุณ</span>
+                                </h4>
+                                <button class="text-orange-400 hover:text-orange-300 focus:outline-none">
+                                    <i id="submitFormCollapseIcon" data-lucide="chevron-up" class="w-4 h-4"></i>
                                 </button>
+                            </div>
+                            <div id="submitFormContent" class="space-y-4">
+                                <p class="text-xs text-slate-300 leading-relaxed font-light">
+                                    ร่วมแชร์คลิปสร้างสรรค์ของคุณเพื่อแนะนำตัวตน, แนะนำสาขา ttb, ให้ความรู้ทางการเงิน,
+                                    หรือเตือนภัยมิจฉาชีพ เพื่อลุ้นรับรางวัล!
+                                </p>
+                                <div class="space-y-3 pt-1 text-[13px]">
+                                    <div>
+                                        <label class="block text-slate-300 text-xs mb-1">วันที่ Post TikTok</label>
+                                        <input type="date" id="workPostDateInput"
+                                            onchange="window.checkSubmitFormValidity()"
+                                            class="name-input w-full px-4 py-3 rounded-xl text-[13px]">
+                                    </div>
+                                    <div>
+                                        <label class="block text-slate-300 text-xs mb-1">ชื่อคลิปผลงาน</label>
+                                        <input type="text" id="workTitleInput" placeholder="ระบุชื่อผลงานของคลิป"
+                                            oninput="window.checkSubmitFormValidity()"
+                                            class="name-input w-full px-4 py-3 rounded-xl text-[13px]">
+                                    </div>
+                                    <div>
+                                        <label class="block text-slate-300 text-xs mb-1">ไอเดียทำคลิป</label>
+                                        <select id="workCategorySelect" onchange="window.checkSubmitFormValidity()"
+                                            class="name-input w-full px-4 py-3 rounded-xl text-[13px] bg-white text-slate-900 border border-slate-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-500">
+                                            <option value="">-- กรุณาเลือกไอเดียทำคลิป --</option>
+                                            <option value="Trusted Employee">Trusted Employee รู้จักฉัน รู้จักสาขา
+                                            </option>
+                                            <option value="Financial Knowledge">Financial Knowledge
+                                                ให้ความรู้ด้านการเงิน</option>
+                                            <option value="Product">Product แนะนำผลิตภัณฑ์ ttb</option>
+                                            <option value="Scam Alert">Scam Alert รู้ทันมิจฉาชีพ</option>
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <label class="block text-slate-300 text-xs mb-1">ลิงก์วิดีโอ TikTok (TikTok
+                                            URL)</label>
+                                        <input type="text" id="workUrlInput" placeholder="https://www.tiktok.com/@..."
+                                            oninput="window.checkSubmitFormValidity()"
+                                            class="name-input w-full px-4 py-3 rounded-xl text-[13px]">
+                                    </div>
+                                    <button onclick="window.submitWork()" id="workSubmitBtn" disabled
+                                        class="btn-standard w-full bg-orange-500 hover:bg-orange-600 text-white font-normal rounded-xl h-[46px] mt-2 disabled:opacity-50 disabled:cursor-not-allowed">
+                                        <i data-lucide="send" class="w-4 h-4"></i> ส่งผลงานเข้าประกวด
+                                    </button>
+                                </div>
                             </div>
                         </div>
 
                         <!-- Month Filter Container -->
-                        <div class="glass-panel rounded-2xl p-5 space-y-3">
+                        <div class="glass-panel rounded-2xl p-4 space-y-3">
                             <!--
                             <h4 class="text-orange-400 font-normal text-sm border-b border-white/10 pb-2">
                                 ตัวกรองเดือนโพสต์</h4>
@@ -1277,53 +1329,117 @@
                         </div>
 
                         <!-- User Submissions Table -->
-                        <div class="glass-panel rounded-2xl p-5 space-y-3">
-                            <h4 class="text-orange-400 font-normal text-sm border-b border-white/10 pb-2">
-                                ข้อมูลการส่งผลงาน</h4>
+                        <div class="glass-panel rounded-2xl p-4 space-y-3">
+                            <div class="flex justify-between items-center border-b border-white/10 pb-2">
+                                <h4 class="text-orange-400 font-normal text-sm">ข้อมูลการส่งผลงาน</h4>
+                                <div class="flex gap-2">
+                                    <button id="filterPendingBtn" onclick="window.setAdminFilter('pending')"
+                                        class="px-2.5 py-1 rounded-lg text-[10px] font-semibold transition-all bg-[#e26e2c] text-white shadow-md">รอผลโพสต์</button>
+                                    <button id="filterApprovedBtn" onclick="window.setAdminFilter('approved')"
+                                        class="px-2.5 py-1 rounded-lg text-[10px] font-normal transition-all bg-white/10 text-white/80 hover:bg-white/20">ผลอนุมัติ</button>
+                                </div>
+                            </div>
                             <div class="overflow-x-auto w-full">
                                 <table class="w-full text-left text-xs text-white">
                                     <thead class="bg-white/10 text-slate-300">
                                         <tr>
                                             <th class="p-2.5 font-normal">วันที่โพสต์</th>
-                                            <th class="p-2.5 font-normal">ชื่อที่โพสต์</th>
                                             <th class="p-2.5 font-normal">ลิงก์ที่โพสต์</th>
                                             <th class="p-2.5 font-normal text-center">จัดการ</th>
                                         </tr>
                                     </thead>
                                     <tbody id="myPostsTableBody" class="divide-y divide-white/5">
                                         <tr>
-                                            <td colspan="4" class="p-4 text-center text-slate-400">
+                                            <td colspan="3" class="p-3 text-center text-slate-400">
                                                 ยังไม่มีข้อมูลการส่งผลงาน</td>
                                         </tr>
                                     </tbody>
                                 </table>
+                            </div>
+                            <!-- Pagination Summary and Controls -->
+                            <div class="flex justify-between items-center text-xs text-slate-300 pt-2.5 border-t border-white/10 mt-2"
+                                id="paginationContainer">
+                                <span id="totalItemsSummary">ทั้งหมด 0 รายการ</span>
+                                <div class="flex items-center gap-1.5" id="paginationControls">
+                                    <!-- Dynamic pagination buttons -->
+                                </div>
                             </div>
                         </div>
                     </div>
 
                     <!-- DASHBOARD TAB CONTENT 3: LEADERBOARD -->
                     <div id="dash-tab-leaderboard" class="dash-tab-content space-y-4 hidden text-[13px]">
-                        <div class="glass-panel rounded-2xl p-5 space-y-3">
-                            <h4
-                                class="text-orange-400 font-normal text-sm border-b border-white/10 pb-2 flex items-center gap-1.5">
-                                <i data-lucide="trophy" class="w-4 h-4 text-orange-400 animate-bounce"></i>
-                                <span>ทำเนียบผู้นำ (Leaderboard - คะแนนสอบ)</span>
-                            </h4>
+                        <!-- Leaderboard Sub-tabs -->
+                        <div
+                            class="bg-black/60 p-1 rounded-2xl flex items-center justify-between border border-white/10 shrink-0">
+                            <button onclick="window.switchLeaderboardSubTab('branch')" id="leaderboardTabBranchBtn"
+                                class="flex-1 py-2 rounded-xl text-[12px] font-normal transition-all duration-300 bg-[#e26e2c] text-white shadow-md">
+                                ผู้นำรายสาขา
+                            </button>
+                            <button onclick="window.switchLeaderboardSubTab('region')" id="leaderboardTabRegionBtn"
+                                class="flex-1 py-2 rounded-xl text-[12px] font-normal transition-all duration-300 text-white/80 hover:text-white">
+                                ผู้นำรายภาค
+                            </button>
+                            <button onclick="window.switchLeaderboardSubTab('individual')"
+                                id="leaderboardTabIndividualBtn"
+                                class="flex-1 py-2 rounded-xl text-[12px] font-normal transition-all duration-300 text-white/80 hover:text-white">
+                                ผู้นำรายบุคคล
+                            </button>
+                        </div>
 
-                            <div class="overflow-hidden rounded-xl border border-white/10">
-                                <table class="w-full text-left">
-                                    <thead class="bg-white/10 text-xs">
-                                        <tr>
-                                            <th class="p-3 font-normal text-slate-300">อันดับ</th>
-                                            <th class="p-3 font-normal text-slate-300">ชื่อ-นามสกุล</th>
-                                            <th class="p-3 font-normal text-slate-300 text-center">สาขา</th>
-                                            <th class="p-3 font-normal text-slate-300 text-right">คะแนน</th>
-                                        </tr>
+                        <!-- Leaderboard Month Filter -->
+                        <div id="leaderboardMonthBox"
+                            class="glass-panel leaderboard-bg-branch rounded-2xl p-4 space-y-2">
+                            <div class="flex justify-between items-center border-b border-white/10 pb-2 mb-2">
+                                <span class="text-slate-300 text-xs font-normal">ตัวกรองเดือนโพสต์</span>
+                                <button id="leaderboardHelpBtn" onclick="window.openLeaderboardHelpModal()"
+                                    class="text-slate-400 hover:text-white focus:outline-none border-0 bg-transparent cursor-pointer">
+                                    <i data-lucide="help-circle" class="w-4.5 h-4.5"></i>
+                                </button>
+                            </div>
+                            <div id="leaderboardGroupFilterContainer" class="flex flex-wrap gap-2 text-xs mt-2">
+                                <button onclick="window.selectLeaderboardGroup('all')" id="leaderboardGroupAllBtn"
+                                    class="px-3 py-1.5 rounded-xl transition-all duration-300 bg-[#e26e2c] text-white shadow-md font-semibold border-0 focus:outline-none">ทั้งหมด</button>
+                                <button onclick="window.selectLeaderboardGroup('A')" id="leaderboardGroupABtn"
+                                    class="px-3 py-1.5 rounded-xl transition-all duration-300 bg-white/10 text-white/80 hover:bg-white/20 border-0 focus:outline-none">กลุ่ม
+                                    8 คนขึ้นไป</button>
+                                <button onclick="window.selectLeaderboardGroup('B')" id="leaderboardGroupBBtn"
+                                    class="px-3 py-1.5 rounded-xl transition-all duration-300 bg-white/10 text-white/80 hover:bg-white/20 border-0 focus:outline-none">กลุ่มน้อยกว่า
+                                    8 คน</button>
+                            </div>
+                            <div id="leaderboardMonthFilterContainer"
+                                class="flex flex-wrap gap-2 text-xs border-t border-white/10 pt-2">
+                                <span class="text-slate-400">กำลังโหลดตัวกรองเดือน...</span>
+                            </div>
+                        </div>
+
+                        <!-- Leaderboard Table Container -->
+                        <div id="leaderboardTableBox"
+                            class="glass-panel leaderboard-bg-branch rounded-2xl p-4 space-y-3">
+                            <div class="flex justify-between items-center border-b border-white/10 pb-2">
+                                <h4 id="leaderboardTitle" class="text-orange-400 font-normal text-sm">
+                                    ผู้นำการแข่งขัน (รายสาขา)
+                                </h4>
+                                <span id="leaderboardTotalPosts" class="text-xs text-orange-400 font-semibold">โพสต์รวม:
+                                    0 โพสต์</span>
+                            </div>
+                            <div class="overflow-x-auto w-full">
+                                <table class="w-full text-left text-xs text-white">
+                                    <thead class="bg-white/10 text-slate-300" id="leaderboardTableHeader">
+                                        <!-- Rendered dynamically -->
                                     </thead>
                                     <tbody id="leaderboardTableBody" class="divide-y divide-white/5">
-                                        <!-- Loaded dynamically -->
+                                        <!-- Rendered dynamically -->
                                     </tbody>
                                 </table>
+                            </div>
+                            <!-- Leaderboard Pagination Summary and Controls -->
+                            <div class="flex justify-between items-center text-xs text-slate-300 pt-2.5 border-t border-white/10 mt-2"
+                                id="leaderboardPaginationContainer">
+                                <span id="leaderboardTotalItemsSummary">ทั้งหมด 0 รายการ</span>
+                                <div class="flex items-center gap-1.5" id="leaderboardPaginationControls">
+                                    <!-- Dynamic pagination controls -->
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -1352,7 +1468,7 @@
                                 <p class="text-[13px] text-white/60 font-normal mt-0.5">รหัสพนักงาน: <span
                                         id="dashEmployeeId">-</span></p>
                                 <div
-                                    class="mt-4 p-3.5 bg-black/30 rounded-2xl border border-white/10 text-[13px] text-left space-y-1.5 font-normal text-slate-200 w-full max-w-[340px] mx-auto">
+                                    class="mt-4 p-3.5 bg-black/30 rounded-2xl border border-white/10 text-[13px] text-left space-y-1.5 font-normal text-slate-200 w-full mx-auto">
                                     <p class="flex justify-between"><span>สาขา:</span> <span id="dashBranch"
                                             class="text-orange-400 font-medium">-</span></p>
                                     <p class="flex justify-between"><span>ตำแหน่ง:</span> <span id="dashPosition"
@@ -1379,7 +1495,7 @@
                             </button>
                             <button onclick="window.switchSubTab('branch-work')" id="subTabBranchWorkBtn"
                                 class="flex-1 py-1.5 rounded-xl text-[12px] font-normal transition-all duration-300 text-white/80 hover:text-white">
-                                ผลงานสาขา
+                                ผู้นำการแข่งขัน (สาขา)
                             </button>
                             <button onclick="window.switchSubTab('follow-up')" id="subTabFollowUpBtn"
                                 class="flex-1 py-1.5 rounded-xl text-[12px] font-normal transition-all duration-300 text-white/80 hover:text-white">
@@ -1388,10 +1504,10 @@
                         </div>
 
                         <!-- Details Area below Sub-tabs -->
-                        <div class="w-full mx-auto glass-panel rounded-2xl p-4 text-[13px] text-slate-200 shrink-0">
+                        <div class="w-full mx-auto glass-panel rounded-2xl p-3 text-[13px] text-slate-200 shrink-0">
                             <!-- Content 1: ผลงานคุณ -->
                             <div id="sub-content-my-work" class="sub-tab-content space-y-2">
-                                <h5 class="text-orange-400 font-semibold mb-1">ผลงาน TikTok ของคุณ</h5>
+                                <h5 class="text-orange-400 mb-1">ผลงาน TikTok ของคุณ</h5>
                                 <div id="myWorkDetailsContainer" class="space-y-2 max-h-48 overflow-y-auto">
                                     <p class="text-xs text-slate-400">อยู่ระหว่างโหลดข้อมูล...</p>
                                 </div>
@@ -1416,7 +1532,7 @@
 
                 <!-- Navigation Bottom Tabs Menu (Fixed at Bottom 100% of phone screen) -->
                 <div
-                    class="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-[500px] bg-slate-900/95 backdrop-blur-md border-t border-white/10 py-3 flex justify-around items-center shrink-0 z-50 h-[72px]">
+                    class="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-[500px] bg-header backdrop-blur-md border-t border-white/10 py-3 flex justify-around items-center shrink-0 z-50 h-[72px]">
                     <div onclick="window.switchDashboardTab('home')" id="btn-dash-home" class="app-nav-item active">
                         <i data-lucide="home" class="w-5 h-5"></i>
                         <span>Home</span>
@@ -1448,7 +1564,7 @@
 
     <!-- Lightbox Modal for Editing Post -->
     <div id="editPostModal"
-        class="fixed inset-0 bg-black/70 backdrop-blur-sm z-[9999] flex items-center justify-center hidden p-4">
+        class="fixed inset-0 bg-black/70 backdrop-blur-sm z-[9999] flex items-center justify-center hidden p-3">
         <div class="glass-panel w-full max-w-[400px] rounded-3xl p-6 space-y-4 text-left">
             <h3 class="text-[15px] font-normal text-white border-b border-white/10 pb-2">แก้ไขข้อมูลการส่งผลงาน</h3>
             <input type="hidden" id="editPostDocId" />
@@ -1464,6 +1580,17 @@
                         class="name-input w-full px-4 py-3 rounded-xl text-[13px]">
                 </div>
                 <div>
+                    <label class="block text-slate-300 text-xs mb-1">ไอเดียทำคลิป</label>
+                    <select id="editPostCategorySelect"
+                        class="name-input w-full px-4 py-3 rounded-xl text-[13px] bg-white text-slate-900 border border-slate-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-500">
+                        <option value="">-- กรุณาเลือกไอเดียทำคลิป --</option>
+                        <option value="Trusted Employee">Trusted Employee รู้จักฉัน รู้จักสาขา</option>
+                        <option value="Financial Knowledge">Financial Knowledge ให้ความรู้ด้านการเงิน</option>
+                        <option value="Product">Product แนะนำผลิตภัณฑ์ ttb</option>
+                        <option value="Scam Alert">Scam Alert รู้ทันมิจฉาชีพ</option>
+                    </select>
+                </div>
+                <div>
                     <label class="block text-slate-300 text-xs mb-1">ลิงก์วิดีโอ TikTok (TikTok URL)</label>
                     <input type="text" id="editPostUrlInput" class="name-input w-full px-4 py-3 rounded-xl text-[13px]">
                 </div>
@@ -1476,6 +1603,52 @@
                 <button onclick="window.saveEditedPost()"
                     class="flex-1 btn-standard bg-orange-500 hover:bg-orange-600 text-white font-normal rounded-xl h-[44px]">
                     บันทึก
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Lightbox Modal for TikTok URL Preview Iframe -->
+    <div id="tiktokPreviewModal"
+        class="fixed inset-0 bg-black/80 backdrop-blur-sm z-[9999] flex items-center justify-center hidden p-3">
+        <div class="glass-panel w-full max-w-[480px] rounded-3xl p-6 space-y-4 text-center">
+            <div class="flex justify-between items-center border-b border-white/10 pb-2">
+                <h3 class="text-[15px] font-normal text-white">ตัวอย่างคลิป TikTok</h3>
+                <a id="tiktokDirectLink" href="#" target="_blank"
+                    class="text-xs text-blue-400 hover:underline flex items-center gap-1">เปิดลิงก์โดยตรง</a>
+            </div>
+            <div
+                class="w-full aspect-[9/16] max-h-[60vh] bg-black rounded-2xl overflow-hidden relative border border-white/10">
+                <iframe id="tiktokPreviewIframe" src="" class="w-full h-full border-0" allowfullscreen></iframe>
+            </div>
+            <div class="pt-2">
+                <button onclick="window.closeUrlPreviewModal()"
+                    class="w-full btn-standard bg-slate-700 hover:bg-slate-600 text-white font-normal rounded-xl h-[44px]">
+                    ปิดหน้าต่าง
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Lightbox Modal for Leaderboard Help/Rewards Details -->
+    <div id="leaderboardHelpModal"
+        class="fixed inset-0 bg-black/75 backdrop-blur-sm z-[9999] flex items-center justify-center hidden p-3">
+        <div
+            class="glass-panel w-full max-w-[440px] rounded-3xl p-6 space-y-4 text-left max-h-[85vh] overflow-y-auto border border-white/10">
+            <div class="flex justify-between items-center border-b border-white/10 pb-2">
+                <h3 id="leaderboardHelpTitle" class="text-[15px] font-normal text-white">รายละเอียดรางวัล</h3>
+                <button onclick="window.closeLeaderboardHelpModal()"
+                    class="text-slate-400 hover:text-white focus:outline-none border-0 bg-transparent cursor-pointer">
+                    <i data-lucide="x" class="w-5 h-5"></i>
+                </button>
+            </div>
+            <div id="leaderboardHelpContent" class="space-y-4 text-white text-xs">
+                <!-- Injected dynamically -->
+            </div>
+            <div class="pt-2 border-t border-white/10">
+                <button onclick="window.closeLeaderboardHelpModal()"
+                    class="w-full btn-standard bg-slate-700 hover:bg-slate-600 text-white font-normal rounded-xl h-[44px]">
+                    ปิดหน้าต่าง
                 </button>
             </div>
         </div>
