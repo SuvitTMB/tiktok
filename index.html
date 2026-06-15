@@ -458,14 +458,81 @@
 
                     <!-- DASHBOARD TAB CONTENT 1: HOME -->
                     <div id="dash-tab-home" class="dash-tab-content space-y-4">
-
-
-                        <div class="glass-panel rounded-2xl p-4 space-y-2">
-                            <h4 class="text-white font-normal text-sm">ยินดีต้อนรับสู่แคมเปญหลัก!</h4>
-                            <p class="text-xs text-slate-300 leading-relaxed font-light">
-                                ขอขอบคุณพนักงานสาขาทุกท่านที่ร่วมสร้างความเชื่อมั่นให้ลูกค้ารับรู้ว่า ttb
-                                ของเรามีตัวตนจริง อยู่ใกล้คุณ และพร้อมดูแลให้บริการลูกค้าด้วยหัวใจค่ะ
+                        <!-- Hero Welcome Banner -->
+                        <div class="glass-panel rounded-3xl p-5 relative overflow-hidden bg-gradient-to-r from-orange-600/30 to-amber-600/10 border border-white/10 shrink-0">
+                            <div class="absolute -right-10 -bottom-10 w-36 h-36 bg-orange-500/10 rounded-full blur-2xl"></div>
+                            <h4 class="text-white font-semibold text-[16px] mb-1.5 flex items-center gap-1.5">
+                                <i data-lucide="sparkles" class="w-4 h-4 text-orange-400"></i>
+                                ยินดีต้อนรับสู่แคมเปญ TikTok The IDOL!
+                            </h4>
+                            <p class="text-[12px] text-slate-200 leading-relaxed font-light">
+                                ขอขอบคุณพนักงานสาขาทุกท่านที่ร่วมสร้างความเชื่อมั่นให้ลูกค้ารับรู้ว่า ttb ของเรามีตัวตนจริง อยู่ใกล้คุณ และพร้อมดูแลให้บริการลูกค้าด้วยหัวใจค่ะ
                             </p>
+                        </div>
+
+                        <!-- Statistics Grid Dashboard -->
+                        <div class="grid grid-cols-2 gap-3 shrink-0">
+                            <!-- Registered Users Card -->
+                            <div class="glass-panel rounded-2xl p-4 flex items-center gap-3 bg-white/5 border border-white/10 hover:border-orange-500/30 transition-all duration-300">
+                                <div class="w-10 h-10 rounded-xl bg-orange-500/20 flex items-center justify-center text-orange-400">
+                                    <i data-lucide="users" class="w-5 h-5"></i>
+                                </div>
+                                <div>
+                                    <div class="text-[11px] text-slate-400">ผู้ลงทะเบียน</div>
+                                    <div class="text-[17px] font-bold text-white mt-0.5"><span id="homeTotalMembers">0</span> <span class="text-xs font-normal text-slate-400">คน</span></div>
+                                </div>
+                            </div>
+                            <!-- Total Posts Card -->
+                            <div class="glass-panel rounded-2xl p-4 flex items-center gap-3 bg-white/5 border border-white/10 hover:border-orange-500/30 transition-all duration-300">
+                                <div class="w-10 h-10 rounded-xl bg-amber-500/20 flex items-center justify-center text-amber-400">
+                                    <i data-lucide="video" class="w-5 h-5"></i>
+                                </div>
+                                <div>
+                                    <div class="text-[11px] text-slate-400">จำนวนโพสต์รวม</div>
+                                    <div class="text-[17px] font-bold text-white mt-0.5"><span id="homeTotalPosts">0</span> <span class="text-xs font-normal text-slate-400">โพสต์</span></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Recent Submissions list (top 5 posts) -->
+                        <div class="glass-panel rounded-3xl p-4.5 space-y-3 bg-white/5 border border-white/10 shrink-0">
+                            <div class="flex justify-between items-center border-b border-white/5 pb-2">
+                                <h4 class="text-orange-400 font-semibold text-xs flex items-center gap-1.5">
+                                    <i data-lucide="clock" class="w-4 h-4"></i>
+                                    รายการโพสต์ล่าสุด 5 อันดับแรก
+                                </h4>
+                                <span class="text-[10px] text-slate-400">อัปเดตแบบเรียลไทม์</span>
+                            </div>
+                            <div class="overflow-x-auto w-full">
+                                <table class="w-full text-left text-xs text-white">
+                                    <thead class="bg-white/5 text-slate-300">
+                                        <tr>
+                                            <th class="p-2.5 font-normal text-[11px]">วันที่</th>
+                                            <th class="p-2.5 font-normal text-[11px]">ผู้ส่ง / สาขา</th>
+                                            <th class="p-2.5 font-normal text-[11px]">ไอเดียทำคลิป</th>
+                                            <th class="p-2.5 font-normal text-[11px] text-center">ดูคลิป</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="recentPostsTableBody" class="divide-y divide-white/5 text-slate-200">
+                                        <tr>
+                                            <td colspan="4" class="p-4 text-center text-slate-400 text-xs">
+                                                อยู่ระหว่างโหลดข้อมูลล่าสุด...
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <!-- Quick Action Banner -->
+                        <div onclick="window.switchDashboardTab('submit-post')" class="cursor-pointer glass-panel rounded-2xl p-4 flex justify-between items-center bg-gradient-to-r from-orange-500/20 to-amber-500/10 border border-orange-500/20 hover:border-orange-500/50 transition-all duration-300 shrink-0">
+                            <div class="space-y-0.5">
+                                <div class="text-xs font-semibold text-white">ร่วมสร้างผลงานและส่งเข้าร่วมประกวด!</div>
+                                <div class="text-[10px] text-slate-300 font-light">ส่งวิดีโอ TikTok ของคุณเพื่อลุ้นรับของรางวัลสุดพิเศษ</div>
+                            </div>
+                            <div class="w-8 h-8 rounded-full bg-orange-500 text-white flex items-center justify-center shadow-lg">
+                                <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                            </div>
                         </div>
                     </div>
 
@@ -1283,12 +1350,7 @@
                                             onchange="window.checkSubmitFormValidity()"
                                             class="name-input w-full px-4 py-3 rounded-xl text-[13px]">
                                     </div>
-                                    <div>
-                                        <label class="block text-slate-300 text-xs mb-1">ชื่อคลิปผลงาน</label>
-                                        <input type="text" id="workTitleInput" placeholder="ระบุชื่อผลงานของคลิป"
-                                            oninput="window.checkSubmitFormValidity()"
-                                            class="name-input w-full px-4 py-3 rounded-xl text-[13px]">
-                                    </div>
+                                    <input type="hidden" id="workTitleInput" value="กิจกรรมโพสต์ TIKTOK">
                                     <div>
                                         <label class="block text-slate-300 text-xs mb-1">ไอเดียทำคลิป</label>
                                         <select id="workCategorySelect" onchange="window.checkSubmitFormValidity()"
@@ -1331,12 +1393,12 @@
                         <!-- User Submissions Table -->
                         <div class="glass-panel rounded-2xl p-4 space-y-3">
                             <div class="flex justify-between items-center border-b border-white/10 pb-2">
-                                <h4 class="text-orange-400 font-normal text-sm">ข้อมูลการส่งผลงาน</h4>
+                                <h4 class="text-orange-400 font-normal text-sm">การส่งโพสต์ของคุณ</h4>
                                 <div class="flex gap-2">
                                     <button id="filterPendingBtn" onclick="window.setAdminFilter('pending')"
-                                        class="px-2.5 py-1 rounded-lg text-[10px] font-semibold transition-all bg-[#e26e2c] text-white shadow-md">รอผลโพสต์</button>
+                                        class="px-2.5 py-1 rounded-lg text-[10px] font-semibold transition-all bg-[#e26e2c] text-white shadow-md">รอการอนุมัติ</button>
                                     <button id="filterApprovedBtn" onclick="window.setAdminFilter('approved')"
-                                        class="px-2.5 py-1 rounded-lg text-[10px] font-normal transition-all bg-white/10 text-white/80 hover:bg-white/20">ผลอนุมัติ</button>
+                                        class="px-2.5 py-1 rounded-lg text-[10px] font-normal transition-all bg-white/10 text-white/80 hover:bg-white/20">อนุมัติแล้ว</button>
                                 </div>
                             </div>
                             <div class="overflow-x-auto w-full">
@@ -1408,7 +1470,7 @@
                                     8 คน</button>
                             </div>
                             <div id="leaderboardMonthFilterContainer"
-                                class="flex flex-wrap gap-2 text-xs border-t border-white/10 pt-2">
+                                class="flex flex-wrap gap-2 text-xs border-white/10">
                                 <span class="text-slate-400">กำลังโหลดตัวกรองเดือน...</span>
                             </div>
                         </div>
@@ -1464,19 +1526,21 @@
                             <input type="file" id="editImageInput" accept="image/*" class="hidden"
                                 onchange="window.handleEditImage(event)">
                             <div class="text-center w-full">
-                                <h3 id="dashFullName" class="text-[15px] text-white">-</h3>
-                                <p class="text-[13px] text-white/60 font-normal mt-0.5">รหัสพนักงาน: <span
-                                        id="dashEmployeeId">-</span></p>
+                                <h3 class="text-[15px] text-white font-medium">
+                                    <span id="dashFullName">-</span>
+                                    <span id="dashEmployeeId" class="text-[12px] font-normal text-white/70 ml-1"></span>
+                                </h3>
+                                <p id="dashTotalPosts" class="text-[13px] text-green-400 mt-1">โพสต์รวม 0 โพสต์</p>
                                 <div
                                     class="mt-4 p-3.5 bg-black/30 rounded-2xl border border-white/10 text-[13px] text-left space-y-1.5 font-normal text-slate-200 w-full mx-auto">
                                     <p class="flex justify-between"><span>สาขา:</span> <span id="dashBranch"
                                             class="text-orange-400 font-medium">-</span></p>
                                     <p class="flex justify-between"><span>ตำแหน่ง:</span> <span id="dashPosition"
                                             class="text-orange-400 font-medium">-</span></p>
-                                    <p class="flex justify-between"><span>TikTok:</span> <span id="dashTiktokUser"
-                                            class="text-blue-400 font-medium">-</span></p>
                                     <p class="flex justify-between"><span>คะแนนทดสอบ:</span> <span id="dashScoreQuiz"
                                             class="text-green-400 font-semibold">- / 5</span></p>
+                                    <p class="flex justify-between"><span>TikTok:</span> <span id="dashTiktokUser"
+                                            class="text-blue-400 font-medium">-</span></p>
                                     <p class="flex flex-col gap-1 mt-1 border-t border-white/10 pt-1.5">
                                         <span>URL ลิงก์ของช่อง:</span>
                                         <a id="dashTiktokUrl" href="#" target="_blank"
@@ -1491,15 +1555,15 @@
                             class="w-full max-w-[340px] mx-auto bg-black/60 p-1 rounded-2xl flex items-center justify-between border border-white/10 shrink-0">
                             <button onclick="window.switchSubTab('my-work')" id="subTabMyWorkBtn"
                                 class="flex-1 py-1.5 rounded-xl text-[12px] font-normal transition-all duration-300 bg-[#e26e2c] text-white shadow-md">
-                                ผลงานคุณ
+                                ผลงานของคุณ
                             </button>
                             <button onclick="window.switchSubTab('branch-work')" id="subTabBranchWorkBtn"
                                 class="flex-1 py-1.5 rounded-xl text-[12px] font-normal transition-all duration-300 text-white/80 hover:text-white">
-                                ผู้นำการแข่งขัน (สาขา)
+                                ผลงานสาขาคุณ
                             </button>
                             <button onclick="window.switchSubTab('follow-up')" id="subTabFollowUpBtn"
                                 class="flex-1 py-1.5 rounded-xl text-[12px] font-normal transition-all duration-300 text-white/80 hover:text-white">
-                                ติดตามผล
+                                เรียนรู้เพิ่มเติม
                             </button>
                         </div>
 
@@ -1507,23 +1571,142 @@
                         <div class="w-full mx-auto glass-panel rounded-2xl p-3 text-[13px] text-slate-200 shrink-0">
                             <!-- Content 1: ผลงานคุณ -->
                             <div id="sub-content-my-work" class="sub-tab-content space-y-2">
-                                <h5 class="text-orange-400 mb-1">ผลงาน TikTok ของคุณ</h5>
-                                <div id="myWorkDetailsContainer" class="space-y-2 max-h-48 overflow-y-auto">
-                                    <p class="text-xs text-slate-400">อยู่ระหว่างโหลดข้อมูล...</p>
+                                <div class="flex justify-between items-center mb-1">
+                                    <h5 class="text-orange-400 font-semibold text-xs" id="myWorkTabTitle">รายการโพสต์ของ
+                                        คุณ...</h5>
+                                    <span id="myWorkTotalHeader" class="text-[11px] text-orange-400 font-semibold">รวม 0
+                                        โพสต์</span>
+                                </div>
+                                <div class="flex flex-wrap gap-1 bg-white/5 p-1.5 rounded-xl text-[10px]"
+                                    id="myWorkMonthFilterContainer">
+                                    <!-- Dynamic month filter buttons -->
+                                </div>
+                                <div
+                                    class="min-h-[400px] flex flex-col justify-between bg-black/20 border border-white/5 rounded-xl p-2.5">
+                                    <div class="overflow-x-auto w-full">
+                                        <table class="w-full text-left text-xs text-white">
+                                            <thead class="bg-white/5 text-slate-300">
+                                                <tr>
+                                                    <th class="p-2 font-normal text-[11px]">วันที่</th>
+                                                    <th class="p-2 font-normal text-[11px]">ไอเดียทำคลิป</th>
+                                                    <th class="p-2 font-normal text-[11px] text-center">ดูคลิป</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="myWorkTableBody" class="divide-y divide-white/5">
+                                                <tr>
+                                                    <td colspan="3" class="p-4 text-center text-slate-400 text-[11px]">
+                                                        อยู่ระหว่างโหลดข้อมูล...</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div
+                                        class="flex justify-between items-center text-[11px] text-slate-400 pt-2 border-t border-white/5 mt-2">
+                                        <span id="myWorkTotalSummary">ทั้งหมด 0 รายการ</span>
+                                        <div class="flex items-center gap-1" id="myWorkPaginationControls">
+                                            <!-- Dynamic pagination -->
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             <!-- Content 2: ผลงานสาขา -->
                             <div id="sub-content-branch-work" class="sub-tab-content space-y-2 hidden">
-                                <h5 class="text-orange-400 font-semibold mb-1">ผลงานของสาขาคุณ</h5>
-                                <div id="branchWorkDetailsContainer" class="space-y-2 max-h-48 overflow-y-auto">
-                                    <p class="text-xs text-slate-400">อยู่ระหว่างโหลดข้อมูล...</p>
+                                <div class="flex justify-between items-center mb-1">
+                                    <h5 class="text-orange-400 font-semibold text-xs" id="branchTabTitle">
+                                        การโพสต์ของสาขา...</h5>
+                                    <span id="branchWorkTotalHeader"
+                                        class="text-[11px] text-orange-400 font-semibold">รวม 0 โพสต์</span>
+                                </div>
+                                <div class="flex flex-wrap gap-1 bg-white/5 p-1.5 rounded-xl text-[10px]"
+                                    id="branchWorkMonthFilterContainer">
+                                    <!-- Dynamic month filter buttons -->
+                                </div>
+                                <div
+                                    class="min-h-[400px] flex flex-col justify-between bg-black/20 border border-white/5 rounded-xl p-2.5">
+                                    <div class="overflow-x-auto w-full">
+                                        <table class="w-full text-left text-xs text-white">
+                                            <thead class="bg-white/5 text-slate-300">
+                                                <tr>
+                                                    <th class="p-2 font-normal text-[11px]">วันที่</th>
+                                                    <th class="p-2 font-normal text-[11px]">ผู้ส่ง</th>
+                                                    <th class="p-2 font-normal text-[11px]">ไอเดีย</th>
+                                                    <th class="p-2 font-normal text-[11px] text-center">ดูคลิป</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="branchWorkTableBody" class="divide-y divide-white/5">
+                                                <tr>
+                                                    <td colspan="4" class="p-4 text-center text-slate-400 text-[11px]">
+                                                        อยู่ระหว่างโหลดข้อมูล...</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div
+                                        class="flex justify-between items-center text-[11px] text-slate-400 pt-2 border-t border-white/5 mt-2">
+                                        <span id="branchWorkTotalSummary">ทั้งหมด 0 รายการ</span>
+                                        <div class="flex items-center gap-1" id="branchWorkPaginationControls">
+                                            <!-- Dynamic pagination -->
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             <!-- Content 3: ติดตามผล -->
-                            <div id="sub-content-follow-up" class="sub-tab-content space-y-2 hidden">
-                                <h5 class="text-orange-400 font-semibold mb-1">สถานะและความคืบหน้า</h5>
-                                <p class="text-xs text-slate-300">ติดตามผลตอบรับ ยอดวิวยอดแชร์
-                                    และการอนุมัติเข้าร่วมกิจกรรมของช่องทาง ttb</p>
+                            <div id="sub-content-follow-up" class="sub-tab-content space-y-3 hidden">
+                                <h5 class="text-orange-400 font-semibold mb-1">ความต้องการเรียนรู้เพิ่มเติม</h5>
+
+                                <!-- Form Input Container (Visible when not registered) -->
+                                <div id="followUpFormContainer" class="space-y-3">
+                                    <label
+                                        class="flex items-start gap-2 text-[13px] text-white/90 cursor-pointer select-none">
+                                        <input type="checkbox" id="learnMoreRequestCheckbox"
+                                            class="mt-1 accent-orange-500 rounded border-white/20 bg-black/40 text-orange-500 focus:ring-0">
+                                        <span>ต้องการเรียนรู้การโพสต์ TIKTOK เพิ่มเติม</span>
+                                    </label>
+                                    <div>
+                                        <label
+                                            class="block text-slate-300 text-xs mb-1">ระบุเหตุผลประกอบการพิจารณา</label>
+                                        <textarea id="learnMoreReasonInput" rows="3"
+                                            placeholder="ระบุรายละเอียดเหตุผลที่เสนอ..."
+                                            class="name-input w-full px-3 py-2 rounded-xl text-[13px] bg-black/30 border border-white/20 text-white focus:outline-none focus:border-orange-500 resize-none"></textarea>
+                                    </div>
+                                    <button onclick="window.saveLearningRequest()" id="learnMoreSaveBtn"
+                                        class="w-full bg-orange-500 hover:bg-orange-600 text-white font-normal rounded-xl h-[38px] text-[13px] transition-colors flex items-center justify-center gap-1.5 mt-2">
+                                        <i data-lucide="save" class="w-4 h-4"></i> บันทึกข้อมูล
+                                    </button>
+                                </div>
+
+                                <!-- Form Display Container (Visible when registered) -->
+                                <div id="followUpDisplayContainer"
+                                    class="space-y-2.5 bg-white/5 border border-white/10 rounded-xl p-3 text-[13px] hidden">
+                                    <div class="flex justify-between">
+                                        <span class="text-slate-400">วันที่ลงทะเบียน:</span>
+                                        <span id="displayLearnDate" class="text-slate-300"></span>
+                                    </div>
+                                    <div class="flex justify-between border-b border-white/5 pb-1.5">
+                                        <span class="text-slate-400">การสมัคร:</span>
+                                        <span class="text-emerald-400 font-medium text-right">ต้องการเรียนรู้การโพสต์
+                                            TIKTOK เพิ่มเติม</span>
+                                    </div>
+                                    <div class="flex flex-col gap-1 border-b border-white/5 pb-1.5">
+                                        <span class="text-slate-400">รายละเอียด:</span>
+                                        <span id="displayLearnReason"
+                                            class="text-slate-200 break-words leading-relaxed whitespace-pre-wrap"></span>
+                                    </div>
+                                    <button onclick="window.cancelLearningRequest()" id="learnMoreCancelBtn"
+                                        class="w-full bg-red-600 hover:bg-red-700 text-white font-normal rounded-xl h-[38px] text-[13px] transition-colors flex items-center justify-center gap-1.5 mt-2">
+                                        <i data-lucide="x-circle" class="w-4 h-4"></i> ยกเลิกรายการ
+                                    </button>
+                                </div>
+
+                                <!-- Remarks Container -->
+                                <div class="mt-4 pt-3 border-t border-white/10 text-[11px] text-slate-400 space-y-1">
+                                    <div class="font-medium text-slate-300">หมายเหตุ</div>
+                                    <p>1. การสมัครเป็นเพียงการจัดเก็บข้อมูลเบื้องต้น
+                                        เพื่อศึกษาความต้องการการเรียนรู้เพิ่มเติมของพนักงาน</p>
+                                    <p>2. หากมีการเปิดการเรียนรู้จะใช้เหตุผลที่เสนอเข้ามาเป็นส่วนประกอบในการเลือกพิจารณา
+                                    </p>
+                                    <p>3. เงื่อนไขดังกล่าวสามารถเปลี่ยนแปลงได้ตามความเหมาะสม</p>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -1574,11 +1757,7 @@
                     <input type="date" id="editPostDateInput"
                         class="name-input w-full px-4 py-3 rounded-xl text-[13px]">
                 </div>
-                <div>
-                    <label class="block text-slate-300 text-xs mb-1">ชื่อคลิปผลงาน</label>
-                    <input type="text" id="editPostTitleInput"
-                        class="name-input w-full px-4 py-3 rounded-xl text-[13px]">
-                </div>
+                <input type="hidden" id="editPostTitleInput" value="กิจกรรมโพสต์ TIKTOK">
                 <div>
                     <label class="block text-slate-300 text-xs mb-1">ไอเดียทำคลิป</label>
                     <select id="editPostCategorySelect"
