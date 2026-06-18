@@ -36,111 +36,20 @@
 
     <!-- Main Container - Normal scroll container without inner-scroll locks -->
     <div class="w-full max-w-[500px] min-h-screen relative hidden z-10 flex flex-col justify-start bg-transparent"
-        id="mainWrapper">
+        id="mainWrapper" style="margin-top:-2rem;">
         <div class="w-full flex flex-col items-center justify-start flex-1 relative">
 
             <!-- VIEW 1: WELCOME SCREEN (Invitation & 4 Objectives) -->
-            <div id="welcomeView" class="w-full p-3 pb-6 space-y-6 flex flex-col items-center justify-start">
+            <div id="welcomeView" class="w-full space-y-6 flex flex-col items-center justify-start">
                 <!-- TikTok Logo Branding (Shown on welcome view, hidden on registration form view) -->
                 <div class="w-full flex flex-col items-center justify-center mb-2 shrink-0">
-                    <img src="images/icon_tiktok.png" alt="TikTok Logo"
-                        class="w-[80%] max-w-[380px] h-auto object-contain filter drop-shadow-[0_10px_25px_rgba(0,0,0,0.3)]">
-                </div>
-
-                <!-- Invitation Text Box (Darkened glass background - font-size 13px) -->
-                <div id="invitationBox"
-                    class="w-full glass-panel rounded-3xl p-3 text-white text-[13px] leading-relaxed text-justify shadow-2xl space-y-4 shrink-0">
-                    <div class="text-center flex items-center justify-center gap-2">
-                        <i data-lucide="megaphone" class="w-5 h-5 text-orange-400"></i>
-                        <h2 class="text-[14px] font-normal text-white text-center leading-tight p-3">
-                            ขอเชิญชวนพนักงานสาขาทุกท่าน</h2>
-                    </div>
-
-                    <p class="text-[13px] text-slate-200 text-left leading-relaxed">
-                        ร่วมสร้างสรรค์คลิปวิดีโอผ่านช่องทาง <span
-                            class="text-orange-500 underline decoration-orange-400 decoration-2">TikTok</span>
-                        เพื่อแนะนำตัวตน แนะนำสาขา ให้ความรู้ทางการเงิน เตือนภัยมิจฉาชีพ หรือแนะนำผลิตภัณฑ์ ttb
-                        ช่วยสร้างความเชื่อมั่นให้ลูกค้ารู้ว่า <span class="text-orange-500">“เรามีตัวตนจริง
-                            อยู่ใกล้คุณ และพร้อมให้บริการจริง”</span> โดยมุ่งเน้นที่การสร้างตัวตน
-                    </p>
-
-                    <!-- OBJECTIVE GRID - 4 ITEMS -->
-                    <div class="space-y-4 pt-2">
-                        <div class="border-t border-white/10 pt-4 pb-1">
-                            <h4 class="text-center font-normal text-[13px] tracking-widest text-slate-300">
-                                OBJECTIVES / วัตถุประสงค์กิจกรรม</h4>
-                        </div>
-
-                        <div class="grid grid-cols-1 gap-3.5 text-[13px]">
-
-                            <!-- Objective 01 -->
-                            <div class="objective-card rounded-2xl p-3 flex gap-3 items-start text-left">
-                                <div
-                                    class="w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center text-[12px] text-white shrink-0 shadow-lg">
-                                    1</div>
-                                <div class="space-y-1">
-                                    <div class="flex items-center gap-1.5 font-normal text-[13px] text-orange-500">
-                                        <i data-lucide="heart" class="w-4 h-4 text-orange-400 fill-orange-400/20"></i>
-                                        <span>สร้างความเชื่อมั่นให้ลูกค้า (Trusted)</span>
-                                    </div>
-                                    <p class="text-[13px] text-slate-300 leading-snug">ให้ลูกค้ารู้จักพนักงานและสาขา ttb
-                                        มากขึ้น เห็นหน้า รู้จักตัวตน ติดต่อได้จริง</p>
-                                </div>
-                            </div>
-
-                            <!-- Objective 02 -->
-                            <div class="objective-card rounded-2xl p-3 flex gap-3 items-start text-left">
-                                <div
-                                    class="w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center text-[12px] text-white shrink-0 shadow-lg">
-                                    2</div>
-                                <div class="space-y-1">
-                                    <div class="flex items-center gap-1.5 font-normal text-[13px] text-orange-500">
-                                        <i data-lucide="shield-alert" class="w-4 h-4 text-orange-400"></i>
-                                        <span>ป้องกันการแอบอ้างจากมิจฉาชีพ (Scam Prevention)</span>
-                                    </div>
-                                    <p class="text-[13px] text-slate-300 leading-snug">
-                                        ให้ลูกค้ารับรู้ช่องทางที่ถูกต้องของ ttb และรู้เท่าทันกลโกงมิจฉาชีพ</p>
-                                </div>
-                            </div>
-
-                            <!-- Objective 03 -->
-                            <div class="objective-card rounded-2xl p-3 flex gap-3 items-start text-left">
-                                <div
-                                    class="w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center text-[12px] text-white shrink-0 shadow-lg">
-                                    3</div>
-                                <div class="space-y-1">
-                                    <div class="flex items-center gap-1.5 font-normal text-[13px] text-orange-500">
-                                        <i data-lucide="store" class="w-4 h-4 text-orange-400"></i>
-                                        <span>เพิ่มการรับรู้สาขา (Branch Awareness)</span>
-                                    </div>
-                                    <p class="text-[13px] text-slate-300 leading-snug">
-                                        ให้ลูกค้าในพื้นที่รู้จักสาขาใกล้บ้านมากขึ้น และเข้ามาใช้บริการที่สาขา</p>
-                                </div>
-                            </div>
-
-                            <!-- Objective 04 -->
-                            <div class="objective-card rounded-2xl p-3 flex gap-3 items-start text-left">
-                                <div
-                                    class="w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center text-[12px] text-white shrink-0 shadow-lg">
-                                    4</div>
-                                <div class="space-y-1">
-                                    <div class="flex items-center gap-1.5 font-normal text-[13px] text-orange-500">
-                                        <i data-lucide="megaphone" class="w-4 h-4 text-orange-400"></i>
-                                        <span>พัฒนาพนักงานสาขาสู่ Employee Influencer</span>
-                                    </div>
-                                    <p class="text-[13px] text-slate-300 leading-snug">
-                                        พัฒนาพนักงานให้เป็นผู้สื่อสารแทนองค์กร สร้างตัวตนบนโลกออนไลน์
-                                        เปรียบเสมือนใช้สื่อภายในองค์กรให้เกิดประโยชน์สูงสุด</p>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
+                    <img src="images/ttb-TheIDOL.jpg" alt="TikTok Campaign"
+                        class="w-[100%] h-auto object-contain filter drop-shadow-[0_10px_25px_rgba(0,0,0,0.3)]">
                 </div>
 
                 <!-- Call to action button to view register form (Font-normal and orange background) -->
                 <button onclick="window.transitionToForm()"
-                    class="btn-standard w-full bg-orange-500 hover:bg-orange-600 text-white font-normal rounded-2xl shadow-xl active:scale-[0.98] transition-all mt-4 text-[13px] disabled:opacity-50 disabled:cursor-not-allowed">
+                    class="btn-standard w-full bg-orange-500 hover:bg-orange-600 text-white font-normal rounded-2xl shadow-xl active:scale-[0.98] transition-all mt-4 text-[13px] disabled:opacity-50 disabled:cursor-not-allowed" style="width:85%;">
                     <span>เข้าสู่ Branch TIKTOK, The IDOL</span>
                     <i data-lucide="chevron-right" class="w-5 h-5 animate-pulse"></i>
                 </button>
@@ -229,7 +138,8 @@
                                     </div>
                                 </div>
                                 <span
-                                    class="text-[13px] text-white/95 mt-2 font-normal group-hover:text-white transition-all underline decoration-dotted">คลิกเพื่ออัปโหลดรูป</span>
+                                    class="text-[13px] text-white/95 mt-2 font-normal group-hover:text-white transition-all underline decoration-dotted">คลิกเพื่ออัปโหลดรูป
+                                    <span style="color:#ff0000">***</span></span>
                             </label>
                             <input type="file" id="regImageInput" accept="image/*" class="hidden" disabled
                                 onchange="window.previewImage(event)">
@@ -239,14 +149,14 @@
                         <div class="w-full text-left space-y-3">
                             <div>
                                 <label class="block text-left text-[13px] font-normal text-white/90 mb-1.5">รหัสพนักงาน
-                                    (Employee ID)</label>
+                                    (Employee ID) <span style="color:#ff0000">***</span></label>
                                 <input type="text" id="regEmployeeId" placeholder="พิมพ์รหัสพนักงาน"
                                     class="name-input w-full px-4 py-3.5 rounded-2xl text-[13px] shadow-sm"
                                     oninput="window.checkRegisterEmployeeId()">
                             </div>
                             <div>
-                                <label
-                                    class="block text-left text-[13px] font-normal text-white/90 mb-1.5">ชื่อ-นามสกุล</label>
+                                <label class="block text-left text-[13px] font-normal text-white/90 mb-1.5">ชื่อ-นามสกุล
+                                    <span style="color:#ff0000">***</span></label>
                                 <input type="text" id="regFullName" placeholder="เช่น สมชาย ใจดี" disabled
                                     class="name-input w-full px-4 py-3.5 rounded-2xl text-[13px] shadow-sm opacity-50 cursor-not-allowed"
                                     oninput="window.checkRegFormValidity()">
@@ -256,7 +166,7 @@
                             <div class="relative">
                                 <label
                                     class="block text-left text-[13px] font-normal text-white/90 mb-1.5">สาขาที่สังกัด
-                                    (พิมพ์เพื่อค้นหาหรือระบุเอง)</label>
+                                    (พิมพ์เพื่อค้นหา) <span style="color:#ff0000">***</span></label>
                                 <div class="relative">
                                     <input type="text" id="regBranchInput" placeholder="ค้นหาหรือระบุสาขา" disabled
                                         class="name-input w-full px-4 py-3.5 pr-10 rounded-2xl text-[13px] shadow-sm opacity-50 cursor-not-allowed"
@@ -274,7 +184,7 @@
                             <!-- Searchable Position Input (ตำแหน่งงาน ดึงข้อมูลจาก Tiktok_Position) -->
                             <div class="relative">
                                 <label class="block text-left text-[13px] font-normal text-white/90 mb-1.5">ตำแหน่งงาน
-                                    (พิมพ์เพื่อค้นหาหรือระบุเอง)</label>
+                                    (พิมพ์เพื่อค้นหา) <span style="color:#ff0000">***</span></label>
                                 <div class="relative">
                                     <input type="text" id="regPositionInput" placeholder="ค้นหาหรือระบุตำแหน่ง" disabled
                                         class="name-input w-full px-4 py-3.5 pr-10 rounded-2xl text-[13px] shadow-sm opacity-50 cursor-not-allowed"
@@ -292,7 +202,7 @@
                             <!-- Tiktok Username -->
                             <div>
                                 <label class="block text-left text-[13px] font-normal text-white/90 mb-1.5">TikTok
-                                    Username</label>
+                                    Username <span style="color:#ff0000">***</span></label>
                                 <input type="text" id="regTiktokUser" placeholder="เช่น @สมชาย_ttb" disabled
                                     class="name-input w-full px-4 py-3.5 rounded-2xl text-[13px] shadow-sm opacity-50 cursor-not-allowed"
                                     oninput="window.checkRegFormValidity()">
@@ -301,7 +211,7 @@
                             <!-- TikTok URL (ลิงก์ของช่อง) -->
                             <div>
                                 <label class="block text-left text-[13px] font-normal text-white/90 mb-1.5">TikTok URL
-                                    (ลิงก์ของช่อง)</label>
+                                    (ลิงก์ของช่อง) <span style="color:#ff0000">*</span></label>
                                 <input type="text" id="regTiktokUrl" placeholder="เช่น https://www.tiktok.com/@user"
                                     disabled
                                     class="name-input w-full px-4 py-3.5 rounded-2xl text-[13px] shadow-sm opacity-50 cursor-not-allowed"
@@ -310,7 +220,7 @@
 
                             <div>
                                 <label class="block text-left text-[13px] font-normal text-white/90 mb-1.5">ตั้งรหัสผ่าน
-                                    (Password)</label>
+                                    (Password) <span style="color:#ff0000">***</span></label>
                                 <input type="password" id="regPassword" placeholder="........" disabled
                                     class="name-input w-full px-4 py-3.5 rounded-2xl text-[13px] shadow-sm opacity-50 cursor-not-allowed"
                                     oninput="window.checkRegFormValidity()">
@@ -318,7 +228,7 @@
                             <div>
                                 <label
                                     class="block text-left text-[13px] font-normal text-white/90 mb-1.5">ยืนยันรหัสผ่าน
-                                    (Confirm Password)</label>
+                                    (Confirm Password) <span style="color:#ff0000">***</span></label>
                                 <input type="password" id="regConfirmPassword" placeholder="........" disabled
                                     class="name-input w-full px-4 py-3.5 rounded-2xl text-[13px] shadow-sm opacity-50 cursor-not-allowed"
                                     oninput="window.checkRegFormValidity()">
@@ -457,7 +367,7 @@
                 <div id="dashboardScrollArea" class="flex-1 overflow-y-auto p-3 space-y-4 w-full pt-[60px] pb-[88px]">
 
                     <!-- DASHBOARD TAB CONTENT 1: HOME -->
-                    <div id="dash-tab-home" class="dash-tab-content space-y-4">
+                    <div id="dash-tab-home" class="dash-tab-content space-y-4" style="margin-top:1rem;">
 
 
                         <div class="glass-panel rounded-2xl p-4 space-y-2">
@@ -808,7 +718,7 @@
                                         </li>
                                         <li class="flex items-start gap-1.5">
                                             <i data-lucide="x-circle" class="w-4 h-4 text-red-500 shrink-0 mt-0.5"></i>
-                                            <span>ไม่แจ้ง TikTok Username</span>
+                                            <span>ไม่แจ้ง ชื่อช่อง TikTok</span>
                                         </li>
                                         <li class="flex items-start gap-1.5">
                                             <i data-lucide="x-circle" class="w-4 h-4 text-red-500 shrink-0 mt-0.5"></i>
@@ -1885,7 +1795,7 @@
             <div class="flex justify-between items-center border-b border-white/10 pb-2">
                 <h3 class="text-[15px] font-normal text-white">ตัวอย่างคลิป TikTok</h3>
                 <a id="tiktokDirectLink" href="#" target="_blank"
-                    class="text-xs text-blue-400 hover:underline flex items-center gap-1">เปิดลิงก์โดยตรง</a>
+                    class="px-3 py-1 rounded-xl text-xs bg-orange-500 hover:bg-orange-600 text-white font-normal transition-all duration-300 border-0 focus:outline-none flex items-center gap-1 shadow-sm">เปิดลิงก์โดยตรง</a>
             </div>
 
             <!-- Employee Info & Click Count Row (New) -->
@@ -1966,7 +1876,7 @@
 
             <div class="space-y-3 text-xs">
                 <div>
-                    <label class="block text-slate-300 mb-1">รหัสพนักงาน</label>
+                    <label class="block text-slate-300 mb-1">รหัสพนักงาน <font color="#ffff00">*</font></label>
                     <input type="text" id="editEmployeeId" disabled
                         class="name-input w-full px-4 py-3 rounded-xl text-[13px] bg-white/5 border border-white/10 text-slate-400 cursor-not-allowed"
                         style="background-color: #94a3b8 !important">
@@ -1979,7 +1889,7 @@
 
                 <!-- Searchable Branch Input for Edit -->
                 <div class="relative">
-                    <label class="block text-slate-300 mb-1">สาขาที่สังกัด</label>
+                    <label class="block text-slate-300 mb-1">สาขาที่สังกัด <font color="#ffff00">*</font></label>
                     <div class="relative">
                         <input type="text" id="editBranchInput" placeholder="ค้นหาหรือระบุสาขา"
                             class="name-input w-full px-4 py-3 pr-10 rounded-xl text-[13px]"
@@ -1995,7 +1905,7 @@
 
                 <!-- Searchable Position Input for Edit -->
                 <div class="relative">
-                    <label class="block text-slate-300 mb-1">ตำแหน่งงาน</label>
+                    <label class="block text-slate-300 mb-1">ตำแหน่งงาน <font color="#ffff00">*</font></label>
                     <div class="relative">
                         <input type="text" id="editPositionInput" placeholder="ค้นหาหรือระบุตำแหน่ง"
                             class="name-input w-full px-4 py-3 pr-10 rounded-xl text-[13px]"
@@ -2010,12 +1920,12 @@
                 </div>
 
                 <div>
-                    <label class="block text-slate-300 mb-1">TikTok Username</label>
+                    <label class="block text-slate-300 mb-1">ชื่อช่อง TikTok</label>
                     <input type="text" id="editTiktokUser" placeholder="เช่น @สมชาย_ttb"
                         class="name-input w-full px-4 py-3 rounded-xl text-[13px]">
                 </div>
                 <div>
-                    <label class="block text-slate-300 mb-1">TikTok URL</label>
+                    <label class="block text-slate-300 mb-1">TikTok ลิงก์ <font color="#ffff00">*</font></label>
                     <input type="text" id="editTiktokUrlInput" placeholder="https://www.tiktok.com/@..."
                         class="name-input w-full px-4 py-3 rounded-xl text-[13px]">
                 </div>
