@@ -42,7 +42,7 @@
             <!-- VIEW 1: WELCOME SCREEN (Invitation & 4 Objectives) -->
             <div id="welcomeView" class="w-full p-3 pb-6 space-y-6 flex flex-col items-center justify-start">
                 <!-- TikTok Logo Branding (Shown on welcome view, hidden on registration form view) -->
-                <div class="w-full flex flex-col items-center justify-center mb-2 shrink-0" style="margin-top:65%;">
+                <div class="w-full flex flex-col items-center justify-center mb-2 shrink-0" style="margin-top:70%;">
                     <img src="images/icon_tiktok.png" alt="TikTok Logo"
                         class="w-[80%] max-w-[380px] h-auto object-contain filter drop-shadow-[0_10px_25px_rgba(0,0,0,0.3)]">
                 </div>
@@ -135,16 +135,15 @@
                         </button>
 
                         <!-- Red forgot password button -->
-                        <button id="forgotPasswordBtn" onclick="window.openForgotPasswordModal()"
-                            class="btn-standard w-full btn-red text-white font-normal rounded-2xl shadow-xl active:scale-[0.98] transition-all mt-3 text-[13px]">
+                        <button id="forgotPasswordBtn" disabled onclick="window.openForgotPasswordModal()"
+                            class="btn-standard w-full btn-red text-white font-normal rounded-2xl shadow-xl active:scale-[0.98] transition-all mt-3 text-[13px] disabled:opacity-50 disabled:cursor-not-allowed">
                             <i data-lucide="key-round" class="w-5 h-5"></i>ลืมรหัสผ่านเข้าสู่ระบบ
                         </button>
 
                         <!-- Reset Password Section (Shown only if empReset is not empty/null) -->
                         <div id="loginResetArea"
                             class="hidden w-full text-left space-y-3 border-t border-white/10 pt-4">
-                            <p class="text-xs text-orange-400 font-semibold">พบข้อมูลการขอ Reset รหัสผ่าน กรุณากรอก PIN
-                                เพื่อตั้งรหัสผ่านใหม่</p>
+                            <p class="text-xs text-orange-400 font-semibold">กรุณาใส่ PIN เพื่อ Reset Password</p>
                             <div>
                                 <label class="block text-[13px] font-normal text-white/90 mb-1.5">PIN 6 หลัก</label>
                                 <div class="flex gap-2">
@@ -441,14 +440,14 @@
                             <div class="glass-panel rounded-2xl p-3 text-center space-y-1"
                                 style="background-color: #a86206;">
                                 <p class="text-[11px] text-slate-300 font-light">จำนวนผู้ร่วมกิจกรรม</p>
-                                <p class="text-lg text-orange-400"><span id="homeRegistrationMembersCount">0</span> คน
+                                <p class="text-xm text-orange-400"><span id="homeRegistrationMembersCount">0</span> คน
                                 </p>
                             </div>
                             <!-- จำนวนโพสต์รวม -->
                             <div class="glass-panel rounded-2xl p-3 text-center space-y-1"
                                 style="background-color: #1746ca;">
                                 <p class="text-[11px] text-slate-300 font-light">จำนวนโพสต์รวม</p>
-                                <p class="text-lg text-orange-400"><span id="homeApprovedPostsCount">0</span>
+                                <p class="text-xm text-orange-400"><span id="homeApprovedPostsCount">0</span>
                                     โพสต์</p>
                             </div>
                         </div>
@@ -542,7 +541,7 @@
                         <div class="glass-panel rounded-2xl p-4 space-y-2">
                             <h4 class="text-white font-normal text-sm">ยินดีต้อนรับสู่แคมเปญ Branch Tiktok, The IDOL
                             </h4>
-                            <p class="text-[13px] text-slate-200 text-left leading-relaxed">
+                            <p class="text-xs text-slate-200 text-left leading-relaxed">
                                 ร่วมสร้างสรรค์คลิปวิดีโอผ่านช่องทาง <span
                                     class="text-orange-500 underline decoration-orange-400 decoration-2">TikTok</span>
                                 เพื่อแนะนำตัวตน แนะนำสาขา ให้ความรู้ทางการเงิน เตือนภัยมิจฉาชีพ หรือแนะนำผลิตภัณฑ์ ttb
