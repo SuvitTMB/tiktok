@@ -42,19 +42,20 @@
             <!-- VIEW 1: WELCOME SCREEN (Invitation & 4 Objectives) -->
             <div id="welcomeView" class="w-full p-3 pb-6 space-y-6 flex flex-col items-center justify-start">
                 <!-- TikTok Logo Branding (Shown on welcome view, hidden on registration form view) -->
-                <div class="w-full flex flex-col items-center justify-center mb-2 shrink-0" style="margin-top:70%;">
+                <div class="w-full flex flex-col items-center justify-center mb-2 shrink-0" style="margin-top:65%;">
                     <img src="images/icon_tiktok.png" alt="TikTok Logo"
                         class="w-[80%] max-w-[380px] h-auto object-contain filter drop-shadow-[0_10px_25px_rgba(0,0,0,0.3)]">
                 </div>
 
                 <!-- Invitation Text Box (Darkened glass background - font-size 13px) -->
                 <div id="invitationBox"
-                    class="w-full glass-panel rounded-3xl p-3 text-white text-[13px] leading-relaxed text-justify shadow-2xl space-y-4 shrink-0"  style="background: #0056ff;">
+                    class="w-full glass-panel rounded-3xl p-3 text-white text-[13px] leading-relaxed text-justify shadow-2xl space-y-4 shrink-0"
+                    style="background: #0056ff;">
 
                     <div class="text-center flex items-center justify-center gap-2">
                         <h2 class="text-[15px] font-normal text-white text-center leading-tight p-3">
                             เปลี่ยนพนักงานสาขา สู่ ...<br>Branch TikTok, <span class="text-orange-500 text-bold">The
-                            IDEL</span></h2>
+                                IDEL</span></h2>
                     </div>
                     <p class="text-[13px] text-center font-color-yellow" style="margin-top:0px;">
                         เข้าร่วมแคมเปญลุ้นรางวัลใหญ่ ยิ่งโพสต์มากยิ่งมีสิทธิ์มาก<br>เริ่มแล้ววันนี้ ถึง เดือนตุลาคม 2569
@@ -118,7 +119,7 @@
                                     class="name-input w-full px-4 py-3.5 rounded-2xl text-[13px] shadow-sm"
                                     oninput="window.checkLoginEmployeeId()">
                             </div>
-                            <div>
+                            <div id="loginPasswordContainer">
                                 <label class="block text-left text-[13px] font-normal text-white/90 mb-1.5">รหัสผ่าน
                                     (Password)</label>
                                 <input type="password" id="loginPassword" placeholder="........" disabled
@@ -132,6 +133,53 @@
                             class="btn-standard w-full bg-orange-500 hover:bg-orange-600 text-white font-normal rounded-2xl shadow-xl active:scale-[0.98] transition-all mt-4 text-[13px] disabled:opacity-50 disabled:cursor-not-allowed">
                             <i data-lucide="user-plus" class="w-5 h-5"></i>ลงทะเบียน Branch TIKTOK, The IDOL
                         </button>
+
+                        <!-- Red forgot password button -->
+                        <button id="forgotPasswordBtn" onclick="window.openForgotPasswordModal()"
+                            class="btn-standard w-full btn-red text-white font-normal rounded-2xl shadow-xl active:scale-[0.98] transition-all mt-3 text-[13px]">
+                            <i data-lucide="key-round" class="w-5 h-5"></i>ลืมรหัสผ่านเข้าสู่ระบบ
+                        </button>
+
+                        <!-- Reset Password Section (Shown only if empReset is not empty/null) -->
+                        <div id="loginResetArea"
+                            class="hidden w-full text-left space-y-3 border-t border-white/10 pt-4">
+                            <p class="text-xs text-orange-400 font-semibold">พบข้อมูลการขอ Reset รหัสผ่าน กรุณากรอก PIN
+                                เพื่อตั้งรหัสผ่านใหม่</p>
+                            <div>
+                                <label class="block text-[13px] font-normal text-white/90 mb-1.5">PIN 6 หลัก</label>
+                                <div class="flex gap-2">
+                                    <input type="text" id="loginResetPin" placeholder="กรอก PIN 6 หลัก" maxlength="6"
+                                        class="name-input flex-1 px-4 py-3 rounded-2xl text-[13px] shadow-sm">
+                                    <button type="button" onclick="window.verifyResetPin()"
+                                        class="px-4 bg-blue-600 hover:bg-blue-700 text-white rounded-2xl text-xs font-semibold shadow-sm">
+                                        ตรวจสอบ PIN
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Hidden password entry fields until PIN is verified -->
+                            <div id="loginResetPasswordFields" class="hidden space-y-3">
+                                <div>
+                                    <label class="block text-[13px] font-normal text-white/90 mb-1.5">รหัสผ่านใหม่ (New
+                                        Password)</label>
+                                    <input type="password" id="loginNewPassword" placeholder="........"
+                                        oninput="window.checkResetPasswordValidity()"
+                                        class="name-input w-full px-4 py-3.5 rounded-2xl text-[13px] shadow-sm">
+                                </div>
+                                <div>
+                                    <label class="block text-[13px] font-normal text-white/90 mb-1.5">ยืนยันรหัสผ่านใหม่
+                                        (Confirm Password)</label>
+                                    <input type="password" id="loginConfirmNewPassword" placeholder="........"
+                                        oninput="window.checkResetPasswordValidity()"
+                                        class="name-input w-full px-4 py-3.5 rounded-2xl text-[13px] shadow-sm">
+                                </div>
+
+                                <button id="loginSaveNewPasswordBtn" disabled onclick="window.saveNewPassword()"
+                                    class="btn-standard w-full bg-green-600 hover:bg-green-700 text-white font-normal rounded-2xl shadow-xl active:scale-[0.98] transition-all mt-4 text-[13px] disabled:opacity-50 disabled:cursor-not-allowed">
+                                    บันทึกรหัสผ่านใหม่
+                                </button>
+                            </div>
+                        </div>
                     </div>
 
                     <!-- Form 2: REGISTER -->
@@ -388,7 +436,7 @@
                     <div id="dash-tab-home" class="dash-tab-content space-y-4">
 
                         <!-- แถวใหม่แสดงจำนวนผู้ร่วมกิจกรรม และ จำนวนโพสต์รวม -->
-                        <div class="grid grid-cols-2 gap-3">
+                        <div class="grid grid-cols-2 gap-3" style="margin-top: 26px;">
                             <!-- จำนวนผู้ร่วมกิจกรรม -->
                             <div class="glass-panel rounded-2xl p-3 text-center space-y-1"
                                 style="background-color: #a86206;">
@@ -2478,6 +2526,54 @@
                 </p>
             </div>
             <button onclick="window.closeQuizWrongModal()"
+                class="btn-standard w-full bg-orange-500 hover:bg-orange-600 text-white font-normal rounded-xl h-[44px]">
+                ปิดหน้าต่าง
+            </button>
+        </div>
+    </div>
+
+    <!-- Lightbox Modal for Forgot Password -->
+    <div id="forgotPasswordModal"
+        class="fixed inset-0 bg-black/75 backdrop-blur-sm z-[9999] flex items-center justify-center hidden p-3">
+        <div class="glass-panel w-full max-w-[400px] rounded-3xl p-6 space-y-5 text-center border border-white/10">
+            <div
+                class="w-16 h-16 bg-red-500/10 border border-red-500/30 rounded-full flex items-center justify-center text-red-500 mx-auto animate-pulse">
+                <i data-lucide="key-round" class="w-10 h-10"></i>
+            </div>
+            <div class="space-y-2 text-left">
+                <h3 class="text-[16px] font-semibold text-red-400 text-center">Reset รหัสผ่านใหม่</h3>
+                <p class="text-xs text-slate-200 font-light leading-relaxed">
+                    เจ้าหน้าที่จะทำการ Reset Password ซึ่งจะใช้เวลาในการดำเนิน และให้เข้ามาตรวจสอบใหม่อีกครั้ง
+                </p>
+            </div>
+            <div class="flex items-center justify-between gap-3">
+                <button onclick="window.closeForgotPasswordModal()"
+                    class="flex-1 btn-standard bg-slate-700 hover:bg-slate-600 text-white font-normal rounded-xl h-[44px]">
+                    ยกเลิก
+                </button>
+                <button onclick="window.confirmPasswordReset()"
+                    class="flex-1 btn-standard bg-red-600 hover:bg-red-700 text-white font-normal rounded-xl h-[44px]">
+                    ยืนยันการ Reset Password
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Lightbox Modal for Reset Password Success -->
+    <div id="resetSuccessModal"
+        class="fixed inset-0 bg-black/75 backdrop-blur-sm z-[9999] flex items-center justify-center hidden p-3">
+        <div class="glass-panel w-full max-w-[360px] rounded-3xl p-6 space-y-5 text-center border border-white/10">
+            <div
+                class="w-16 h-16 bg-green-500/10 border border-green-500/30 rounded-full flex items-center justify-center text-green-500 mx-auto animate-bounce">
+                <i data-lucide="check-circle-2" class="w-10 h-10"></i>
+            </div>
+            <div class="space-y-2">
+                <h3 class="text-[16px] font-semibold text-green-400">เปลี่ยนรหัสผ่านสำเร็จ</h3>
+                <p class="text-xs text-slate-300 font-light leading-relaxed">
+                    ระบบทำการเปลี่ยนรหัสผ่านของท่านเรียบร้อยแล้ว กรุณาเข้าสู่ระบบอีกครั้งค่ะ
+                </p>
+            </div>
+            <button onclick="window.location.reload()"
                 class="btn-standard w-full bg-orange-500 hover:bg-orange-600 text-white font-normal rounded-xl h-[44px]">
                 ปิดหน้าต่าง
             </button>
