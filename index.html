@@ -42,108 +42,32 @@
             <!-- VIEW 1: WELCOME SCREEN (Invitation & 4 Objectives) -->
             <div id="welcomeView" class="w-full p-3 pb-6 space-y-6 flex flex-col items-center justify-start">
                 <!-- TikTok Logo Branding (Shown on welcome view, hidden on registration form view) -->
-                <div class="w-full flex flex-col items-center justify-center mb-2 shrink-0">
+                <div class="w-full flex flex-col items-center justify-center mb-2 shrink-0" style="margin-top:70%;">
                     <img src="images/icon_tiktok.png" alt="TikTok Logo"
                         class="w-[80%] max-w-[380px] h-auto object-contain filter drop-shadow-[0_10px_25px_rgba(0,0,0,0.3)]">
                 </div>
 
                 <!-- Invitation Text Box (Darkened glass background - font-size 13px) -->
                 <div id="invitationBox"
-                    class="w-full glass-panel rounded-3xl p-3 text-white text-[13px] leading-relaxed text-justify shadow-2xl space-y-4 shrink-0">
+                    class="w-full glass-panel rounded-3xl p-3 text-white text-[13px] leading-relaxed text-justify shadow-2xl space-y-4 shrink-0"  style="background: #0056ff;">
+
                     <div class="text-center flex items-center justify-center gap-2">
-                        <i data-lucide="megaphone" class="w-5 h-5 text-orange-400"></i>
-                        <h2 class="text-[14px] font-normal text-white text-center leading-tight p-3">
-                            ขอเชิญชวนพนักงานสาขาทุกท่าน</h2>
+                        <h2 class="text-[15px] font-normal text-white text-center leading-tight p-3">
+                            เปลี่ยนพนักงานสาขา สู่ ...<br>Branch TikTok, <span class="text-orange-500 text-bold">The
+                            IDEL</span></h2>
                     </div>
-
-                    <p class="text-[13px] text-slate-200 text-left leading-relaxed">
-                        ร่วมสร้างสรรค์คลิปวิดีโอผ่านช่องทาง <span
-                            class="text-orange-500 underline decoration-orange-400 decoration-2">TikTok</span>
-                        เพื่อแนะนำตัวตน แนะนำสาขา ให้ความรู้ทางการเงิน เตือนภัยมิจฉาชีพ หรือแนะนำผลิตภัณฑ์ ttb
-                        ช่วยสร้างความเชื่อมั่นให้ลูกค้ารู้ว่า <span class="text-orange-500">“เรามีตัวตนจริง
-                            อยู่ใกล้คุณ และพร้อมให้บริการจริง”</span> โดยมุ่งเน้นที่การสร้างตัวตน
+                    <p class="text-[13px] text-center font-color-yellow" style="margin-top:0px;">
+                        เข้าร่วมแคมเปญลุ้นรางวัลใหญ่ ยิ่งโพสต์มากยิ่งมีสิทธิ์มาก<br>เริ่มแล้ววันนี้ ถึง เดือนตุลาคม 2569
                     </p>
+                    <button onclick="window.transitionToForm()"
+                        class="btn-standard w-full bg-orange-500 hover:bg-orange-600 text-white font-normal rounded-2xl shadow-xl active:scale-[0.98] transition-all mt-4 text-[13px] disabled:opacity-50 disabled:cursor-not-allowed">
+                        <span>เข้าสู่ Branch TIKTOK, The IDOL</span>
+                        <i data-lucide="chevron-right" class="w-5 h-5 animate-pulse"></i>
+                    </button>
 
-                    <!-- OBJECTIVE GRID - 4 ITEMS -->
-                    <div class="space-y-4 pt-2">
-                        <div class="border-t border-white/10 pt-4 pb-1">
-                            <h4 class="text-center font-normal text-[13px] tracking-widest text-slate-300">
-                                OBJECTIVES / วัตถุประสงค์กิจกรรม</h4>
-                        </div>
-
-                        <div class="grid grid-cols-1 gap-3.5 text-[13px]">
-
-                            <!-- Objective 01 -->
-                            <div class="objective-card rounded-2xl p-3 flex gap-3 items-start text-left">
-                                <div
-                                    class="w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center text-[12px] text-white shrink-0 shadow-lg">
-                                    1</div>
-                                <div class="space-y-1">
-                                    <div class="flex items-center gap-1.5 font-normal text-[13px] text-orange-500">
-                                        <i data-lucide="heart" class="w-4 h-4 text-orange-400 fill-orange-400/20"></i>
-                                        <span>สร้างความเชื่อมั่นให้ลูกค้า<br>(Trusted)</span>
-                                    </div>
-                                    <p class="text-[13px] text-slate-300 leading-snug">ให้ลูกค้ารู้จักพนักงานและสาขา ttb
-                                        มากขึ้น เห็นหน้า รู้จักตัวตน ติดต่อได้จริง</p>
-                                </div>
-                            </div>
-
-                            <!-- Objective 02 -->
-                            <div class="objective-card rounded-2xl p-3 flex gap-3 items-start text-left">
-                                <div
-                                    class="w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center text-[12px] text-white shrink-0 shadow-lg">
-                                    2</div>
-                                <div class="space-y-1">
-                                    <div class="flex items-center gap-1.5 font-normal text-[13px] text-orange-500">
-                                        <i data-lucide="shield-alert" class="w-4 h-4 text-orange-400"></i>
-                                        <span>ป้องกันการแอบอ้างจากมิจฉาชีพ (Scam Prevention)</span>
-                                    </div>
-                                    <p class="text-[13px] text-slate-300 leading-snug">
-                                        ให้ลูกค้ารับรู้ช่องทางที่ถูกต้องของ ttb และรู้เท่าทันกลโกงมิจฉาชีพ</p>
-                                </div>
-                            </div>
-
-                            <!-- Objective 03 -->
-                            <div class="objective-card rounded-2xl p-3 flex gap-3 items-start text-left">
-                                <div
-                                    class="w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center text-[12px] text-white shrink-0 shadow-lg">
-                                    3</div>
-                                <div class="space-y-1">
-                                    <div class="flex items-center gap-1.5 font-normal text-[13px] text-orange-500">
-                                        <i data-lucide="store" class="w-4 h-4 text-orange-400"></i>
-                                        <span>เพิ่มการรับรู้สาขา (Branch Awareness)</span>
-                                    </div>
-                                    <p class="text-[13px] text-slate-300 leading-snug">
-                                        ให้ลูกค้าในพื้นที่รู้จักสาขาใกล้บ้านมากขึ้น และเข้ามาใช้บริการที่สาขา</p>
-                                </div>
-                            </div>
-
-                            <!-- Objective 04 -->
-                            <div class="objective-card rounded-2xl p-3 flex gap-3 items-start text-left">
-                                <div
-                                    class="w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center text-[12px] text-white shrink-0 shadow-lg">
-                                    4</div>
-                                <div class="space-y-1">
-                                    <div class="flex items-center gap-1.5 font-normal text-[13px] text-orange-500">
-                                        <i data-lucide="megaphone" class="w-4 h-4 text-orange-400"></i>
-                                        <span>พัฒนาพนักงานสาขาสู่ Employee Influencer</span>
-                                    </div>
-                                    <p class="text-[13px] text-slate-300 leading-snug">
-                                        พัฒนาพนักงานให้เป็นผู้สื่อสารแทนองค์กร สร้างตัวตนบนโลกออนไลน์
-                                        เปรียบเสมือนใช้สื่อภายในองค์กรให้เกิดประโยชน์สูงสุด</p>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
                 </div>
 
                 <!-- Call to action button to view register form (Font-normal and orange background) -->
-                <button onclick="window.transitionToForm()"
-                    class="btn-standard w-full bg-orange-500 hover:bg-orange-600 text-white font-normal rounded-2xl shadow-xl active:scale-[0.98] transition-all mt-4 text-[13px] disabled:opacity-50 disabled:cursor-not-allowed">
-                    <span>เข้าสู่ Branch TIKTOK, The IDOL</span>
-                    <i data-lucide="chevron-right" class="w-5 h-5 animate-pulse"></i>
-                </button>
             </div>
 
             <!-- VIEW 2: LOGIN / REGISTER FORM SCREEN -->
@@ -452,8 +376,8 @@
                     <div onclick="window.switchDashboardTab('userinfo')"
                         class="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-orange-500/25 border border-orange-500/40 text-orange-300 cursor-pointer active:scale-95 transition-all text-xs font-semibold shadow-md border-0 focus:outline-none">
                         <i data-lucide="award" class="w-3.5 h-3.5 text-orange-400"></i>
-                        <span>คะแนน: <strong id="headerUserScoreCount"
-                                class="font-bold text-white font-mono">0</strong></span>
+                        <span><strong id="headerUserScoreCount" class="font-bold text-white font-mono">0</strong>
+                            โพสต์</span>
                     </div>
                 </div>
 
