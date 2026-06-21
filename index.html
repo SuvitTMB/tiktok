@@ -23,7 +23,6 @@
 
 <body
     class="min-h-screen flex items-start justify-center m-0 p-0 text-white text-center relative overflow-x-auto pb-8 pt-8">
-
     <div id="globalLoader" class="transition-all duration-300">
         <div class="relative flex items-center justify-center mb-6">
             <div class="w-16 h-16 border-4 border-white/20 border-t-white rounded-full animate-spin"></div>
@@ -429,7 +428,8 @@
                 </div>
 
                 <!-- Scrollable Dashboard Content Area (With appropriate padding to prevent top/bottom overlap) -->
-                <div id="dashboardScrollArea" class="flex-1 overflow-y-auto p-3 space-y-4 w-full pt-[60px] pb-[88px]">
+                <div id="dashboardScrollArea" class="flex-1 overflow-y-auto p-3 space-y-4 w-full pt-[60px] pb-[88px]"
+                    style="background-color: rgb(150, 172, 238)">
 
                     <!-- DASHBOARD TAB CONTENT 1: HOME -->
                     <div id="dash-tab-home" class="dash-tab-content space-y-4">
@@ -550,12 +550,12 @@
                             </p>
                         </div>
 
-                        <!-- ตารางแสดงโพสต์ล่าสุด 5 อันดับแรก -->
+                        <!-- ตารางแสดงโพสต์ล่าสุด 10 อันดับแรก -->
                         <div class="glass-panel rounded-2xl p-4 space-y-3">
                             <div class="flex justify-between items-center border-b border-white/10 pb-2">
                                 <h4 class="text-orange-400 font-normal text-sm flex items-center gap-1.5">
                                     <i data-lucide="clock" class="w-4 h-4 text-orange-400"></i>
-                                    <span>โพสต์ล่าสุด 5 อันดับแรก</span>
+                                    <span>โพสต์ล่าสุด 10 อันดับแรก</span>
                                 </h4>
                                 <button onclick="window.switchDashboardTab('all-campaign-posts')"
                                     class="px-3 py-1 rounded-xl text-xs bg-orange-500 hover:bg-orange-600 text-white font-normal transition-all duration-300 border-0 focus:outline-none flex items-center gap-1 shadow-sm">
@@ -2061,7 +2061,7 @@
                                     <span id="dashEmployeeId" class="text-[12px] font-normal text-white/70"
                                         style="disabled"></span>
                                     <button onclick="window.openEditProfileModal()"
-                                        class="text-slate-400 hover:text-white transition-colors focus:outline-none bg-transparent border-0 p-0 cursor-pointer flex items-center"
+                                        class="text-orange-500 hover:text-orange-400 transition-colors focus:outline-none bg-transparent border-0 p-0 cursor-pointer flex items-center"
                                         title="แก้ไขข้อมูล">
                                         <i data-lucide="edit" class="w-4 h-4"></i>
                                     </button>
@@ -2075,8 +2075,6 @@
                                             class="text-orange-400 font-medium">-</span></p>
                                     <p class="flex justify-between"><span>TikTok:</span> <span id="dashTiktokUser"
                                             class="text-blue-400 font-medium">-</span></p>
-                                    <p class="flex justify-between"><span>คะแนนทดสอบ:</span> <span id="dashScoreQuiz"
-                                            class="text-green-400 font-semibold">- / 5</span></p>
                                     <p class="flex flex-col gap-1 mt-1 border-t border-white/10 pt-1.5">
                                         <span>URL ลิงก์ของช่อง:</span>
                                         <a id="dashTiktokUrl" href="#" target="_blank"
@@ -2393,7 +2391,7 @@
             </div>
             <div class="pt-2">
                 <button onclick="window.closeUrlPreviewModal()"
-                    class="w-full btn-standard bg-[#406099] hover:bg-[#4d73b5] text-white font-normal rounded-xl h-[44px]">
+                    class="w-full btn-standard bg-[#16368b] hover:bg-[#052fa0] text-white font-normal rounded-xl h-[44px]">
                     ปิดหน้าต่าง
                 </button>
             </div>
@@ -2450,7 +2448,8 @@
                 <div>
                     <label class="block text-slate-300 mb-1">ชื่อ-นามสกุล</label>
                     <input type="text" id="editFullName" placeholder="เช่น สมชาย ใจดี"
-                        class="name-input w-full px-4 py-3 rounded-xl text-[13px]">
+                        class="name-input w-full px-4 py-3 rounded-xl text-[13px]" disabled
+                        style="background-color: #94a3b8 !important">
                 </div>
 
                 <!-- Searchable Branch Input for Edit -->
