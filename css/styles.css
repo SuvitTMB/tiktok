@@ -1,13 +1,23 @@
 body {
     font-family: 'Kanit', sans-serif;
-    background: url('https://firebasestorage.googleapis.com/v0/b/faifah-ttb.appspot.com/o/Tiktok%2Fttb-TheIDOL.png?alt=media&token=13ae6b10-173e-4a3f-a3d1-53345eb47445') no-repeat center center fixed; 
-    background-size: cover;
     -ms-overflow-style: none;
     /* IE and Edge */
     scrollbar-width: none;
-    background-attachment: fixed;
-    background-position: center top;
     /* Firefox */
+}
+
+/* Fix background image display on iOS/iPhone */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -10;
+    background: url('https://firebasestorage.googleapis.com/v0/b/faifah-ttb.appspot.com/o/Tiktok%2Fttb-TheIDOL.png?alt=media&token=13ae6b10-173e-4a3f-a3d1-53345eb47445') no-repeat center top;
+    background-size: cover;
+    pointer-events: none;
 }
 
 body::-webkit-scrollbar {
