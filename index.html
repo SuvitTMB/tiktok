@@ -558,6 +558,20 @@
                             </p>
                         </div>
 
+                        <!-- กล่องแนะนำโพสต์ของเพื่อน ๆ -->
+                        <div class="glass-panel rounded-2xl p-4 space-y-3">
+                            <div class="border-b border-white/10 pb-2">
+                                <h4 class="text-orange-400 font-normal text-sm flex items-center gap-1.5">
+                                    <i data-lucide="sparkles" class="w-4 h-4 text-orange-400"></i>
+                                    <span>แนะนำโพสต์ของเพื่อน ๆ</span>
+                                </h4>
+                            </div>
+                            <div id="friend-recommendations" class="grid grid-cols-3 gap-2 text-center">
+                                <div class="col-span-3 py-4 text-center text-slate-400 text-xs italic">
+                                    กำลังสุ่มแนะนำโพสต์...</div>
+                            </div>
+                        </div>
+
                         <!-- ตารางแสดงโพสต์ล่าสุด 10 อันดับแรก -->
                         <div class="glass-panel rounded-2xl p-4 space-y-3">
                             <div class="flex justify-between items-center border-b border-white/10 pb-2">
@@ -1794,7 +1808,8 @@
                                                 <span>4 คลิป = 1 สิทธิ์ </span>
                                             <p class="text-[11px] text-orange-100 font-light mt-0.5">
                                                 เมื่อโพสต์คลิกใน Tiktok อย่างน้อย 1 คลิป/ต่อเดือน
-                                                (นับเฉพาะคลิปที่ผ่านการตรวจสอบจากทีมงานเรียบร้อยแล้ว) จับฉลากลุ้นรางวัลหลังจบกิจกรรม</p>
+                                                (นับเฉพาะคลิปที่ผ่านการตรวจสอบจากทีมงานเรียบร้อยแล้ว)
+                                                จับฉลากลุ้นรางวัลหลังจบกิจกรรม</p>
                                             </p>
                                         </div>
                                         <div class="space-y-2 pt-1">
@@ -2098,11 +2113,26 @@
                                             class="text-orange-400 font-medium">-</span></p>
                                     <p class="flex justify-between"><span>ตำแหน่ง:</span> <span id="dashPosition"
                                             class="text-orange-400 font-medium">-</span></p>
-                                    <p class="flex justify-between"><span>TikTok:</span> <span id="dashTiktokUser"
+                                    <p class="flex justify-between gap-1 mt-1 border-t border-white/10 pt-1.5">
+                                        <span>License ประกันชีวิต:</span> <span id="dashLifeInsurance"
+                                            class="text-orange-400 font-medium">-</span>
+                                    </p>
+                                    <p class="flex justify-between"><span>License ประกันวินาศภัย:</span> <span
+                                            id="dashNonLifeInsurance" class="text-orange-400 font-medium">-</span></p>
+                                    <p class="flex justify-between"><span>IC License:</span> <span id="dashICLicense"
+                                            class="text-orange-400 font-medium">-</span></p>
+                                    <p class="flex justify-between gap-1 mt-1 border-t border-white/10 pt-1.5">
+                                        <span>TikTok Name:</span> <span id="dashTiktokUser"
                                             class="text-blue-400 font-medium">-</span></p>
-                                    <p class="flex flex-col gap-1 mt-1 border-t border-white/10 pt-1.5">
+                                    <p class="flex justify-between">
                                         <span>URL ลิงก์ของช่อง:</span>
                                         <a id="dashTiktokUrl" href="#" target="_blank"
+                                            class="text-xs text-orange-400 font-light truncate hover:underline">-</a>
+                                    </p>
+                                    <p id="dashLinkBox"
+                                        class="flex flex-col gap-1 mt-1 border-t border-white/10 pt-1.5 hidden">
+                                        <span>ลิงก์สำหรับกรอกผลงานส่ง:</span>
+                                        <a id="dashLinkUrl" href="#" target="_blank"
                                             class="text-xs text-orange-300 font-light truncate hover:underline">-</a>
                                     </p>
                                 </div>
