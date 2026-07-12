@@ -560,11 +560,15 @@
 
                         <!-- กล่องแนะนำโพสต์ของเพื่อน ๆ -->
                         <div class="glass-panel rounded-2xl p-4 space-y-3">
-                            <div class="border-b border-white/10 pb-2">
+                            <div class="flex justify-between items-center border-b border-white/10 pb-2">
                                 <h4 class="text-orange-400 font-normal text-sm flex items-center gap-1.5">
                                     <i data-lucide="sparkles" class="w-4 h-4 text-orange-400"></i>
                                     <span>แนะนำโพสต์ของเพื่อน ๆ</span>
                                 </h4>
+                                <button onclick="window.switchDashboardTab('all-campaign-employees')"
+                                    class="px-3 py-1 rounded-xl text-xs bg-orange-500 hover:bg-orange-600 text-white font-normal transition-all duration-300 border-0 focus:outline-none flex items-center gap-1 shadow-sm cursor-pointer">
+                                    <i data-lucide="eye" class="w-3.5 h-3.5"></i> ดูโพสต์ทั้งหมด
+                                </button>
                             </div>
                             <div id="friend-recommendations" class="grid grid-cols-3 gap-2 text-center">
                                 <div class="col-span-3 py-4 text-center text-slate-400 text-xs italic">
@@ -649,8 +653,7 @@
                                     <i data-lucide="video" class="w-4 h-4 text-orange-400"></i>
                                     <span>รายการโพสต์ประกวดทั้งหมด</span>
                                 </h4>
-                                <span id="allPostsHeaderCount" class="text-xs text-orange-400 font-semibold">รวม 0
-                                    โพสต์</span>
+                                <span id="allPostsHeaderCount" class="text-xs text-orange-400 font-semibold">รวม 0 โพสต์</span>
                             </div>
                             <div class="overflow-x-auto w-full">
                                 <table class="w-full text-left text-xs text-white">
@@ -702,6 +705,83 @@
                                     </div>
                                 </div>
                                 <div class="flex items-center gap-1.5" id="allPostsPaginationControls">
+                                    <!-- Dynamic pagination buttons -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="dash-tab-all-campaign-employees" class="dash-tab-content space-y-4 hidden text-left">
+                        <!-- Month/Group Filter Container (Like Photo 2) -->
+                        <div class="glass-panel rounded-2xl p-4 space-y-3">
+                            <div class="flex justify-between items-center border-b border-white/10 pb-2 mb-2">
+                                <span class="text-slate-300 text-xs font-normal flex items-center gap-1.5">
+                                    <i data-lucide="filter" class="w-4 h-4 text-orange-400"></i>
+                                    <span>ตัวกรองโพสต์แนะนำของเพื่อนๆ</span>
+                                </span>
+                            </div>
+
+                            <!-- Group Filter Buttons -->
+                            <div id="allEmployeesGroupFilterContainer" class="flex flex-wrap gap-2 text-xs">
+                                <button onclick="window.selectAllEmployeesGroup('all')" id="allEmployeesGroupAllBtn"
+                                    class="px-3 py-1.5 rounded-xl transition-all duration-300 bg-[#e26e2c] text-white shadow-md font-semibold border-0 focus:outline-none">ทั้งหมด</button>
+                                <button onclick="window.selectAllEmployeesGroup('A')" id="allEmployeesGroupABtn"
+                                    class="px-3 py-1.5 rounded-xl transition-all duration-300 bg-white/10 text-white/80 hover:bg-white/20 border-0 focus:outline-none">กลุ่ม
+                                    8 คนขึ้นไป</button>
+                                <button onclick="window.selectAllEmployeesGroup('B')" id="allEmployeesGroupBBtn"
+                                    class="px-3 py-1.5 rounded-xl transition-all duration-300 bg-white/10 text-white/80 hover:bg-white/20 border-0 focus:outline-none">กลุ่มน้อยกว่า
+                                    8 คน</button>
+                            </div>
+
+                            <!-- Month Filter Buttons -->
+                            <div id="allEmployeesMonthFilterContainer" class="flex flex-wrap gap-2 text-xs">
+                                <!-- Loaded dynamically, e.g. ทุกเดือน, มิถุนายน, พฤษภาคม -->
+                            </div>
+
+                            <!-- Search Input (Bottom Row) -->
+                            <div class="pt-2 border-t border-white/5 relative">
+                                <input type="text" id="allEmployeesSearchInput" oninput="window.handleAllEmployeesSearch()"
+                                    placeholder="ค้นหาด้วยชื่อ-นามสกุล หรือ รหัสพนักงาน..."
+                                    class="name-input w-full px-4 py-2.5 rounded-xl text-[12px] pr-10">
+                                <i data-lucide="search" class="absolute right-3.5 top-5 w-4 h-4 text-slate-400"></i>
+                            </div>
+                        </div>
+
+                        <!-- All Posts Grid (Employee Cards) -->
+                        <div class="glass-panel rounded-2xl p-4 space-y-3">
+                            <div class="flex justify-between items-center border-b border-white/10 pb-2">
+                                <h4 class="text-orange-400 font-normal text-sm flex items-center gap-1.5">
+                                    <i data-lucide="users" class="w-4 h-4 text-orange-400"></i>
+                                    <span>ผู้ส่งผลงานแนะนำทั้งหมด</span>
+                                </h4>
+                                <span id="allEmployeesHeaderCount" class="text-xs text-orange-400 font-semibold">รวม 0 คน</span>
+                            </div>
+                            <div class="w-full">
+                                <div id="allCampaignEmployeesGrid" class="grid grid-cols-3 gap-3">
+                                    <!-- Loaded dynamically -->
+                                </div>
+                            </div>
+
+                            <!-- Pagination Controls with configurable Page Size -->
+                            <div
+                                class="flex flex-wrap justify-between items-center text-xs text-slate-300 pt-2.5 border-t border-white/10 mt-2 gap-2">
+                                <div class="flex items-center gap-2">
+                                    <span id="allEmployeesTotalSummary">รวม 0 คน</span>
+                                    <span class="text-slate-500">|</span>
+                                    <div class="flex items-center gap-1">
+                                        <span>หน้าละ:</span>
+                                        <select id="allEmployeesPageSizeSelect"
+                                            onchange="window.changeAllEmployeesPageSize(this.value)"
+                                            class="bg-white/10 border border-white/20 rounded px-1.5 py-0.5 text-white focus:outline-none text-[11px] cursor-pointer">
+                                            <option value="10" class="text-slate-900">10</option>
+                                            <option value="20" class="text-slate-900">20</option>
+                                            <option value="30" class="text-slate-900" selected>30</option>
+                                            <option value="50" class="text-slate-900">50</option>
+                                            <option value="100" class="text-slate-900">100</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="flex items-center gap-1.5" id="allEmployeesPaginationControls">
                                     <!-- Dynamic pagination buttons -->
                                 </div>
                             </div>
@@ -1926,17 +2006,19 @@
                         <!-- User Submissions Table -->
                         <div class="glass-panel rounded-2xl p-4 space-y-3">
                             <div class="flex justify-between items-center border-b border-white/10 pb-2">
-                                <h4 class="text-orange-400 font-normal text-sm">การส่งโพสต์ของคุณ</h4>
+                                <h4 class="text-orange-400 font-normal text-sm">โพสต์ของคุณ</h4>
                                 <div class="flex gap-2">
                                     <button id="filterPendingBtn" onclick="window.setAdminFilter('pending')"
                                         class="px-2.5 py-1 rounded-lg text-[10px] font-semibold transition-all bg-[#e26e2c] text-white shadow-md">รอการอนุมัติ</button>
                                     <button id="filterApprovedBtn" onclick="window.setAdminFilter('approved')"
                                         class="px-2.5 py-1 rounded-lg text-[10px] font-normal transition-all bg-white/10 text-white/80 hover:bg-white/20">อนุมัติแล้ว</button>
+                                    <button id="filterViolatedBtn" onclick="window.setAdminFilter('violated')"
+                                        class="px-2.5 py-1 rounded-lg text-[10px] font-normal transition-all bg-white/10 text-white/80 hover:bg-white/20">ไม่ตรงเงื่อนไข</button>
                                 </div>
                             </div>
                             <div class="overflow-x-auto w-full">
                                 <table class="w-full text-left text-xs text-white">
-                                    <thead class="bg-white/10 text-slate-300">
+                                    <thead id="myPostsTableHead" class="bg-white/10 text-slate-300">
                                         <tr>
                                             <th class="p-2.5 font-normal">วันที่โพสต์</th>
                                             <th class="p-2.5 font-normal">ลิงก์ที่โพสต์</th>
@@ -2338,6 +2420,14 @@
 
                 </div>
 
+                <!-- Floating TikTok News Button Wrapper -->
+                <div class="fixed bottom-[84px] left-1/2 -translate-x-1/2 w-full max-w-[500px] pointer-events-none z-40 flex justify-end px-4">
+                    <button id="tiktok-news-floating-btn" onclick="window.openUserNewsLightbox()"
+                        class="pointer-events-auto w-12 h-12 rounded-full overflow-hidden border-2 border-orange-500 shadow-lg transition-all hidden cursor-pointer focus:outline-none p-0 bg-transparent">
+                        <img src="images/apple-touch-icon.png" class="w-full h-full object-cover" alt="TikTok News">
+                    </button>
+                </div>
+
                 <!-- Navigation Bottom Tabs Menu (Fixed at Bottom 100% of phone screen) -->
                 <div
                     class="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-[500px] bg-header backdrop-blur-md border-t border-white/10 py-3 flex justify-around items-center shrink-0 z-50 h-[72px]">
@@ -2414,7 +2504,7 @@
 
     <!-- Lightbox Modal for TikTok URL Preview Iframe -->
     <div id="tiktokPreviewModal"
-        class="fixed inset-0 bg-black/80 backdrop-blur-sm z-[9999] flex items-center justify-center hidden p-3">
+        class="fixed inset-0 bg-black/80 backdrop-blur-sm z-[10000] flex items-center justify-center hidden p-3">
         <div class="glass-panel w-full max-w-[480px] rounded-3xl p-6 space-y-4 text-center">
             <div class="flex justify-between items-center border-b border-white/10 pb-2">
                 <h3 class="text-[15px] font-normal text-white">ตัวอย่างคลิป TikTok</h3>
@@ -2447,7 +2537,7 @@
 
             <div
                 class="w-full aspect-[9/16] max-h-[60vh] bg-black rounded-2xl overflow-hidden relative border border-white/10">
-                <iframe id="tiktokPreviewIframe" src="" class="w-full h-full border-0" allowfullscreen></iframe>
+                <iframe id="tiktokPreviewIframe" src="" class="w-full h-full border-0" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share; accelerometer; gyroscope; fullscreen" allowfullscreen></iframe>
             </div>
             <div class="pt-2">
                 <button onclick="window.closeUrlPreviewModal()"
@@ -2635,6 +2725,153 @@
                 class="btn-standard w-full bg-orange-500 hover:bg-orange-600 text-white font-normal rounded-xl h-[44px]">
                 ปิดหน้าต่าง
             </button>
+        </div>
+    </div>
+ 
+    <!-- Lightbox Modal for Post Results Verification on Login -->
+    <div id="postResultsLightboxModal"
+        class="fixed inset-0 bg-black/80 backdrop-blur-md z-[9999] flex items-center justify-center hidden p-4">
+        <div class="glass-panel w-full max-w-[650px] rounded-3xl p-6 space-y-5 text-white border border-white/10 shadow-2xl">
+            <div class="flex items-center gap-3 border-b border-white/10 pb-3">
+                <div class="w-10 h-10 bg-orange-500/10 border border-orange-500/30 rounded-xl flex items-center justify-center text-orange-400">
+                    <i data-lucide="clipboard-list" class="w-6 h-6"></i>
+                </div>
+                <div>
+                    <h3 class="text-[17px] font-semibold text-orange-400">ผลการพิจารณาการโพสต์คลิป TikTok</h3>
+                    <p class="text-[11px] text-slate-400 font-light">ข้อมูลผลพิจารณาล่าสุดของคุณ</p>
+                </div>
+            </div>
+
+            <!-- User Information Panel -->
+            <div class="bg-white/5 p-4 rounded-2xl text-xs font-light border border-white/5 text-left space-y-2">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <span class="text-slate-400">ชื่อ-นามสกุล:</span>
+                        <span id="prName" class="font-normal text-slate-100 ml-1 text-sm"></span>
+                    </div>
+                </div>
+                <div class="pt-2 border-t border-white/5 flex justify-between items-center text-[13px] font-normal">
+                    <span class="text-slate-300">จำนวนโพสต์ที่ได้รับการอนุมัติทั้งหมด:</span>
+                    <span class="bg-emerald-500/20 text-emerald-400 px-3 py-1 rounded-full text-xs font-semibold border border-emerald-500/30">
+                        <span id="prApprovedCount">0</span> โพสต์
+                    </span>
+                </div>
+            </div>
+
+            <!-- Table of posts to acknowledge -->
+            <div class="overflow-hidden rounded-2xl border border-white/10 bg-slate-900/50">
+                <div class="max-h-[260px] overflow-y-auto">
+                    <table class="w-full text-left text-xs border-collapse">
+                        <thead>
+                            <tr class="bg-white/5 border-b border-white/10 text-slate-300 font-normal uppercase tracking-wider">
+                                <th class="p-3 font-semibold">วันที่โพสต์</th>
+                                <th class="p-3 font-semibold">ผลการพิจารณา</th>
+                                <th class="p-3 text-center font-semibold">จัดการ</th>
+                            </tr>
+                        </thead>
+                        <tbody id="prTableBody" class="divide-y divide-white/5">
+                            <!-- Rows dynamically populated -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Action buttons -->
+            <div class="flex items-center justify-end gap-3 pt-2">
+                <button onclick="window.closePostResultsLightbox()"
+                    class="px-5 py-2.5 bg-slate-800 hover:bg-slate-700 text-slate-300 font-medium rounded-xl text-xs transition duration-250 border border-slate-700">
+                    ปิดหน้าต่าง
+                </button>
+                <button id="prAcknowledgeBtn" onclick="window.acknowledgePostResults()"
+                    class="px-6 py-2.5 bg-orange-500 hover:bg-orange-600 text-white font-medium rounded-xl text-xs shadow-lg shadow-orange-500/20 transition duration-250 flex items-center gap-1.5">
+                    <i data-lucide="check" class="w-4 h-4"></i> รับทราบ
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Lightbox Modal for Employee Posts Details -->
+    <div id="employeePostsLightboxModal"
+        class="fixed inset-0 bg-black/80 backdrop-blur-md z-[9999] flex items-center justify-center hidden p-4">
+        <div class="glass-panel w-full max-w-[500px] h-[90vh] max-h-[90vh] rounded-3xl p-6 space-y-4 text-white border border-white/10 shadow-2xl flex flex-col justify-between">
+            <!-- Header with Photo & Name -->
+            <div class="flex items-center gap-4 border-b border-white/10 pb-4 shrink-0">
+                <div class="w-16 h-16 rounded-full overflow-hidden border border-white/30 shadow-md shrink-0">
+                    <img id="empLightboxPhoto" src="./images/default-profile.png" class="w-full h-full object-cover">
+                </div>
+                <div>
+                    <h3 id="empLightboxName" class="text-lg text-orange-400">ชื่อพนักงาน</h3>
+                    <p class="text-xs text-slate-400 font-light">ข้อมูลประวัติการส่งคลิปวิดีโอ</p>
+                </div>
+            </div>
+
+            <!-- Table of employee's posts -->
+            <div class="overflow-hidden rounded-2xl border border-white/10 bg-slate-900/50 flex-1 my-2 min-h-0 flex flex-col">
+                <div class="overflow-y-auto flex-1">
+                    <table class="w-full text-left text-xs border-collapse">
+                        <thead>
+                            <tr class="bg-white/5 border-b border-white/10 text-slate-300 font-normal uppercase tracking-wider sticky top-0 bg-[#0c1322] z-10">
+                                <th class="p-3 font-semibold text-center">วันที่ส่งคลิป</th>
+                                <th class="p-3 text-center font-semibold">ดูคลิป</th>
+                                <th class="p-3 text-center font-semibold">จำนวนคลิก</th>
+                            </tr>
+                        </thead>
+                        <tbody id="empLightboxTableBody" class="divide-y divide-white/5 text-center">
+                            <!-- Populated dynamically -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Footer buttons -->
+            <div class="flex items-center justify-end pt-2 shrink-0 border-t border-white/10">
+                <button onclick="window.closeEmployeePostsLightbox()"
+                    class="px-5 py-2.5 bg-slate-800 hover:bg-slate-700 text-slate-300 font-medium rounded-xl text-xs transition border border-slate-700 focus:outline-none cursor-pointer">
+                    ปิดหน้าต่าง
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Lightbox Modal for TikTok News (สูง 90%) -->
+    <div id="userNewsLightboxModal"
+        class="fixed inset-0 bg-black/80 backdrop-blur-md z-[9999] flex items-center justify-center hidden p-4">
+        <div class="glass-panel w-full max-w-[500px] h-[90vh] max-h-[90vh] rounded-3xl p-6 space-y-4 text-white border border-white/10 shadow-2xl flex flex-col justify-between">
+            <!-- Header -->
+            <div class="flex items-center gap-3 border-b border-white/10 pb-4 shrink-0">
+                <div class="p-2 bg-orange-500/20 text-orange-400 rounded-xl">
+                    <i data-lucide="newspaper" class="w-6 h-6"></i>
+                </div>
+                <div>
+                    <h3 class="text-[17px] font-semibold text-orange-400">TikTok News</h3>
+                    <p class="text-[11px] text-slate-400 font-light font-bold">อัปเดตข่าวสารและประกาศล่าสุด</p>
+                </div>
+            </div>
+
+            <!-- Table of News -->
+            <div class="overflow-hidden rounded-2xl border border-white/10 bg-slate-900/50 flex-1 my-2 min-h-0 flex flex-col">
+                <div class="overflow-y-auto flex-1 custom-scrollbar">
+                    <table class="w-full text-left text-xs border-collapse">
+                        <thead>
+                            <tr class="bg-white/5 border-b border-white/10 text-slate-300 font-normal uppercase tracking-wider sticky top-0 bg-[#0c1322] z-10 text-[11px]">
+                                <th class="p-3 font-semibold text-center" width="25%">วันที่ข่าว</th>
+                                <th class="p-3 font-semibold text-left" width="75%">ข่าวสาร</th>
+                            </tr>
+                        </thead>
+                        <tbody id="userNewsTableBody" class="divide-y divide-white/5">
+                            <!-- Populated dynamically -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Footer buttons -->
+            <div class="flex items-center justify-end pt-2 shrink-0 border-t border-white/10">
+                <button onclick="window.closeUserNewsLightbox()"
+                    class="px-5 py-2.5 bg-slate-800 hover:bg-slate-700 text-slate-300 font-medium rounded-xl text-xs transition border border-slate-700 focus:outline-none cursor-pointer">
+                    ปิดหน้าต่าง
+                </button>
+            </div>
         </div>
     </div>
 
