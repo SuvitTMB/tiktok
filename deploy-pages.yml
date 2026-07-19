@@ -1,0 +1,57 @@
+# =====================================================================
+# Deploy เว็บขึ้น GitHub Pages พร้อมสร้างไฟล์ js/apikey.js จาก Secret
+# ทำงานอัตโนมัติทุกครั้งที่มีการ push ขึ้น branch main
+#
+# ก่อนใช้งานต้องตั้งค่า 2 อย่างใน GitHub (ทำครั้งเดียว):
+# 1. Settings > Secrets and variables > Actions > New repository secret
+#    Name: GEMINI_API_KEY  /  Secret: วางค่า API key ของ Gemini
+# 2. Settings > Pages > Build and deployment > Source: เลือก "GitHub Actions"
+# =====================================================================
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # สร้าง js/apikey.js ขึ้นมาใหม่จากค่า Secret ณ ตอน deploy
+      # (ไฟล์นี้ไม่อยู่ใน repo — อยู่เฉพาะบนหน้าเว็บที่เผยแพร่แล้วเท่านั้น)
+      - name: Create js/apikey.js from repository secret
+        run: |
+          cat > js/apikey.js <<'EOF'
+          window.JF_API_KEYS = {
+              gemini: '__GEMINI_API_KEY__'
+          };
+          EOF
+          sed -i "s/__GEMINI_API_KEY__/${{ secrets.GEMINI_API_KEY }}/" js/apikey.js
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload site files
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: .
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
