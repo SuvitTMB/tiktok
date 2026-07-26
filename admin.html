@@ -1142,6 +1142,13 @@
                                     <span id="rh-report-total-posts" class="font-black text-[#0056ff]">0 โพสต์</span>
                                 </div>
                             </div>
+
+                            <!-- ปุ่มไอคอนรายงานสรุปจำนวนโพสต์ตามสังกัด RH / เขต -->
+                            <button type="button" onclick="window.openRhPostsSummaryModal()"
+                                class="p-2.5 bg-[#0056ff] hover:bg-blue-700 text-white rounded-xl transition-all shadow-md flex items-center justify-center shrink-0"
+                                title="รายงานสรุปจำนวนโพสต์ตามสังกัด RH และเขต">
+                                <i data-lucide="file-bar-chart" class="w-4 h-4"></i>
+                            </button>
                         </div>
                     </div>
                     <div class="relative w-full h-[320px]">
@@ -1177,6 +1184,13 @@
                                     <span id="rh-position-total-employees" class="font-black text-[#0056ff]">0 คน</span>
                                 </div>
                             </div>
+
+                            <!-- ปุ่มไอคอนรายงานสรุปจำนวนพนักงานตามตำแหน่งงาน / เขต / สังกัด RH -->
+                            <button type="button" onclick="window.openRhPositionSummaryModal()"
+                                class="p-2.5 bg-[#0056ff] hover:bg-blue-700 text-white rounded-xl transition-all shadow-md flex items-center justify-center shrink-0"
+                                title="รายงานสรุปจำนวนพนักงานตามตำแหน่งงานและสังกัด RH">
+                                <i data-lucide="file-bar-chart" class="w-4 h-4"></i>
+                            </button>
                         </div>
                     </div>
                     <div class="relative w-full h-[320px]">
@@ -1322,6 +1336,13 @@
                                     <span id="pos-report-avg-clips" class="font-black text-amber-600">0 คลิป/คน</span>
                                 </div>
                             </div>
+
+                            <!-- ปุ่มไอคอนรายงานสรุปตามสังกัด RH / เขต / สาขา / ตำแหน่ง -->
+                            <button type="button" onclick="window.openPositionSummaryModal()"
+                                class="p-2.5 bg-[#0056ff] hover:bg-blue-700 text-white rounded-xl transition-all shadow-md flex items-center justify-center shrink-0"
+                                title="รายงานสรุปตามสังกัด RH / เขต / สาขา / ตำแหน่ง">
+                                <i data-lucide="file-bar-chart" class="w-4 h-4"></i>
+                            </button>
                         </div>
                     </div>
 
@@ -3170,6 +3191,216 @@
                         <!-- Populated by JS -->
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- RH POSTS SUMMARY LIGHTBOX MODAL (สรุปจำนวนโพสต์ตามสังกัด RH / เขต) -->
+    <div id="rh-posts-summary-modal" class="fixed inset-0 modal-bg hidden z-[100] flex items-center justify-center p-4">
+        <div
+            class="bg-white w-[90%] h-[90%] max-w-[90%] max-h-[90%] rounded-3xl overflow-hidden shadow-2xl border border-stone-200 flex flex-col">
+            <!-- Header -->
+            <div
+                class="p-4 px-6 border-b border-stone-200 flex justify-between items-center bg-blue-500/10 text-stone-850 shrink-0">
+                <div class="flex items-center gap-2">
+                    <i data-lucide="file-bar-chart" class="w-5 h-5 text-blue-600"></i>
+                    <div>
+                        <h3 class="text-[15px] font-bold text-stone-800">รายงานสรุปจำนวนโพสต์ตามสังกัด RH และเขต</h3>
+                        <p class="text-[11px] text-stone-500">
+                            เปรียบเทียบโพสต์ที่อนุมัติแล้วและอยู่ระหว่างตรวจสอบ พร้อมจำนวนพนักงานที่โพสต์ แยกรายเขตพื้นที่
+                        </p>
+                    </div>
+                </div>
+                <button onclick="window.closeRhPostsSummaryModal()"
+                    class="text-stone-500 hover:text-stone-850 text-xl font-bold">✕</button>
+            </div>
+
+            <!-- Toolbar: ปุ่มดาวน์โหลด Excel ด้านบนขวามือ -->
+            <div
+                class="p-4 bg-stone-50 border-b border-stone-150 flex flex-wrap items-center justify-between gap-4 shrink-0">
+                <div id="rh-posts-summary-filter-info" class="text-[12px] text-stone-500 font-semibold">
+                    <!-- Populated by JS -->
+                </div>
+                <button onclick="window.downloadRhPostsSummaryExcel()"
+                    class="px-4 py-2 bg-emerald-600 text-white rounded-lg text-[12px] font-bold hover:bg-emerald-700 transition-all flex items-center gap-1.5 shadow-sm">
+                    <i data-lucide="download" class="w-4 h-4"></i> Download Excel File
+                </button>
+            </div>
+
+            <!-- Table Content (Scrollable) -->
+            <div class="flex-1 overflow-auto p-6">
+                <div class="rounded-table-container min-w-[800px]">
+                    <table class="w-full text-[13px] border-collapse">
+                        <thead>
+                            <tr>
+                                <th class="w-12 text-center">ลำดับ</th>
+                                <th class="w-24 text-center">สังกัด RH</th>
+                                <th class="text-left pl-4">เขต</th>
+                                <th class="w-32 text-center">โพสต์อนุมัติแล้ว</th>
+                                <th class="w-36 text-center">อยู่ระหว่างตรวจสอบ</th>
+                                <th class="w-28 text-center">โพสต์รวม</th>
+                                <th class="w-32 text-center">พนักงานที่โพสต์ (คน)</th>
+                            </tr>
+                        </thead>
+                        <tbody id="rh-posts-summary-table-body" class="divide-y divide-stone-100">
+                            <!-- Populated by JS -->
+                        </tbody>
+                        <tfoot id="rh-posts-summary-table-foot" class="bg-stone-100 font-bold text-stone-800">
+                            <!-- Populated by JS -->
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <div
+                class="p-4 bg-stone-50 border-t border-stone-200 flex flex-col sm:flex-row items-center justify-between gap-4 shrink-0 text-[13px]">
+                <div id="rh-posts-summary-total-info" class="font-bold text-stone-700">
+                    <!-- Populated by JS -->
+                </div>
+                <button onclick="window.closeRhPostsSummaryModal()"
+                    class="w-32 py-2.5 bg-[#cccccc] text-stone-850 hover:bg-stone-400 font-bold rounded-xl text-[13px]">ปิดหน้าต่าง</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- RH POSITION SUMMARY LIGHTBOX MODAL (สรุปจำนวนพนักงานตามตำแหน่งงาน / เขต / สังกัด RH) -->
+    <div id="rh-position-summary-modal"
+        class="fixed inset-0 modal-bg hidden z-[100] flex items-center justify-center p-4">
+        <div
+            class="bg-white w-[90%] h-[90%] max-w-[90%] max-h-[90%] rounded-3xl overflow-hidden shadow-2xl border border-stone-200 flex flex-col">
+            <!-- Header -->
+            <div
+                class="p-4 px-6 border-b border-stone-200 flex justify-between items-center bg-blue-500/10 text-stone-850 shrink-0">
+                <div class="flex items-center gap-2">
+                    <i data-lucide="file-bar-chart" class="w-5 h-5 text-blue-600"></i>
+                    <div>
+                        <h3 class="text-[15px] font-bold text-stone-800">
+                            รายงานสรุปจำนวนพนักงานตามตำแหน่งงานและสังกัด RH</h3>
+                        <p class="text-[11px] text-stone-500">
+                            จำนวนพนักงานที่ลงทะเบียนแยกตามตำแหน่งงานในแต่ละเขต พร้อมจำนวนโพสต์ที่อนุมัติแล้วของเขตนั้น
+                        </p>
+                    </div>
+                </div>
+                <button onclick="window.closeRhPositionSummaryModal()"
+                    class="text-stone-500 hover:text-stone-850 text-xl font-bold">✕</button>
+            </div>
+
+            <!-- Toolbar: ปุ่มดาวน์โหลด Excel ด้านบนขวามือ -->
+            <div
+                class="p-4 bg-stone-50 border-b border-stone-150 flex flex-wrap items-center justify-between gap-4 shrink-0">
+                <div id="rh-position-summary-filter-info" class="text-[12px] text-stone-500 font-semibold">
+                    <!-- Populated by JS -->
+                </div>
+                <button onclick="window.downloadRhPositionSummaryExcel()"
+                    class="px-4 py-2 bg-emerald-600 text-white rounded-lg text-[12px] font-bold hover:bg-emerald-700 transition-all flex items-center gap-1.5 shadow-sm">
+                    <i data-lucide="download" class="w-4 h-4"></i> Download Excel File
+                </button>
+            </div>
+
+            <!-- Table Content (Scrollable) -->
+            <div class="flex-1 overflow-auto p-6">
+                <div class="rounded-table-container min-w-[800px]">
+                    <table class="w-full text-[13px] border-collapse">
+                        <thead>
+                            <tr>
+                                <th class="w-12 text-center">ลำดับ</th>
+                                <th class="w-24 text-center">สังกัด RH</th>
+                                <th class="text-left pl-4">เขต</th>
+                                <th class="text-left pl-4">ตำแหน่งงาน</th>
+                                <th class="w-32 text-center">จำนวนพนักงาน (คน)</th>
+                                <th class="w-36 text-center">โพสต์อนุมัติรวมในเขต</th>
+                            </tr>
+                        </thead>
+                        <tbody id="rh-position-summary-table-body" class="divide-y divide-stone-100">
+                            <!-- Populated by JS -->
+                        </tbody>
+                        <tfoot id="rh-position-summary-table-foot" class="bg-stone-100 font-bold text-stone-800">
+                            <!-- Populated by JS -->
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <div
+                class="p-4 bg-stone-50 border-t border-stone-200 flex flex-col sm:flex-row items-center justify-between gap-4 shrink-0 text-[13px]">
+                <div id="rh-position-summary-total-info" class="font-bold text-stone-700">
+                    <!-- Populated by JS -->
+                </div>
+                <button onclick="window.closeRhPositionSummaryModal()"
+                    class="w-32 py-2.5 bg-[#cccccc] text-stone-850 hover:bg-stone-400 font-bold rounded-xl text-[13px]">ปิดหน้าต่าง</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- POSITION SUMMARY LIGHTBOX MODAL (สรุปตามสังกัด RH / เขต / สาขา / ตำแหน่ง) -->
+    <div id="position-summary-modal" class="fixed inset-0 modal-bg hidden z-[100] flex items-center justify-center p-4">
+        <div
+            class="bg-white w-[90%] h-[90%] max-w-[90%] max-h-[90%] rounded-3xl overflow-hidden shadow-2xl border border-stone-200 flex flex-col">
+            <!-- Header -->
+            <div
+                class="p-4 px-6 border-b border-stone-200 flex justify-between items-center bg-blue-500/10 text-stone-850 shrink-0">
+                <div class="flex items-center gap-2">
+                    <i data-lucide="file-bar-chart" class="w-5 h-5 text-blue-600"></i>
+                    <div>
+                        <h3 class="text-[15px] font-bold text-stone-800">รายงานสรุปตามสังกัด RH / เขต / สาขา / ตำแหน่ง
+                        </h3>
+                        <p class="text-[11px] text-stone-500">
+                            จำนวนพนักงานและโพสต์ที่อนุมัติแล้ว ตามตัวกรองตำแหน่งงาน หมวดคลิป และสังกัด RH
+                            ที่เลือกไว้ในรายงาน</p>
+                    </div>
+                </div>
+                <button onclick="window.closePositionSummaryModal()"
+                    class="text-stone-500 hover:text-stone-850 text-xl font-bold">✕</button>
+            </div>
+
+            <!-- Toolbar: ปุ่มดาวน์โหลด Excel ด้านบนขวามือ -->
+            <div
+                class="p-4 bg-stone-50 border-b border-stone-150 flex flex-wrap items-center justify-between gap-4 shrink-0">
+                <div id="position-summary-filter-info" class="text-[12px] text-stone-500 font-semibold">
+                    <!-- Populated by JS -->
+                </div>
+                <button onclick="window.downloadPositionSummaryExcel()"
+                    class="px-4 py-2 bg-emerald-600 text-white rounded-lg text-[12px] font-bold hover:bg-emerald-700 transition-all flex items-center gap-1.5 shadow-sm">
+                    <i data-lucide="download" class="w-4 h-4"></i> Download Excel File
+                </button>
+            </div>
+
+            <!-- Table Content (Scrollable) -->
+            <div class="flex-1 overflow-auto p-6">
+                <div class="rounded-table-container min-w-[900px]">
+                    <table class="w-full text-[13px] border-collapse">
+                        <thead>
+                            <tr>
+                                <th class="w-12 text-center">ลำดับ</th>
+                                <th class="w-24 text-center">สังกัด RH</th>
+                                <th class="text-left pl-4">เขต</th>
+                                <th class="text-left pl-4">สาขา</th>
+                                <th class="text-left pl-4">ตำแหน่ง</th>
+                                <th class="w-28 text-center">พนักงาน (คน)</th>
+                                <th class="w-28 text-center">ผู้โพสต์ (คน)</th>
+                                <th class="w-24 text-center">โพสต์รวม</th>
+                            </tr>
+                        </thead>
+                        <tbody id="position-summary-table-body" class="divide-y divide-stone-100">
+                            <!-- Populated by JS -->
+                        </tbody>
+                        <tfoot id="position-summary-table-foot" class="bg-stone-100 font-bold text-stone-800">
+                            <!-- Populated by JS -->
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <div
+                class="p-4 bg-stone-50 border-t border-stone-200 flex flex-col sm:flex-row items-center justify-between gap-4 shrink-0 text-[13px]">
+                <div id="position-summary-total-info" class="font-bold text-stone-700">
+                    <!-- Populated by JS -->
+                </div>
+                <button onclick="window.closePositionSummaryModal()"
+                    class="w-32 py-2.5 bg-[#cccccc] text-stone-850 hover:bg-stone-400 font-bold rounded-xl text-[13px]">ปิดหน้าต่าง</button>
             </div>
         </div>
     </div>
