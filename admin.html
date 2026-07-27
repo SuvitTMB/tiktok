@@ -1393,6 +1393,55 @@
                                 </label>
                                 <label
                                     class="flex items-center gap-1 cursor-pointer select-none text-[11px] font-semibold text-stone-600">
+                                    <input type="checkbox" name="cat-checkbox" value="สินเชื่อบ้าน + รีไฟแนนซ์" checked
+                                        onchange="window.onCategoryCheckboxChange()"
+                                        class="rounded border-stone-300 text-blue-600 focus:ring-blue-500 w-3.5 h-3.5">
+                                    <span>สินเชื่อบ้าน + รีไฟแนนซ์</span>
+                                </label>
+                                <label
+                                    class="flex items-center gap-1 cursor-pointer select-none text-[11px] font-semibold text-stone-600">
+                                    <input type="checkbox" name="cat-checkbox" value="สินเชื่อรถยนต์" checked
+                                        onchange="window.onCategoryCheckboxChange()"
+                                        class="rounded border-stone-300 text-blue-600 focus:ring-blue-500 w-3.5 h-3.5">
+                                    <span>สินเชื่อรถยนต์</span>
+                                </label>
+                                <label
+                                    class="flex items-center gap-1 cursor-pointer select-none text-[11px] font-semibold text-stone-600">
+                                    <input type="checkbox" name="cat-checkbox" value="สินเชื่อส่วนบุคคล + บัตรเครดิต"
+                                        checked onchange="window.onCategoryCheckboxChange()"
+                                        class="rounded border-stone-300 text-blue-600 focus:ring-blue-500 w-3.5 h-3.5">
+                                    <span>สินเชื่อส่วนบุคคล + บัตรเครดิต</span>
+                                </label>
+                                <label
+                                    class="flex items-center gap-1 cursor-pointer select-none text-[11px] font-semibold text-stone-600">
+                                    <input type="checkbox" name="cat-checkbox" value="ประกันชีวิต" checked
+                                        onchange="window.onCategoryCheckboxChange()"
+                                        class="rounded border-stone-300 text-blue-600 focus:ring-blue-500 w-3.5 h-3.5">
+                                    <span>ประกันชีวิต</span>
+                                </label>
+                                <label
+                                    class="flex items-center gap-1 cursor-pointer select-none text-[11px] font-semibold text-stone-600">
+                                    <input type="checkbox" name="cat-checkbox" value="ประกันภัย" checked
+                                        onchange="window.onCategoryCheckboxChange()"
+                                        class="rounded border-stone-300 text-blue-600 focus:ring-blue-500 w-3.5 h-3.5">
+                                    <span>ประกันภัย</span>
+                                </label>
+                                <label
+                                    class="flex items-center gap-1 cursor-pointer select-none text-[11px] font-semibold text-stone-600">
+                                    <input type="checkbox" name="cat-checkbox" value="กองทุน" checked
+                                        onchange="window.onCategoryCheckboxChange()"
+                                        class="rounded border-stone-300 text-blue-600 focus:ring-blue-500 w-3.5 h-3.5">
+                                    <span>กองทุน</span>
+                                </label>
+                                <label
+                                    class="flex items-center gap-1 cursor-pointer select-none text-[11px] font-semibold text-stone-600">
+                                    <input type="checkbox" name="cat-checkbox" value="อื่น ๆ" checked
+                                        onchange="window.onCategoryCheckboxChange()"
+                                        class="rounded border-stone-300 text-blue-600 focus:ring-blue-500 w-3.5 h-3.5">
+                                    <span>อื่น ๆ</span>
+                                </label>
+                                <label
+                                    class="flex items-center gap-1 cursor-pointer select-none text-[11px] font-semibold text-stone-600">
                                     <input type="checkbox" name="cat-checkbox" value="Scam Alert" checked
                                         onchange="window.onCategoryCheckboxChange()"
                                         class="rounded border-stone-300 text-blue-600 focus:ring-blue-500 w-3.5 h-3.5">
@@ -2692,7 +2741,7 @@
 
     <!-- TIKTOK POST MODAL (ADD / EDIT) -->
     <!-- ปรับ Lightbox กว้าง 60% เสมอ พื้นหลังขาวล้วนทั้งหมด และส่วนหัวเพิ่มสีพื้นเป็น 50% ด้วย bg-slate-500/50 -->
-    <!-- เพิ่ม Dropdown list category หัวข้อTrusted Employee / Financial Knowledge / Product / Scam Alert -->
+    <!-- เพิ่ม Dropdown list category หัวข้อ Trusted Employee / Financial Knowledge / Product (+ สินเชื่อบ้าน+รีไฟแนนซ์, สินเชื่อรถยนต์, สินเชื่อส่วนบุคคล+บัตรเครดิต, ประกันชีวิต, ประกันภัย, กองทุน, อื่น ๆ) / Scam Alert -->
     <div id="post-modal" class="fixed inset-0 modal-bg hidden z-[100] flex items-center justify-center p-4">
         <div
             class="bg-white rounded-[25px] shadow-2xl w-full md:w-[60%] md:max-w-none overflow-hidden fade-in border border-stone-200 animate-fadeIn bg-white">
@@ -2726,6 +2775,13 @@
                         <option value="Trusted Employee">Trusted Employee (รู้จักฉัน รู้จักสาขา)</option>
                         <option value="Financial Knowledge">Financial Knowledge (ให้ความรู้ด้านการเงิน)</option>
                         <option value="Product">Product (แนะนำผลิตภัณฑ์ ttb)</option>
+                        <option value="สินเชื่อบ้าน + รีไฟแนนซ์">สินเชื่อบ้าน + รีไฟแนนซ์</option>
+                        <option value="สินเชื่อรถยนต์">สินเชื่อรถยนต์</option>
+                        <option value="สินเชื่อส่วนบุคคล + บัตรเครดิต">สินเชื่อส่วนบุคคล + บัตรเครดิต</option>
+                        <option value="ประกันชีวิต">ประกันชีวิต</option>
+                        <option value="ประกันภัย">ประกันภัย</option>
+                        <option value="กองทุน">กองทุน</option>
+                        <option value="อื่น ๆ">อื่น ๆ</option>
                         <option value="Scam Alert">Scam Alert (รู้ทันมิจฉาชีพ)</option>
                     </select>
                 </div>
