@@ -141,9 +141,11 @@
                             <div>
                                 <label class="block text-left text-[13px] font-normal text-white/90 mb-1.5">รหัสพนักงาน
                                     (Employee ID)</label>
-                                <input type="text" id="loginEmployeeId" placeholder="ระบุรหัสพนักงาน"
+                                <input type="text" id="loginEmployeeId" placeholder="ระบุรหัสพนักงาน" maxlength="5"
+                                    autocomplete="username" autocapitalize="off" autocorrect="off" spellcheck="false"
                                     class="name-input w-full px-4 py-3.5 rounded-2xl text-[13px] shadow-sm"
                                     oninput="window.checkLoginEmployeeId()">
+                                <span id="loginEmpIdStatus" class="emp-id-status hidden"></span>
                             </div>
                             <div id="loginPasswordContainer">
                                 <label class="block text-left text-[13px] font-normal text-white/90 mb-1.5">รหัสผ่าน
@@ -240,9 +242,11 @@
                             <div>
                                 <label class="block text-left text-[13px] font-normal text-white/90 mb-1.5">รหัสพนักงาน
                                     (Employee ID) <span style="color:#ff0000">***</span></label>
-                                <input type="text" id="regEmployeeId" placeholder="พิมพ์รหัสพนักงาน"
+                                <input type="text" id="regEmployeeId" placeholder="พิมพ์รหัสพนักงาน" maxlength="5"
+                                    autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false"
                                     class="name-input w-full px-4 py-3.5 rounded-2xl text-[13px] shadow-sm"
                                     oninput="window.checkRegisterEmployeeId()">
+                                <span id="regEmpIdStatus" class="emp-id-status hidden"></span>
                             </div>
                             <div>
                                 <label class="block text-left text-[13px] font-normal text-white/90 mb-1.5">ชื่อ-นามสกุล
