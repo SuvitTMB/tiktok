@@ -405,3 +405,50 @@ button:disabled {
         user-select: text;
     }
 }
+
+/* ---------------------------------------------------------------------
+   สถานะการตรวจสอบรหัสพนักงาน (แสดงใต้ช่องกรอก ตอนกำลังเช็คกับฐานข้อมูล)
+   --------------------------------------------------------------------- */
+.emp-id-status {
+    display: block;
+    margin-top: 6px;
+    font-size: 11px;
+    line-height: 1.4;
+    text-align: left;
+    min-height: 15px;
+}
+
+.emp-id-status.hidden {
+    display: none !important;
+}
+
+.emp-id-status--checking {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.emp-id-status--checking::before {
+    content: "";
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    margin-right: 6px;
+    vertical-align: -1px;
+    border: 2px solid rgba(255, 255, 255, 0.25);
+    border-top-color: rgba(255, 255, 255, 0.9);
+    border-radius: 50%;
+    animation: emp-id-spin 0.7s linear infinite;
+}
+
+.emp-id-status--ok {
+    color: #4ade80;
+}
+
+.emp-id-status--error {
+    color: #f87171;
+}
+
+@keyframes emp-id-spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
