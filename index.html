@@ -55,7 +55,13 @@
             <div class="w-16 h-16 border-4 border-white/20 border-t-white rounded-full animate-spin"></div>
             <i data-lucide="sparkles" class="w-6 h-6 text-white absolute animate-pulse"></i>
         </div>
-        <p class="text-sm font-semibold tracking-wide text-white/80">กำลังเชื่อมต่อระบบ Branch TIKTOK...</p>
+        <p id="globalLoaderText" class="text-sm font-semibold tracking-wide text-white/80">
+            กำลังเชื่อมต่อระบบ Branch TIKTOK...</p>
+        <!-- ปุ่มลองใหม่ จะโผล่เมื่อเชื่อมต่อไม่สำเร็จ (กันหน้าค้างที่ตัวหมุนตลอดไป) -->
+        <button id="globalLoaderRetryBtn" onclick="window.location.reload()"
+            class="hidden mt-5 px-6 py-2.5 rounded-xl bg-orange-500 hover:bg-orange-600 text-white text-[13px] font-normal">
+            ลองเชื่อมต่อใหม่อีกครั้ง
+        </button>
     </div>
 
     <div id="messageBox" class="hidden font-medium text-center"></div>
@@ -1984,9 +1990,11 @@
                                 <div class="space-y-3 pt-1 text-[13px]">
                                     <div>
                                         <label class="block text-slate-300 text-xs mb-1">วันที่ Post TikTok</label>
-                                        <input type="date" id="workPostDateInput"
-                                            onchange="window.checkSubmitFormValidity()"
-                                            class="name-input w-full px-4 py-3 rounded-xl text-[13px]">
+                                        <!-- ระบบกำหนดเป็นวันที่ปัจจุบันให้อัตโนมัติ ผู้ใช้แก้ไขไม่ได้ -->
+                                        <input type="date" id="workPostDateInput" readonly tabindex="-1"
+                                            aria-readonly="true"
+                                            class="name-input date-locked w-full px-4 py-3 rounded-xl text-[13px]">
+                                        <span class="date-locked-note">ระบบบันทึกเป็นวันที่ปัจจุบันโดยอัตโนมัติ</span>
                                     </div>
                                     <input type="hidden" id="workTitleInput" value="กิจกรรมโพสต์ TIKTOK">
                                     <div>
@@ -2502,8 +2510,10 @@
             <div class="space-y-3 text-[13px]">
                 <div>
                     <label class="block text-slate-300 text-xs mb-1">วันที่ Post TikTok</label>
-                    <input type="date" id="editPostDateInput"
-                        class="name-input w-full px-4 py-3 rounded-xl text-[13px]">
+                    <!-- วันที่ที่บันทึกไว้ตอนส่งผลงาน แก้ไขไม่ได้ -->
+                    <input type="date" id="editPostDateInput" readonly tabindex="-1" aria-readonly="true"
+                        class="name-input date-locked w-full px-4 py-3 rounded-xl text-[13px]">
+                    <span class="date-locked-note">วันที่ส่งผลงานเดิม ไม่สามารถแก้ไขได้</span>
                 </div>
                 <input type="hidden" id="editPostTitleInput" value="กิจกรรมโพสต์ TIKTOK">
                 <div>
@@ -2520,7 +2530,7 @@
                         <option value="ประกันชีวิต">ประกันชีวิต</option>
                         <option value="ประกันภัย">ประกันภัย</option>
                         <option value="กองทุน">กองทุน</option>
-                        <!--<option value="อื่น ๆ">อื่น ๆ</option>-->
+                        <!--<option value="อื่น ๆ">อื่น ๆ</option> -->
                         <option value="Scam Alert">Scam Alert รู้ทันมิจฉาชีพ</option>
                     </select>
                 </div>
