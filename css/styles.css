@@ -452,3 +452,37 @@ button:disabled {
         transform: rotate(360deg);
     }
 }
+
+/* ---------------------------------------------------------------------
+   ช่องวันที่แบบล็อก (ระบบกำหนดให้อัตโนมัติ ผู้ใช้แก้ไขไม่ได้)
+   ใช้กับ "วันที่ Post TikTok" ทั้งฟอร์มส่งผลงานและฟอร์มแก้ไขผลงาน
+
+   readonly อย่างเดียวไม่พอสำหรับ input[type=date] เพราะเบราว์เซอร์ยังเปิด
+   ปฏิทินให้เลือกได้อยู่ จึงต้องปิดปฏิทินและกันการคลิกด้วย
+   --------------------------------------------------------------------- */
+.date-locked {
+    cursor: not-allowed;
+    pointer-events: none;
+    -webkit-user-select: none;
+    user-select: none;
+    background-color: #eef2f7 !important;
+    color: #334155 !important;
+}
+
+.date-locked::-webkit-calendar-picker-indicator {
+    display: none;
+}
+
+.date-locked::-webkit-inner-spin-button,
+.date-locked::-webkit-clear-button {
+    display: none;
+}
+
+/* ข้อความกำกับใต้ช่องวันที่ที่ถูกล็อก */
+.date-locked-note {
+    display: block;
+    margin-top: 5px;
+    font-size: 11px;
+    line-height: 1.4;
+    color: rgba(255, 255, 255, 0.65);
+}
