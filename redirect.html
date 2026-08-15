@@ -395,6 +395,215 @@
         font-size: 11.5px;
         opacity: .5;
     }
+
+    /* ---------- กล่องกติกา RL / Compliance ---------- */
+    .rules {
+        margin-top: 20px;
+        padding: 20px;
+        background: rgba(255, 255, 255, .08);
+        border: 1px solid rgba(255, 255, 255, .18);
+        border-radius: 16px;
+        text-align: left;
+    }
+
+    .rules-title {
+        font-size: 14px;
+        font-weight: 600;
+        margin: 0 0 6px;
+        text-align: center;
+        line-height: 1.6;
+    }
+
+    .rules-date {
+        font-size: 12px;
+        margin: 0 0 14px;
+        opacity: .6;
+        text-align: center;
+    }
+
+    .rules-intro {
+        font-size: 13px;
+        margin: 0 0 12px;
+        opacity: .9;
+    }
+
+    .rules-intro q {
+        color: #f68b1f;
+        font-style: italic;
+    }
+
+    /* คำเตือน — คลิปไม่ผ่านถ้าไม่ทำตาม */
+    .rules-warn {
+        margin: 14px 0 18px;
+        padding: 12px 14px;
+        background: rgba(230, 57, 70, .18);
+        border: 1px solid rgba(230, 57, 70, .5);
+        border-radius: 12px;
+        font-size: 13px;
+        line-height: 1.65;
+    }
+
+    .rules-warn b { font-weight: 500; }
+
+    .part-title {
+        font-size: 13.5px;
+        font-weight: 500;
+        margin: 0 0 12px;
+        padding-bottom: 8px;
+        border-bottom: 1px solid rgba(255, 255, 255, .18);
+        opacity: .9;
+    }
+
+    /* หัวข้อพับเก็บได้ — ใช้ <details> ของ HTML ไม่ต้องพึ่ง JS */
+    .acc {
+        margin-bottom: 8px;
+        background: rgba(0, 0, 0, .18);
+        border-radius: 12px;
+    }
+
+    .acc summary {
+        display: flex;
+        align-items: center;
+        gap: 9px;
+        padding: 11px 13px;
+        font-size: 13px;
+        font-weight: 400;
+        line-height: 1.5;
+        cursor: pointer;
+        list-style: none;
+    }
+
+    .acc summary::-webkit-details-marker { display: none; }
+
+    /* ลูกศรบอกสถานะ พับ/กาง */
+    .acc summary::after {
+        content: "";
+        flex-shrink: 0;
+        margin-left: auto;
+        width: 7px;
+        height: 7px;
+        border-right: 2px solid rgba(255, 255, 255, .55);
+        border-bottom: 2px solid rgba(255, 255, 255, .55);
+        transform: rotate(45deg) translate(-2px, -2px);
+        transition: transform .2s ease;
+    }
+
+    .acc[open] summary::after { transform: rotate(-135deg); }
+    .acc[open] summary { font-weight: 500; }
+
+    .acc-tag {
+        flex-shrink: 0;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 21px;
+        height: 21px;
+        background: #f68b1f;
+        border-radius: 6px;
+        font-size: 11px;
+        font-weight: 600;
+    }
+
+    .acc-body { padding: 0 13px 13px; }
+
+    .acc-note {
+        margin: 8px 0 0;
+        font-size: 12px;
+        opacity: .7;
+    }
+
+    /* ข้อความ RL ที่ต้องพูดหรือขึ้นในคลิป */
+    .rl {
+        margin: 0 0 8px;
+        padding: 11px 13px;
+        background: rgba(255, 255, 255, .1);
+        border-left: 3px solid #f68b1f;
+        border-radius: 8px;
+    }
+
+    .rl:last-child { margin-bottom: 0; }
+
+    .rl-label {
+        margin: 0 0 6px;
+        font-size: 11.5px;
+        font-weight: 500;
+        color: #f9a03f;
+    }
+
+    .rl-text {
+        margin: 0;
+        font-size: 12.5px;
+        line-height: 1.75;
+        white-space: pre-line;      /* ขึ้นบรรทัดตามที่พิมพ์ไว้ใน HTML */
+        word-break: break-word;
+    }
+
+    .rl-copy {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        margin-top: 9px;
+        padding: 5px 12px;
+        background: rgba(255, 255, 255, .12);
+        border: 0;
+        border-radius: 999px;
+        color: #fff;
+        font-family: 'Kanit', sans-serif;
+        font-size: 11.5px;
+        font-weight: 400;
+        cursor: pointer;
+        transition: background .15s ease, color .15s ease;
+    }
+
+    .rl-copy:hover { background: rgba(255, 255, 255, .2); }
+
+    .rl-copy.is-done {
+        background: rgba(249, 115, 22, .2);
+        color: #f9a03f;
+    }
+
+    .rl-copy svg {
+        width: 13px;
+        height: 13px;
+        flex-shrink: 0;
+    }
+
+    /* กล่องตัวอย่างการแสดงสมมติฐาน */
+    .example {
+        margin: 14px 0;
+        padding: 14px;
+        background: rgba(0, 0, 0, .18);
+        border-radius: 12px;
+    }
+
+    .example-title {
+        margin: 0 0 10px;
+        font-size: 13px;
+        font-weight: 500;
+        line-height: 1.6;
+    }
+
+    .example-case {
+        margin: 0 0 12px;
+        font-size: 12.5px;
+        line-height: 1.65;
+        opacity: .9;
+    }
+
+    .example-case:last-child { margin-bottom: 0; }
+
+    .example-case b { font-weight: 500; }
+
+    .example-say {
+        display: block;
+        margin-top: 6px;
+        padding: 9px 11px;
+        background: rgba(255, 255, 255, .1);
+        border-left: 3px solid #f68b1f;
+        border-radius: 8px;
+        font-size: 12px;
+        line-height: 1.7;
+    }
 </style>
 </head>
 <body>
@@ -540,6 +749,176 @@
             </div>
 
             <p class="scroll-hint">* หน่วยเป็นบาท — เลื่อนตารางแนวนอนได้หากแสดงไม่ครบ</p>
+        </div>
+
+        <!-- กติกา RL / Compliance สำหรับการส่งคลิป -->
+        <div class="rules">
+            <center><span class="promo-badge">ขอเน้นย้ำ!</span></center>
+
+            <p class="rules-title">
+                กติกาและข้อกำหนดการส่งคลิปผลงาน<br>
+                แคมเปญ Branch TikTok, The Idol
+            </p>
+            <p class="rules-date">วันที่ 30/07/26</p>
+
+            <p class="rules-intro">
+                ทีม Compliance แจ้ง <q>ให้ปรับวิธีการใส่ RL หรือข้อกำหนดของ COMPLIANCE
+                ในคลิปที่มีการเสนอขายผลิตภัณฑ์</q> เป็น <b>2 วิธีเท่านั้น</b>
+                เพื่อให้ธนาคารแห่งประเทศไทยเข้าตรวจสอบได้ ได้แก่
+            </p>
+
+            <ol class="steps">
+                <li>ให้ <b>ขึ้นข้อความ RL</b> ที่ครบถ้วน ชัดเจนในคลิป</li>
+                <li>ให้ <b>พูดข้อความ RL</b> ที่ครบถ้วน ชัดเจนในคลิป</li>
+            </ol>
+
+            <p class="rules-warn">
+                ❌ หากไม่มี 1 ใน 2 ข้อนี้ <b>คลิปจะไม่ถูกอนุมัติ</b><br>
+                โดยจะต้องแก้ไขและส่งลิงก์เข้ามาใหม่
+            </p>
+
+            <p class="part-title">
+                Part 1 — ข้อความ RL (Responsible Lending) และ/หรือข้อกำหนดของ COMPLIANCE
+                ที่ต้องพูดหรือเขียนเป็นคำเตือนในทุกคลิปที่นำเสนอผลิตภัณฑ์
+            </p>
+
+            <!-- A. สินเชื่อรถแลกเงิน -->
+            <details class="acc">
+                <summary><span class="acc-tag">A</span> สินเชื่อรถแลกเงิน 🚗</summary>
+                <div class="acc-body">
+                    <div class="rl">
+                        <p class="rl-label">แบบโอนเล่ม</p>
+                        <p class="rl-text">กู้เท่าที่จำเป็นและชำระคืนไหว อัตราดอกเบี้ยที่แท้จริง 5.93% - 15.00% ต่อปี</p>
+                    </div>
+                    <div class="rl">
+                        <p class="rl-label">แบบไม่โอนเล่ม</p>
+                        <p class="rl-text">กู้เท่าที่จำเป็นและชำระคืนไหว อัตราดอกเบี้ยที่แท้จริง 12% - 24% ต่อปี</p>
+                    </div>
+                </div>
+            </details>
+
+            <!-- B. แคชทูโก -->
+            <details class="acc">
+                <summary><span class="acc-tag">B</span> สินเชื่อบุคคลทีทีบี แคชทูโก 💸</summary>
+                <div class="acc-body">
+                    <div class="rl">
+                        <p class="rl-text">กู้เท่าที่จำเป็นและชำระคืนไหว อัตราดอกเบี้ย 13.99 - 25% ต่อปี</p>
+                    </div>
+                </div>
+            </details>
+
+            <!-- C. ทีทีบีแฟลช -->
+            <details class="acc">
+                <summary><span class="acc-tag">C</span> สินเชื่อส่วนบุคคล บัตรกดเงินสด ทีทีบีแฟลช 💸💳</summary>
+                <div class="acc-body">
+                    <div class="rl">
+                        <p class="rl-text">กู้เท่าที่จำเป็นและชำระคืนไหว อัตราดอกเบี้ย 25% ต่อปี</p>
+                    </div>
+                    <div class="rl">
+                        <p class="rl-label">กรณีผ่อนชำระที่อัตราดอกเบี้ยร้อยละ 0 ตลอดระยะเวลาการผ่อนชำระ</p>
+                        <p class="rl-text">กู้เท่าที่จำเป็นและชำระคืนได้ตามกำหนด จะได้ไม่เสียดอกเบี้ย 25% ต่อปี</p>
+                    </div>
+                </div>
+            </details>
+
+            <!-- D. บัตรเครดิต -->
+            <details class="acc">
+                <summary><span class="acc-tag">D</span> บัตรเครดิต 💳</summary>
+                <div class="acc-body">
+                    <div class="rl">
+                        <p class="rl-text">ใช้เท่าที่จำเป็นและชำระคืนได้เต็มจำนวนตามกำหนด จะได้ไม่เสียดอกเบี้ย 16% ต่อปี</p>
+                    </div>
+                </div>
+            </details>
+
+            <!-- E. สินเชื่อบ้าน -->
+            <details class="acc">
+                <summary><span class="acc-tag">E</span> สินเชื่อบ้าน 🏡</summary>
+                <div class="acc-body">
+                    <div class="rl">
+<p class="rl-text">กู้เท่าที่จำเป็นและชำระคืนไหว
+- สินเชื่อรีไฟแนนซ์ อัตราดอกเบี้ยที่แท้จริงตลอดอายุสัญญา 3% - 6% ต่อปี
+- สมมติฐานการคำนวณมาจากอัตราดอกเบี้ย MRR-3.865% ถึง MRR-0.130% ต่อปี โดยอัตราดอกเบี้ย MRR ณ วันที่ 2 มี.ค. 69 = 7.105% ต่อปี
+- อัตราดอกเบี้ยลอยตัวสามารถเปลี่ยนแปลงเพิ่มขึ้นหรือลดลงได้
+- เงื่อนไขเป็นไปตามหลักเกณฑ์ที่ธนาคารกำหนด รายละเอียดการคำนวณเพิ่มเติมดูได้ที่เว็บไซต์ www.ttbbank.com</p>
+                    </div>
+                </div>
+            </details>
+
+            <!-- F. บ้านแลกเงิน CYH -->
+            <details class="acc">
+                <summary><span class="acc-tag">F</span> สินเชื่อบ้านแลกเงิน CYH 🏡</summary>
+                <div class="acc-body">
+                    <div class="rl">
+<p class="rl-text">- กู้เท่าที่จำเป็นและชำระคืนไหว ดอกเบี้ยทั้งสัญญา 5% - 11% ต่อปี
+- ดอกเบี้ยปีแรกเริ่ม 3.99% (MRR - 3.115%) ต่อปี
+- ดอกเบี้ยเรตเดียวตลอดสัญญา เริ่ม 5.50% (MRR-1.605%) ต่อปี</p>
+                    </div>
+                </div>
+            </details>
+
+            <!-- กรณีแสดงสมมติฐาน — ใช้ได้กับทุกผลิตภัณฑ์ จึงแยกออกมานอกหัวข้อ A-I -->
+            <div class="example">
+                <p class="example-title">
+                    💢 กรณีมีการแสดงสมมติฐานเกี่ยวกับผลิตภัณฑ์สินเชื่อในคลิป
+                    พนักงานต้องพูดหรือแสดงข้อความให้ถูกต้องครบถ้วน
+                </p>
+
+                <p class="example-case">
+                    <b>ตัวอย่างที่ 1</b> — สินเชื่อที่มีอัตราดอกเบี้ยอ้างอิงแบบลอยตัว
+                    เช่น สินเชื่อบ้านที่อ้างอิงตามอัตราดอกเบี้ย MRR
+                    <span class="example-say">สินเชื่อรีไฟแนนซ์ อัตราดอกเบี้ยที่แท้จริงตลอดอายุสัญญา 3% - 6% ต่อปี — สมมติฐานการคำนวณมาจากอัตราดอกเบี้ย MRR-3.865% ถึง MRR-0.130% ต่อปี</span>
+                </p>
+
+                <p class="example-case">
+                    <b>ตัวอย่างที่ 2</b> — การโฆษณาด้วยข้อมูลยอดผ่อนชำระเพื่อจูงใจลูกค้า
+                    ธนาคารต้องแสดงสมมติฐานการคำนวณให้ครบถ้วน
+                    เช่น <i>สินเชื่อรถแลกเงิน ผ่อนวันละ 59 บาท</i>
+                    <span class="example-say">สมมติฐานการคำนวณมาจากวงเงินสินเชื่อ 200,000 บาท อัตราดอกเบี้ยคงที่ 3.18% ต่อปี ดอกเบี้ยทั้งสัญญา 38,160 บาท ค่างวด 3,540 บาทต่อเดือน ระยะเวลาผ่อน 72 งวด</span>
+                </p>
+            </div>
+
+            <!-- G. กองทุน -->
+            <details class="acc">
+                <summary><span class="acc-tag">G</span> กองทุน 📈</summary>
+                <div class="acc-body">
+                    <div class="rl">
+                        <p class="rl-text">การลงทุนมีความเสี่ยง ผู้ลงทุนควรทำความเข้าใจลักษณะของสินค้า เงื่อนไข ผลตอบแทน และความเสี่ยงก่อนตัดสินใจลงทุน</p>
+                    </div>
+                    <p class="acc-note">⚠️ ผู้โพสต์ต้องมี IC license</p>
+                </div>
+            </details>
+
+            <!-- H. ประกัน -->
+            <details class="acc">
+                <summary><span class="acc-tag">H</span> ประกันภัย / ประกันชีวิต 🛡️</summary>
+                <div class="acc-body">
+                    <div class="rl">
+<p class="rl-text">ผู้ซื้อควรทำความเข้าใจในรายละเอียดความคุ้มครอง เงื่อนไข และข้อยกเว้นก่อนตัดสินใจทำประกันภัยทุกครั้ง
+- ธนาคารทหารไทยธนชาต จำกัด (มหาชน) เป็นเพียงนายหน้าประกันชีวิต/วินาศภัย และรับผิดชอบในฐานะนายหน้าเท่านั้น</p>
+                    </div>
+                    <p class="acc-note">⚠️ ผู้โพสต์ต้องมีใบอนุญาต นว./นช.</p>
+                </div>
+            </details>
+
+            <!-- I. สินเชื่อคนผ่อนดี -->
+            <details class="acc">
+                <summary><span class="acc-tag">I</span> สินเชื่อคนผ่อนดี ⭐</summary>
+                <div class="acc-body">
+                    <div class="rl">
+                        <p class="rl-label">ต้องระบุ RL ให้ครบถ้วน — คัดลอกข้อความด้านล่างนี้ 👇</p>
+<p class="rl-text">กู้เท่าที่จำเป็นและชำระคืนไหว
+
+🚗 สินเชื่อคนผ่อนดี รถแลกเงิน ทีทีบีไดรฟ์ แบบไม่โอนเล่ม อัตราดอกเบี้ยที่แท้จริง 11.11% - 24% ต่อปี ระหว่างวันที่ 3 ส.ค. 69 - 31 ม.ค. 70 พร้อมอนุมัติและเกิดสัญญาภายใน 28 ก.พ. 70
+
+💸 สินเชื่อบุคคล ทีทีบี แคชทูโก อัตราดอกเบี้ย 13.99% - 25% ต่อปี | สินเชื่อบ้านรีไฟแนนซ์ อัตราดอกเบี้ยที่แท้จริงตลอดอายุสัญญา 3% - 4% ต่อปี • สมมติฐานการคำนวณมาจากอัตราดอกเบี้ย MRR-3.865% ถึง MRR-3.265% ต่อปี
+
+🏡 สินเชื่อบ้านแลกเงิน รีไฟแนนซ์ อัตราดอกเบี้ยที่แท้จริงตลอดอายุสัญญา 5% - 7% ต่อปี • สมมติฐานการคำนวณมาจากอัตราดอกเบี้ย MRR-1.505% ถึง MRR-0.905% ต่อปี • อัตราดอกเบี้ย MRR ณ วันที่ 2 มี.ค. 69 = 7.105% ต่อปี • อัตราดอกเบี้ยลอยตัวเปลี่ยนแปลงเพิ่มขึ้นหรือลดลงได้
+
+รายละเอียดการคำนวณเพิ่มเติมดูได้ที่เว็บไซต์ www.ttbbank.com • เงื่อนไขและอัตราดอกเบี้ยเป็นไปตามหลักเกณฑ์ที่ธนาคารกำหนด</p>
+                    </div>
+                </div>
+            </details>
         </div>
     </div>
 
