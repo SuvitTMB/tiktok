@@ -236,6 +236,165 @@
     }
 
     .ico svg { width: 100%; height: 100%; }
+
+    /* ---------- กล่องประกาศรางวัล ---------- */
+    .promo {
+        position: relative;
+        margin-top: 20px;
+        padding: 20px;
+        background: rgba(255, 255, 255, .08);
+        border: 1px solid rgba(255, 255, 255, .18);
+        border-radius: 16px;
+    }
+
+    .promo-badge {
+        display: inline-block;
+        margin-bottom: 12px;
+        padding: 3px 14px;
+        background: #e63946;
+        border-radius: 999px;
+        font-size: 12px;
+        font-weight: 600;
+        letter-spacing: .3px;
+    }
+
+    .promo-title {
+        font-size: 16px;
+        font-weight: 600;
+        margin: 0 0 4px;
+    }
+
+    .promo-title small {
+        font-size: 13px;
+        font-weight: 400;
+        opacity: .75;
+    }
+
+    /* ซ่อนจากสายตาแต่ screen reader ยังอ่านได้ (หัวคอลัมน์แรกของตาราง) */
+    .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+        clip: rect(0 0 0 0);
+        white-space: nowrap;
+    }
+
+    .promo-period {
+        font-size: 12.5px;
+        margin: 0 0 16px;
+        opacity: .7;
+    }
+
+    .promo-cond {
+        font-size: 13.5px;
+        margin: 0 0 4px;
+    }
+
+    .promo-cond em {
+        font-style: normal;
+        font-weight: 500;
+        color: #f68b1f;
+    }
+
+    .promo-prize {
+        font-size: 14px;
+        font-weight: 500;
+        margin: 0 0 16px;
+    }
+
+    .promo-prize span {
+        color: #f68b1f;
+        font-weight: 600;
+    }
+
+    /* แบ่งทีมตามจำนวนพนักงาน */
+    .teams {
+        margin: 0 0 18px;
+        padding: 14px 16px;
+        background: rgba(0, 0, 0, .18);
+        border-radius: 12px;
+    }
+
+    .teams-label {
+        font-size: 13px;
+        font-weight: 500;
+        margin: 0 0 8px;
+    }
+
+    .teams-list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        text-align: left;
+    }
+
+    .teams-list li {
+        position: relative;
+        padding-left: 16px;
+        font-size: 13px;
+        line-height: 1.65;
+        opacity: .9;
+    }
+
+    .teams-list li::before {
+        content: "•";
+        position: absolute;
+        left: 2px;
+        color: #f68b1f;
+    }
+
+    .teams-list li b { font-weight: 500; }
+
+    /* ตารางเงินรางวัล — จอแคบให้เลื่อนแนวนอนแทนการบีบตัวอักษร */
+    .table-wrap {
+        overflow-x: auto;
+    }
+
+    .prize-table {
+        width: 100%;
+        min-width: 340px;
+        border-collapse: separate;
+        border-spacing: 3px;
+        font-size: 12.5px;
+    }
+
+    .prize-table th,
+    .prize-table td {
+        padding: 7px 6px;
+        text-align: center;
+        border-radius: 6px;
+        white-space: nowrap;
+    }
+
+    .prize-table thead th {
+        color: #fff;
+        font-weight: 600;
+        background: #0056ff;
+    }
+
+    /* สลับสีหัวคอลัมน์ น้ำเงิน–ส้ม ตามต้นฉบับ */
+    .prize-table thead th.alt { background: #f68b1f; }
+    .prize-table thead th.blank { background: transparent; }
+
+    .prize-table td.rank {
+        text-align: left;
+        padding-left: 10px;
+        font-weight: 500;
+        background: rgba(255, 255, 255, .06);
+    }
+
+    .prize-table td { background: rgba(255, 255, 255, .06); }
+
+    /* เน้นสองอันดับแรกให้เด่นเหมือนในภาพต้นฉบับ */
+    .prize-table tr.top1 td { background: rgba(255, 255, 255, .16); font-weight: 600; }
+    .prize-table tr.top2 td { color: #f9a03f; font-weight: 500; }
+
+    .scroll-hint {
+        margin: 8px 0 0;
+        font-size: 11.5px;
+        opacity: .5;
+    }
 </style>
 </head>
 <body>
@@ -319,6 +478,68 @@
                     <li>กด <b>“ติดตั้ง”</b> หรือ <b>“เพิ่ม”</b> เพื่อบันทึกไอคอนใหม่</li>
                 </ol>
             </div>
+        </div>
+
+        <!-- ประกาศเกณฑ์รางวัลรอบใหม่ -->
+        <div class="promo">
+            <span class="promo-badge">ประกาศการปรับเกณฑ์ใหม่</span>
+
+            <p class="promo-title">🏆 รางวัล Best Branch the Idol <small>(รายสาขา)</small></p>
+            <p class="promo-period">นับผลงานรายเดือน ตั้งแต่เดือนกรกฎาคม – เดือนตุลาคม</p>
+
+            <p class="promo-cond">
+                สาขาที่โพสต์คลิปลง TikTok <em>ไม่ต่ำกว่า 20 คลิป</em> ต่อสาขา ต่อเดือน
+            </p>
+            <p class="promo-prize">
+                สูงที่สุด <span>5 อันดับแรก</span> จะได้รับ <span>“งบจัดเลี้ยงยกสาขา”</span>
+            </p>
+
+            <div class="teams">
+                <p class="teams-label">แบ่งเป็น 2 ทีม ดังนี้</p>
+                <ul class="teams-list">
+                    <li>ทีมสาขาที่มีจำนวนพนักงาน <b>8 คนขึ้นไป</b></li>
+                    <li>ทีมสาขาที่มีจำนวนพนักงาน <b>น้อยกว่าหรือเทียบเท่า 8 คน</b></li>
+                </ul>
+            </div>
+
+            <div class="table-wrap">
+                <table class="prize-table">
+                    <thead>
+                        <tr>
+                            <th class="blank" scope="col"><span class="sr-only">อันดับ</span></th>
+                            <th scope="col">RH 1</th>
+                            <th class="alt" scope="col">RH 2</th>
+                            <th scope="col">RH 3</th>
+                            <th class="alt" scope="col">RH 4</th>
+                            <th scope="col">RH 5</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="top1">
+                            <td class="rank">อันดับที่ 1</td>
+                            <td>4,000</td><td>4,000</td><td>4,000</td><td>4,000</td><td>4,000</td>
+                        </tr>
+                        <tr class="top2">
+                            <td class="rank">อันดับที่ 2</td>
+                            <td>3,000</td><td>3,000</td><td>3,000</td><td>3,000</td><td>3,000</td>
+                        </tr>
+                        <tr>
+                            <td class="rank">อันดับที่ 3</td>
+                            <td>2,000</td><td>2,000</td><td>2,000</td><td>2,000</td><td>2,000</td>
+                        </tr>
+                        <tr>
+                            <td class="rank">อันดับที่ 4</td>
+                            <td>1,000</td><td>1,000</td><td>1,000</td><td>1,000</td><td>1,000</td>
+                        </tr>
+                        <tr>
+                            <td class="rank">อันดับที่ 5</td>
+                            <td>1,000</td><td>1,000</td><td>1,000</td><td>1,000</td><td>1,000</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <p class="scroll-hint">* หน่วยเป็นบาท — เลื่อนตารางแนวนอนได้หากแสดงไม่ครบ</p>
         </div>
     </div>
 
