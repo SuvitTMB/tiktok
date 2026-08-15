@@ -28,7 +28,8 @@
         margin: 0;
         min-height: 100vh;
         display: flex;
-        align-items: center;
+        /* ชิดบน — เวลาสลับแท็บแล้วเนื้อหาสูงไม่เท่ากัน หน้าจอจะได้ไม่ขยับขึ้นลง */
+        align-items: flex-start;
         justify-content: center;
         padding: 32px 24px;
         background: #0E1865;
@@ -64,12 +65,13 @@
     .btn {
         display: inline-block;
         width: 100%;
-        padding: 14px 32px;
-        background: #fff;
-        color: #0E1865;
+        padding: 10px 32px;
+        background: #f68b1f;
+        color: #fff;
         font-family: 'Kanit', sans-serif;
         font-size: 16px;
-        font-weight: 600;
+        font-weight: 500;
+        line-height: 1.5;          /* body ตั้ง 1.75 ไว้ ปุ่มจะสูงเกินจำเป็น */
         text-decoration: none;
         border-radius: 999px;
         transition: transform .15s ease, opacity .15s ease;
@@ -78,12 +80,54 @@
     .btn:hover { opacity: .9; }
     .btn:active { transform: scale(.97); }
 
-    .url {
-        display: block;
+    /* แถว URL + ปุ่มไอคอนคัดลอก */
+    .url-row {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
         margin-top: 16px;
+    }
+
+    .url {
         font-size: 13px;
         opacity: .55;
         word-break: break-all;
+    }
+
+    /* ปุ่มไอคอนคัดลอก — วางต่อท้าย URL */
+    .copy-btn {
+        flex-shrink: 0;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 30px;
+        height: 30px;
+        padding: 0;
+        border: 0;
+        border-radius: 8px;
+        background: transparent;
+        color: rgba(255, 255, 255, .6);
+        cursor: pointer;
+        transition: background .15s ease, color .15s ease, transform .15s ease;
+    }
+
+    .copy-btn:hover {
+        background: rgba(255, 255, 255, .12);
+        color: #fff;
+    }
+
+    .copy-btn:active { transform: scale(.9); }
+
+    /* คัดลอกสำเร็จ — เปลี่ยนเป็นสีส้ม (สีเดียวกับไอคอน active ในแอป) */
+    .copy-btn.is-done {
+        color: #f97316;
+        background: rgba(249, 115, 22, .15);
+    }
+
+    .copy-btn svg {
+        width: 17px;
+        height: 17px;
     }
 
     /* กล่องแจ้งเตือนสำหรับคนที่เคยเพิ่มไอคอนไว้บนหน้าจอมือถือ */
@@ -103,16 +147,95 @@
         text-align: center;
     }
 
-    .notice ol {
-        margin: 0;
-        padding-left: 20px;
-        font-size: 14px;
-        opacity: .85;
+    .notice-lead {
+        font-size: 13.5px;
+        margin: 0 0 16px;
+        opacity: .8;
+        text-align: center;
     }
 
-    .notice li { margin-bottom: 8px; }
-    .notice li:last-child { margin-bottom: 0; }
     .notice b { font-weight: 500; }
+
+    /* แท็บเลือกระบบปฏิบัติการ — แบบ segmented control */
+    .tabs {
+        display: flex;
+        gap: 4px;
+        padding: 4px;
+        margin-bottom: 16px;
+        background: rgba(0, 0, 0, .2);
+        border-radius: 999px;
+    }
+
+    .tab {
+        flex: 1;
+        padding: 9px 8px;
+        border: 0;
+        border-radius: 999px;
+        background: transparent;
+        color: rgba(255, 255, 255, .65);
+        font-family: 'Kanit', sans-serif;
+        font-size: 13.5px;
+        font-weight: 400;
+        cursor: pointer;
+        transition: background .15s ease, color .15s ease;
+    }
+
+    .tab.is-active {
+        background: #fff;
+        color: #f68b1f;
+        font-weight: 600;
+    }
+
+    /* ขั้นตอน — ใช้ counter เองเพื่อทำเลขในวงกลม */
+    .steps {
+        list-style: none;
+        counter-reset: step;
+        margin: 0;
+        padding: 0;
+    }
+
+    .steps li {
+        counter-increment: step;
+        position: relative;
+        padding-left: 32px;
+        margin-bottom: 11px;
+        font-size: 13.5px;
+        line-height: 1.6;
+        opacity: .9;
+    }
+
+    .steps li:last-child { margin-bottom: 0; }
+
+    .steps li::before {
+        content: counter(step);
+        position: absolute;
+        left: 0;
+        top: 1px;
+        width: 21px;
+        height: 21px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #fff;
+        color: #0E1865;
+        border-radius: 50%;
+        font-size: 12px;
+        font-weight: 600;
+    }
+
+    /* ไอคอนเล็ก ๆ แทรกในบรรทัด (ปุ่มแชร์ของ iOS / ปุ่มเมนูของ Android) */
+    .ico {
+        display: inline-flex;
+        vertical-align: -5px;
+        width: 20px;
+        height: 20px;
+        padding: 2px;
+        margin: 0 1px;
+        background: rgba(255, 255, 255, .16);
+        border-radius: 5px;
+    }
+
+    .ico svg { width: 100%; height: 100%; }
 </style>
 </head>
 <body>
@@ -122,18 +245,174 @@
         <h1>Branch TIKTOK, The IDOL</h1>
         <p class="lead">เว็บไซต์ย้ายไปที่อยู่ใหม่แล้ว</p>
 
-        <a class="btn" href="https://branch-tiktok.netlify.app/">เข้าสู่เว็บไซต์</a>
+        <a class="btn" href="https://branch-tiktok.netlify.app/">เข้าสู่ Branch TIKTOK</a>
 
-        <span class="url">https://branch-tiktok.netlify.app/</span>
+        <div class="url-row">
+            <span class="url">https://branch-tiktok.netlify.app/</span>
+
+            <button type="button" class="copy-btn" id="copyBtn"
+                    title="คัดลอกลิงก์" aria-label="คัดลอกลิงก์">
+                <span id="copyIcon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                         stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="9" y="9" width="12" height="12" rx="2"/>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+                    </svg>
+                </span>
+            </button>
+        </div>
 
         <div class="notice">
             <p class="notice-title">📱 สำหรับผู้ที่เพิ่มไอคอนไว้บนหน้าจอมือถือ</p>
-            <ol>
-                <li><b>ลบไอคอนเดิม</b> ออกจากหน้าจอมือถือของท่าน</li>
-                <li>กดปุ่ม <b>“เข้าสู่เว็บไซต์”</b> ด้านบน เพื่อเปิดที่อยู่ใหม่</li>
-                <li>เลือกเมนู <b>“เพิ่มลงในหน้าจอหลัก”</b> เพื่อสร้างไอคอนใหม่</li>
-            </ol>
+            <p class="notice-lead">
+                กรุณา<b>ลบไอคอนเดิม</b>ออกจากหน้าจอ<br>
+                แล้วสร้างไอคอนใหม่ตามวิธีของเครื่องที่ท่านใช้
+            </p>
+
+            <div class="tabs" role="tablist" aria-label="เลือกระบบปฏิบัติการ">
+                <button type="button" class="tab" role="tab"
+                        id="tab-ios" aria-controls="panel-ios" aria-selected="false">
+                    iOS (iPhone)
+                </button>
+                <button type="button" class="tab is-active" role="tab"
+                        id="tab-android" aria-controls="panel-android" aria-selected="true">
+                    Android
+                </button>
+            </div>
+
+            <!-- ขั้นตอนของ iOS — เพิ่มไอคอนได้จาก Safari เท่านั้น -->
+            <div class="panel" id="panel-ios" role="tabpanel" aria-labelledby="tab-ios" hidden>
+                <ol class="steps">
+                    <li>เปิดเว็บไซต์ใหม่ด้วย <b>Safari</b> โดยกดปุ่ม <b>“เข้าสู่ Branch TIKTOK”</b> ด้านบน</li>
+                    <li>
+                        แตะปุ่ม <b>แชร์</b>
+                        <span class="ico" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 3v13"/><path d="m8 7 4-4 4 4"/>
+                                <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-7"/>
+                            </svg>
+                        </span>
+                        ที่แถบด้านล่างของหน้าจอ
+                    </li>
+                    <li>เลื่อนหาแล้วเลือก <b>“Add to Home Screen”</b> (เพิ่มไปยังหน้าจอโฮม)</li>
+                    <li>กด <b>“Add”</b> มุมขวาบน เพื่อบันทึกไอคอนใหม่</li>
+                </ol>
+            </div>
+
+            <!-- ขั้นตอนของ Android — ใช้ Chrome -->
+            <div class="panel" id="panel-android" role="tabpanel" aria-labelledby="tab-android">
+                <ol class="steps">
+                    <li>เปิดเว็บไซต์ใหม่ด้วย <b>Chrome</b> โดยกดปุ่ม <b>“เข้าสู่ Branch TIKTOK”</b> ด้านบน</li>
+                    <li>
+                        แตะปุ่ม <b>เมนู</b>
+                        <span class="ico" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <circle cx="12" cy="5" r="2"/>
+                                <circle cx="12" cy="12" r="2"/>
+                                <circle cx="12" cy="19" r="2"/>
+                            </svg>
+                        </span>
+                        ที่มุมขวาบนของหน้าจอ
+                    </li>
+                    <li>เลือก <b>“เพิ่มลงในหน้าจอหลัก”</b> (Add to Home screen)</li>
+                    <li>กด <b>“ติดตั้ง”</b> หรือ <b>“เพิ่ม”</b> เพื่อบันทึกไอคอนใหม่</li>
+                </ol>
+            </div>
         </div>
     </div>
+
+<script>
+    // สลับแท็บ iOS / Android
+    (function () {
+        var tabs = document.querySelectorAll('.tab');
+
+        function select(id) {
+            Array.prototype.forEach.call(tabs, function (tab) {
+                var isOn = (tab.id === id);
+                tab.classList.toggle('is-active', isOn);
+                tab.setAttribute('aria-selected', isOn ? 'true' : 'false');
+                document.getElementById(tab.getAttribute('aria-controls')).hidden = !isOn;
+            });
+        }
+
+        Array.prototype.forEach.call(tabs, function (tab) {
+            tab.addEventListener('click', function () { select(tab.id); });
+        });
+
+        // เดาเครื่องที่ผู้ใช้ถืออยู่ แล้วเปิดแท็บนั้นให้เลย จะได้ไม่ต้องกดเอง
+        // (iPad รุ่นใหม่รายงานตัวเป็น Mac จึงต้องเช็ค maxTouchPoints ด้วย)
+        var isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) ||
+                    (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+
+        if (isIOS) select('tab-ios');
+    })();
+
+    // ปุ่มคัดลอกลิงก์
+    (function () {
+        var btn  = document.getElementById('copyBtn');
+        var icon = document.getElementById('copyIcon');
+
+        // ยึด URL จาก href ของปุ่มหลักเป็นหลัก จะได้ไม่ต้องแก้ URL หลายที่
+        var URL_TEXT = document.querySelector('.btn').href;
+
+        var ICON_COPY = icon.innerHTML;
+        var ICON_DONE =
+            '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"' +
+            ' stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">' +
+            '<path d="m20 6-11 11-5-5"/></svg>';
+
+        var timer = null;
+
+        // วิธีสำรองสำหรับเบราว์เซอร์เก่า หรือตอนเปิดผ่าน file:// / http://
+        // (navigator.clipboard ใช้ได้เฉพาะบน https เท่านั้น)
+        function fallbackCopy(text) {
+            var ta = document.createElement('textarea');
+            ta.value = text;
+            ta.setAttribute('readonly', '');
+            ta.style.position = 'fixed';
+            ta.style.opacity = '0';
+            document.body.appendChild(ta);
+            ta.select();
+            ta.setSelectionRange(0, ta.value.length);   // iOS ต้องระบุช่วงเอง
+
+            var ok = false;
+            try { ok = document.execCommand('copy'); } catch (e) {}
+
+            document.body.removeChild(ta);
+            return ok;
+        }
+
+        function showResult(ok) {
+            if (!ok) {
+                // ไม่แกล้งบอกว่าสำเร็จ — บอกวิธีสำรองไปเลย
+                btn.title = 'คัดลอกไม่สำเร็จ กรุณากดค้างที่ลิงก์เพื่อคัดลอก';
+                return;
+            }
+
+            // เปลี่ยนเป็นเครื่องหมายถูกสีส้ม แล้วคืนสภาพเดิมใน 2 วินาที
+            icon.innerHTML = ICON_DONE;
+            btn.classList.add('is-done');
+            btn.title = 'คัดลอกลิงก์แล้ว';
+
+            clearTimeout(timer);
+            timer = setTimeout(function () {
+                icon.innerHTML = ICON_COPY;
+                btn.classList.remove('is-done');
+                btn.title = 'คัดลอกลิงก์';
+            }, 2000);
+        }
+
+        btn.addEventListener('click', function () {
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(URL_TEXT)
+                    .then(function () { showResult(true); })
+                    .catch(function () { showResult(fallbackCopy(URL_TEXT)); });
+            } else {
+                showResult(fallbackCopy(URL_TEXT));
+            }
+        });
+    })();
+</script>
 </body>
 </html>
