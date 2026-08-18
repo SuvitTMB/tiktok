@@ -1,611 +1,667 @@
 <!DOCTYPE html>
 <html lang="th">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#0E1865">
-<title>Branch TIKTOK, The IDOL — เข้าสู่เว็บไซต์</title>
 
-<!-- =====================================================================
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#0E1865">
+    <title>Branch TIKTOK, The IDOL — เข้าสู่เว็บไซต์</title>
+
+    <!-- =====================================================================
      หน้าลิงก์ไปเว็บไซต์ใหม่บน Netlify
      ผู้ใช้ต้องกดปุ่มเอง (ไม่เด้งอัตโนมัติ)
      ===================================================================== -->
 
-<link rel="icon" type="image/png" sizes="192x192" href="images/icon-192.png">
-<link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
-
-<!-- Google Fonts: Kanit — ฟอนต์มาตรฐานเดียวกับทั้งเว็บ (ดู css/styles.css) -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link
-    href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600&display=swap"
-    rel="stylesheet">
-
-<style>
-    * { box-sizing: border-box; }
-
-    body {
-        margin: 0;
-        min-height: 100vh;
-        display: flex;
-        /* ชิดบน — เวลาสลับแท็บแล้วเนื้อหาสูงไม่เท่ากัน หน้าจอจะได้ไม่ขยับขึ้นลง */
-        align-items: flex-start;
-        justify-content: center;
-        padding: 32px 24px;
-        background: #0E1865;
-        color: #fff;
-        text-align: center;
-        line-height: 1.75;
-        font-family: 'Kanit', sans-serif;
-        font-weight: 300;
-    }
-
-    .card { max-width: 420px; width: 100%; }
-
-    .logo {
-        width: 140px;
-        height: 140px;
-        margin: 0 auto 24px;
-        border-radius: 22px;
-        display: block;
-    }
-
-    h1 {
-        font-size: 22px;
-        font-weight: 600;
-        margin: 0 0 10px;
-    }
-
-    .lead {
-        font-size: 15px;
-        margin: 0 0 28px;
-        opacity: .8;
-    }
-
-    .btn {
-        display: inline-block;
-        width: 100%;
-        padding: 10px 32px;
-        background: #f68b1f;
-        color: #fff;
-        font-family: 'Kanit', sans-serif;
-        font-size: 16px;
-        font-weight: 500;
-        line-height: 1.5;          /* body ตั้ง 1.75 ไว้ ปุ่มจะสูงเกินจำเป็น */
-        text-decoration: none;
-        border-radius: 999px;
-        transition: transform .15s ease, opacity .15s ease;
-    }
-
-    .btn:hover { opacity: .9; }
-    .btn:active { transform: scale(.97); }
-
-    /* แถว URL + ปุ่มไอคอนคัดลอก */
-    .url-row {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 6px;
-        margin-top: 16px;
-    }
-
-    .url {
-        font-size: 13px;
-        opacity: .55;
-        word-break: break-all;
-    }
-
-    /* ปุ่มไอคอนคัดลอก — วางต่อท้าย URL */
-    .copy-btn {
-        flex-shrink: 0;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        width: 30px;
-        height: 30px;
-        padding: 0;
-        border: 0;
-        border-radius: 8px;
-        background: transparent;
-        color: rgba(255, 255, 255, .6);
-        cursor: pointer;
-        transition: background .15s ease, color .15s ease, transform .15s ease;
-    }
-
-    .copy-btn:hover {
-        background: rgba(255, 255, 255, .12);
-        color: #fff;
-    }
-
-    .copy-btn:active { transform: scale(.9); }
-
-    /* คัดลอกสำเร็จ — เปลี่ยนเป็นสีส้ม (สีเดียวกับไอคอน active ในแอป) */
-    .copy-btn.is-done {
-        color: #f97316;
-        background: rgba(249, 115, 22, .15);
-    }
-
-    .copy-btn svg {
-        width: 17px;
-        height: 17px;
-    }
-
-    /* กล่องแจ้งเตือนสำหรับคนที่เคยเพิ่มไอคอนไว้บนหน้าจอมือถือ */
-    .notice {
-        margin-top: 32px;
-        padding: 20px;
-        background: rgba(255, 255, 255, .08);
-        border: 1px solid rgba(255, 255, 255, .18);
-        border-radius: 16px;
-        text-align: left;
-    }
-
-    .notice-title {
-        font-size: 15px;
-        font-weight: 600;
-        margin: 0 0 12px;
-        text-align: center;
-    }
-
-    .notice-lead {
-        font-size: 13.5px;
-        margin: 0 0 16px;
-        opacity: .8;
-        text-align: center;
-    }
-
-    .notice b { font-weight: 500; }
-
-    /* แท็บเลือกระบบปฏิบัติการ — แบบ segmented control */
-    .tabs {
-        display: flex;
-        gap: 4px;
-        padding: 4px;
-        margin-bottom: 16px;
-        background: rgba(0, 0, 0, .2);
-        border-radius: 999px;
-    }
-
-    .tab {
-        flex: 1;
-        padding: 9px 8px;
-        border: 0;
-        border-radius: 999px;
-        background: transparent;
-        color: rgba(255, 255, 255, .65);
-        font-family: 'Kanit', sans-serif;
-        font-size: 13.5px;
-        font-weight: 400;
-        cursor: pointer;
-        transition: background .15s ease, color .15s ease;
-    }
-
-    .tab.is-active {
-        background: #fff;
-        color: #f68b1f;
-        font-weight: 600;
-    }
-
-    /* ขั้นตอน — ใช้ counter เองเพื่อทำเลขในวงกลม */
-    .steps {
-        list-style: none;
-        counter-reset: step;
-        margin: 0;
-        padding: 0;
-    }
-
-    .steps li {
-        counter-increment: step;
-        position: relative;
-        padding-left: 32px;
-        margin-bottom: 11px;
-        font-size: 13.5px;
-        line-height: 1.6;
-        opacity: .9;
-    }
-
-    .steps li:last-child { margin-bottom: 0; }
-
-    .steps li::before {
-        content: counter(step);
-        position: absolute;
-        left: 0;
-        top: 1px;
-        width: 21px;
-        height: 21px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background: #fff;
-        color: #0E1865;
-        border-radius: 50%;
-        font-size: 12px;
-        font-weight: 600;
-    }
-
-    /* ไอคอนเล็ก ๆ แทรกในบรรทัด (ปุ่มแชร์ของ iOS / ปุ่มเมนูของ Android) */
-    .ico {
-        display: inline-flex;
-        vertical-align: -5px;
-        width: 20px;
-        height: 20px;
-        padding: 2px;
-        margin: 0 1px;
-        background: rgba(255, 255, 255, .16);
-        border-radius: 5px;
-    }
-
-    .ico svg { width: 100%; height: 100%; }
-
-    /* ---------- กล่องประกาศรางวัล ---------- */
-    .promo {
-        position: relative;
-        margin-top: 20px;
-        padding: 20px;
-        background: rgba(255, 255, 255, .08);
-        border: 1px solid rgba(255, 255, 255, .18);
-        border-radius: 16px;
-    }
-
-    .promo-badge {
-        display: inline-block;
-        margin-bottom: 12px;
-        padding: 3px 14px;
-        background: #e63946;
-        border-radius: 999px;
-        font-size: 12px;
-        font-weight: 600;
-        letter-spacing: .3px;
-    }
-
-    .promo-title {
-        font-size: 16px;
-        font-weight: 600;
-        margin: 0 0 4px;
-    }
-
-    .promo-title small {
-        font-size: 13px;
-        font-weight: 400;
-        opacity: .75;
-    }
-
-    /* ซ่อนจากสายตาแต่ screen reader ยังอ่านได้ (หัวคอลัมน์แรกของตาราง) */
-    .sr-only {
-        position: absolute;
-        width: 1px;
-        height: 1px;
-        overflow: hidden;
-        clip: rect(0 0 0 0);
-        white-space: nowrap;
-    }
-
-    .promo-period {
-        font-size: 12.5px;
-        margin: 0 0 16px;
-        opacity: .7;
-    }
-
-    .promo-cond {
-        font-size: 13.5px;
-        margin: 0 0 4px;
-    }
-
-    .promo-cond em {
-        font-style: normal;
-        font-weight: 500;
-        color: #f68b1f;
-    }
-
-    .promo-prize {
-        font-size: 14px;
-        font-weight: 500;
-        margin: 0 0 16px;
-    }
-
-    .promo-prize span {
-        color: #f68b1f;
-        font-weight: 600;
-    }
-
-    /* แบ่งทีมตามจำนวนพนักงาน */
-    .teams {
-        margin: 0 0 18px;
-        padding: 14px 16px;
-        background: rgba(0, 0, 0, .18);
-        border-radius: 12px;
-    }
-
-    .teams-label {
-        font-size: 13px;
-        font-weight: 500;
-        margin: 0 0 8px;
-    }
-
-    .teams-list {
-        list-style: none;
-        margin: 0;
-        padding: 0;
-        text-align: left;
-    }
-
-    .teams-list li {
-        position: relative;
-        padding-left: 16px;
-        font-size: 13px;
-        line-height: 1.65;
-        opacity: .9;
-    }
-
-    .teams-list li::before {
-        content: "•";
-        position: absolute;
-        left: 2px;
-        color: #f68b1f;
-    }
-
-    .teams-list li b { font-weight: 500; }
-
-    /* ตารางเงินรางวัล — จอแคบให้เลื่อนแนวนอนแทนการบีบตัวอักษร */
-    .table-wrap {
-        overflow-x: auto;
-    }
-
-    .prize-table {
-        width: 100%;
-        min-width: 340px;
-        border-collapse: separate;
-        border-spacing: 3px;
-        font-size: 12.5px;
-    }
-
-    .prize-table th,
-    .prize-table td {
-        padding: 7px 6px;
-        text-align: center;
-        border-radius: 6px;
-        white-space: nowrap;
-    }
-
-    .prize-table thead th {
-        color: #fff;
-        font-weight: 600;
-        background: #0056ff;
-    }
-
-    /* สลับสีหัวคอลัมน์ น้ำเงิน–ส้ม ตามต้นฉบับ */
-    .prize-table thead th.alt { background: #f68b1f; }
-    .prize-table thead th.blank { background: transparent; }
-
-    .prize-table td.rank {
-        text-align: left;
-        padding-left: 10px;
-        font-weight: 500;
-        background: rgba(255, 255, 255, .06);
-    }
-
-    .prize-table td { background: rgba(255, 255, 255, .06); }
-
-    /* เน้นสองอันดับแรกให้เด่นเหมือนในภาพต้นฉบับ */
-    .prize-table tr.top1 td { background: rgba(255, 255, 255, .16); font-weight: 600; }
-    .prize-table tr.top2 td { color: #f9a03f; font-weight: 500; }
-
-    .scroll-hint {
-        margin: 8px 0 0;
-        font-size: 11.5px;
-        opacity: .5;
-    }
-
-    /* ---------- กล่องกติกา RL / Compliance ---------- */
-    .rules {
-        margin-top: 20px;
-        padding: 20px;
-        background: rgba(255, 255, 255, .08);
-        border: 1px solid rgba(255, 255, 255, .18);
-        border-radius: 16px;
-        text-align: left;
-    }
-
-    .rules-title {
-        font-size: 14px;
-        font-weight: 600;
-        margin: 0 0 6px;
-        text-align: center;
-        line-height: 1.6;
-    }
-
-    .rules-date {
-        font-size: 12px;
-        margin: 0 0 14px;
-        opacity: .6;
-        text-align: center;
-    }
-
-    .rules-intro {
-        font-size: 13px;
-        margin: 0 0 12px;
-        opacity: .9;
-    }
-
-    .rules-intro q {
-        color: #f68b1f;
-        font-style: italic;
-    }
-
-    /* คำเตือน — คลิปไม่ผ่านถ้าไม่ทำตาม */
-    .rules-warn {
-        margin: 14px 0 18px;
-        padding: 12px 14px;
-        background: rgba(230, 57, 70, .18);
-        border: 1px solid rgba(230, 57, 70, .5);
-        border-radius: 12px;
-        font-size: 13px;
-        line-height: 1.65;
-    }
-
-    .rules-warn b { font-weight: 500; }
-
-    .part-title {
-        font-size: 13.5px;
-        font-weight: 500;
-        margin: 0 0 12px;
-        padding-bottom: 8px;
-        border-bottom: 1px solid rgba(255, 255, 255, .18);
-        opacity: .9;
-    }
-
-    /* หัวข้อพับเก็บได้ — ใช้ <details> ของ HTML ไม่ต้องพึ่ง JS */
-    .acc {
-        margin-bottom: 8px;
-        background: rgba(0, 0, 0, .18);
-        border-radius: 12px;
-    }
-
-    .acc summary {
-        display: flex;
-        align-items: center;
-        gap: 9px;
-        padding: 11px 13px;
-        font-size: 13px;
-        font-weight: 400;
-        line-height: 1.5;
-        cursor: pointer;
-        list-style: none;
-    }
-
-    .acc summary::-webkit-details-marker { display: none; }
-
-    /* ลูกศรบอกสถานะ พับ/กาง */
-    .acc summary::after {
-        content: "";
-        flex-shrink: 0;
-        margin-left: auto;
-        width: 7px;
-        height: 7px;
-        border-right: 2px solid rgba(255, 255, 255, .55);
-        border-bottom: 2px solid rgba(255, 255, 255, .55);
-        transform: rotate(45deg) translate(-2px, -2px);
-        transition: transform .2s ease;
-    }
-
-    .acc[open] summary::after { transform: rotate(-135deg); }
-    .acc[open] summary { font-weight: 500; }
-
-    .acc-tag {
-        flex-shrink: 0;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        width: 21px;
-        height: 21px;
-        background: #f68b1f;
-        border-radius: 6px;
-        font-size: 11px;
-        font-weight: 600;
-    }
-
-    .acc-body { padding: 0 13px 13px; }
-
-    .acc-note {
-        margin: 8px 0 0;
-        font-size: 12px;
-        opacity: .7;
-    }
-
-    /* ข้อความ RL ที่ต้องพูดหรือขึ้นในคลิป */
-    .rl {
-        margin: 0 0 8px;
-        padding: 11px 13px;
-        background: rgba(255, 255, 255, .1);
-        border-left: 3px solid #f68b1f;
-        border-radius: 8px;
-    }
-
-    .rl:last-child { margin-bottom: 0; }
-
-    .rl-label {
-        margin: 0 0 6px;
-        font-size: 11.5px;
-        font-weight: 500;
-        color: #f9a03f;
-    }
-
-    .rl-text {
-        margin: 0;
-        font-size: 12.5px;
-        line-height: 1.75;
-        white-space: pre-line;      /* ขึ้นบรรทัดตามที่พิมพ์ไว้ใน HTML */
-        word-break: break-word;
-    }
-
-    .rl-copy {
-        display: inline-flex;
-        align-items: center;
-        gap: 6px;
-        margin-top: 9px;
-        padding: 5px 12px;
-        background: rgba(255, 255, 255, .12);
-        border: 0;
-        border-radius: 999px;
-        color: #fff;
-        font-family: 'Kanit', sans-serif;
-        font-size: 11.5px;
-        font-weight: 400;
-        cursor: pointer;
-        transition: background .15s ease, color .15s ease;
-    }
-
-    .rl-copy:hover { background: rgba(255, 255, 255, .2); }
-
-    .rl-copy.is-done {
-        background: rgba(249, 115, 22, .2);
-        color: #f9a03f;
-    }
-
-    .rl-copy svg {
-        width: 13px;
-        height: 13px;
-        flex-shrink: 0;
-    }
-
-    /* กล่องตัวอย่างการแสดงสมมติฐาน */
-    .example {
-        margin: 14px 0;
-        padding: 14px;
-        background: rgba(0, 0, 0, .18);
-        border-radius: 12px;
-    }
-
-    .example-title {
-        margin: 0 0 10px;
-        font-size: 13px;
-        font-weight: 500;
-        line-height: 1.6;
-    }
-
-    .example-case {
-        margin: 0 0 12px;
-        font-size: 12.5px;
-        line-height: 1.65;
-        opacity: .9;
-    }
-
-    .example-case:last-child { margin-bottom: 0; }
-
-    .example-case b { font-weight: 500; }
-
-    .example-say {
-        display: block;
-        margin-top: 6px;
-        padding: 9px 11px;
-        background: rgba(255, 255, 255, .1);
-        border-left: 3px solid #f68b1f;
-        border-radius: 8px;
-        font-size: 12px;
-        line-height: 1.7;
-    }
-</style>
+    <link rel="icon" type="image/png" sizes="192x192" href="images/icon-192.png">
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+
+    <!-- Google Fonts: Kanit — ฟอนต์มาตรฐานเดียวกับทั้งเว็บ (ดู css/styles.css) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            /* ชิดบน — เวลาสลับแท็บแล้วเนื้อหาสูงไม่เท่ากัน หน้าจอจะได้ไม่ขยับขึ้นลง */
+            align-items: flex-start;
+            justify-content: center;
+            padding: 32px 24px;
+            background: #0E1865;
+            color: #fff;
+            text-align: center;
+            line-height: 1.75;
+            font-family: 'Kanit', sans-serif;
+            font-weight: 300;
+        }
+
+        .card {
+            max-width: 420px;
+            width: 100%;
+        }
+
+        .logo {
+            width: 140px;
+            height: 140px;
+            margin: 0 auto 24px;
+            border-radius: 22px;
+            display: block;
+        }
+
+        h1 {
+            font-size: 22px;
+            font-weight: 600;
+            margin: 0 0 10px;
+        }
+
+        .lead {
+            font-size: 15px;
+            margin: 0 0 28px;
+            opacity: .8;
+        }
+
+        .btn {
+            display: inline-block;
+            width: 100%;
+            padding: 10px 32px;
+            background: #f68b1f;
+            color: #fff;
+            font-family: 'Kanit', sans-serif;
+            font-size: 16px;
+            font-weight: 500;
+            line-height: 1.5;
+            /* body ตั้ง 1.75 ไว้ ปุ่มจะสูงเกินจำเป็น */
+            text-decoration: none;
+            border-radius: 999px;
+            transition: transform .15s ease, opacity .15s ease;
+        }
+
+        .btn:hover {
+            opacity: .9;
+        }
+
+        .btn:active {
+            transform: scale(.97);
+        }
+
+        /* แถว URL + ปุ่มไอคอนคัดลอก */
+        .url-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            margin-top: 16px;
+        }
+
+        .url {
+            font-size: 13px;
+            opacity: .55;
+            word-break: break-all;
+        }
+
+        /* ปุ่มไอคอนคัดลอก — วางต่อท้าย URL */
+        .copy-btn {
+            flex-shrink: 0;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 30px;
+            height: 30px;
+            padding: 0;
+            border: 0;
+            border-radius: 8px;
+            background: transparent;
+            color: rgba(255, 255, 255, .6);
+            cursor: pointer;
+            transition: background .15s ease, color .15s ease, transform .15s ease;
+        }
+
+        .copy-btn:hover {
+            background: rgba(255, 255, 255, .12);
+            color: #fff;
+        }
+
+        .copy-btn:active {
+            transform: scale(.9);
+        }
+
+        /* คัดลอกสำเร็จ — เปลี่ยนเป็นสีส้ม (สีเดียวกับไอคอน active ในแอป) */
+        .copy-btn.is-done {
+            color: #f97316;
+            background: rgba(249, 115, 22, .15);
+        }
+
+        .copy-btn svg {
+            width: 17px;
+            height: 17px;
+        }
+
+        /* กล่องแจ้งเตือนสำหรับคนที่เคยเพิ่มไอคอนไว้บนหน้าจอมือถือ */
+        .notice {
+            margin-top: 32px;
+            padding: 20px;
+            background: rgba(255, 255, 255, .08);
+            border: 1px solid rgba(255, 255, 255, .18);
+            border-radius: 16px;
+            text-align: left;
+        }
+
+        .notice-title {
+            font-size: 15px;
+            font-weight: 600;
+            margin: 0 0 12px;
+            text-align: center;
+        }
+
+        .notice-lead {
+            font-size: 13.5px;
+            margin: 0 0 16px;
+            opacity: .8;
+            text-align: center;
+        }
+
+        .notice b {
+            font-weight: 500;
+        }
+
+        /* แท็บเลือกระบบปฏิบัติการ — แบบ segmented control */
+        .tabs {
+            display: flex;
+            gap: 4px;
+            padding: 4px;
+            margin-bottom: 16px;
+            background: rgba(0, 0, 0, .2);
+            border-radius: 999px;
+        }
+
+        .tab {
+            flex: 1;
+            padding: 9px 8px;
+            border: 0;
+            border-radius: 999px;
+            background: transparent;
+            color: rgba(255, 255, 255, .65);
+            font-family: 'Kanit', sans-serif;
+            font-size: 13.5px;
+            font-weight: 400;
+            cursor: pointer;
+            transition: background .15s ease, color .15s ease;
+        }
+
+        .tab.is-active {
+            background: #fff;
+            color: #f68b1f;
+            font-weight: 600;
+        }
+
+        /* ขั้นตอน — ใช้ counter เองเพื่อทำเลขในวงกลม */
+        .steps {
+            list-style: none;
+            counter-reset: step;
+            margin: 0;
+            padding: 0;
+        }
+
+        .steps li {
+            counter-increment: step;
+            position: relative;
+            padding-left: 32px;
+            margin-bottom: 11px;
+            font-size: 13.5px;
+            line-height: 1.6;
+            opacity: .9;
+        }
+
+        .steps li:last-child {
+            margin-bottom: 0;
+        }
+
+        .steps li::before {
+            content: counter(step);
+            position: absolute;
+            left: 0;
+            top: 1px;
+            width: 21px;
+            height: 21px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #fff;
+            color: #0E1865;
+            border-radius: 50%;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        /* ไอคอนเล็ก ๆ แทรกในบรรทัด (ปุ่มแชร์ของ iOS / ปุ่มเมนูของ Android) */
+        .ico {
+            display: inline-flex;
+            vertical-align: -5px;
+            width: 20px;
+            height: 20px;
+            padding: 2px;
+            margin: 0 1px;
+            background: rgba(255, 255, 255, .16);
+            border-radius: 5px;
+        }
+
+        .ico svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        /* ---------- กล่องประกาศรางวัล ---------- */
+        .promo {
+            position: relative;
+            margin-top: 20px;
+            padding: 20px;
+            background: rgba(255, 255, 255, .08);
+            border: 1px solid rgba(255, 255, 255, .18);
+            border-radius: 16px;
+        }
+
+        .promo-badge {
+            display: inline-block;
+            margin-bottom: 12px;
+            padding: 3px 14px;
+            background: #e63946;
+            border-radius: 999px;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: .3px;
+        }
+
+        .promo-title {
+            font-size: 16px;
+            font-weight: 600;
+            margin: 0 0 4px;
+        }
+
+        .promo-title small {
+            font-size: 13px;
+            font-weight: 400;
+            opacity: .75;
+        }
+
+        /* ซ่อนจากสายตาแต่ screen reader ยังอ่านได้ (หัวคอลัมน์แรกของตาราง) */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            overflow: hidden;
+            clip: rect(0 0 0 0);
+            white-space: nowrap;
+        }
+
+        .promo-period {
+            font-size: 12.5px;
+            margin: 0 0 16px;
+            opacity: .7;
+        }
+
+        .promo-cond {
+            font-size: 13.5px;
+            margin: 0 0 4px;
+        }
+
+        .promo-cond em {
+            font-style: normal;
+            font-weight: 500;
+            color: #f68b1f;
+        }
+
+        .promo-prize {
+            font-size: 14px;
+            font-weight: 500;
+            margin: 0 0 16px;
+        }
+
+        .promo-prize span {
+            color: #f68b1f;
+            font-weight: 600;
+        }
+
+        /* แบ่งทีมตามจำนวนพนักงาน */
+        .teams {
+            margin: 0 0 18px;
+            padding: 14px 16px;
+            background: rgba(0, 0, 0, .18);
+            border-radius: 12px;
+        }
+
+        .teams-label {
+            font-size: 13px;
+            font-weight: 500;
+            margin: 0 0 8px;
+        }
+
+        .teams-list {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            text-align: left;
+        }
+
+        .teams-list li {
+            position: relative;
+            padding-left: 16px;
+            font-size: 13px;
+            line-height: 1.65;
+            opacity: .9;
+        }
+
+        .teams-list li::before {
+            content: "•";
+            position: absolute;
+            left: 2px;
+            color: #f68b1f;
+        }
+
+        .teams-list li b {
+            font-weight: 500;
+        }
+
+        /* ตารางเงินรางวัล — จอแคบให้เลื่อนแนวนอนแทนการบีบตัวอักษร */
+        .table-wrap {
+            overflow-x: auto;
+        }
+
+        .prize-table {
+            width: 100%;
+            min-width: 340px;
+            border-collapse: separate;
+            border-spacing: 3px;
+            font-size: 12.5px;
+        }
+
+        .prize-table th,
+        .prize-table td {
+            padding: 7px 6px;
+            text-align: center;
+            border-radius: 6px;
+            white-space: nowrap;
+        }
+
+        .prize-table thead th {
+            color: #fff;
+            font-weight: 600;
+            background: #0056ff;
+        }
+
+        /* สลับสีหัวคอลัมน์ น้ำเงิน–ส้ม ตามต้นฉบับ */
+        .prize-table thead th.alt {
+            background: #f68b1f;
+        }
+
+        .prize-table thead th.blank {
+            background: transparent;
+        }
+
+        .prize-table td.rank {
+            text-align: left;
+            padding-left: 10px;
+            font-weight: 500;
+            background: rgba(255, 255, 255, .06);
+        }
+
+        .prize-table td {
+            background: rgba(255, 255, 255, .06);
+        }
+
+        /* เน้นสองอันดับแรกให้เด่นเหมือนในภาพต้นฉบับ */
+        .prize-table tr.top1 td {
+            background: rgba(255, 255, 255, .16);
+            font-weight: 600;
+        }
+
+        .prize-table tr.top2 td {
+            color: #f9a03f;
+            font-weight: 500;
+        }
+
+        .scroll-hint {
+            margin: 8px 0 0;
+            font-size: 11.5px;
+            opacity: .5;
+        }
+
+        /* ---------- กล่องกติกา RL / Compliance ---------- */
+        .rules {
+            margin-top: 20px;
+            padding: 20px;
+            background: rgba(255, 255, 255, .08);
+            border: 1px solid rgba(255, 255, 255, .18);
+            border-radius: 16px;
+            text-align: left;
+        }
+
+        .rules-title {
+            font-size: 14px;
+            font-weight: 600;
+            margin: 0 0 6px;
+            text-align: center;
+            line-height: 1.6;
+        }
+
+        .rules-date {
+            font-size: 12px;
+            margin: 0 0 14px;
+            opacity: .6;
+            text-align: center;
+        }
+
+        .rules-intro {
+            font-size: 13px;
+            margin: 0 0 12px;
+            opacity: .9;
+        }
+
+        .rules-intro q {
+            color: #f68b1f;
+            font-style: italic;
+        }
+
+        /* คำเตือน — คลิปไม่ผ่านถ้าไม่ทำตาม */
+        .rules-warn {
+            margin: 14px 0 18px;
+            padding: 12px 14px;
+            background: rgba(230, 57, 70, .18);
+            border: 1px solid rgba(230, 57, 70, .5);
+            border-radius: 12px;
+            font-size: 13px;
+            line-height: 1.65;
+        }
+
+        .rules-warn b {
+            font-weight: 500;
+        }
+
+        .part-title {
+            font-size: 13.5px;
+            font-weight: 500;
+            margin: 0 0 12px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid rgba(255, 255, 255, .18);
+            opacity: .9;
+        }
+
+        /* หัวข้อพับเก็บได้ — ใช้ <details> ของ HTML ไม่ต้องพึ่ง JS */
+        .acc {
+            margin-bottom: 8px;
+            background: rgba(0, 0, 0, .18);
+            border-radius: 12px;
+        }
+
+        .acc summary {
+            display: flex;
+            align-items: center;
+            gap: 9px;
+            padding: 11px 13px;
+            font-size: 13px;
+            font-weight: 400;
+            line-height: 1.5;
+            cursor: pointer;
+            list-style: none;
+        }
+
+        .acc summary::-webkit-details-marker {
+            display: none;
+        }
+
+        /* ลูกศรบอกสถานะ พับ/กาง */
+        .acc summary::after {
+            content: "";
+            flex-shrink: 0;
+            margin-left: auto;
+            width: 7px;
+            height: 7px;
+            border-right: 2px solid rgba(255, 255, 255, .55);
+            border-bottom: 2px solid rgba(255, 255, 255, .55);
+            transform: rotate(45deg) translate(-2px, -2px);
+            transition: transform .2s ease;
+        }
+
+        .acc[open] summary::after {
+            transform: rotate(-135deg);
+        }
+
+        .acc[open] summary {
+            font-weight: 500;
+        }
+
+        .acc-tag {
+            flex-shrink: 0;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 21px;
+            height: 21px;
+            background: #f68b1f;
+            border-radius: 6px;
+            font-size: 11px;
+            font-weight: 600;
+        }
+
+        .acc-body {
+            padding: 0 13px 13px;
+        }
+
+        .acc-note {
+            margin: 8px 0 0;
+            font-size: 12px;
+            opacity: .7;
+        }
+
+        /* ข้อความ RL ที่ต้องพูดหรือขึ้นในคลิป */
+        .rl {
+            margin: 0 0 8px;
+            padding: 11px 13px;
+            background: rgba(255, 255, 255, .1);
+            border-left: 3px solid #f68b1f;
+            border-radius: 8px;
+        }
+
+        .rl:last-child {
+            margin-bottom: 0;
+        }
+
+        .rl-label {
+            margin: 0 0 6px;
+            font-size: 11.5px;
+            font-weight: 500;
+            color: #f9a03f;
+        }
+
+        .rl-text {
+            margin: 0;
+            font-size: 12.5px;
+            line-height: 1.75;
+            white-space: pre-line;
+            /* ขึ้นบรรทัดตามที่พิมพ์ไว้ใน HTML */
+            word-break: break-word;
+        }
+
+        .rl-copy {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin-top: 9px;
+            padding: 5px 12px;
+            background: rgba(255, 255, 255, .12);
+            border: 0;
+            border-radius: 999px;
+            color: #fff;
+            font-family: 'Kanit', sans-serif;
+            font-size: 11.5px;
+            font-weight: 400;
+            cursor: pointer;
+            transition: background .15s ease, color .15s ease;
+        }
+
+        .rl-copy:hover {
+            background: rgba(255, 255, 255, .2);
+        }
+
+        .rl-copy.is-done {
+            background: rgba(249, 115, 22, .2);
+            color: #f9a03f;
+        }
+
+        .rl-copy svg {
+            width: 13px;
+            height: 13px;
+            flex-shrink: 0;
+        }
+
+        /* กล่องตัวอย่างการแสดงสมมติฐาน */
+        .example {
+            margin: 14px 0;
+            padding: 14px;
+            background: rgba(0, 0, 0, .18);
+            border-radius: 12px;
+        }
+
+        .example-title {
+            margin: 0 0 10px;
+            font-size: 13px;
+            font-weight: 500;
+            line-height: 1.6;
+        }
+
+        .example-case {
+            margin: 0 0 12px;
+            font-size: 12.5px;
+            line-height: 1.65;
+            opacity: .9;
+        }
+
+        .example-case:last-child {
+            margin-bottom: 0;
+        }
+
+        .example-case b {
+            font-weight: 500;
+        }
+
+        .example-say {
+            display: block;
+            margin-top: 6px;
+            padding: 9px 11px;
+            background: rgba(255, 255, 255, .1);
+            border-left: 3px solid #f68b1f;
+            border-radius: 8px;
+            font-size: 12px;
+            line-height: 1.7;
+        }
+    </style>
 </head>
+
 <body>
     <div class="card">
         <img class="logo" src="images/icon-192.png" alt="Branch TIKTOK, The IDOL">
@@ -618,13 +674,12 @@
         <div class="url-row">
             <span class="url">https://branch-tiktok.netlify.app/</span>
 
-            <button type="button" class="copy-btn" id="copyBtn"
-                    title="คัดลอกลิงก์" aria-label="คัดลอกลิงก์">
+            <button type="button" class="copy-btn" id="copyBtn" title="คัดลอกลิงก์" aria-label="คัดลอกลิงก์">
                 <span id="copyIcon" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                         stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <rect x="9" y="9" width="12" height="12" rx="2"/>
-                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <rect x="9" y="9" width="12" height="12" rx="2" />
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
                     </svg>
                 </span>
             </button>
@@ -638,12 +693,12 @@
             </p>
 
             <div class="tabs" role="tablist" aria-label="เลือกระบบปฏิบัติการ">
-                <button type="button" class="tab" role="tab"
-                        id="tab-ios" aria-controls="panel-ios" aria-selected="false">
+                <button type="button" class="tab" role="tab" id="tab-ios" aria-controls="panel-ios"
+                    aria-selected="false">
                     iOS (iPhone)
                 </button>
-                <button type="button" class="tab is-active" role="tab"
-                        id="tab-android" aria-controls="panel-android" aria-selected="true">
+                <button type="button" class="tab is-active" role="tab" id="tab-android" aria-controls="panel-android"
+                    aria-selected="true">
                     Android
                 </button>
             </div>
@@ -655,10 +710,11 @@
                     <li>
                         แตะปุ่ม <b>แชร์</b>
                         <span class="ico" aria-hidden="true">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M12 3v13"/><path d="m8 7 4-4 4 4"/>
-                                <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-7"/>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 3v13" />
+                                <path d="m8 7 4-4 4 4" />
+                                <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-7" />
                             </svg>
                         </span>
                         ที่แถบด้านล่างของหน้าจอ
@@ -676,9 +732,9 @@
                         แตะปุ่ม <b>เมนู</b>
                         <span class="ico" aria-hidden="true">
                             <svg viewBox="0 0 24 24" fill="currentColor">
-                                <circle cx="12" cy="5" r="2"/>
-                                <circle cx="12" cy="12" r="2"/>
-                                <circle cx="12" cy="19" r="2"/>
+                                <circle cx="12" cy="5" r="2" />
+                                <circle cx="12" cy="12" r="2" />
+                                <circle cx="12" cy="19" r="2" />
                             </svg>
                         </span>
                         ที่มุมขวาบนของหน้าจอ
@@ -726,23 +782,43 @@
                     <tbody>
                         <tr class="top1">
                             <td class="rank">อันดับที่ 1</td>
-                            <td>4,000</td><td>4,000</td><td>4,000</td><td>4,000</td><td>4,000</td>
+                            <td>4,000</td>
+                            <td>4,000</td>
+                            <td>4,000</td>
+                            <td>4,000</td>
+                            <td>4,000</td>
                         </tr>
                         <tr class="top2">
                             <td class="rank">อันดับที่ 2</td>
-                            <td>3,000</td><td>3,000</td><td>3,000</td><td>3,000</td><td>3,000</td>
+                            <td>3,000</td>
+                            <td>3,000</td>
+                            <td>3,000</td>
+                            <td>3,000</td>
+                            <td>3,000</td>
                         </tr>
                         <tr>
                             <td class="rank">อันดับที่ 3</td>
-                            <td>2,000</td><td>2,000</td><td>2,000</td><td>2,000</td><td>2,000</td>
+                            <td>2,000</td>
+                            <td>2,000</td>
+                            <td>2,000</td>
+                            <td>2,000</td>
+                            <td>2,000</td>
                         </tr>
                         <tr>
                             <td class="rank">อันดับที่ 4</td>
-                            <td>1,000</td><td>1,000</td><td>1,000</td><td>1,000</td><td>1,000</td>
+                            <td>1,000</td>
+                            <td>1,000</td>
+                            <td>1,000</td>
+                            <td>1,000</td>
+                            <td>1,000</td>
                         </tr>
                         <tr>
                             <td class="rank">อันดับที่ 5</td>
-                            <td>1,000</td><td>1,000</td><td>1,000</td><td>1,000</td><td>1,000</td>
+                            <td>1,000</td>
+                            <td>1,000</td>
+                            <td>1,000</td>
+                            <td>1,000</td>
+                            <td>1,000</td>
                         </tr>
                     </tbody>
                 </table>
@@ -763,7 +839,7 @@
 
             <p class="rules-intro">
                 ทีม Compliance แจ้ง <q>ให้ปรับวิธีการใส่ RL หรือข้อกำหนดของ COMPLIANCE
-                ในคลิปที่มีการเสนอขายผลิตภัณฑ์</q> เป็น <b>2 วิธีเท่านั้น</b>
+                    ในคลิปที่มีการเสนอขายผลิตภัณฑ์</q> เป็น <b>2 วิธีเท่านั้น</b>
                 เพื่อให้ธนาคารแห่งประเทศไทยเข้าตรวจสอบได้ ได้แก่
             </p>
 
@@ -778,8 +854,13 @@
             </p>
 
             <p class="part-title">
+                <u>Responsible lending</u> (RL) คือ
+                การให้สินเชื่ออย่างรับผิดชอบและเป็นธรรมธนาคารไม่เพียงแค่ปล่อยสินเชื่อ
+                แต่ต้องดูแลลูกค้าตลอดวงจรหนี้ ให้ข้อมูลครบถ้วน โปร่งใส เป็นธรรม
+                และช่วยให้ลูกค้ามีวินัยและความมั่นคงทางการเงินในระยะยาว<br><br>
                 Part 1 — ข้อความ RL (Responsible Lending) และ/หรือข้อกำหนดของ COMPLIANCE
                 ที่ต้องพูดหรือเขียนเป็นคำเตือนในทุกคลิปที่นำเสนอผลิตภัณฑ์
+            <p class="rl-label">ต้องระบุ RL ให้ครบถ้วน — คัดลอกข้อความด้านล่างนี้ 👇</p>
             </p>
 
             <!-- A. สินเชื่อรถแลกเงิน -->
@@ -788,7 +869,8 @@
                 <div class="acc-body">
                     <div class="rl">
                         <p class="rl-label">แบบโอนเล่ม</p>
-                        <p class="rl-text">กู้เท่าที่จำเป็นและชำระคืนไหว อัตราดอกเบี้ยที่แท้จริง 5.93% - 15.00% ต่อปี</p>
+                        <p class="rl-text">กู้เท่าที่จำเป็นและชำระคืนไหว อัตราดอกเบี้ยที่แท้จริง 5.93% - 15.00% ต่อปี
+                        </p>
                     </div>
                     <div class="rl">
                         <p class="rl-label">แบบไม่โอนเล่ม</p>
@@ -826,7 +908,8 @@
                 <summary><span class="acc-tag">D</span> บัตรเครดิต 💳</summary>
                 <div class="acc-body">
                     <div class="rl">
-                        <p class="rl-text">ใช้เท่าที่จำเป็นและชำระคืนได้เต็มจำนวนตามกำหนด จะได้ไม่เสียดอกเบี้ย 16% ต่อปี</p>
+                        <p class="rl-text">ใช้เท่าที่จำเป็นและชำระคืนได้เต็มจำนวนตามกำหนด จะได้ไม่เสียดอกเบี้ย 16% ต่อปี
+                        </p>
                     </div>
                 </div>
             </details>
@@ -836,11 +919,13 @@
                 <summary><span class="acc-tag">E</span> สินเชื่อบ้าน 🏡</summary>
                 <div class="acc-body">
                     <div class="rl">
-<p class="rl-text">กู้เท่าที่จำเป็นและชำระคืนไหว
-- สินเชื่อรีไฟแนนซ์ อัตราดอกเบี้ยที่แท้จริงตลอดอายุสัญญา 3% - 6% ต่อปี
-- สมมติฐานการคำนวณมาจากอัตราดอกเบี้ย MRR-3.865% ถึง MRR-0.130% ต่อปี โดยอัตราดอกเบี้ย MRR ณ วันที่ 2 มี.ค. 69 = 7.105% ต่อปี
-- อัตราดอกเบี้ยลอยตัวสามารถเปลี่ยนแปลงเพิ่มขึ้นหรือลดลงได้
-- เงื่อนไขเป็นไปตามหลักเกณฑ์ที่ธนาคารกำหนด รายละเอียดการคำนวณเพิ่มเติมดูได้ที่เว็บไซต์ www.ttbbank.com</p>
+                        <p class="rl-text">กู้เท่าที่จำเป็นและชำระคืนไหว
+                            - สินเชื่อรีไฟแนนซ์ อัตราดอกเบี้ยที่แท้จริงตลอดอายุสัญญา 3% - 6% ต่อปี
+                            - สมมติฐานการคำนวณมาจากอัตราดอกเบี้ย MRR-3.865% ถึง MRR-0.130% ต่อปี โดยอัตราดอกเบี้ย MRR ณ
+                            วันที่ 2 มี.ค. 69 = 7.105% ต่อปี
+                            - อัตราดอกเบี้ยลอยตัวสามารถเปลี่ยนแปลงเพิ่มขึ้นหรือลดลงได้
+                            - เงื่อนไขเป็นไปตามหลักเกณฑ์ที่ธนาคารกำหนด รายละเอียดการคำนวณเพิ่มเติมดูได้ที่เว็บไซต์
+                            www.ttbbank.com</p>
                     </div>
                 </div>
             </details>
@@ -850,9 +935,9 @@
                 <summary><span class="acc-tag">F</span> สินเชื่อบ้านแลกเงิน CYH 🏡</summary>
                 <div class="acc-body">
                     <div class="rl">
-<p class="rl-text">- กู้เท่าที่จำเป็นและชำระคืนไหว ดอกเบี้ยทั้งสัญญา 5% - 11% ต่อปี
-- ดอกเบี้ยปีแรกเริ่ม 3.99% (MRR - 3.115%) ต่อปี
-- ดอกเบี้ยเรตเดียวตลอดสัญญา เริ่ม 5.50% (MRR-1.605%) ต่อปี</p>
+                        <p class="rl-text">- กู้เท่าที่จำเป็นและชำระคืนไหว ดอกเบี้ยทั้งสัญญา 5% - 11% ต่อปี
+                            - ดอกเบี้ยปีแรกเริ่ม 3.99% (MRR - 3.115%) ต่อปี
+                            - ดอกเบี้ยเรตเดียวตลอดสัญญา เริ่ม 5.50% (MRR-1.605%) ต่อปี</p>
                     </div>
                 </div>
             </details>
@@ -867,14 +952,16 @@
                 <p class="example-case">
                     <b>ตัวอย่างที่ 1</b> — สินเชื่อที่มีอัตราดอกเบี้ยอ้างอิงแบบลอยตัว
                     เช่น สินเชื่อบ้านที่อ้างอิงตามอัตราดอกเบี้ย MRR
-                    <span class="example-say">สินเชื่อรีไฟแนนซ์ อัตราดอกเบี้ยที่แท้จริงตลอดอายุสัญญา 3% - 6% ต่อปี — สมมติฐานการคำนวณมาจากอัตราดอกเบี้ย MRR-3.865% ถึง MRR-0.130% ต่อปี</span>
+                    <span class="example-say">สินเชื่อรีไฟแนนซ์ อัตราดอกเบี้ยที่แท้จริงตลอดอายุสัญญา 3% - 6% ต่อปี —
+                        สมมติฐานการคำนวณมาจากอัตราดอกเบี้ย MRR-3.865% ถึง MRR-0.130% ต่อปี</span>
                 </p>
 
                 <p class="example-case">
                     <b>ตัวอย่างที่ 2</b> — การโฆษณาด้วยข้อมูลยอดผ่อนชำระเพื่อจูงใจลูกค้า
                     ธนาคารต้องแสดงสมมติฐานการคำนวณให้ครบถ้วน
                     เช่น <i>สินเชื่อรถแลกเงิน ผ่อนวันละ 59 บาท</i>
-                    <span class="example-say">สมมติฐานการคำนวณมาจากวงเงินสินเชื่อ 200,000 บาท อัตราดอกเบี้ยคงที่ 3.18% ต่อปี ดอกเบี้ยทั้งสัญญา 38,160 บาท ค่างวด 3,540 บาทต่อเดือน ระยะเวลาผ่อน 72 งวด</span>
+                    <span class="example-say">สมมติฐานการคำนวณมาจากวงเงินสินเชื่อ 200,000 บาท อัตราดอกเบี้ยคงที่ 3.18%
+                        ต่อปี ดอกเบี้ยทั้งสัญญา 38,160 บาท ค่างวด 3,540 บาทต่อเดือน ระยะเวลาผ่อน 72 งวด</span>
                 </p>
             </div>
 
@@ -883,7 +970,8 @@
                 <summary><span class="acc-tag">G</span> กองทุน 📈</summary>
                 <div class="acc-body">
                     <div class="rl">
-                        <p class="rl-text">การลงทุนมีความเสี่ยง ผู้ลงทุนควรทำความเข้าใจลักษณะของสินค้า เงื่อนไข ผลตอบแทน และความเสี่ยงก่อนตัดสินใจลงทุน</p>
+                        <p class="rl-text">การลงทุนมีความเสี่ยง ผู้ลงทุนควรทำความเข้าใจลักษณะของสินค้า เงื่อนไข ผลตอบแทน
+                            และความเสี่ยงก่อนตัดสินใจลงทุน</p>
                     </div>
                     <p class="acc-note">⚠️ ผู้โพสต์ต้องมี IC license</p>
                 </div>
@@ -894,8 +982,10 @@
                 <summary><span class="acc-tag">H</span> ประกันภัย / ประกันชีวิต 🛡️</summary>
                 <div class="acc-body">
                     <div class="rl">
-<p class="rl-text">ผู้ซื้อควรทำความเข้าใจในรายละเอียดความคุ้มครอง เงื่อนไข และข้อยกเว้นก่อนตัดสินใจทำประกันภัยทุกครั้ง
-- ธนาคารทหารไทยธนชาต จำกัด (มหาชน) เป็นเพียงนายหน้าประกันชีวิต/วินาศภัย และรับผิดชอบในฐานะนายหน้าเท่านั้น</p>
+                        <p class="rl-text">ผู้ซื้อควรทำความเข้าใจในรายละเอียดความคุ้มครอง เงื่อนไข
+                            และข้อยกเว้นก่อนตัดสินใจทำประกันภัยทุกครั้ง
+                            - ธนาคารทหารไทยธนชาต จำกัด (มหาชน) เป็นเพียงนายหน้าประกันชีวิต/วินาศภัย
+                            และรับผิดชอบในฐานะนายหน้าเท่านั้น</p>
                     </div>
                     <p class="acc-note">⚠️ ผู้โพสต์ต้องมีใบอนุญาต นว./นช.</p>
                 </div>
@@ -907,112 +997,119 @@
                 <div class="acc-body">
                     <div class="rl">
                         <p class="rl-label">ต้องระบุ RL ให้ครบถ้วน — คัดลอกข้อความด้านล่างนี้ 👇</p>
-<p class="rl-text">กู้เท่าที่จำเป็นและชำระคืนไหว
+                        <p class="rl-text">กู้เท่าที่จำเป็นและชำระคืนไหว
 
-🚗 สินเชื่อคนผ่อนดี รถแลกเงิน ทีทีบีไดรฟ์ แบบไม่โอนเล่ม อัตราดอกเบี้ยที่แท้จริง 11.11% - 24% ต่อปี ระหว่างวันที่ 3 ส.ค. 69 - 31 ม.ค. 70 พร้อมอนุมัติและเกิดสัญญาภายใน 28 ก.พ. 70
+                            🚗 สินเชื่อคนผ่อนดี รถแลกเงิน ทีทีบีไดรฟ์ แบบไม่โอนเล่ม อัตราดอกเบี้ยที่แท้จริง 11.11% - 24%
+                            ต่อปี ระหว่างวันที่ 3 ส.ค. 69 - 31 ม.ค. 70 พร้อมอนุมัติและเกิดสัญญาภายใน 28 ก.พ. 70
 
-💸 สินเชื่อบุคคล ทีทีบี แคชทูโก อัตราดอกเบี้ย 13.99% - 25% ต่อปี | สินเชื่อบ้านรีไฟแนนซ์ อัตราดอกเบี้ยที่แท้จริงตลอดอายุสัญญา 3% - 4% ต่อปี • สมมติฐานการคำนวณมาจากอัตราดอกเบี้ย MRR-3.865% ถึง MRR-3.265% ต่อปี
+                            💸 สินเชื่อบุคคล ทีทีบี แคชทูโก อัตราดอกเบี้ย 13.99% - 25% ต่อปี | สินเชื่อบ้านรีไฟแนนซ์
+                            อัตราดอกเบี้ยที่แท้จริงตลอดอายุสัญญา 3% - 4% ต่อปี • สมมติฐานการคำนวณมาจากอัตราดอกเบี้ย
+                            MRR-3.865% ถึง MRR-3.265% ต่อปี
 
-🏡 สินเชื่อบ้านแลกเงิน รีไฟแนนซ์ อัตราดอกเบี้ยที่แท้จริงตลอดอายุสัญญา 5% - 7% ต่อปี • สมมติฐานการคำนวณมาจากอัตราดอกเบี้ย MRR-1.505% ถึง MRR-0.905% ต่อปี • อัตราดอกเบี้ย MRR ณ วันที่ 2 มี.ค. 69 = 7.105% ต่อปี • อัตราดอกเบี้ยลอยตัวเปลี่ยนแปลงเพิ่มขึ้นหรือลดลงได้
+                            🏡 สินเชื่อบ้านแลกเงิน รีไฟแนนซ์ อัตราดอกเบี้ยที่แท้จริงตลอดอายุสัญญา 5% - 7% ต่อปี •
+                            สมมติฐานการคำนวณมาจากอัตราดอกเบี้ย MRR-1.505% ถึง MRR-0.905% ต่อปี • อัตราดอกเบี้ย MRR ณ
+                            วันที่ 2 มี.ค. 69 = 7.105% ต่อปี • อัตราดอกเบี้ยลอยตัวเปลี่ยนแปลงเพิ่มขึ้นหรือลดลงได้
 
-รายละเอียดการคำนวณเพิ่มเติมดูได้ที่เว็บไซต์ www.ttbbank.com • เงื่อนไขและอัตราดอกเบี้ยเป็นไปตามหลักเกณฑ์ที่ธนาคารกำหนด</p>
+                            รายละเอียดการคำนวณเพิ่มเติมดูได้ที่เว็บไซต์ www.ttbbank.com •
+                            เงื่อนไขและอัตราดอกเบี้ยเป็นไปตามหลักเกณฑ์ที่ธนาคารกำหนด</p>
                     </div>
                 </div>
             </details>
         </div>
     </div>
 
-<script>
-    // สลับแท็บ iOS / Android
-    (function () {
-        var tabs = document.querySelectorAll('.tab');
+    <script>
+        // สลับแท็บ iOS / Android
+        (function () {
+            var tabs = document.querySelectorAll('.tab');
 
-        function select(id) {
+            function select(id) {
+                Array.prototype.forEach.call(tabs, function (tab) {
+                    var isOn = (tab.id === id);
+                    tab.classList.toggle('is-active', isOn);
+                    tab.setAttribute('aria-selected', isOn ? 'true' : 'false');
+                    document.getElementById(tab.getAttribute('aria-controls')).hidden = !isOn;
+                });
+            }
+
             Array.prototype.forEach.call(tabs, function (tab) {
-                var isOn = (tab.id === id);
-                tab.classList.toggle('is-active', isOn);
-                tab.setAttribute('aria-selected', isOn ? 'true' : 'false');
-                document.getElementById(tab.getAttribute('aria-controls')).hidden = !isOn;
+                tab.addEventListener('click', function () { select(tab.id); });
             });
-        }
 
-        Array.prototype.forEach.call(tabs, function (tab) {
-            tab.addEventListener('click', function () { select(tab.id); });
-        });
+            // เดาเครื่องที่ผู้ใช้ถืออยู่ แล้วเปิดแท็บนั้นให้เลย จะได้ไม่ต้องกดเอง
+            // (iPad รุ่นใหม่รายงานตัวเป็น Mac จึงต้องเช็ค maxTouchPoints ด้วย)
+            var isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) ||
+                (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
 
-        // เดาเครื่องที่ผู้ใช้ถืออยู่ แล้วเปิดแท็บนั้นให้เลย จะได้ไม่ต้องกดเอง
-        // (iPad รุ่นใหม่รายงานตัวเป็น Mac จึงต้องเช็ค maxTouchPoints ด้วย)
-        var isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) ||
-                    (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+            if (isIOS) select('tab-ios');
+        })();
 
-        if (isIOS) select('tab-ios');
-    })();
+        // ปุ่มคัดลอกลิงก์
+        (function () {
+            var btn = document.getElementById('copyBtn');
+            var icon = document.getElementById('copyIcon');
 
-    // ปุ่มคัดลอกลิงก์
-    (function () {
-        var btn  = document.getElementById('copyBtn');
-        var icon = document.getElementById('copyIcon');
+            // ยึด URL จาก href ของปุ่มหลักเป็นหลัก จะได้ไม่ต้องแก้ URL หลายที่
+            var URL_TEXT = document.querySelector('.btn').href;
 
-        // ยึด URL จาก href ของปุ่มหลักเป็นหลัก จะได้ไม่ต้องแก้ URL หลายที่
-        var URL_TEXT = document.querySelector('.btn').href;
+            var ICON_COPY = icon.innerHTML;
+            var ICON_DONE =
+                '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"' +
+                ' stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">' +
+                '<path d="m20 6-11 11-5-5"/></svg>';
 
-        var ICON_COPY = icon.innerHTML;
-        var ICON_DONE =
-            '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"' +
-            ' stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">' +
-            '<path d="m20 6-11 11-5-5"/></svg>';
+            var timer = null;
 
-        var timer = null;
+            // วิธีสำรองสำหรับเบราว์เซอร์เก่า หรือตอนเปิดผ่าน file:// / http://
+            // (navigator.clipboard ใช้ได้เฉพาะบน https เท่านั้น)
+            function fallbackCopy(text) {
+                var ta = document.createElement('textarea');
+                ta.value = text;
+                ta.setAttribute('readonly', '');
+                ta.style.position = 'fixed';
+                ta.style.opacity = '0';
+                document.body.appendChild(ta);
+                ta.select();
+                ta.setSelectionRange(0, ta.value.length);   // iOS ต้องระบุช่วงเอง
 
-        // วิธีสำรองสำหรับเบราว์เซอร์เก่า หรือตอนเปิดผ่าน file:// / http://
-        // (navigator.clipboard ใช้ได้เฉพาะบน https เท่านั้น)
-        function fallbackCopy(text) {
-            var ta = document.createElement('textarea');
-            ta.value = text;
-            ta.setAttribute('readonly', '');
-            ta.style.position = 'fixed';
-            ta.style.opacity = '0';
-            document.body.appendChild(ta);
-            ta.select();
-            ta.setSelectionRange(0, ta.value.length);   // iOS ต้องระบุช่วงเอง
+                var ok = false;
+                try { ok = document.execCommand('copy'); } catch (e) { }
 
-            var ok = false;
-            try { ok = document.execCommand('copy'); } catch (e) {}
-
-            document.body.removeChild(ta);
-            return ok;
-        }
-
-        function showResult(ok) {
-            if (!ok) {
-                // ไม่แกล้งบอกว่าสำเร็จ — บอกวิธีสำรองไปเลย
-                btn.title = 'คัดลอกไม่สำเร็จ กรุณากดค้างที่ลิงก์เพื่อคัดลอก';
-                return;
+                document.body.removeChild(ta);
+                return ok;
             }
 
-            // เปลี่ยนเป็นเครื่องหมายถูกสีส้ม แล้วคืนสภาพเดิมใน 2 วินาที
-            icon.innerHTML = ICON_DONE;
-            btn.classList.add('is-done');
-            btn.title = 'คัดลอกลิงก์แล้ว';
+            function showResult(ok) {
+                if (!ok) {
+                    // ไม่แกล้งบอกว่าสำเร็จ — บอกวิธีสำรองไปเลย
+                    btn.title = 'คัดลอกไม่สำเร็จ กรุณากดค้างที่ลิงก์เพื่อคัดลอก';
+                    return;
+                }
 
-            clearTimeout(timer);
-            timer = setTimeout(function () {
-                icon.innerHTML = ICON_COPY;
-                btn.classList.remove('is-done');
-                btn.title = 'คัดลอกลิงก์';
-            }, 2000);
-        }
+                // เปลี่ยนเป็นเครื่องหมายถูกสีส้ม แล้วคืนสภาพเดิมใน 2 วินาที
+                icon.innerHTML = ICON_DONE;
+                btn.classList.add('is-done');
+                btn.title = 'คัดลอกลิงก์แล้ว';
 
-        btn.addEventListener('click', function () {
-            if (navigator.clipboard && navigator.clipboard.writeText) {
-                navigator.clipboard.writeText(URL_TEXT)
-                    .then(function () { showResult(true); })
-                    .catch(function () { showResult(fallbackCopy(URL_TEXT)); });
-            } else {
-                showResult(fallbackCopy(URL_TEXT));
+                clearTimeout(timer);
+                timer = setTimeout(function () {
+                    icon.innerHTML = ICON_COPY;
+                    btn.classList.remove('is-done');
+                    btn.title = 'คัดลอกลิงก์';
+                }, 2000);
             }
-        });
-    })();
-</script>
+
+            btn.addEventListener('click', function () {
+                if (navigator.clipboard && navigator.clipboard.writeText) {
+                    navigator.clipboard.writeText(URL_TEXT)
+                        .then(function () { showResult(true); })
+                        .catch(function () { showResult(fallbackCopy(URL_TEXT)); });
+                } else {
+                    showResult(fallbackCopy(URL_TEXT));
+                }
+            });
+        })();
+    </script>
 </body>
+
 </html>
